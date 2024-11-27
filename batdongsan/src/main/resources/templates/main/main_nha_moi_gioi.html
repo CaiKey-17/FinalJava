@@ -1,0 +1,742 @@
+<div th:fragment="main_nha_moi_gioi" class="re__nlcc-main-layout" >
+
+
+
+
+    <div id="MiddleSubMenu">
+
+        <div class="re__broker-search">
+            <div class="re__broker-control">
+                <div class="re__first-col">
+                    <div class="re__search-title">Tìm kiếm môi giới</div>
+                </div>
+                <div class="re__second-col">
+                    <div class="re__kw-search">
+                    </div>
+                </div>
+            </div>
+            <div id="searchcontrol" class="re__broker-control">
+                <div class="re__first-col">
+                    <div class="re__select--sm js__bds-select-container" style="" tabindex="0">   <span class="re__filter-label select-text hasvalue js__bds-select-button">       <span class="select-text-content js__bds-select-button-current-text">Loại giao dịch</span>   </span><input id="hdBrCategory" name="hdBrCategory" type="hidden" value="" />  <div class="re__select-dropdown advance-select-options js__bds-select-dropdown mCustomScrollBox mCS-light mCSB_vertical">      <ul class="re__dropdown-no-art--sm advance-options js__bds-select-list"><li vl="0" class="advance-options  js__option">Loại giao dịch</li>      </ul>  </div></div>
+                    <div id="divBrCategoryOptions" style="display: none">
+                        <ul class="re__dropdown-no-art--sm advance-options">
+                            <li vl="0" class="advance-options js__option">Loại giao dịch</li>
+                            <li vl="38" class="advance-options js__option" data-value="nha-dat-ban">Nhà đất bán</li>
+                            <li vl="49" class="advance-options js__option" data-value="nha-dat-cho-thue">Nhà đất cho thuê</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="re__second-col">
+                    <div class="re__select--sm re__subcategory-select js__bds-select-container" style="" tabindex="0">   <span class="re__filter-label select-text hasvalue js__bds-select-button">       <span class="select-text-content js__bds-select-button-current-text">Loại nhà đất</span>   </span><input id="hdSubCategory" name="hdSubCategory" type="hidden" value="" />  <div class="re__select-dropdown advance-select-options js__bds-select-dropdown mCustomScrollBox mCS-light mCSB_vertical">      <ul class="re__dropdown-no-art--sm re__subcategory-dropdown-no-art advance-options js__bds-select-list"><li vl="0" class="advance-options  js__option">Loại nhà đất </li>      </ul>  </div></div>
+                    <div class="re__select--sm js__bds-select-container" style="" tabindex="0">   <span class="re__filter-label select-text hasvalue js__bds-select-button">       <span class="select-text-content js__bds-select-button-current-text">Tỉnh/Thành phố</span>   </span><input id="hdBrCity" name="hdBrCity" type="hidden" value="" />  <div class="re__select-dropdown advance-select-options js__bds-select-dropdown mCustomScrollBox mCS-light mCSB_vertical">      <ul class="re__dropdown-no-art--sm advance-options js__bds-select-list"><li vl="0" class="advance-options  js__option">Tỉnh/Thành phố</li>      </ul>  </div></div>
+                    <div id="divBrCityOptions" style="display: none">
+                        <ul class="re__dropdown-no-art--sm advance-options">
+                            <li vl="" class="advance-options js__option">Tỉnh/Thành phố</li>
+                            <li vl="SG" data-value="tp-hcm" class="advance-options js__option">H&#x1ED3; Ch&#xED; Minh</li>
+                            <li vl="HN" data-value="ha-noi" class="advance-options js__option">H&#xE0; N&#x1ED9;i</li>
+                            <li vl="DDN" data-value="da-nang" class="advance-options js__option">&#x110;&#xE0; N&#x1EB5;ng</li>
+                            <li vl="BD" data-value="binh-duong" class="advance-options js__option">B&#xEC;nh D&#x1B0;&#x1A1;ng</li>
+                            <li vl="DNA" data-value="dong-nai" class="advance-options js__option">&#x110;&#x1ED3;ng Nai</li>
+                            <li vl="KH" data-value="khanh-hoa" class="advance-options js__option">Kh&#xE1;nh H&#xF2;a</li>
+                            <li vl="HP" data-value="hai-phong" class="advance-options js__option">H&#x1EA3;i Ph&#xF2;ng</li>
+                            <li vl="LA" data-value="long-an" class="advance-options js__option">Long An</li>
+                            <li vl="QNA" data-value="quang-nam" class="advance-options js__option">Qu&#x1EA3;ng Nam</li>
+                            <li vl="VT" data-value="ba-ria-vung-tau" class="advance-options js__option">B&#xE0; R&#x1ECB;a V&#x169;ng T&#xE0;u</li>
+                            <li vl="DDL" data-value="dak-lak" class="advance-options js__option">&#x110;&#x1EAF;k L&#x1EAF;k</li>
+                            <li vl="CT" data-value="can-tho" class="advance-options js__option">C&#x1EA7;n Th&#x1A1;</li>
+                            <li vl="BTH" data-value="binh-thuan" class="advance-options js__option">B&#xEC;nh Thu&#x1EAD;n  </li>
+                            <li vl="LDD" data-value="lam-dong" class="advance-options js__option">L&#xE2;m &#x110;&#x1ED3;ng</li>
+                            <li vl="TTH" data-value="thua-thien-hue" class="advance-options js__option">Th&#x1EEB;a Thi&#xEA;n Hu&#x1EBF;</li>
+                            <li vl="KG" data-value="kien-giang" class="advance-options js__option">Ki&#xEA;n Giang</li>
+                            <li vl="BN" data-value="bac-ninh" class="advance-options js__option">B&#x1EAF;c Ninh</li>
+                            <li vl="QNI" data-value="quang-ninh" class="advance-options js__option">Qu&#x1EA3;ng Ninh</li>
+                            <li vl="TH" data-value="thanh-hoa" class="advance-options js__option">Thanh H&#xF3;a</li>
+                            <li vl="NA" data-value="nghe-an" class="advance-options js__option">Ngh&#x1EC7; An</li>
+                            <li vl="HD" data-value="hai-duong" class="advance-options js__option">H&#x1EA3;i D&#x1B0;&#x1A1;ng</li>
+                            <li vl="GL" data-value="gia-lai" class="advance-options js__option">Gia Lai</li>
+                            <li vl="BP" data-value="binh-phuoc" class="advance-options js__option">B&#xEC;nh Ph&#x1B0;&#x1EDB;c</li>
+                            <li vl="HY" data-value="hung-yen" class="advance-options js__option">H&#x1B0;ng Y&#xEA;n</li>
+                            <li vl="BDD" data-value="binh-dinh" class="advance-options js__option">B&#xEC;nh &#x110;&#x1ECB;nh</li>
+                            <li vl="TG" data-value="tien-giang" class="advance-options js__option">Ti&#x1EC1;n Giang</li>
+                            <li vl="TB" data-value="thai-binh" class="advance-options js__option">Th&#xE1;i B&#xEC;nh</li>
+                            <li vl="BG" data-value="bac-giang" class="advance-options js__option">B&#x1EAF;c Giang</li>
+                            <li vl="HB" data-value="hoa-binh" class="advance-options js__option">H&#xF2;a B&#xEC;nh</li>
+                            <li vl="AG" data-value="an-giang" class="advance-options js__option">An Giang</li>
+                            <li vl="VP" data-value="vinh-phuc" class="advance-options js__option">V&#x129;nh Ph&#xFA;c</li>
+                            <li vl="TNI" data-value="tay-ninh" class="advance-options js__option">T&#xE2;y Ninh</li>
+                            <li vl="TN" data-value="thai-nguyen" class="advance-options js__option">Th&#xE1;i Nguy&#xEA;n</li>
+                            <li vl="LCA" data-value="lao-cai" class="advance-options js__option">L&#xE0;o Cai</li>
+                            <li vl="NDD" data-value="nam-dinh" class="advance-options js__option">Nam &#x110;&#x1ECB;nh</li>
+                            <li vl="QNG" data-value="quang-ngai" class="advance-options js__option">Qu&#x1EA3;ng Ng&#xE3;i</li>
+                            <li vl="BTR" data-value="ben-tre" class="advance-options js__option">B&#x1EBF;n Tre</li>
+                            <li vl="DNO" data-value="dak-nong" class="advance-options js__option">&#x110;&#x1EAF;k N&#xF4;ng</li>
+                            <li vl="CM" data-value="ca-mau" class="advance-options js__option">C&#xE0; Mau</li>
+                            <li vl="VL" data-value="vinh-long" class="advance-options js__option">V&#x129;nh Long</li>
+                            <li vl="NB" data-value="ninh-binh" class="advance-options js__option">Ninh B&#xEC;nh</li>
+                            <li vl="PT" data-value="phu-tho" class="advance-options js__option">Ph&#xFA; Th&#x1ECD;</li>
+                            <li vl="NT" data-value="ninh-thuan" class="advance-options js__option">Ninh Thu&#x1EAD;n</li>
+                            <li vl="PY" data-value="phu-yen" class="advance-options js__option">Ph&#xFA; Y&#xEA;n</li>
+                            <li vl="HNA" data-value="ha-nam" class="advance-options js__option">H&#xE0; Nam</li>
+                            <li vl="HT" data-value="ha-tinh" class="advance-options js__option">H&#xE0; T&#x129;nh</li>
+                            <li vl="DDT" data-value="dong-thap" class="advance-options js__option">&#x110;&#x1ED3;ng Th&#xE1;p</li>
+                            <li vl="ST" data-value="soc-trang" class="advance-options js__option">S&#xF3;c Tr&#x103;ng</li>
+                            <li vl="KT" data-value="kon-tum" class="advance-options js__option">Kon Tum</li>
+                            <li vl="QB" data-value="quang-binh" class="advance-options js__option">Qu&#x1EA3;ng B&#xEC;nh</li>
+                            <li vl="QT" data-value="quang-tri" class="advance-options js__option">Qu&#x1EA3;ng Tr&#x1ECB;</li>
+                            <li vl="TV" data-value="tra-vinh" class="advance-options js__option">Tr&#xE0; Vinh</li>
+                            <li vl="HGI" data-value="hau-giang" class="advance-options js__option">H&#x1EAD;u Giang</li>
+                            <li vl="SL" data-value="son-la" class="advance-options js__option">S&#x1A1;n La</li>
+                            <li vl="BL" data-value="bac-lieu" class="advance-options js__option">B&#x1EA1;c Li&#xEA;u</li>
+                            <li vl="YB" data-value="yen-bai" class="advance-options js__option">Y&#xEA;n B&#xE1;i</li>
+                            <li vl="TQ" data-value="tuyen-quang" class="advance-options js__option">Tuy&#xEA;n Quang</li>
+                            <li vl="DDB" data-value="dien-bien" class="advance-options js__option">&#x110;i&#x1EC7;n Bi&#xEA;n</li>
+                            <li vl="LCH" data-value="lai-chau" class="advance-options js__option">Lai Ch&#xE2;u</li>
+                            <li vl="LS" data-value="lang-son" class="advance-options js__option">L&#x1EA1;ng S&#x1A1;n</li>
+                            <li vl="HG" data-value="ha-giang" class="advance-options js__option">H&#xE0; Giang</li>
+                            <li vl="BK" data-value="bac-kan" class="advance-options js__option">B&#x1EAF;c K&#x1EA1;n</li>
+                            <li vl="CB" data-value="cao-bang" class="advance-options js__option">Cao B&#x1EB1;ng</li>
+                        </ul>
+                    </div>
+                    <div class="re__select--sm js__bds-select-container" style="" tabindex="0">   <span class="re__filter-label select-text hasvalue js__bds-select-button">       <span class="select-text-content js__bds-select-button-current-text">Quận/Huyện</span>   </span><input id="hdBrDistrict" name="hdBrDistrict" type="hidden" value="" />  <div class="re__select-dropdown advance-select-options js__bds-select-dropdown mCustomScrollBox mCS-light mCSB_vertical">      <ul class="re__dropdown-no-art--sm advance-options js__bds-select-list"><li vl="" class="advance-options current js__option">Quận/Huyện</li>      </ul>  </div></div>
+                    <div class="re__select--sm re__project-select js__bds-select-container" style="" tabindex="0">   <span class="re__filter-label select-text hasvalue js__bds-select-button">       <span class="select-text-content js__bds-select-button-current-text">Dự án</span>   </span><input id="hdBrProject" name="hdBrProject" type="hidden" value="" />  <div class="re__select-dropdown advance-select-options js__bds-select-dropdown mCustomScrollBox mCS-light mCSB_vertical">      <ul class="re__dropdown-no-art--sm re__project-dropdown-no-art advance-options js__bds-select-list"><li vl="" class="advance-options current js__option">Dự án</li>      </ul>  </div></div>
+                    <span class="re__btn re__btn-pr-solid--sm" id="btnSearch">Tìm kiếm</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="MainContent">
+    </div>
+
+    <div class="re__nlcc-main-left">
+        <div id="inforPageBroker" data-keyword=""
+             data-cate="0"
+             data-subcate="0"
+             data-city=""
+             data-district="0"
+             data-project="0"></div>
+
+        <div id="broker-page" class="re__broker-page">
+            <h1 class="re__broker-title">Danh b&#x1EA1; nh&#xE0; m&#xF4;i gi&#x1EDB;i</h1>
+
+            <div button-id="broker-top-select" class="re__tab-box-group">
+                <a data-value="1" class="re__tab-box--sm re__tab-box--actived">Công ty môi giới</a>
+                <a data-value="0" class="re__tab-box--sm ">Cá nhân môi giới</a>
+            </div>
+
+
+            <div id="contentPage">
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/cho-thue-nha-mat-pho/cong-ty-co-phan-bat-dong-san-gigareal-eb2825">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2020/11/03/PGsxuI1y/20201103162145-4ff8.jpg" alt="C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N GIGAREAL">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N GIGAREAL" href="/cho-thue-nha-mat-pho/cong-ty-co-phan-bat-dong-san-gigareal-eb2825" class="re__broker-title--xs re__link-se">C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N GIGAREAL</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>402 Hu&#x1EF3;nh V&#x103;n B&#xE1;nh, Ph&#x1B0;&#x1EDD;ng 13, Qu&#x1EAD;n Ph&#xFA; Nhu&#x1EAD;n, H&#x1ED3; Ch&#xED; Minh, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0769969928</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="marketing.gigareal@gmail.com" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Cho thuê nhà mặt phố ở Quận 3, Hồ Chí Minh</li><li>Cho thuê nhà mặt phố ở Quận 10, Hồ Chí Minh</li><li>Cho thuê nhà mặt phố ở Phú Nhuận, Hồ Chí Minh</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/ban-nha-rieng/cong-ty-co-phan-moi-gioi-bat-dong-san-hellohomes-eb2944">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2022/05/05/U8pqhXd9/20220505084756-d47b.jpg" alt="C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N M&#xD4;I GI&#x1EDA;I B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N HELLOHOMES">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N M&#xD4;I GI&#x1EDA;I B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N HELLOHOMES" href="/ban-nha-rieng/cong-ty-co-phan-moi-gioi-bat-dong-san-hellohomes-eb2944" class="re__broker-title--xs re__link-se">C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N M&#xD4;I GI&#x1EDA;I B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N HELLOHOMES</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>528 Nguy&#x1EC5;n V&#x103;n Q&#xFA;a, Khu Ph&#x1ED1; 4, &#x110;&#xF4;ng H&#x1B0;ng Thu&#x1EAD;n, Qu&#x1EAD;n 12, H&#x1ED3; Ch&#xED; Minh, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0779938978</span></div>
+                                <div><i class="re__icon-phone--sm"></i><span>0779938978</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="Bds.hellohomes@gmail.com" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Bán nhà riêng ở Quận 12, Hồ Chí Minh</li><li>Bán nhà riêng ở Gò Vấp, Hồ Chí Minh</li><li>Bán nhà riêng ở Tân Bình, Hồ Chí Minh</li><li>Bán nhà mặt phố ở Quận 12, Hồ Chí Minh</li><li>Bán nhà mặt phố ở Gò Vấp, Hồ Chí Minh</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/ban-nha-mat-pho/cong-ty-co-phan-quan-ly-va-khai-thac-tai-san-ben-thanh-eb2805">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2020/09/04/PGsxuI1y/20200904174346-3972.jpg" alt="C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N QU&#x1EA2;N L&#xDD; V&#xC0; KHAI TH&#xC1;C T&#xC0;I S&#x1EA2;N B&#x1EBE;N TH&#xC0;NH">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N QU&#x1EA2;N L&#xDD; V&#xC0; KHAI TH&#xC1;C T&#xC0;I S&#x1EA2;N B&#x1EBE;N TH&#xC0;NH" href="/ban-nha-mat-pho/cong-ty-co-phan-quan-ly-va-khai-thac-tai-san-ben-thanh-eb2805" class="re__broker-title--xs re__link-se">C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N QU&#x1EA2;N L&#xDD; V&#xC0; KHAI TH&#xC1;C T&#xC0;I S&#x1EA2;N B&#x1EBE;N TH&#xC0;NH</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>90A Tr&#x1EA7;n Qu&#x1ED1;c To&#x1EA3;n, V&#xF5; Th&#x1ECB; S&#xE1;u, Qu&#x1EAD;n 3, H&#x1ED3; Ch&#xED; Minh, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0915202529</span></div>
+                                <div><i class="re__icon-phone--sm"></i><span>02838789333</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="benthanhrealty@gmail.com" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Bán nhà mặt phố ở Quận 1, Hồ Chí Minh</li><li>Bán nhà mặt phố ở Quận 3, Hồ Chí Minh</li><li>Bán nhà mặt phố ở Quận 5, Hồ Chí Minh</li><li>Bán nhà mặt phố ở Quận 10, Hồ Chí Minh</li><li>Bán nhà mặt phố ở Phú Nhuận, Hồ Chí Minh</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/ban-dat-nen-du-an/cong-ty-co-phan-dai-dat-viet-eb3071">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2024/09/16/20240916141517-02bf.jpg" alt="C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N &#x110;&#x1EA0;I &#x110;&#x1EA4;T VI&#x1EC6;T">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N &#x110;&#x1EA0;I &#x110;&#x1EA4;T VI&#x1EC6;T" href="/ban-dat-nen-du-an/cong-ty-co-phan-dai-dat-viet-eb3071" class="re__broker-title--xs re__link-se">C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N &#x110;&#x1EA0;I &#x110;&#x1EA4;T VI&#x1EC6;T</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>S&#x1ED1; 115 Nguy&#xEA;n T&#x1EED; L&#x1EF1;c, 8, &#x110;&#xE0; L&#x1EA1;t, L&#xE2;m &#x110;&#x1ED3;ng, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0359355168</span></div>
+                                <div><i class="re__icon-phone--sm"></i><span>0359355168</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="info@daidatviet.com" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Bán đất nền dự án ở Lạc Dương, Lâm Đồng</li><li>Bán đất nền dự án ở Đà Lạt, Lâm Đồng</li><li>Bán nhà mặt phố ở Đà Lạt, Lâm Đồng</li><li>Bán đất ở Đức Trọng, Lâm Đồng</li><li>Bán đất ở Lạc Dương, Lâm Đồng</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/ban-dat-nen-du-an/cong-ty-co-phan-do-thi-thong-minh-viet-nam-viet-nam-smart-city-eb3070">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2024/09/10/20240910095915-73ac.jpg" alt="C&#xF4;ng ty C&#xF4;&#x309; ph&#xE2;&#x300;n &#x110;&#xF4; Thi&#x323; Th&#xF4;ng Minh Vi&#xEA;&#x323;t Nam (Viet Nam Smart City)">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xF4;ng ty C&#xF4;&#x309; ph&#xE2;&#x300;n &#x110;&#xF4; Thi&#x323; Th&#xF4;ng Minh Vi&#xEA;&#x323;t Nam (Viet Nam Smart City)" href="/ban-dat-nen-du-an/cong-ty-co-phan-do-thi-thong-minh-viet-nam-viet-nam-smart-city-eb3070" class="re__broker-title--xs re__link-se">C&#xF4;ng ty C&#xF4;&#x309; ph&#xE2;&#x300;n &#x110;&#xF4; Thi&#x323; Th&#xF4;ng Minh Vi&#xEA;&#x323;t Nam (Viet Nam Smart City)</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>386 &#x110;i&#x1EC7;n Bi&#xEA;n Ph&#x1EE7;, Thanh Kh&#xEA; &#x110;&#xF4;ng, Thanh Kh&#xEA;, &#x110;&#xE0; N&#x1EB5;ng, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0931388789</span></div>
+                                <div><i class="re__icon-phone--sm"></i><span>0931388789</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="info@vnsmartcity.com.vn" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Bán đất nền dự án ở Quy Nhơn, Bình Định</li><li>Bán đất nền dự án ở Hải Châu, Đà Nẵng</li><li>Bán đất nền dự án ở Liên Chiểu, Đà Nẵng</li><li>Bán đất nền dự án ở Ngũ Hành Sơn, Đà Nẵng</li><li>Bán đất nền dự án ở Sơn Trà, Đà Nẵng</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/ban-can-ho-chung-cu/cong-ty-tnhh-giai-phap-dau-tu-bat-dong-san-viet-land-eb2866">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2021/07/14/3ZsSL6gy/20210714090716-16c7.jpg" alt="C&#xD4;NG TY TNHH GI&#x1EA2;I PH&#xC1;P &#x110;&#x1EA6;U T&#x1AF; B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N VI&#x1EC6;T LAND">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xD4;NG TY TNHH GI&#x1EA2;I PH&#xC1;P &#x110;&#x1EA6;U T&#x1AF; B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N VI&#x1EC6;T LAND" href="/ban-can-ho-chung-cu/cong-ty-tnhh-giai-phap-dau-tu-bat-dong-san-viet-land-eb2866" class="re__broker-title--xs re__link-se">C&#xD4;NG TY TNHH GI&#x1EA2;I PH&#xC1;P &#x110;&#x1EA6;U T&#x1AF; B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N VI&#x1EC6;T LAND</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>C&#x1ED5; Nhu&#x1EBF; 1, B&#x1EAF;c T&#x1EEB; Li&#xEA;m, H&#xE0; N&#x1ED9;i, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0988072628</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="thanhhue072628@gmail.com" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Bán căn hộ chung cư ở Tây Hồ, Hà Nội</li><li>Bán căn hộ chung cư ở Cầu Giấy, Hà Nội</li><li>Bán căn hộ chung cư ở Bắc Từ Liêm, Hà Nội</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/ban-nha-rieng/cong-ty-co-phan-tu-van-bat-dong-san-hoa-binh-eb2139">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2016/04/27/eCGLjNi5/20160427144849-b809.jpg" alt="C&#xF4;ng Ty C&#x1ED5; Ph&#x1EA7;n T&#x1B0; V&#x1EA5;n B&#x1EA5;t &#x110;&#x1ED9;ng S&#x1EA3;n H&#xF2;a B&#xEC;nh">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xF4;ng Ty C&#x1ED5; Ph&#x1EA7;n T&#x1B0; V&#x1EA5;n B&#x1EA5;t &#x110;&#x1ED9;ng S&#x1EA3;n H&#xF2;a B&#xEC;nh" href="/ban-nha-rieng/cong-ty-co-phan-tu-van-bat-dong-san-hoa-binh-eb2139" class="re__broker-title--xs re__link-se">C&#xF4;ng Ty C&#x1ED5; Ph&#x1EA7;n T&#x1B0; V&#x1EA5;n B&#x1EA5;t &#x110;&#x1ED9;ng S&#x1EA3;n H&#xF2;a B&#xEC;nh</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>219 Nguy&#x1EC5;n Ng&#x1ECD;c V&#x169;, Trung H&#xF2;a, C&#x1EA7;u Gi&#x1EA5;y, Ha&#x300; N&#xF4;&#x323;i, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0972888111</span></div>
+                                <div><i class="re__icon-phone--sm"></i><span>0972888111</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="lienhe@hbland.vn" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Bán nhà riêng ở Ba Đình, Hà Nội</li><li>Bán nhà riêng ở Đống Đa, Hà Nội</li><li>Bán nhà riêng ở Cầu Giấy, Hà Nội</li><li>Bán căn hộ chung cư ở Ba Đình, Hà Nội</li><li>Bán căn hộ chung cư ở Đống Đa, Hà Nội</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/ban-dat-nen-du-an/cong-ty-tnhh-dv-bds-song-phat-eb2374">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2017/06/09/eCGLjNi5/20170609165321-b92e.jpg" alt="C&#xF4;ng ty TNHH DV &#x2013; B&#x110;S Song Ph&#xE1;t">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xF4;ng ty TNHH DV &#x2013; B&#x110;S Song Ph&#xE1;t" href="/ban-dat-nen-du-an/cong-ty-tnhh-dv-bds-song-phat-eb2374" class="re__broker-title--xs re__link-se">C&#xF4;ng ty TNHH DV &#x2013; B&#x110;S Song Ph&#xE1;t</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>721 L&#xEA; H&#x1ED3;ng Phong, Ph&#x1B0;&#x1EDB;c Long, Nha Trang, Kh&#xE1;nh H&#xF2;a, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0988213921</span></div>
+                                <div><i class="re__icon-phone--sm"></i><span>0988213921</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Bán đất nền dự án ở Nha Trang, Khánh Hòa</li><li>Bán nhà riêng ở Nha Trang, Khánh Hòa</li><li>Bán nhà mặt phố ở Nha Trang, Khánh Hòa</li><li>Bán đất ở Nha Trang, Khánh Hòa</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/ban-nha-rieng/cong-ty-tnhh-dich-vu-bat-dong-san-tan-phu-eb2724">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2020/12/28/PGsxuI1y/20201228174342-22c6.jpg" alt="C&#xD4;NG TY TNHH D&#x1ECA;CH V&#x1EE4; B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N T&#xC2;N PH&#xDA;">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xD4;NG TY TNHH D&#x1ECA;CH V&#x1EE4; B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N T&#xC2;N PH&#xDA;" href="/ban-nha-rieng/cong-ty-tnhh-dich-vu-bat-dong-san-tan-phu-eb2724" class="re__broker-title--xs re__link-se">C&#xD4;NG TY TNHH D&#x1ECA;CH V&#x1EE4; B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N T&#xC2;N PH&#xDA;</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>142 Tr&#x1B0;&#x1A1;ng V&#x129;nh K&#xFD;, T&#xE2;n S&#x1A1;n Nh&#xEC;, T&#xE2;n Ph&#xFA;, H&#x1ED3; Ch&#xED; Minh, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0888798979</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="diaoctanphu.vn@gmail.com" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Bán nhà riêng ở Bình Tân, Hồ Chí Minh</li><li>Bán nhà riêng ở Tân Phú, Hồ Chí Minh</li><li>Bán nhà mặt phố ở Bình Tân, Hồ Chí Minh</li><li>Bán nhà mặt phố ở Tân Phú, Hồ Chí Minh</li><li>Bán đất ở Quận 9, Hồ Chí Minh</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/ban-dat-nen-du-an/cong-ty-co-phan-property-s-eb3066">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2024/05/23/20240523134612-bea3.jpg" alt="C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N PROPERTY S">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N PROPERTY S" href="/ban-dat-nen-du-an/cong-ty-co-phan-property-s-eb3066" class="re__broker-title--xs re__link-se">C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N PROPERTY S</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>587 Th&#x1EE7; Khoa Hu&#xE2;n, Thanh H&#x1EA3;i, Phan Thi&#x1EBF;t, B&#xEC;nh Thu&#x1EAD;n  , Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0936996675</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="info@propertys.com.vn" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Bán đất nền dự án ở Phan Thiết, Bình Thuận  </li><li>Bán nhà biệt thự, liền kề ở Phan Thiết, Bình Thuận  </li><li>Bán shophouse, nhà phố thương mại ở Phan Thiết, Bình Thuận  </li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/ban-nha-rieng/cong-ty-cp-dt-sai-thanh-sinveco-land-eb2888">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2021/09/01/PGsxuI1y/20210901150539-e4e6.jpg" alt="C&#xD4;NG TY CP- &#x110;T S&#xC0;I TH&#xC0;NH - SINVECO LAND">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xD4;NG TY CP- &#x110;T S&#xC0;I TH&#xC0;NH - SINVECO LAND" href="/ban-nha-rieng/cong-ty-cp-dt-sai-thanh-sinveco-land-eb2888" class="re__broker-title--xs re__link-se">C&#xD4;NG TY CP- &#x110;T S&#xC0;I TH&#xC0;NH - SINVECO LAND</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>25L Nguy&#x1EC5;n B&#x1EC9;nh Khi&#xEA;m, B&#x1EBF;n Ngh&#xE9;, Qu&#x1EAD;n 1, H&#x1ED3; Ch&#xED; Minh, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0866663968</span></div>
+                                <div><i class="re__icon-phone--sm"></i><span>0866663968</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="info.Saithanhland@gmail.com" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Bán nhà riêng ở Quận 1, Hồ Chí Minh</li><li>Bán nhà riêng ở Quận 3, Hồ Chí Minh</li><li>Bán nhà mặt phố ở Quận 1, Hồ Chí Minh</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/ban-nha-rieng/cong-ty-bat-dong-san-angia-group-eb2283">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2016/12/13/eCGLjNi5/20161213095914-77e7.jpg" alt="C&#xF4;ng Ty B&#x1EA5;t &#x110;&#x1ED9;ng S&#x1EA3;n AnGia Group">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xF4;ng Ty B&#x1EA5;t &#x110;&#x1ED9;ng S&#x1EA3;n AnGia Group" href="/ban-nha-rieng/cong-ty-bat-dong-san-angia-group-eb2283" class="re__broker-title--xs re__link-se">C&#xF4;ng Ty B&#x1EA5;t &#x110;&#x1ED9;ng S&#x1EA3;n AnGia Group</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>242/4 T&#xE2;y Th&#x1EA1;nh, T&#xE2;y Th&#x1EA1;nh, T&#xE2;n Ph&#xFA;, H&#x1ED3; Ch&#xED; Minh, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0946567878</span></div>
+                                <div><i class="re__icon-phone--sm"></i><span>0946567878</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="angiacity@gmail.com" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Bán nhà riêng ở Tân Phú, Hồ Chí Minh</li><li>Bán nhà mặt phố ở Tân Phú, Hồ Chí Minh</li><li>Bán căn hộ chung cư ở Bình Tân, Hồ Chí Minh</li><li>Bán căn hộ chung cư ở Tân Phú, Hồ Chí Minh</li><li>Cho thuê kho, nhà xưởng, đất ở Tân Phú, Hồ Chí Minh</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/ban-can-ho-chung-cu/cong-ty-tnhh-bat-dong-san-mot-nha-land-eb3063">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2024/03/28/20240328102612-5a9d.jpg" alt="C&#xF4;ng ty TNHH B&#x1EA5;t &#x110;&#x1ED9;ng S&#x1EA3;n M&#x1ED9;t Nh&#xE0; Land">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xF4;ng ty TNHH B&#x1EA5;t &#x110;&#x1ED9;ng S&#x1EA3;n M&#x1ED9;t Nh&#xE0; Land" href="/ban-can-ho-chung-cu/cong-ty-tnhh-bat-dong-san-mot-nha-land-eb3063" class="re__broker-title--xs re__link-se">C&#xF4;ng ty TNHH B&#x1EA5;t &#x110;&#x1ED9;ng S&#x1EA3;n M&#x1ED9;t Nh&#xE0; Land</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>S7 03 Vinhomes Grand Park, Long Th&#x1EA1;nh M&#x1EF9;, Qu&#x1EAD;n 9, H&#x1ED3; Ch&#xED; Minh, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0901462186</span></div>
+                                <div><i class="re__icon-phone--sm"></i><span>0877234556</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="info@motnhaland.vn" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Bán căn hộ chung cư ở Quận 1, Hồ Chí Minh</li><li>Bán căn hộ chung cư ở Quận 2, Hồ Chí Minh</li><li>Bán căn hộ chung cư ở Quận 7, Hồ Chí Minh</li><li>Bán căn hộ chung cư ở Quận 9, Hồ Chí Minh</li><li>Bán căn hộ chung cư ở Bình Thạnh, Hồ Chí Minh</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/ban-can-ho-chung-cu/cong-ty-tnhh-dia-oc-son-minh-land-eb3059">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2024/02/27/wyRdB1q5/20240227170611-7ba2.jpg" alt="C&#xD4;NG TY TNHH &#x110;&#x1ECA;A &#x1ED0;C S&#x1A0;N MINH LAND">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xD4;NG TY TNHH &#x110;&#x1ECA;A &#x1ED0;C S&#x1A0;N MINH LAND" href="/ban-can-ho-chung-cu/cong-ty-tnhh-dia-oc-son-minh-land-eb3059" class="re__broker-title--xs re__link-se">C&#xD4;NG TY TNHH &#x110;&#x1ECA;A &#x1ED0;C S&#x1A0;N MINH LAND</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span> 860/60X/8 X&#xF4; Vi&#x1EBF;t Ngh&#x1EC7; T&#x129;nh, 25, B&#xEC;nh Th&#x1EA1;nh, H&#x1ED3; Ch&#xED; Minh, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0909187967</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="sonminhland@gmail.com" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Bán căn hộ chung cư ở Quận 5, Hồ Chí Minh</li><li>Bán căn hộ chung cư ở Quận 10, Hồ Chí Minh</li><li>Bán căn hộ chung cư ở Bình Thạnh, Hồ Chí Minh</li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="re__broker-item">
+                    <div class="re__broker-content">
+                        <div class="re__broker-avatar re__verticalbox">
+                            <a href="/cho-thue-van-phong/cong-ty-co-phan-dau-tu-va-quan-ly-bat-dong-san-phuc-thai-eb2175">
+                                <img class="" src="https://file4.batdongsan.com.vn/resize/200x200/2019/04/23/3ZsSL6gy/20190423094233-6aa0.jpg" alt="C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N &#x110;&#x1EA6;U T&#x1AF; V&#xC0; QU&#x1EA2;N L&#xDD; B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N PH&#xDA;C TH&#xC1;I">
+                            </a>
+                        </div>
+                        <div class="re__broker-info">
+                            <h3>
+                                <a title="C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N &#x110;&#x1EA6;U T&#x1AF; V&#xC0; QU&#x1EA2;N L&#xDD; B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N PH&#xDA;C TH&#xC1;I" href="/cho-thue-van-phong/cong-ty-co-phan-dau-tu-va-quan-ly-bat-dong-san-phuc-thai-eb2175" class="re__broker-title--xs re__link-se">C&#xD4;NG TY C&#x1ED4; PH&#x1EA6;N &#x110;&#x1EA6;U T&#x1AF; V&#xC0; QU&#x1EA2;N L&#xDD; B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N PH&#xDA;C TH&#xC1;I</a>
+                            </h3>
+                            <div class="re__broker-address"><i class="re__icon-location--sm"></i><span>84 B&#xE0; Tri&#x1EC7;u, Ho&#xE0;n Ki&#x1EBF;m, Ha&#x300; N&#xF4;&#x323;i, Vi&#x1EC7;t Nam</span></div>
+                            <div class="re__broker-address">
+                                <div><i class="re__icon-mobile--sm"></i><span>0938218111</span></div>
+                                <div><i class="re__icon-phone--sm"></i><span>0938218111</span></div>
+                            </div>
+                            <div class="re__broker-email">
+                                <a id="lnkSendEmail" button-id="broker-send-email" class="re__btn re__btn-se-border--sm" data-email="phucthailand2016@gmail.com" data-type="1" data-typeemail="0">Gửi Email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="re__broker-location">
+                        <div class="re__location-header">
+                            Khu vực c&#xF4;ng ty môi giới
+                        </div>
+                        <div class="re__text-listing">
+                            <ul><li>Cho thuê văn phòng ở Hai Bà Trưng, Hà Nội</li><li>Cho thuê nhà mặt phố ở Hoàn Kiếm, Hà Nội</li><li>Cho thuê nhà mặt phố ở Ba Đình, Hà Nội</li><li>Cho thuê nhà mặt phố ở Đống Đa, Hà Nội</li><li>Cho thuê nhà mặt phố ở Hai Bà Trưng, Hà Nội</li></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="re__news-paging">
+
+
+                <div class="re__pagination-group">
+                    <a pId="1" href="/nha-moi-gioi"
+                       class="re__pagination-number re__actived">
+                        1
+                    </a>
+                    <a pId="2" href="/nha-moi-gioi/p2"
+                       class="re__pagination-number ">
+                        2
+                    </a>
+                    <a pId="3" href="/nha-moi-gioi/p3"
+                       class="re__pagination-number ">
+                        3
+                    </a>
+                    <a pId="4" href="/nha-moi-gioi/p4"
+                       class="re__pagination-number ">
+                        4
+                    </a>
+                    <a pId="5" href="/nha-moi-gioi/p5"
+                       class="re__pagination-number ">
+                        5
+                    </a>
+                    <span class="re__pagination-icon-no-effect">
+                <i class="re__icon-browse"></i>
+            </span>
+                    <a pId="54" href="/nha-moi-gioi/p54" class="re__pagination-number">
+                        54
+                    </a>
+                    <a pId="2" href="/nha-moi-gioi/p2" class="re__pagination-icon">
+                        <i class="re__icon-chevron-right--sm"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div></div>
+
+
+    <div class="re__nlcc-main-right">
+
+        <div class="re__box-newsletter-mini">
+            <div class="re__newsletter-title">
+                <img src="https://file4.batdongsan.com.vn/images/icon-newsletter-small.jpg">
+                <span>Nhận bản tin từ Batdongsan.com.vn</span>
+            </div>
+            <div class="re__newsletter-bound">
+                <div class="re__input--sm">
+                    <input type="text" id="email" placeholder="Nhập email">
+                </div>
+                <a href="javascript:void(0);" class="re__btn re__btn-pr-solid--sm" id="newsletterRegister">Đăng ký</a>
+                <div id="emailValid"></div>
+            </div>
+        </div>
+
+
+
+        <div id='broker-by-category' class=' re__box-with-border'><div class='re__box-header-full re__header-center'><h2 class="re__header-text">Theo loại BĐS</h2></div><div class='re__box-border re__box-broker'><div class='re__box-listing re__box-pad-16'><h3><a href='moi-gioi-nha-dat-ban' title='Nhà đất bán' class='re__link-se re__listing-header'>Nhà đất bán (6066)</a></h3><ul><li><a class='re__link-se-gray' href='moi-gioi-ban-dat-nen-du-an' title='Bán đất nền dự án'>Bán đất nền dự án (2163)</a></li><li><a class='re__link-se-gray' href='moi-gioi-ban-nha-rieng' title='Bán nhà riêng'>Bán nhà riêng (1567)</a></li><li><a class='re__link-se-gray' href='moi-gioi-ban-trang-trai-khu-nghi-duong' title='Bán trang trại, khu nghỉ dưỡng'>Bán trang trại, khu nghỉ dưỡng (89)</a></li><li><a class='re__link-se-gray' href='moi-gioi-ban-kho-nha-xuong' title='Bán kho, nhà xưởng'>Bán kho, nhà xưởng (76)</a></li><li><a class='re__link-se-gray' href='moi-gioi-ban-loai-bat-dong-san-khac' title='Bán loại bất động sản khác'>Bán loại bất động sản khác (106)</a></li><li><a class='re__link-se-gray' href='moi-gioi-ban-nha-mat-pho' title='Bán nhà mặt phố'>Bán nhà mặt phố (1333)</a></li><li><a class='re__link-se-gray' href='moi-gioi-ban-dat' title='Bán đất'>Bán đất (1936)</a></li><li><a class='re__link-se-gray' href='moi-gioi-ban-can-ho-chung-cu' title='Bán căn hộ chung cư'>Bán căn hộ chung cư (2900)</a></li><li><a class='re__link-se-gray' href='moi-gioi-ban-nha-biet-thu-lien-ke' title='Bán nhà biệt thự, liền kề'>Bán nhà biệt thự, liền kề (1093)</a></li><li><a class='re__link-se-gray' href='moi-gioi-ban-condotel' title='Bán condotel'>Bán condotel (10)</a></li><li><a class='re__link-se-gray' href='moi-gioi-ban-shophouse-nha-pho-thuong-mai' title='Bán shophouse, nhà phố thương mại'>Bán shophouse, nhà phố thương mại (55)</a></li></ul><h3><a href='moi-gioi-nha-dat-cho-thue' title='Nhà đất cho thuê' class='re__link-se re__listing-header'>Nhà đất cho thuê (1025)</a></h3><ul><li><a class='re__link-se-gray' href='moi-gioi-cho-thue-can-ho-chung-cu' title='Cho thuê căn hộ chung cư'>Cho thuê căn hộ chung cư (526)</a></li><li><a class='re__link-se-gray' href='moi-gioi-cho-thue-van-phong' title='Cho thuê văn phòng'>Cho thuê văn phòng (190)</a></li><li><a class='re__link-se-gray' href='moi-gioi-cho-thue-nha-mat-pho' title='Cho thuê nhà mặt phố'>Cho thuê nhà mặt phố (214)</a></li><li><a class='re__link-se-gray' href='moi-gioi-cho-thue-nha-rieng' title='Cho thuê nhà riêng'>Cho thuê nhà riêng (217)</a></li><li><a class='re__link-se-gray' href='moi-gioi-cho-thue-kho-nha-xuong-dat' title='Cho thuê kho, nhà xưởng, đất'>Cho thuê kho, nhà xưởng, đất (82)</a></li><li><a class='re__link-se-gray' href='moi-gioi-cho-thue-sang-nhuong-cua-hang-ki-ot' title='Cho thuê, sang nhượng cửa hàng, ki ốt'>Cho thuê, sang nhượng cửa hàng, ki ốt (33)</a></li><li><a class='re__link-se-gray' href='moi-gioi-cho-thue-loai-bat-dong-san-khac' title='Cho thuê loại bất động sản khác'>Cho thuê loại bất động sản khác (23)</a></li><li><a class='re__link-se-gray' href='moi-gioi-cho-thue-nha-tro-phong-tro' title='Cho thuê nhà trọ, phòng trọ'>Cho thuê nhà trọ, phòng trọ (47)</a></li><li><a class='re__link-se-gray' href='moi-gioi-cho-thue-shophouse-nha-pho-thuong-mai' title='Cho thuê shophouse, nhà phố thương mại'>Cho thuê shophouse, nhà phố thương mại (7)</a></li><li><a class='re__link-se-gray' href='moi-gioi-cho-thue-nha-biet-thu-lien-ke' title='Cho thuê nhà biệt thự, liền kề'>Cho thuê nhà biệt thự, liền kề (8)</a></li></ul></div></div></div>
+
+
+
+        <div id="broker-typical" class="re__box-with-border re__broker-typical">
+            <div class="re__box-header-full re__header-center"><h2 class="re__header-text">Nhà môi giới tiêu biểu</h2></div>
+            <div class="re__box-border">
+                <div id="dntb" class="re__box-thumbnail">
+                    <div class="re__item-wrap">
+                        <div class="re__item-thumb">
+                            <a href="/ban-dat/bat-dong-san-duc-phat-eb2729" rel="nofollow" class="re__verticalbox">
+                                <img class="" alt="B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N &#x110;&#x1EE8;C PH&#xC1;T" src="https://file4.batdongsan.com.vn/resize/200x200/2019/07/18/3ZsSL6gy/20190718101137-51a6.jpg" />
+                            </a>
+                        </div>
+                        <div class="re__item-title">
+                            <a class="re__link-se" href="/ban-dat/bat-dong-san-duc-phat-eb2729" rel="nofollow">B&#x1EA4;T &#x110;&#x1ED8;NG S&#x1EA2;N &#x110;&#x1EE8;C PH&#xC1;T</a>
+                            <div class="re__typical-phone"></div>
+                            <div class="re__typical-intro"></div>
+                        </div>
+                    </div>
+                    <div class="re__item-wrap">
+                        <div class="re__item-thumb">
+                            <a href="/ban-dat/cong-ty-co-phan-bat-dong-san-ct-eb3058" rel="nofollow" class="re__verticalbox">
+                                <img class="" alt="C&#xF4;ng ty C&#x1ED5; ph&#x1EA7;n B&#x1EA5;t &#x111;&#x1ED9;ng s&#x1EA3;n CT" src="https://file4.batdongsan.com.vn/resize/200x200/2024/01/25/wyRdB1q5/20240125163001-260f.jpg" />
+                            </a>
+                        </div>
+                        <div class="re__item-title">
+                            <a class="re__link-se" href="/ban-dat/cong-ty-co-phan-bat-dong-san-ct-eb3058" rel="nofollow">C&#xF4;ng ty C&#x1ED5; ph&#x1EA7;n B&#x1EA5;t &#x111;&#x1ED9;ng s&#x1EA3;n CT</a>
+                            <div class="re__typical-phone"></div>
+                            <div class="re__typical-intro"></div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/nha-moi-gioi" rel="nofollow" class="re__link-all re__link-pr">Xem tất cả</a>
+            </div>
+        </div>
+
+
+
+
+        <div id="broker-by-city" class="re__box-with-border">
+            <div class="re__box-header-full re__header-center">
+                <h2 class="re__header-text">THEO TỈNH / THÀNH PHỐ</h2>
+            </div>
+            <div class="re__box-border re__box-broker">
+                <div class="re__box-listing re__box-pad-16">
+                    <ul>
+                        <li>
+                            <a href="/nha-moi-gioi-tp-hcm" title="H&#x1ED3; Ch&#xED; Minh" class="re__link-se">
+                                H&#x1ED3; Ch&#xED; Minh (2850)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/nha-moi-gioi-ha-noi" title="H&#xE0; N&#x1ED9;i" class="re__link-se">
+                                H&#xE0; N&#x1ED9;i (1793)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/nha-moi-gioi-da-nang" title="&#x110;&#xE0; N&#x1EB5;ng" class="re__link-se">
+                                &#x110;&#xE0; N&#x1EB5;ng (282)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/nha-moi-gioi-binh-duong" title="B&#xEC;nh D&#x1B0;&#x1A1;ng" class="re__link-se">
+                                B&#xEC;nh D&#x1B0;&#x1A1;ng (374)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/nha-moi-gioi-dong-nai" title="&#x110;&#x1ED3;ng Nai" class="re__link-se">
+                                &#x110;&#x1ED3;ng Nai (278)
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="re__link-more">
+                    <a href="javascript:void(0)" rel="nofollow" class="re__link-pr re__vmore">
+                        <span>Xem thêm</span><i class="re__icon-chevron-down--sm"></i>
+                    </a>
+                    <a href="javascript:void(0)" rel="nofollow" class="re__link-pr re__vless re__hide-item">
+                        <span>Ẩn</span><i class="re__icon-chevron-up--sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="re__fb-fanpage">
+            <div id="fb-root"></div>
+            <script>
+                (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.9&appId=302507473246792";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+
+            <div class="fb-page" data-href="https://www.facebook.com/Batdongsandv/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/Batdongsandv/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Batdongsandv/">Batdongsan.com.vn</a></blockquote>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="banner-bottom">
+        <div style="float: left; width: 560px"></div>
+        <div style="float: left; width: 430px; margin-left: 5px"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
