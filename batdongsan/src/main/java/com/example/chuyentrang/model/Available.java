@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity @Getter @Setter @NoArgsConstructor
+@Entity
 public class Available {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class Available {
     private String statusPayment;
     private LocalDateTime purchaseDate;
     private int quantityAvailable;
-    private int total;
+    private Double total;
     private LocalDateTime expirationDate;
 //
 //    @OneToMany(mappedBy = "news_id", cascade = CascadeType.ALL)
@@ -39,8 +39,28 @@ public class Available {
     @JoinColumn(name = "package_id", nullable = false)
     private Package packagee;
 
+
+    private String formattedPurchase;
+    private String formattedExpiry;
+
+    public String getFormattedPurchase() {
+        return formattedPurchase;
+    }
+
+    public void setFormattedPurchase(String formattedPurchase) {
+        this.formattedPurchase = formattedPurchase;
+    }
+
+    public String getFormattedExpiry() {
+        return formattedExpiry;
+    }
+
+    public void setFormattedExpiry(String formattedExpiry) {
+        this.formattedExpiry = formattedExpiry;
+    }
+
     public Available(String statusPayment, LocalDateTime purchaseDate, int quantityAvailable,
-                     int total, LocalDateTime expirationDate) {
+                     Double total, LocalDateTime expirationDate) {
         this.statusPayment = statusPayment;
         this.purchaseDate = purchaseDate;
         this.quantityAvailable = quantityAvailable;
@@ -48,7 +68,74 @@ public class Available {
         this.expirationDate = expirationDate;
     }
 
-//    public void addNews(News news) {
+    public Available() {
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getStatusPayment() {
+        return statusPayment;
+    }
+
+    public void setStatusPayment(String statusPayment) {
+        this.statusPayment = statusPayment;
+    }
+
+    public LocalDateTime getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(LocalDateTime purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public int getQuantityAvailable() {
+        return quantityAvailable;
+    }
+
+    public void setQuantityAvailable(int quantityAvailable) {
+        this.quantityAvailable = quantityAvailable;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public LocalDateTime getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(LocalDateTime expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public User getBroker() {
+        return broker;
+    }
+
+    public void setBroker(User broker) {
+        this.broker = broker;
+    }
+
+    public Package getPackagee() {
+        return packagee;
+    }
+
+    public void setPackagee(Package packagee) {
+        this.packagee = packagee;
+    }
+
+    //    public void addNews(News news) {
 //        newsList.add(news);
 //        news.setAvailable(this);
 //    }

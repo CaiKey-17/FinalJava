@@ -4,7 +4,7 @@ import com.example.chuyentrang.model.Available;
 import com.example.chuyentrang.repository.AvailableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.*;
 @Service
 public class AvailableService {
     @Autowired
@@ -21,4 +21,7 @@ public class AvailableService {
     public void delete(Available available) {
         availableRepository.delete(available);
     }
+
+
+
 }

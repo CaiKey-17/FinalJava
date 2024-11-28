@@ -23,8 +23,8 @@ public class SecurityConfig {
         http.csrf().disable()
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/**").permitAll()
-                        .requestMatchers("/admin","/manager-customer").hasRole("ADMIN")
-                        .requestMatchers("/customer","/customer/deposits","/customer-history").hasRole("CUSTOMER")
+                        .requestMatchers("/admin","/manager-customer","/manager-package/**").hasRole("ADMIN")
+                        .requestMatchers("/customer","/customer/deposits","/customer-history","/customer-package","/customer-package/purchase","/customer-dangtin","/customer-history-list").hasRole("CUSTOMER")
 
                         .anyRequest().authenticated()
                 )

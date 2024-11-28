@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Gói Tin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td {
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        form {
+            width: 80%;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .package-table {
+            margin-bottom: 40px;
+        }
+
+        .money-info {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+        }
+          .error-message {
+            color: red;
+            font-size: 16px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h1>Danh Sách Gói Tin</h1>
+
+<!-- Hiển thị số tiền người dùng hiện có -->
+<p>Tiền hiện có: <span th:text="${money}"></span></p>
+<div class="error-message" th:if="${error}" th:text="${error}"></div>
+
+<form action="/customer-package/purchase" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Chọn</th>
+            <th>Tên Gói</th>
+            <th>Giá</th>
+            <th>Số Lượng</th>
+            <th>Hạn Sử Dụng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="package : ${packageList}">
+            <td>
+                <!-- Đảm bảo tên tham số là 'selectedPackage' để trùng với controller -->
+                <input type="radio" name="selectedPackage" th:value="${package.id}" />
+            </td>
+            <td th:text="${package.name}"></td>
+            <td th:text="${package.price}"></td>
+            <td th:text="${package.quantity}"></td>
+            <td th:text="${package.formattedExpiry}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Nút để mua gói tin đã chọn -->
+    <button type="submit">Mua Gói Tin</button>
+</form>
+
+<h1>Danh Sách Gói Tin Của Người Dùng</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Hoá đơn</th>
+        <th>Tình trạng</th>
+        <th>Ngày mua</th>
+        <th>Số lượng khả dụng</th>
+        <th>Tổng tiền</th>
+        <th>Ngày hết hạn</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="available : ${availableList}">
+        <td th:text="${available.orderId}"></td>
+        <td th:text="${available.statusPayment}"></td>
+        <!-- Hiển thị purchaseDate đã được định dạng -->
+        <td th:text="${available.formattedPurchase}"></td>
+        <td th:text="${available.quantityAvailable}"></td>
+        <td th:text="${available.total}"></td>
+        <!-- Hiển thị expirationDate đã được định dạng -->
+        <td th:text="${available.formattedExpiry}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

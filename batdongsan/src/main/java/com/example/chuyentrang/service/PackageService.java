@@ -5,7 +5,7 @@ import com.example.chuyentrang.model.Package;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class PackageService {
@@ -38,6 +38,11 @@ public class PackageService {
     // Delete
     public void deletePackage(int id) {
         packageRepository.deleteById(id);
+    }
+
+
+    public List<Package> getAllPackage(){
+        return packageRepository.findAll();
     }
 }
 

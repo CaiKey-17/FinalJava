@@ -90,6 +90,19 @@ public class UserService {
     }
 
 
+    public User findByUser(String username){
+        return userRepository.findByUsername(username);
+    }
+
+
+    public void minusMoney(String username,Double newMon) {
+        User user = userRepository.findByUsername(username);
+        Double money =  user.getBalance();
+        user.setBalance(money-newMon);
+    }
+
+
+
 
 
 
