@@ -1,4 +1,4 @@
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+<nav class="sidebar sidebar-offcanvas" id="sidebar" xmlns:th="http://www.w3.org/1999/xhtml">
   <ul class="nav">
 
     <li class="nav-item">
@@ -34,10 +34,10 @@
       <div class="collapse" id="icons">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            <a class="nav-link" href="pages/icons/font-awesome.html">Số dư</a>
+            <a class="nav-link" href="customer-deposit">Số dư: <span th:text="${money}"></span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/icons/font-awesome.html">Lịch sử giao dịch</a>
+            <a class="nav-link" href="customer-history">Lịch sử giao dịch</a>
           </li>
         </ul>
       </div>
@@ -57,4 +57,4 @@
 
 
   </ul>
-</nav>125t6uy7u7342465465
+</nav>

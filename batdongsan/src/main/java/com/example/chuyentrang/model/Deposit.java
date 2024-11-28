@@ -1,28 +1,85 @@
-//package com.example.chuyentrang.model;
-//
-//import jakarta.persistence.*;
-//import lombok.Getter;
-//import lombok.NoArgsConstructor;
-//import lombok.Setter;
-//
-//import java.time.LocalDateTime;
-//
-//@Entity @Getter @Setter @NoArgsConstructor
-//public class Deposit {
-//    @Id
-//    @GeneratedValue
-//    private int id;
-//    private double price;
-//    private LocalDateTime dateTime;
-//    private String status;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "broker_id")
-//    private Broker broker;
-//
-//    public Deposit(double price, LocalDateTime dateTime, String status) {
-//        this.price = price;
-//        this.dateTime = dateTime;
-//        this.status = status;
-//    }
-//}
+package com.example.chuyentrang.model;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+
+@Entity
+public class Deposit {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // ID của giao dịch nạp tiền
+
+    @Column(nullable = false)
+    private Double soTien; // Số tiền nạp
+
+    @Column(nullable = false)
+    private LocalDateTime ngayNap; // Ngày nạp tiền
+
+    @Column(nullable = false)
+    private String tinhTrangThanhToan; // Tình trạng thanh toán (VD: "Đã thanh toán", "Chưa thanh toán")
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false) // Liên kết với bảng User
+    private User user;
+
+    public Deposit(Double soTien, LocalDateTime ngayNap, String tinhTrangThanhToan, User user) {
+        this.soTien = soTien;
+        this.ngayNap = ngayNap;
+        this.tinhTrangThanhToan = tinhTrangThanhToan;
+        this.user = user;
+    }
+
+
+    public Deposit() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Double getSoTien() {
+        return soTien;
+    }
+
+    public void setSoTien(Double soTien) {
+        this.soTien = soTien;
+    }
+
+    public LocalDateTime getNgayNap() {
+        return ngayNap;
+    }
+
+    public void setNgayNap(LocalDateTime ngayNap) {
+        this.ngayNap = ngayNap;
+    }
+
+    public String getTinhTrangThanhToan() {
+        return tinhTrangThanhToan;
+    }
+
+    public void setTinhTrangThanhToan(String tinhTrangThanhToan) {
+        this.tinhTrangThanhToan = tinhTrangThanhToan;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+}

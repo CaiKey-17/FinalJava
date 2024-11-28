@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch Sử Giao Dịch Nạp Tiền</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<h1>Lịch Sử Giao Dịch Nạp Tiền</h1>
+
+<!-- Bảng hiển thị lịch sử nạp tiền -->
+<table>
+    <thead>
+    <tr>
+        <th>ID Giao Dịch</th>
+        <th>Số Tiền</th>
+        <th>Ngày Nạp</th>
+        <th>Tình Trạng Thanh Toán</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Lặp qua danh sách giao dịch nạp tiền và hiển thị -->
+    <tr th:each="deposit : ${depositList}">
+        <td th:text="${deposit.id}"></td>
+        <td th:text="${deposit.soTien}"></td>
+        <td th:text="${deposit.ngayNap}"></td>
+        <td th:text="${deposit.tinhTrangThanhToan}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

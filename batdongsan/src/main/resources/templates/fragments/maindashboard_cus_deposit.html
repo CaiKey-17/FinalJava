@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nạp Tiền</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .input-section, .quick-select-section, .bank-section, .footer {
+            margin-bottom: 20px;
+        }
+        .input-section input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .quick-select-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .quick-select-section div {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            width: 18%;
+            cursor: pointer;
+        }
+        .quick-select-section div:hover {
+            background-color: #ddd;
+        }
+        .bank-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .bank-section img {
+            max-width: 120px;
+            cursor: pointer;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer p {
+            color: #888;
+        }
+        .footer .checkbox-section {
+            display: flex;
+            align-items: center;
+        }
+        .footer .checkbox-section input {
+            margin-right: 10px;
+        }
+        .btn {
+            background-color: #ff4c4c;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #ff3333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Nạp Tiền Vào Tài Khoản</h1>
+
+    <!-- Nhập số tiền muốn nạp -->
+    <div class="input-section">
+        <label for="deposit-amount">Nhập số tiền bạn muốn nạp (đ)</label>
+        <input type="number" id="deposit-amount" placeholder="Nhập số tiền nạp...">
+        <small>Nhập từ 2.000.000 đ để được nhận khuyến mãi</small>
+    </div>
+
+    <!-- Chọn số tiền nhanh -->
+    <div class="quick-select-section">
+        <div onclick="setAmount(500000)">500.000 đ</div>
+        <div onclick="setAmount(1000000)">1.000.000 đ</div>
+        <div onclick="setAmount(2000000)">2.000.000 đ</div>
+        <div onclick="setAmount(3000000)">3.000.000 đ</div>
+        <div onclick="setAmount(5000000)">5.000.000 đ</div>
+        <div onclick="setAmount(10000000)">10.000.000 đ</div>
+    </div>
+
+    <!-- Chọn ngân hàng -->
+    <div class="bank-section">
+        <img src="https://batdongsan.com.vn/sellernet/static/media/vietcombank.09686245.jpg" alt="Vietcombank">
+        <img src="https://batdongsan.com.vn/sellernet/static/media/sacombank.cb5dea80.jpg" alt="Sacombank">
+        <img src="https://batdongsan.com.vn/sellernet/static/media/techcombank.558a0474.jpg" alt="ACB">
+        <img src="https://batdongsan.com.vn/sellernet/static/media/mbbank.31cee54a.jpg" alt="BIDV">
+        <img src="https://batdongsan.com.vn/sellernet/static/media/tpbank.1aa7da2c.jpg" alt="VietinBank">
+    </div>
+
+    <!-- Footer và thông tin -->
+    <div class="footer">
+        <div class="checkbox-section">
+            <input type="checkbox" id="agree">
+            <label for="agree">Tôi đã đọc và đồng ý</label>
+        </div>
+        <p>Hotline: 1900 1881</p>
+    </div>
+    <input type="hidden" id="userId" th:value="${id}">
+
+    <button class="btn" onclick="submitDeposit()">Nạp</button>
+</div>
+
+<script>
+    let depositAmount = 0;
+  let userId = document.getElementById("userId").value;
+
+  // Set amount when selecting quick options
+  function setAmount(amount) {
+      depositAmount = amount;
+      // Đảm bảo chuyển số thành định dạng có dấu phân cách
+      document.getElementById("deposit-amount").value = depositAmount.toLocaleString('vi-VN');
+  }
+
+  // Submit deposit form
+  function submitDeposit() {
+      // Lấy giá trị số tiền từ input, loại bỏ dấu phân cách nếu có
+      const amountString = document.getElementById("deposit-amount").value;
+      const cleanedAmount = parseInt(amountString.replace(/[^0-9]/g, ''), 10); // Xóa dấu phân cách và lấy giá trị số
+
+      if (!cleanedAmount || cleanedAmount <= 0) {
+          alert("Vui lòng nhập số tiền hợp lệ.");
+          return;
+      }
+
+      // Cập nhật giá trị depositAmount
+      depositAmount = cleanedAmount;
+
+      // Make API request
+      fetch(`/customer/deposits/user/${userId}?amount=${depositAmount}`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      })
+      .then(response => response.text())
+      .then(data => {
+          alert(data);  // Show the response from the server (Success or error message)
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          alert('Có lỗi xảy ra. Vui lòng thử lại.');
+      });
+  }
+
+</script>
+
+</body>
+</html>

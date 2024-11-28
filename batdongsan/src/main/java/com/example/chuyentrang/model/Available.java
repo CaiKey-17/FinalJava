@@ -1,23 +1,23 @@
-//package com.example.chuyentrang.model;
-//
-//import jakarta.persistence.*;
-//import lombok.Getter;
-//import lombok.NoArgsConstructor;
-//import lombok.Setter;
-//
-//import java.time.LocalDateTime;
-//import java.util.List;
-//
-//@Entity @Getter @Setter @NoArgsConstructor
-//public class Available {
-//    @Id
-//    @GeneratedValue
-//    private int orderId;
-//    private String statusPayment;
-//    private LocalDateTime purchaseDate;
-//    private int quantityAvailable;
-//    private int total;
-//    private LocalDateTime expirationDate;
+package com.example.chuyentrang.model;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Entity @Getter @Setter @NoArgsConstructor
+public class Available {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int orderId;
+    private String statusPayment;
+    private LocalDateTime purchaseDate;
+    private int quantityAvailable;
+    private int total;
+    private LocalDateTime expirationDate;
 //
 //    @OneToMany(mappedBy = "news_id", cascade = CascadeType.ALL)
 //    private List<News> newsList;
@@ -30,24 +30,24 @@
 //
 //    @OneToMany(mappedBy = "landForRent", cascade = CascadeType.ALL)
 //    private List<LandForRent> landForRentList;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "broker_id")
-//    private Broker broker;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "package_id")
-//    private Package packagee;
-//
-//    public Available(String statusPayment, LocalDateTime purchaseDate, int quantityAvailable,
-//                     int total, LocalDateTime expirationDate) {
-//        this.statusPayment = statusPayment;
-//        this.purchaseDate = purchaseDate;
-//        this.quantityAvailable = quantityAvailable;
-//        this.total = total;
-//        this.expirationDate = expirationDate;
-//    }
-//
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User broker;
+
+    @ManyToOne
+    @JoinColumn(name = "package_id", nullable = false)
+    private Package packagee;
+
+    public Available(String statusPayment, LocalDateTime purchaseDate, int quantityAvailable,
+                     int total, LocalDateTime expirationDate) {
+        this.statusPayment = statusPayment;
+        this.purchaseDate = purchaseDate;
+        this.quantityAvailable = quantityAvailable;
+        this.total = total;
+        this.expirationDate = expirationDate;
+    }
+
 //    public void addNews(News news) {
 //        newsList.add(news);
 //        news.setAvailable(this);
@@ -87,4 +87,4 @@
 //        landForRentList.remove(landForRent);
 //        landForRent.setAvailable(null);
 //    }
-//}
+}

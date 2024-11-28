@@ -1,9 +1,11 @@
 package com.example.chuyentrang.controller;
 
 import com.example.chuyentrang.dto.UserRegistrationRequest;
+import com.example.chuyentrang.model.Deposit;
 import com.example.chuyentrang.model.Role;
 import com.example.chuyentrang.model.User;
 import com.example.chuyentrang.security.JwtTokenUtil;
+import com.example.chuyentrang.service.DepositService;
 import com.example.chuyentrang.service.RoleService;
 import com.example.chuyentrang.service.UserService;
 import jakarta.servlet.http.Cookie;
@@ -20,7 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import java.util.*;
 @Controller()
 public class HomeController {
 
@@ -52,6 +54,9 @@ public class HomeController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private DepositService depositService;
 
     @Autowired
     private RoleService roleService;
@@ -169,9 +174,8 @@ public class HomeController {
 
             if (isAdmin) {
                 // Thêm thông tin vào model
-                String address = userService.getAddress(username);
-                String name = userService.getName(username);
-//                model.addAttribute("username", username);
+                List<User> users = userService.getListUser();
+                model.addAttribute("users", users);
 //                model.addAttribute("role", "ROLE_ADMIN");
 //                model.addAttribute("address", address); // Thay bằng dữ liệu thực
 //                model.addAttribute("name", name); // Thay bằng dữ liệu thực
@@ -233,6 +237,8 @@ public class HomeController {
 
 
 
+
+
     @GetMapping("/customer")
     public String customer(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -251,7 +257,59 @@ public class HomeController {
                 model.addAttribute("role", "ROLE_CUSTOMER");
                 model.addAttribute("address", address); // Thay bằng dữ liệu thực
                 model.addAttribute("name", name); // Thay bằng dữ liệu thực
+                Double money = userService.getMoney(username);
+                model.addAttribute("money", money);
+
                 return "dashboard_cus"; // Trả về view `home`
+            }
+        }
+        return "login"; // Chuyển hướng đến trang lỗi nếu không phải admin
+    }
+
+
+
+    @GetMapping("/customer-history")
+    public String customer_history(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName(); // Lấy tên đăng nhập từ authentication
+            boolean isAdmin = authentication.getAuthorities().stream()
+                    .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_CUSTOMER"));
+
+
+            if (isAdmin) {
+                // Thêm thông tin vào model
+                Long id = userService.getId(username);
+                List<Deposit> depositList = depositService.customer_history(id);
+                model.addAttribute("depositList", depositList);
+                Double money = userService.getMoney(username);
+                model.addAttribute("money", money);
+                return "dashboard_cus_history"; // Trả về view `home`
+            }
+        }
+        return "login"; // Chuyển hướng đến trang lỗi nếu không phải admin
+    }
+
+    @GetMapping("/customer-deposit")
+    public String customer_deposit(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName(); // Lấy tên đăng nhập từ authentication
+            boolean isAdmin = authentication.getAuthorities().stream()
+                    .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_CUSTOMER"));
+
+
+            if (isAdmin) {
+                // Thêm thông tin vào model
+                Long id = userService.getId(username);
+                List<Deposit> depositList = depositService.customer_history(id);
+                model.addAttribute("depositList", depositList);
+                model.addAttribute("id", id);
+                Double money = userService.getMoney(username);
+                model.addAttribute("money", money);
+                return "dashboard_cus_deposit"; // Trả về view `home`
             }
         }
         return "login"; // Chuyển hướng đến trang lỗi nếu không phải admin

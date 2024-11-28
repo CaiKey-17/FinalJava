@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
+import java.util.*;
 @Service
 public class UserService {
 
@@ -62,6 +62,11 @@ public class UserService {
 
 
 
+    public Long getId(String username) {
+        // Logic lấy email của người dùng
+        User user = userRepository.findByUsername(username);
+        return user.getId();
+    }
 
     public String getAddress(String username) {
         // Logic lấy email của người dùng
@@ -73,5 +78,20 @@ public class UserService {
         User user = userRepository.findByUsername(username);
         return user.getName();
     }
+
+
+    public Double getMoney(String username) {
+        User user = userRepository.findByUsername(username);
+        return user.getBalance();
+    }
+
+    public List<User> getListUser() {
+        return userRepository.findAll();
+    }
+
+
+
+
+
 
 }

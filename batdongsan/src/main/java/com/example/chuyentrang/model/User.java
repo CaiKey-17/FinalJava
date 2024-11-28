@@ -44,6 +44,10 @@ public class User {
     @Column(nullable = true) // Add address field
     private Double balance;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Deposit> napTiens = new HashSet<>();
+
+
     public Double getBalance() {
         return balance;
     }
