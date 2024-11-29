@@ -81,43 +81,60 @@ for (let i = 0; i < images.length; i++) {
 }
 
     </script>
+
+    <script>
+        // Tự động lấy thời gian hiện tại và đặt vào trường datetime-local
+        window.addEventListener("load", function() {
+            const dateInput = document.getElementById("datePosted");
+
+            // Lấy thời gian hiện tại
+            const now = new Date();
+
+            // Định dạng thời gian thành yyyy-MM-ddTHH:mm
+            const formattedDate = now.toISOString().slice(0, 16);
+
+            // Gán giá trị này cho input
+            dateInput.value = formattedDate;
+        });
+    </script>
+
 </head>
 <body>
 
 <h2>Post Land for Sale</h2>
 <form onsubmit="event.preventDefault(); postLand();" enctype="multipart/form-data">
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" value="Nhà đất phố X" required><br><br>
+    <input type="text" id="name" name="name"  required><br><br>
 
     <label for="price">Price:</label>
-    <input type="number" id="price" name="price" value="3500000000" required><br><br>
+    <input type="number" id="price" name="price"  required><br><br>
 
     <label for="area">Area:</label>
-    <input type="number" step="0.1" id="area" name="area" value="120.5" required><br><br>
+    <input type="number" step="0.1" id="area" name="area"  required><br><br>
 
     <label for="province">Province:</label>
-    <input type="text" id="province" name="province" value="Hà Nội" required><br><br>
+    <input type="text" id="province" name="province"  required><br><br>
 
     <label for="district">District:</label>
-    <input type="text" id="district" name="district" value="Hoàn Kiếm" required><br><br>
+    <input type="text" id="district" name="district"  required><br><br>
 
     <label for="ward">Ward:</label>
-    <input type="text" id="ward" name="ward" value="Phúc Tân" required><br><br>
+    <input type="text" id="ward" name="ward"  required><br><br>
 
     <label for="interior">Interior:</label>
-    <input type="text" id="interior" name="interior" value="Cao cấp" required><br><br>
+    <input type="text" id="interior" name="interior"  required><br><br>
 
     <label for="numberOfToilets">Number of Toilets:</label>
-    <input type="number" id="numberOfToilets" name="numberOfToilets" value="2" required><br><br>
+    <input type="number" id="numberOfToilets" name="numberOfToilets" required><br><br>
 
     <label for="numberOfBedRooms">Number of Bedrooms:</label>
-    <input type="number" id="numberOfBedRooms" name="numberOfBedRooms" value="3" required><br><br>
+    <input type="number" id="numberOfBedRooms" name="numberOfBedRooms"  required><br><br>
 
     <label for="description">Description:</label>
-    <textarea id="description" name="description" required>Nhà đất trung tâm, gần trường học, tiện ích đầy đủ.</textarea><br><br>
+    <textarea id="description" name="description" required></textarea><br><br>
 
     <label for="datePosted">Date Posted:</label>
-    <input type="datetime-local" id="datePosted" name="datePosted" value="2024-11-29T12:00" required><br><br>
+    <input type="datetime-local" id="datePosted" name="datePosted" required><br><br>
 
     <label for="type">Type:</label>
     <select id="type" name="type" required onchange="updatePropertyTypeOptions()">
