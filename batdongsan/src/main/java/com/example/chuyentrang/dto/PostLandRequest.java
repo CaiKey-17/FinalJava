@@ -1,11 +1,13 @@
 package com.example.chuyentrang.dto;
 
 import com.example.chuyentrang.model.LandForSale;
+import org.springframework.web.multipart.MultipartFile;
 
 public class PostLandRequest {
     private LandForSale landForSale;
     private Long userId;
     private int availableId;
+
 
     // Getters and Setters
     public LandForSale getLandForSale() {

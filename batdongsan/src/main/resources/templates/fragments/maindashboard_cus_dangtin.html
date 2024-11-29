@@ -32,60 +32,60 @@
 
         // Function to post the land data
         function postLand() {
-            const landForSale = {
-                name: document.getElementById("name").value,
-                price: parseInt(document.getElementById("price").value),
-                area: parseFloat(document.getElementById("area").value),
-                province: document.getElementById("province").value,
-                district: document.getElementById("district").value,
-                ward: document.getElementById("ward").value,
-                interior: document.getElementById("interior").value,
-                numberOfToilets: parseInt(document.getElementById("numberOfToilets").value),
-                numberOfBedRooms: parseInt(document.getElementById("numberOfBedRooms").value),
-                description: document.getElementById("description").value,
-                datePosted: document.getElementById("datePosted").value,
-                type: document.getElementById("type").value,
-                legal: document.getElementById("legal").value,
-                propertyType: document.getElementById("propertyType").value
-            };
+    const formData = new FormData();
 
-            const userId = document.getElementById("userId") ? document.getElementById("userId").value : null;
-            const availableId = document.getElementById("availableId") ? document.getElementById("availableId").value : null;
+    formData.append("name", document.getElementById("name").value);
+    formData.append("price", parseInt(document.getElementById("price").value));
+    formData.append("area", parseFloat(document.getElementById("area").value));
+    formData.append("province", document.getElementById("province").value);
+    formData.append("district", document.getElementById("district").value);
+    formData.append("ward", document.getElementById("ward").value);
+    formData.append("interior", document.getElementById("interior").value);
+    formData.append("numberOfToilets", parseInt(document.getElementById("numberOfToilets").value));
+    formData.append("numberOfBedRooms", parseInt(document.getElementById("numberOfBedRooms").value));
+    formData.append("description", document.getElementById("description").value);
+    formData.append("datePosted", document.getElementById("datePosted").value);
+    formData.append("type", document.getElementById("type").value);
+    formData.append("legal", document.getElementById("legal").value);
+    formData.append("propertyType", document.getElementById("propertyType").value);
+    formData.append("userId", document.getElementById("userId").value);
+    formData.append("availableId", document.getElementById("availableId").value);
 
-            if (!userId || !availableId) {
-                alert("Missing required fields.");
-                return;
-            }
+    // Thêm file ảnh
+  // Thêm file ảnh
+const images = document.getElementById("images").files;
+for (let i = 0; i < images.length; i++) {
+    formData.append("imageLinks", images[i]); // Đổi tên thành "imageLinks"
+}
 
-            const postData = {
-                landForSale: landForSale,
-                userId: parseInt(userId),
-                availableId: parseInt(availableId)
-            };
 
-            fetch('/post', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(postData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert("Post successful!");
-                console.log(data);
-            })
-            .catch(error => {
-                alert("Error: " + error.message);
-                console.error('Error:', error);
-            });
+    fetch('/post', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error("Failed to post land data");
         }
+    })
+    .then(data => {
+        alert("Post successful!");
+        console.log(data);
+    })
+    .catch(error => {
+        alert("Error: " + error.message);
+        console.error('Error:', error);
+    });
+}
+
     </script>
 </head>
 <body>
 
 <h2>Post Land for Sale</h2>
-<form onsubmit="event.preventDefault(); postLand();">
+<form onsubmit="event.preventDefault(); postLand();" enctype="multipart/form-data">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" value="Nhà đất phố X" required><br><br>
 
@@ -138,12 +138,18 @@
     <label for="legal">Legal:</label>
     <input type="text" id="legal" name="legal" value="Sổ đỏ chính chủ" required><br><br>
 
+    <label for="images">Upload Images:</label>
+    <input type="file" id="images" name="images" accept="image/*" multiple required><br><br>
+
+
     <label for="availableId">Available:</label>
     <select id="availableId" name="availableId" required>
         <th:block th:each="available : ${availableList}">
             <option th:value="${available.orderId}" th:text="${available.orderId}"></option>
         </th:block>
     </select><br><br>
+
+
 
     <!-- Hidden field for userId -->
     <input type="hidden" id="userId" name="userId" th:value="${userId}">

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity @Getter @Setter
@@ -36,6 +37,9 @@ public class LandForSale {
     public void setPropertyType(String loai) {
         this.propertyType = loai;
     }
+
+    @OneToMany(mappedBy = "landForSale", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ImageLand> images = new ArrayList<>();
 
     //
 //    @OneToMany(mappedBy = "imageLand_id", cascade = CascadeType.ALL)

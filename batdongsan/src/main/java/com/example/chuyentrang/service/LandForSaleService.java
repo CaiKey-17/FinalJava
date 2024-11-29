@@ -1,17 +1,19 @@
 package com.example.chuyentrang.service;
 
-import com.example.chuyentrang.model.Available;
-import com.example.chuyentrang.model.Deposit;
-import com.example.chuyentrang.model.LandForSale;
-import com.example.chuyentrang.model.User;
+import com.example.chuyentrang.model.*;
 import com.example.chuyentrang.repository.AvailableRepository;
+import com.example.chuyentrang.repository.ImageLandRepository;
 import com.example.chuyentrang.repository.LandForSaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class LandForSaleService {
@@ -61,8 +63,11 @@ public class LandForSaleService {
 
     @Autowired
     private AvailableRepository availableRepository;
+    @Autowired
+    private ImageLandRepository imageLandRepository;
 
-    public void postLandForSale(LandForSale landForSale, Long userId, int availableId) {
+
+    public void postLandForSale(LandForSale landForSale, Long userId, int availableId, List<String> imageLinks) {
         // Tìm Available dựa trên availableId và userId
         Available available = availableRepository.findByOrderIdAndBroker_Id(availableId, userId)
                 .orElseThrow(() -> new IllegalArgumentException("Available not found or does not belong to user"));
@@ -77,12 +82,37 @@ public class LandForSaleService {
         availableRepository.save(available);
 
         // Lưu LandForSale
-        User u = userService.findById(userId);
-        Available a = availableService.findById(availableId);
+        User user = userService.findById(userId);
+        landForSale.setAvailable(available);
+        landForSale.setBroker(user);
+        LandForSale savedLand = landForSaleRepository.save(landForSale);
 
-        landForSale.setAvailable(a);
-        landForSale.setBroker(u);
-        LandForSale l = landForSale;
-        landForSaleRepository.save(l);
+        // Lưu danh sách ảnh
+        if (imageLinks != null && !imageLinks.isEmpty()) {
+            List<ImageLand> imageLands = imageLinks.stream()
+                    .map(link -> new ImageLand(link, savedLand))
+                    .collect(Collectors.toList());
+            imageLandRepository.saveAll(imageLands);
+        }
     }
+
+    // Xử lý ảnh nếu có
+//        if (images != null && images.length > 0) {
+//            for (MultipartFile image : images) {
+//                String fileName = System.currentTimeMillis() + "-" + image.getOriginalFilename();
+//                File dest = new File("uploads/" + fileName);
+//                try {
+//                    image.transferTo(dest); // Tải ảnh lên thư mục server
+//
+//                    // Lưu thông tin ảnh vào database
+//                    ImageLand imageLand = new ImageLand(fileName);
+//                    imageLand.setLandForSale(landForSale); // Gắn LandForSale vào ImageLand
+//                    imageLandRepository.save(imageLand);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+//    }
+
 }
