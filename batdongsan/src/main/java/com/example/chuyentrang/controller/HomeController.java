@@ -1,5 +1,6 @@
 package com.example.chuyentrang.controller;
 
+import com.example.chuyentrang.dto.PostLandRequest;
 import com.example.chuyentrang.dto.UserRegistrationRequest;
 import com.example.chuyentrang.model.*;
 import com.example.chuyentrang.model.Package;
@@ -386,6 +387,29 @@ public class HomeController {
         return "login"; // Chuyển hướng đến trang lỗi nếu không phải admin
     }
     @Autowired
+    private LandForSaleService landForSaleService;
+    @PostMapping("/post")
+    public ResponseEntity<String> postLand(@RequestBody PostLandRequest postLandRequest) {
+        try {
+            LandForSale landForSale = postLandRequest.getLandForSale();
+            Long userId = postLandRequest.getUserId();
+            int availableId = postLandRequest.getAvailableId();
+
+            // Gọi service để xử lý
+            landForSaleService.postLandForSale(landForSale, userId, availableId);
+
+            return ResponseEntity.ok("Post successful!");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+
+
+
+
+
+    @Autowired
     private AvailableRepository availableRepository;
 
 
@@ -448,13 +472,18 @@ public class HomeController {
 
             if (isAdmin) {
                 // Thêm thông tin vào model
-                Long id = userService.getId(username);
+                User user = userService.findByUser(username);
+                Long userId = user.getId();
+                List<Available> availableList = availableRepository.findByBrokerAndQuantityAvailableGreaterThan(user,0);
 
-                List<Deposit> depositList = depositService.customer_history(id);
-                model.addAttribute("depositList", depositList);
-                model.addAttribute("id", id);
-                Double money = userService.getMoney(username);
-                model.addAttribute("money", money);
+                // Kiểm tra nếu không có available nào
+                if (availableList.isEmpty()) {
+                    System.out.println("Không có availableList nào.");
+                }
+
+                // Thêm danh sách available vào model
+                model.addAttribute("availableList", availableList);
+                model.addAttribute("userId", userId);
 
 
                 return "dashboard_cus_dangtin";
@@ -478,8 +507,8 @@ public class HomeController {
                 // Thêm thông tin vào model
                 Long id = userService.getId(username);
 
-                List<Deposit> depositList = depositService.customer_history(id);
-                model.addAttribute("depositList", depositList);
+                List<LandForSale> landForSales = landForSaleService.listLandByBroker(id);
+                model.addAttribute("landForSales", landForSales);
                 model.addAttribute("id", id);
                 Double money = userService.getMoney(username);
                 model.addAttribute("money", money);

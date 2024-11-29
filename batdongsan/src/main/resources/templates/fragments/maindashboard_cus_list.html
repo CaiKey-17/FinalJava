@@ -4,11 +4,151 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh Sách Gói Tin</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Thêm file CSS nếu cần -->
 
+    <style>
+        /* Thiết lập toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Tiêu đề chính */
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    padding-top: 20px;
+}
+
+/* Định dạng bảng */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Định dạng các tiêu đề cột */
+th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Định dạng các ô trong bảng */
+td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Định dạng dòng khi hover */
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Định dạng ô trong bảng cho các số tiền và các giá trị đặc biệt */
+td.price, td.area {
+    text-align: right;
+}
+
+td.price {
+    color: #4CAF50;
+}
+
+td.area {
+    color: #2196F3;
+}
+
+/* Định dạng thông tin người môi giới */
+td.broker {
+    font-weight: bold;
+    color: #3E8E41;
+}
+
+/* Định dạng cho thông tin người dùng */
+p {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 30px;
+    color: #555;
+}
+
+/* Cải thiện kiểu hiển thị cho các phần tử */
+span {
+    font-weight: bold;
+}
+
+/* Tối ưu hóa cho màn hình nhỏ */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+}
+
+    </style>
 </head>
 <body>
+
 <h1>Các tin đang có</h1>
 
+<table border="1" cellpadding="10">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Tên Tin</th>
+        <th>Giá</th>
+        <th>Diện Tích</th>
+        <th>Tỉnh/Thành Phố</th>
+        <th>Quận/Huyện</th>
+        <th>Phường/Xã</th>
+        <th>Số Phòng Ngủ</th>
+        <th>Số Phòng Tắm</th>
+        <th>Mô Tả</th>
+        <th>Ngày Đăng</th>
+        <th>Loại Tin</th>
+        <th>Pháp Lý</th>
+        <th>Loại nhà</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Lặp qua danh sách LandForSale từ model và hiển thị dữ liệu -->
+    <tr th:each="land : ${landForSales}">
+        <td th:text="${land.id}"></td>
+        <td th:text="${land.name}"></td>
+        <td th:text="${land.price}"></td>
+        <td th:text="${land.area}"></td>
+        <td th:text="${land.province}"></td>
+        <td th:text="${land.district}"></td>
+        <td th:text="${land.ward}"></td>
+        <td th:text="${land.numberOfBedRooms}"></td>
+        <td th:text="${land.numberOfToilets}"></td>
+        <td th:text="${land.description}"></td>
+        <td th:text="${land.datePosted}"></td>
+        <td th:text="${land.type}"></td>
+        <td th:text="${land.legal}"></td>
+        <td th:text="${land.propertyType}"></td> <!-- Hiển thị thông tin môi giới -->
+    </tr>
+    </tbody>
+</table>
+
+<p>Tiền của bạn: <span th:text="${money}"></span></p>
+<p>ID người dùng: <span th:text="${id}"></span></p>
 
 </body>
 </html>
