@@ -1,14 +1,178 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Gói Tin</title>
+    <title>Post Land for Sale</title>
+    <script>
+        // Function to update property type options based on the selected type
+        function updatePropertyTypeOptions() {
+            const propertyTypeSelect = document.getElementById("propertyType");
+            const type = document.getElementById("type").value;
+
+            // Clear current options
+            propertyTypeSelect.innerHTML = '';
+
+            // Add new options based on 'type' (Bán or Cho thuê)
+            let options = [];
+            if (type === "Bán") {
+                options = ["Căn hộ", "Chung cư", "Nhà riêng", "Biệt thự"];
+            } else if (type === "Cho thuê") {
+                options = ["Căn hộ", "Chung cư", "Nhà riêng", "Biệt thự"];
+            }
+
+            // Add options to the select
+            options.forEach(function(option) {
+                const opt = document.createElement("option");
+                opt.value = option;
+                opt.textContent = option;
+                propertyTypeSelect.appendChild(opt);
+            });
+        }
+
+        // Function to post the land data
+        function postLand() {
+    const formData = new FormData();
+
+    formData.append("name", document.getElementById("name").value);
+    formData.append("price", parseInt(document.getElementById("price").value));
+    formData.append("area", parseFloat(document.getElementById("area").value));
+    formData.append("province", document.getElementById("province").value);
+    formData.append("district", document.getElementById("district").value);
+    formData.append("ward", document.getElementById("ward").value);
+    formData.append("interior", document.getElementById("interior").value);
+    formData.append("numberOfToilets", parseInt(document.getElementById("numberOfToilets").value));
+    formData.append("numberOfBedRooms", parseInt(document.getElementById("numberOfBedRooms").value));
+    formData.append("description", document.getElementById("description").value);
+    formData.append("datePosted", document.getElementById("datePosted").value);
+    formData.append("type", document.getElementById("type").value);
+    formData.append("legal", document.getElementById("legal").value);
+    formData.append("propertyType", document.getElementById("propertyType").value);
+    formData.append("userId", document.getElementById("userId").value);
+    formData.append("availableId", document.getElementById("availableId").value);
+
+    // Thêm file ảnh
+  // Thêm file ảnh
+const images = document.getElementById("images").files;
+for (let i = 0; i < images.length; i++) {
+    formData.append("imageLinks", images[i]); // Đổi tên thành "imageLinks"
+}
+
+
+    fetch('/post', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error("Failed to post land data");
+        }
+    })
+    .then(data => {
+        alert("Post successful!");
+        console.log(data);
+    })
+    .catch(error => {
+        alert("Error: " + error.message);
+        console.error('Error:', error);
+    });
+}
+
+    </script>
+
+    <script>
+        // Tự động lấy thời gian hiện tại và đặt vào trường datetime-local
+        window.addEventListener("load", function() {
+            const dateInput = document.getElementById("datePosted");
+
+            // Lấy thời gian hiện tại
+            const now = new Date();
+
+            // Định dạng thời gian thành yyyy-MM-ddTHH:mm
+            const formattedDate = now.toISOString().slice(0, 16);
+
+            // Gán giá trị này cho input
+            dateInput.value = formattedDate;
+        });
+    </script>
 
 </head>
 <body>
-<h1>Đăng tin</h1>
 
+<h2>Post Land for Sale</h2>
+<form onsubmit="event.preventDefault(); postLand();" enctype="multipart/form-data">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"  required><br><br>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price"  required><br><br>
+
+    <label for="area">Area:</label>
+    <input type="number" step="0.1" id="area" name="area"  required><br><br>
+
+    <label for="province">Province:</label>
+    <input type="text" id="province" name="province"  required><br><br>
+
+    <label for="district">District:</label>
+    <input type="text" id="district" name="district"  required><br><br>
+
+    <label for="ward">Ward:</label>
+    <input type="text" id="ward" name="ward"  required><br><br>
+
+    <label for="interior">Interior:</label>
+    <input type="text" id="interior" name="interior"  required><br><br>
+
+    <label for="numberOfToilets">Number of Toilets:</label>
+    <input type="number" id="numberOfToilets" name="numberOfToilets" required><br><br>
+
+    <label for="numberOfBedRooms">Number of Bedrooms:</label>
+    <input type="number" id="numberOfBedRooms" name="numberOfBedRooms"  required><br><br>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea><br><br>
+
+    <label for="datePosted">Date Posted:</label>
+    <input type="datetime-local" id="datePosted" name="datePosted" required><br><br>
+
+    <label for="type">Type:</label>
+    <select id="type" name="type" required onchange="updatePropertyTypeOptions()">
+        <option value="Bán" selected>Bán</option>
+        <option value="Cho thuê">Cho thuê</option>
+    </select><br><br>
+
+    <label for="propertyType">Property Type:</label>
+    <select id="propertyType" name="propertyType" required>
+        <!-- Options will be dynamically added based on the selected type -->
+        <option value="Căn hộ" selected>Căn hộ</option>
+        <option value="Chung cư">Chung cư</option>
+        <option value="Nhà riêng">Nhà riêng</option>
+        <option value="Biệt thự">Biệt thự</option>
+        <option value="Nhà mặt phố">Nhà mặt phố</option>
+    </select><br><br>
+
+    <label for="legal">Legal:</label>
+    <input type="text" id="legal" name="legal" value="Sổ đỏ chính chủ" required><br><br>
+
+    <label for="images">Upload Images:</label>
+    <input type="file" id="images" name="images" accept="image/*" multiple required><br><br>
+
+
+    <label for="availableId">Available:</label>
+    <select id="availableId" name="availableId" required>
+        <th:block th:each="available : ${availableList}">
+            <option th:value="${available.orderId}" th:text="${available.orderId}"></option>
+        </th:block>
+    </select><br><br>
+
+
+
+    <!-- Hidden field for userId -->
+    <input type="hidden" id="userId" name="userId" th:value="${userId}">
+
+    <button type="submit">Post Land</button>
+</form>
 
 </body>
 </html>

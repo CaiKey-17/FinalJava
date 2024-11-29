@@ -94,6 +94,10 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
+    public User findById(Long id){
+        return userRepository.findById(id).get();
+    }
+
 
     public void minusMoney(String username,Double newMon) {
         User user = userRepository.findByUsername(username);

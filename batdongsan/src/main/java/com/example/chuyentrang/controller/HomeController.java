@@ -1,5 +1,6 @@
 package com.example.chuyentrang.controller;
 
+import com.example.chuyentrang.dto.PostLandRequest;
 import com.example.chuyentrang.dto.UserRegistrationRequest;
 import com.example.chuyentrang.model.*;
 import com.example.chuyentrang.model.Package;
@@ -11,14 +12,20 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -386,6 +393,79 @@ public class HomeController {
         return "login"; // Chuyển hướng đến trang lỗi nếu không phải admin
     }
     @Autowired
+    private LandForSaleService landForSaleService;
+    @PostMapping("/post")
+    public ResponseEntity<String> postLand(
+            @RequestParam(value = "name") String name,
+            @RequestParam(value = "price") Double price,
+            @RequestParam(value = "area") Double area,
+            @RequestParam(value = "province") String province,
+            @RequestParam(value = "district") String district,
+            @RequestParam(value = "ward") String ward,
+            @RequestParam(value = "interior") String interior,
+            @RequestParam(value = "numberOfToilets") Integer numberOfToilets,
+            @RequestParam(value = "numberOfBedRooms") Integer numberOfBedRooms,
+            @RequestParam(value = "description") String description,
+            @RequestParam(value = "datePosted") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime datePosted,
+            @RequestParam(value = "type") String type,
+            @RequestParam(value = "legal") String legal,
+            @RequestParam(value = "propertyType") String propertyType,
+            @RequestParam(value = "userId") Long userId,
+            @RequestParam(value = "availableId") Integer availableId,
+            @RequestParam(value = "imageLinks", required = false) List<MultipartFile> imageLinks) { // Sửa thành List<MultipartFile>
+
+        try {
+            List<String> imageUrls = new ArrayList<>();
+            if (imageLinks != null && !imageLinks.isEmpty()) {
+                for (MultipartFile image : imageLinks) {
+                    String imageUrl = saveImage(image); // Hàm tự định nghĩa để lưu ảnh
+                    imageUrls.add(imageUrl);
+                }
+            }
+
+            // Tạo đối tượng LandForSale từ dữ liệu nhận được
+            LandForSale landForSale = new LandForSale();
+            landForSale.setName(name);
+            landForSale.setPrice(price);
+            landForSale.setArea(area);
+            landForSale.setProvince(province);
+            landForSale.setDistrict(district);
+            landForSale.setWard(ward);
+            landForSale.setInterior(interior);
+            landForSale.setNumberOfToilets(numberOfToilets);
+            landForSale.setNumberOfBedRooms(numberOfBedRooms);
+            landForSale.setDescription(description);
+            landForSale.setDatePosted(datePosted);
+            landForSale.setType(type);
+            landForSale.setLegal(legal);
+            landForSale.setPropertyType(propertyType);
+
+            // Gọi service để lưu dữ liệu
+            landForSaleService.postLandForSale(landForSale, userId, availableId, imageUrls);
+
+            return ResponseEntity.ok("Post successful!");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
+        }
+    }
+
+    private String saveImage(MultipartFile file) throws IOException {
+        String uploadDir = "images/"; // Thay đổi thành "images"
+        String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
+        Path filePath = Paths.get(uploadDir, fileName);
+
+        Files.createDirectories(filePath.getParent());
+        Files.write(filePath, file.getBytes());
+
+        return "/images/" + fileName; // Trả về đường dẫn ảnh
+    }
+
+
+
+
+
+
+    @Autowired
     private AvailableRepository availableRepository;
 
 
@@ -448,13 +528,18 @@ public class HomeController {
 
             if (isAdmin) {
                 // Thêm thông tin vào model
-                Long id = userService.getId(username);
+                User user = userService.findByUser(username);
+                Long userId = user.getId();
+                List<Available> availableList = availableRepository.findByBrokerAndQuantityAvailableGreaterThan(user,0);
 
-                List<Deposit> depositList = depositService.customer_history(id);
-                model.addAttribute("depositList", depositList);
-                model.addAttribute("id", id);
-                Double money = userService.getMoney(username);
-                model.addAttribute("money", money);
+                // Kiểm tra nếu không có available nào
+                if (availableList.isEmpty()) {
+                    System.out.println("Không có availableList nào.");
+                }
+
+                // Thêm danh sách available vào model
+                model.addAttribute("availableList", availableList);
+                model.addAttribute("userId", userId);
 
 
                 return "dashboard_cus_dangtin";
@@ -478,8 +563,8 @@ public class HomeController {
                 // Thêm thông tin vào model
                 Long id = userService.getId(username);
 
-                List<Deposit> depositList = depositService.customer_history(id);
-                model.addAttribute("depositList", depositList);
+                List<LandForSale> landForSales = landForSaleService.listLandByBroker(id);
+                model.addAttribute("landForSales", landForSales);
                 model.addAttribute("id", id);
                 Double money = userService.getMoney(username);
                 model.addAttribute("money", money);

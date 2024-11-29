@@ -1,32 +1,47 @@
-//package com.example.chuyentrang.model;
-//
-//import jakarta.persistence.*;
-//import lombok.Getter;
-//import lombok.NoArgsConstructor;
-//import lombok.Setter;
-//
-//import java.time.LocalDateTime;
-//import java.util.List;
-//
-//@Entity @Getter @Setter @NoArgsConstructor
-//public class LandForSale {
-//    @Id
-//    @GeneratedValue
-//    private int id;
-//    private String name;
-//    private double price;
-//    private double area;
-//    private String province;
-//    private String district;
-//    private String ward;
-//    private String interior;
-//    private int numberOfToilets;
-//    private int numberOfBedRooms;
-//    private String description;
-//    private LocalDateTime datePosted;
-//    private String type;
-//    private String legal;
-//
+package com.example.chuyentrang.model;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity @Getter @Setter
+public class LandForSale {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String name;
+    private double price;
+    private double area;
+    private String province;
+    private String district;
+    private String ward;
+    private String interior;
+    private int numberOfToilets;
+    private int numberOfBedRooms;
+    private String description;
+    private LocalDateTime datePosted;
+    private String type;
+    private String propertyType;
+
+    private String legal;
+
+    public String getPropertyType() {
+        return propertyType;
+    }
+
+    public void setPropertyType(String loai) {
+        this.propertyType = loai;
+    }
+
+    @OneToMany(mappedBy = "landForSale", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ImageLand> images = new ArrayList<>();
+
+    //
 //    @OneToMany(mappedBy = "imageLand_id", cascade = CascadeType.ALL)
 //    private List<ImageLand> imageLands;
 //
@@ -37,29 +52,164 @@
 //    @ManyToOne
 //    @JoinColumn(name = "broker_id")
 //    private Broker broker;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "available_id")
-//    private Available available;
-//
-//    public LandForSale(String name, double price, double area, String province, String district, String ward,
-//                       String interior, int numberOfToilets, int numberOfBedRooms, String description, LocalDateTime datePoste,
-//                       String type, String legal) {
-//        this.name = name;
-//        this.price = price;
-//        this.area = area;
-//        this.province = province;
-//        this.district = district;
-//        this.ward = ward;
-//        this.interior = interior;
-//        this.numberOfToilets = numberOfToilets;
-//        this.numberOfBedRooms = numberOfBedRooms;
-//        this.description = description;
-//        this.datePosted = datePoste;
-//        this.type = type;
-//        this.legal = legal;
-//    }
-//
+
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User broker;
+
+    @ManyToOne
+    @JoinColumn(name = "available_id")
+    private Available available;
+
+    public LandForSale(String name, double price, double area, String province, String district, String ward,
+                       String interior, int numberOfToilets, int numberOfBedRooms, String description, LocalDateTime datePoste,
+                       String type, String legal) {
+        this.name = name;
+        this.price = price;
+        this.area = area;
+        this.province = province;
+        this.district = district;
+        this.ward = ward;
+        this.interior = interior;
+        this.numberOfToilets = numberOfToilets;
+        this.numberOfBedRooms = numberOfBedRooms;
+        this.description = description;
+        this.datePosted = datePoste;
+        this.type = type;
+        this.legal = legal;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public void setArea(double area) {
+        this.area = area;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getWard() {
+        return ward;
+    }
+
+    public void setWard(String ward) {
+        this.ward = ward;
+    }
+
+    public String getInterior() {
+        return interior;
+    }
+
+    public void setInterior(String interior) {
+        this.interior = interior;
+    }
+
+    public int getNumberOfToilets() {
+        return numberOfToilets;
+    }
+
+    public void setNumberOfToilets(int numberOfToilets) {
+        this.numberOfToilets = numberOfToilets;
+    }
+
+    public int getNumberOfBedRooms() {
+        return numberOfBedRooms;
+    }
+
+    public void setNumberOfBedRooms(int numberOfBedRooms) {
+        this.numberOfBedRooms = numberOfBedRooms;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDateTime getDatePosted() {
+        return datePosted;
+    }
+
+    public void setDatePosted(LocalDateTime datePosted) {
+        this.datePosted = datePosted;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getLegal() {
+        return legal;
+    }
+
+    public void setLegal(String legal) {
+        this.legal = legal;
+    }
+
+    public User getBroker() {
+        return broker;
+    }
+
+    public void setBroker(User broker) {
+        this.broker = broker;
+    }
+
+    public Available getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Available available) {
+        this.available = available;
+    }
+
+    public LandForSale() {
+    }
 //    public void addImage(ImageLand imageLand) {
 //        imageLands.add(imageLand);
 //        imageLand.setLandForSale(this);
@@ -69,4 +219,4 @@
 //        imageLands.remove(imageLand);
 //        imageLand.setLandForSale(null);
 //    }
-//}
+}
