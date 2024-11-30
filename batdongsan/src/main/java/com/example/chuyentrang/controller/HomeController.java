@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -51,6 +52,31 @@ public class HomeController {
     public String login() {
         return "login";
     }
+
+    @GetMapping("/forgot")
+    public String forgot() {
+        return "forgot";
+    }
+    @Autowired
+    private EmailService emailService;
+
+    @PostMapping("/forgot")
+    public String sendResetLink(@RequestBody Map<String, String> requestData, HttpServletResponse response) {
+        String email = requestData.get("email");
+
+        // Kiểm tra email hợp lệ và gửi mã khôi phục
+        if (userService.isEmailRegistered(email)) {
+            String newPass = "111";
+            userService.updatePassword(email, newPass);
+            emailService.sendPasswordResetEmail(email, newPass);
+            return "Mã khôi phục đã được gửi vào email của bạn!";
+        } else {
+            return "Email này chưa được đăng ký!";
+        }
+    }
+
+
+
 
     @GetMapping("/register")
     public String register() {
@@ -132,8 +158,9 @@ public class HomeController {
             return ResponseEntity.status(400).body("Role does not exist");
         }
 
-        User user = new User(userRequest.getUsername(), userRequest.getPassword());
+        User user = new User(userRequest.getUsername(), userRequest.getPassword(),userRequest.getName(),userRequest.getAddress(),userRequest.getZoneking(),userRequest.getEmail(),userRequest.getPhone());
         user.getRoles().add(role);
+
         boolean result = userService.registerUser(user, userRequest.getRoleName());
 
         if (result) {
@@ -192,6 +219,9 @@ public class HomeController {
     }
     @Autowired
     private PackageService packageService;
+
+    @Autowired
+    private NewsService newsService;
 
     @PostMapping("/manager-package/add")
     public String addPackage(@RequestBody Package packagee) {
@@ -281,10 +311,11 @@ public class HomeController {
                 // Thêm thông tin vào model
                 String address = userService.getAddress(username);
                 String name = userService.getName(username);
+                model.addAttribute("name", name); // Thay bằng dữ liệu thực
+
                 model.addAttribute("username", username);
                 model.addAttribute("role", "ROLE_CUSTOMER");
                 model.addAttribute("address", address); // Thay bằng dữ liệu thực
-                model.addAttribute("name", name); // Thay bằng dữ liệu thực
                 Double money = userService.getMoney(username);
                 model.addAttribute("money", money);
 
@@ -308,7 +339,8 @@ public class HomeController {
 
             if (isAdmin) {
                 // Thêm thông tin vào model
-
+                String name = userService.getName(username);
+                model.addAttribute("name", name); // Thay bằng dữ liệu thực
                 List<Package> packageList = packageService.getAllPackage();
 
                 // Định dạng ngày giờ trước khi thêm vào model
@@ -382,6 +414,9 @@ public class HomeController {
 
             if (isAdmin) {
                 // Thêm thông tin vào model
+                String name = userService.getName(username);
+                model.addAttribute("name", name); // Thay bằng dữ liệu thực
+
                 Long id = userService.getId(username);
                 List<Deposit> depositList = depositService.customer_history(id);
                 model.addAttribute("depositList", depositList);
@@ -399,7 +434,7 @@ public class HomeController {
             @RequestParam(value = "name") String name,
             @RequestParam(value = "price") Double price,
             @RequestParam(value = "area") Double area,
-            @RequestParam(value = "province") String province,
+            @RequestParam(value = "city") String city,
             @RequestParam(value = "district") String district,
             @RequestParam(value = "ward") String ward,
             @RequestParam(value = "interior") String interior,
@@ -428,7 +463,7 @@ public class HomeController {
             landForSale.setName(name);
             landForSale.setPrice(price);
             landForSale.setArea(area);
-            landForSale.setProvince(province);
+            landForSale.setProvince(city);
             landForSale.setDistrict(district);
             landForSale.setWard(ward);
             landForSale.setInterior(interior);
@@ -449,21 +484,83 @@ public class HomeController {
         }
     }
 
-    private String saveImage(MultipartFile file) throws IOException {
-        String uploadDir = "images/"; // Thay đổi thành "images"
-        String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
-        Path filePath = Paths.get(uploadDir, fileName);
+    @PostMapping("/post-news")
+    public ResponseEntity<String> postNews(
+            @RequestParam(value = "title") String title,
+            @RequestParam(value = "summaryOfContent") String summaryOfContent,
+            @RequestParam(value = "content") String content,
+            @RequestParam(value = "userId1") Long userId,
+            @RequestParam(value = "availableId1") Integer availableId,
+            @RequestParam(value = "imageLinks", required = false) List<MultipartFile> imageLinks) {
 
-        Files.createDirectories(filePath.getParent());
-        Files.write(filePath, file.getBytes());
+        try {
+            // Lưu ảnh nếu có
+            List<String> imageUrls = new ArrayList<>();
+            if (imageLinks != null && !imageLinks.isEmpty()) {
+                for (MultipartFile image : imageLinks) {
+                    String imageUrl = saveImage(image); // Hàm tự định nghĩa để lưu ảnh
+                    imageUrls.add(imageUrl);
+                }
+            }
 
-        return "/images/" + fileName; // Trả về đường dẫn ảnh
+            // Tạo đối tượng News từ dữ liệu nhận được
+            News news = new News();
+            news.setTitle(title);
+            news.setContent(content);
+            news.setSummaryOfContent(summaryOfContent);
+
+            newsService.postedNews(news,userId,availableId,imageUrls);
+            return ResponseEntity.ok("News posted successfully!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error posting news");
+        }
     }
 
 
 
 
+    private String saveImage(MultipartFile file) throws IOException {
+        // Đường dẫn đến thư mục static/images trong src/main/resources
+        String uploadDir = "src/main/resources/static/images";
+        String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
+        Path filePath = Paths.get(uploadDir, fileName);
 
+        // Tạo thư mục nếu chưa có
+        Files.createDirectories(filePath.getParent());
+        // Lưu file vào thư mục đã chỉ định
+        Files.write(filePath, file.getBytes());
+
+        // Trả về đường dẫn URL của file ảnh
+        return "/images/" + fileName;
+    }
+
+
+
+
+    // Xoá bản ghi
+    @GetMapping("/delete/{id}")
+    public String deleteLand(@PathVariable int id) {
+        LandForSale land = landForSaleService.findById(id);
+        imageLandService.deleteImageLandsByLandForSale(land);
+        landForSaleService.deleteLandById(id);
+        return "redirect:/customer-history-list";  // Điều hướng về trang danh sách
+    }
+
+    @GetMapping("/delete/news/{id}")
+    public String deleteNews(@PathVariable int id) {
+        News land = newsService.findById(id);
+        imageNewsService.deleteImageLandsByNews(land);
+        newsService.deleteNews(id);
+        return "redirect:/customer-history-list";  // Điều hướng về trang danh sách
+    }
+
+
+    @Autowired
+    private  ImageLandService imageLandService;
+
+
+    @Autowired
+    private  ImageNewsService imageNewsService;
 
     @Autowired
     private AvailableRepository availableRepository;
@@ -528,6 +625,9 @@ public class HomeController {
 
             if (isAdmin) {
                 // Thêm thông tin vào model
+                String name = userService.getName(username);
+                model.addAttribute("name", name); // Thay bằng dữ liệu thực
+
                 User user = userService.findByUser(username);
                 Long userId = user.getId();
                 List<Available> availableList = availableRepository.findByBrokerAndQuantityAvailableGreaterThan(user,0);
@@ -562,9 +662,22 @@ public class HomeController {
             if (isAdmin) {
                 // Thêm thông tin vào model
                 Long id = userService.getId(username);
+                String name = userService.getName(username);
+                model.addAttribute("name", name); // Thay bằng dữ liệu thực
 
-                List<LandForSale> landForSales = landForSaleService.listLandByBroker(id);
+
+                List<LandForSale> landForSales = landForSaleService.listLandByBrokerSold(id);
+                List<LandForSale> landForSales1 = landForSaleService.listLandByBrokerRent(id);
+                List<News> news = newsService.listLandByBroker(id);
+
+                System.out.println(news.size());
+
+
+
+                model.addAttribute("news", news);
+
                 model.addAttribute("landForSales", landForSales);
+                model.addAttribute("landForRents", landForSales1);
                 model.addAttribute("id", id);
                 Double money = userService.getMoney(username);
                 model.addAttribute("money", money);
@@ -596,7 +709,8 @@ public class HomeController {
             if (isAdmin) {
                 // Thêm thông tin vào model
                 Long id = userService.getId(username);
-
+                String name = userService.getName(username);
+                model.addAttribute("name", name); // Thay bằng dữ liệu thực
                 List<Deposit> depositList = depositService.customer_history(id);
                 model.addAttribute("depositList", depositList);
                 model.addAttribute("id", id);

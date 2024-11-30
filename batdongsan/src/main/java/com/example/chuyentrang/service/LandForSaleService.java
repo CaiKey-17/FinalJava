@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,9 +28,16 @@ public class LandForSaleService {
     }
 
 
-    public List<LandForSale> listLandByBroker(Long userId) {
-        return landForSaleRepository.findByBrokerId(userId);
+    public List<LandForSale> listLandByBrokerSold(Long userId) {
+        List<String> types = Arrays.asList("Bán");
+        return landForSaleRepository.findByBrokerIdAndTypeIn(userId, types);
     }
+
+    public List<LandForSale> listLandByBrokerRent(Long userId) {
+        List<String> types = Arrays.asList( "Cho thuê");
+        return landForSaleRepository.findByBrokerIdAndTypeIn(userId, types);
+    }
+
 
 
     // Read
@@ -42,12 +50,30 @@ public class LandForSaleService {
     }
 
     // Update
-    public LandForSale updateLandForSale(int id, LandForSale updatedLandForSale) {
-        return landForSaleRepository.findById(id)
-                .map(existingLandForSale -> {
-                    // Update fields here
-                    return landForSaleRepository.save(existingLandForSale);
-                }).orElseThrow(() -> new RuntimeException("LandForSale not found"));
+    public void updateLandForSale(int id, LandForSale updatedLandForSale) {
+        LandForSale l  =landForSaleRepository.findById(id).get();
+        l.setArea(updatedLandForSale.getArea());
+        l.setName(updatedLandForSale.getName());
+        l.setDescription(updatedLandForSale.getDescription());
+        l.setDistrict(updatedLandForSale.getDistrict());
+        l.setProvince(updatedLandForSale.getProvince());
+        l.setInterior(updatedLandForSale.getInterior());
+        l.setLegal(updatedLandForSale.getLegal());
+        l.setPropertyType(updatedLandForSale.getPropertyType());
+        l.setWard(updatedLandForSale.getWard());
+        l.setPrice(updatedLandForSale.getPrice());
+        l.setNumberOfBedRooms(updatedLandForSale.getNumberOfBedRooms());
+        l.setNumberOfToilets(updatedLandForSale.getNumberOfToilets());
+        landForSaleRepository.save(l);
+
+
+    }
+
+    public LandForSale findById(int id) {
+        return landForSaleRepository.findById(id).get();
+    }
+    public void deleteLandById(int id) {
+        landForSaleRepository.deleteById(id);
     }
 
     // Delete
@@ -96,23 +122,6 @@ public class LandForSaleService {
         }
     }
 
-    // Xử lý ảnh nếu có
-//        if (images != null && images.length > 0) {
-//            for (MultipartFile image : images) {
-//                String fileName = System.currentTimeMillis() + "-" + image.getOriginalFilename();
-//                File dest = new File("uploads/" + fileName);
-//                try {
-//                    image.transferTo(dest); // Tải ảnh lên thư mục server
-//
-//                    // Lưu thông tin ảnh vào database
-//                    ImageLand imageLand = new ImageLand(fileName);
-//                    imageLand.setLandForSale(landForSale); // Gắn LandForSale vào ImageLand
-//                    imageLandRepository.save(imageLand);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
-//    }
+
 
 }

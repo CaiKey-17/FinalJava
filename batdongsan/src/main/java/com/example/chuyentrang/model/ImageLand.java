@@ -25,6 +25,9 @@ public class ImageLand {
         this.landForSale = landForSale;
     }
 
+    public ImageLand() {
+    }
+
     public int getId() {
         return id;
     }

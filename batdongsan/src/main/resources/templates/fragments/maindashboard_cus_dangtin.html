@@ -37,13 +37,13 @@
     formData.append("name", document.getElementById("name").value);
     formData.append("price", parseInt(document.getElementById("price").value));
     formData.append("area", parseFloat(document.getElementById("area").value));
-    formData.append("province", document.getElementById("province").value);
+    formData.append("city", document.getElementById("city").value);
     formData.append("district", document.getElementById("district").value);
     formData.append("ward", document.getElementById("ward").value);
     formData.append("interior", document.getElementById("interior").value);
     formData.append("numberOfToilets", parseInt(document.getElementById("numberOfToilets").value));
     formData.append("numberOfBedRooms", parseInt(document.getElementById("numberOfBedRooms").value));
-    formData.append("description", document.getElementById("description").value);
+    formData.append("description", CKEDITOR.instances.description.getData());
     formData.append("datePosted", document.getElementById("datePosted").value);
     formData.append("type", document.getElementById("type").value);
     formData.append("legal", document.getElementById("legal").value);
@@ -97,6 +97,8 @@ for (let i = 0; i < images.length; i++) {
             dateInput.value = formattedDate;
         });
     </script>
+    <script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+
 
 </head>
 <body>
@@ -112,14 +114,6 @@ for (let i = 0; i < images.length; i++) {
     <label for="area">Area:</label>
     <input type="number" step="0.1" id="area" name="area"  required><br><br>
 
-    <label for="province">Province:</label>
-    <input type="text" id="province" name="province"  required><br><br>
-
-    <label for="district">District:</label>
-    <input type="text" id="district" name="district"  required><br><br>
-
-    <label for="ward">Ward:</label>
-    <input type="text" id="ward" name="ward"  required><br><br>
 
     <label for="interior">Interior:</label>
     <input type="text" id="interior" name="interior"  required><br><br>
@@ -131,7 +125,13 @@ for (let i = 0; i < images.length; i++) {
     <input type="number" id="numberOfBedRooms" name="numberOfBedRooms"  required><br><br>
 
     <label for="description">Description:</label>
-    <textarea id="description" name="description" required></textarea><br><br>
+    <textarea id="description" name="description"></textarea><br><br>
+    <script>
+        CKEDITOR.replace('description'); // Tích hợp CKEditor
+    </script>
+
+
+
 
     <label for="datePosted">Date Posted:</label>
     <input type="datetime-local" id="datePosted" name="datePosted" required><br><br>
@@ -171,8 +171,137 @@ for (let i = 0; i < images.length; i++) {
     <!-- Hidden field for userId -->
     <input type="hidden" id="userId" name="userId" th:value="${userId}">
 
+
+        <label for="city">Chọn tỉnh/thành phố:</label>
+        <select class="form-select form-select-sm mb-3" id="city" name="city" aria-label=".form-select-sm">
+            <option value="" selected>Chọn tỉnh thành</option>
+        </select>
+
+        <label for="district">Chọn quận/huyện:</label>
+        <select class="form-select form-select-sm mb-3" id="district" aria-label=".form-select-sm">
+            <option value="" selected>Chọn quận huyện</option>
+        </select>
+
+        <label for="ward">Chọn xã/phường:</label>
+        <select class="form-select form-select-sm" id="ward" aria-label=".form-select-sm">
+            <option value="" selected>Chọn phường xã</option>
+        </select>
+
     <button type="submit">Post Land</button>
 </form>
 
+
+<h2>Post News</h2>
+<form onsubmit="event.preventDefault(); postNews();" enctype="multipart/form-data">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="summaryOfContent">Summary of Content:</label>
+    <input type="text" id="summaryOfContent" name="summaryOfContent" required><br><br>
+
+    <label for="content">Content:</label>
+    <textarea id="content" name="content" required></textarea><br><br>
+    <script>
+        CKEDITOR.replace('content'); // Integrate CKEditor for content editing
+    </script>
+
+    <label for="availableId1">Available:</label>
+    <select id="availableId1" name="availableId1" required>
+        <!-- Thymeleaf loop to populate options dynamically from availableList -->
+        <th:block th:each="available : ${availableList}">
+            <option th:value="${available.orderId}" th:text="${available.orderId}"></option>
+        </th:block>
+    </select><br><br>
+
+    <!-- Hidden field for userId1 -->
+    <input type="hidden" id="userId1" name="userId1" th:value="${userId}"><br><br>
+
+    <label for="images1">Upload Images:</label>
+    <input type="file" id="images1" name="imageLinks" accept="image/*" multiple><br><br>
+
+    <button type="submit">Post News</button>
+</form>
+
+<script>
+    function postNews() {
+        const formData = new FormData();
+        formData.append("title", document.getElementById("title").value);
+        formData.append("summaryOfContent", document.getElementById("summaryOfContent").value);
+        formData.append("content", CKEDITOR.instances.content.getData());
+        formData.append("userId1", document.getElementById("userId1").value); // userId1 hidden field
+        formData.append("availableId1", document.getElementById("availableId1").value); // availableId1 dropdown
+
+        // Add images if any
+        const images1 = document.getElementById("images1").files;
+        for (let i = 0; i < images1.length; i++) {
+            formData.append("imageLinks", images1[i]);
+        }
+
+        fetch('/post-news', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert("Post successful!");
+            console.log(data);
+        })
+        .catch(error => {
+            alert("Error: " + error.message);
+            console.error('Error:', error);
+        });
+    }
+</script>
+
+
+
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+    var citis = document.getElementById("city");
+    var districts = document.getElementById("district");
+    var wards = document.getElementById("ward");
+
+    var Parameter = {
+        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+        method: "GET",
+        responseType: "application/json",
+    };
+
+    var promise = axios(Parameter);
+    promise.then(function (result) {
+        renderCity(result.data);
+    });
+
+  function renderCity(data) {
+    for (const x of data) {
+        citis.options[citis.options.length] = new Option(x.Name, x.Name); // Sử dụng x.Name làm giá trị
+    }
+
+    citis.onchange = function () {
+        districts.length = 1; // Reset danh sách quận/huyện
+        wards.length = 1; // Reset danh sách phường/xã
+        if (this.value !== "") {
+            const result = data.filter(n => n.Name === this.value); // So sánh với Name
+            for (const k of result[0].Districts) {
+                districts.options[districts.options.length] = new Option(k.Name, k.Name); // Sử dụng k.Name
+            }
+        }
+    };
+
+    districts.onchange = function () {
+        wards.length = 1; // Reset danh sách phường/xã
+        const dataCity = data.filter(n => n.Name === citis.value); // So sánh với Name
+        if (this.value !== "") {
+            const dataWards = dataCity[0].Districts.filter(n => n.Name === this.value)[0].Wards; // So sánh với Name
+            for (const w of dataWards) {
+                wards.options[wards.options.length] = new Option(w.Name, w.Name); // Sử dụng w.Name
+            }
+        }
+    };
+}
+
+</script>
+
 </html>

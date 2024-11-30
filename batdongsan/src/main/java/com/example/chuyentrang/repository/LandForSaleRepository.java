@@ -10,5 +10,7 @@ import java.util.List;
 
 public interface LandForSaleRepository extends JpaRepository<LandForSale, Integer> {
     List<LandForSale> findByBrokerId(Long brokerId);
+    List<LandForSale> findByTypeIn(List<String> types);
 
+    List<LandForSale> findByBrokerIdAndTypeIn(Long userId, List<String> types);
 }
