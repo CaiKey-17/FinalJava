@@ -16,4 +16,6 @@ public interface AvailableRepository extends CrudRepository<Available, Integer> 
     Optional<Available> findByBroker_IdAndExpirationDateAfterAndQuantityAvailableGreaterThan(
             Long brokerId, LocalDateTime expirationDate, int quantityAvailable);
     Optional<Available> findByOrderIdAndBroker_Id(int orderId, Long brokerId);
+
+    List<Available> findByExpirationDateBefore(LocalDateTime now);
 }

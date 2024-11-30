@@ -8,103 +8,102 @@
 
     <style>
         /* Thiết lập toàn bộ trang */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
 
-/* Tiêu đề chính */
-h1 {
-    text-align: center;
-    color: #4CAF50;
-    padding-top: 20px;
-}
+        /* Tiêu đề chính */
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            padding-top: 20px;
+        }
 
-/* Định dạng bảng */
-table {
-    width: 90%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+        /* Định dạng bảng */
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
 
-/* Định dạng các tiêu đề cột */
-th {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    text-align: left;
-}
+        /* Định dạng các tiêu đề cột */
+        th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
 
-/* Định dạng các ô trong bảng */
-td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
+        /* Định dạng các ô trong bảng */
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
 
-/* Định dạng dòng khi hover */
-tr:hover {
-    background-color: #f5f5f5;
-}
+        /* Định dạng dòng khi hover */
+        tr:hover {
+            background-color: #f5f5f5;
+        }
 
-/* Định dạng ô trong bảng cho các số tiền và các giá trị đặc biệt */
-td.price, td.area {
-    text-align: right;
-}
+        /* Định dạng ô trong bảng cho các số tiền và các giá trị đặc biệt */
+        td.price, td.area {
+            text-align: right;
+        }
 
-td.price {
-    color: #4CAF50;
-}
+        td.price {
+            color: #4CAF50;
+        }
 
-td.area {
-    color: #2196F3;
-}
+        td.area {
+            color: #2196F3;
+        }
 
-/* Định dạng thông tin người môi giới */
-td.broker {
-    font-weight: bold;
-    color: #3E8E41;
-}
+        /* Định dạng thông tin người môi giới */
+        td.broker {
+            font-weight: bold;
+            color: #3E8E41;
+        }
 
-/* Định dạng cho thông tin người dùng */
-p {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 30px;
-    color: #555;
-}
+        /* Định dạng cho thông tin người dùng */
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 30px;
+            color: #555;
+        }
 
-/* Cải thiện kiểu hiển thị cho các phần tử */
-span {
-    font-weight: bold;
-}
+        /* Cải thiện kiểu hiển thị cho các phần tử */
+        span {
+            font-weight: bold;
+        }
 
-/* Tối ưu hóa cho màn hình nhỏ */
-@media (max-width: 768px) {
-    table {
-        width: 100%;
-        font-size: 14px;
-    }
+        /* Tối ưu hóa cho màn hình nhỏ */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+                font-size: 14px;
+            }
 
-    th, td {
-        padding: 8px;
-    }
+            th, td {
+                padding: 8px;
+            }
 
-    h1 {
-        font-size: 22px;
-    }
-}
-
+            h1 {
+                font-size: 22px;
+            }
+        }
     </style>
 </head>
 <body>
 
-<h1>Các tin đang có</h1>
+<h1>Các tin nhà đất bán</h1>
 
 <table border="1" cellpadding="10">
     <thead>
@@ -123,7 +122,8 @@ span {
         <th>Loại Tin</th>
         <th>Pháp Lý</th>
         <th>Loại nhà</th>
-
+        <th>Hình Ảnh</th> <!-- Cột mới để hiển thị hình ảnh -->
+        <th>Tuỳ chọn</th>
     </tr>
     </thead>
     <tbody>
@@ -138,17 +138,134 @@ span {
         <td th:text="${land.ward}"></td>
         <td th:text="${land.numberOfBedRooms}"></td>
         <td th:text="${land.numberOfToilets}"></td>
-        <td th:text="${land.description}"></td>
+        <td th:utext="${land.description}"></td>
         <td th:text="${land.datePosted}"></td>
         <td th:text="${land.type}"></td>
         <td th:text="${land.legal}"></td>
-        <td th:text="${land.propertyType}"></td> <!-- Hiển thị thông tin môi giới -->
+        <td th:text="${land.propertyType}"></td>
+
+        <!-- Hiển thị danh sách hình ảnh cho mỗi LandForSale -->
+        <td>
+            <ul>
+                <li th:each="image : ${land.images}">
+                    <img th:src="@{${image.imageLink}}" alt="Image" width="100" height="75" />
+                </li>
+            </ul>
+        </td>
+
+        <td>
+            <a th:href="@{/delete/{id}(id=${land.id})}" onclick="return confirm('Bạn có chắc chắn muốn xoá?')">Xoá</a>
+        </td>
     </tr>
     </tbody>
 </table>
 
-<p>Tiền của bạn: <span th:text="${money}"></span></p>
-<p>ID người dùng: <span th:text="${id}"></span></p>
+<h1>Các tin nhà đất cho thuê</h1>
+
+<!-- Tương tự đối với danh sách nhà đất cho thuê -->
+<table border="1" cellpadding="10">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Tên Tin</th>
+        <th>Giá</th>
+        <th>Diện Tích</th>
+        <th>Tỉnh/Thành Phố</th>
+        <th>Quận/Huyện</th>
+        <th>Phường/Xã</th>
+        <th>Số Phòng Ngủ</th>
+        <th>Số Phòng Tắm</th>
+        <th>Mô Tả</th>
+        <th>Ngày Đăng</th>
+        <th>Loại Tin</th>
+        <th>Pháp Lý</th>
+        <th>Loại nhà</th>
+        <th>Hình Ảnh</th>
+        <th>Tuỳ chọn</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="land : ${landForRents}">
+        <td th:text="${land.id}"></td>
+        <td th:text="${land.name}"></td>
+        <td th:text="${land.price}"></td>
+        <td th:text="${land.area}"></td>
+        <td th:text="${land.province}"></td>
+        <td th:text="${land.district}"></td>
+        <td th:text="${land.ward}"></td>
+        <td th:text="${land.numberOfBedRooms}"></td>
+        <td th:text="${land.numberOfToilets}"></td>
+        <td th:utext="${land.description}"></td>
+        <td th:text="${land.datePosted}"></td>
+        <td th:text="${land.type}"></td>
+        <td th:text="${land.legal}"></td>
+        <td th:text="${land.propertyType}"></td>
+
+        <!-- Hiển thị hình ảnh cho mỗi LandForSale cho thuê -->
+        <td>
+            <ul>
+
+
+
+                <li th:each="image : ${land.images}">
+                    <!-- Hiển thị ảnh -->
+                    <img th:src="@{${image.imageLink}}" alt="Image" width="100" height="75" />
+
+
+                </li>
+            </ul>
+        </td>
+
+        <td>
+            <a th:href="@{/delete/{id}(id=${land.id})}" onclick="return confirm('Bạn có chắc chắn muốn xoá?')">Xoá</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+<h1>Các bài đăng tin tức</h1>
+
+<!-- Tương tự đối với danh sách nhà đất cho thuê -->
+<table border="1" cellpadding="10">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Tiêu đề</th>
+        <th>Nội dung chính</th>
+        <th>Nội dung </th>
+        <th>Ảnh</th>
+        <th>Tuỳ chọn</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="news : ${news}">
+        <td th:text="${news.id}"></td>
+        <td th:text="${news.title}"></td>
+        <td th:text="${news.summaryOfContent}"></td>
+        <td th:utext="${news.content}"></td>
+
+
+         Hiển thị hình ảnh cho mỗi LandForSale cho thuê
+        <td>
+            <ul>
+                <li th:each="image : ${news.images}">
+                    <!-- Hiển thị ảnh -->
+                    <img th:src="@{${image.imageLink}}" alt="Image" width="100" height="75" />
+
+
+
+                </li>
+            </ul>
+        </td>
+
+        <td>
+            <a th:href="@{/delete/news/{id}(id=${news.id})}" onclick="return confirm('Bạn có chắc chắn muốn xoá?')">Xoá</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

@@ -107,6 +107,19 @@ public class UserService {
 
 
 
+    public boolean isEmailRegistered(String email) {
+        return userRepository.findByEmail(email) != null;
+    }
+
+    public void updatePassword(String email, String newPassword) {
+        User user = userRepository.findByEmail(email);  // Tìm người dùng theo email
+        if (user != null) {
+            user.setPassword(passwordEncoder.encode(newPassword));
+            userRepository.save(user);  // Lưu người dùng với mật khẩu mới
+        }
+    }
+
+
 
 
 

@@ -41,17 +41,7 @@ public class LandForSale {
     @OneToMany(mappedBy = "landForSale", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ImageLand> images = new ArrayList<>();
 
-    //
-//    @OneToMany(mappedBy = "imageLand_id", cascade = CascadeType.ALL)
-//    private List<ImageLand> imageLands;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "project_id")
-//    private Project project;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "broker_id")
-//    private Broker broker;
+
 
 
     @ManyToOne

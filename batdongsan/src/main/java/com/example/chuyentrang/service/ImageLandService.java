@@ -1,16 +1,24 @@
 package com.example.chuyentrang.service;
 
 import com.example.chuyentrang.model.ImageLand;
+import com.example.chuyentrang.model.LandForSale;
 import com.example.chuyentrang.repository.ImageLandRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ImageLandService {
+
     private  ImageLandRepository imageLandRepository;
 
 
+    // Constructor injection
+    @Autowired
+    public ImageLandService(ImageLandRepository imageLandRepository) {
+        this.imageLandRepository = imageLandRepository;
+    }
     // Create
     public ImageLand createImageLand(ImageLand imageLand) {
         return imageLandRepository.save(imageLand);
@@ -37,6 +45,11 @@ public class ImageLandService {
     // Delete
     public void deleteImageLand(int id) {
         imageLandRepository.deleteById(id);
+    }
+
+    public void deleteImageLandsByLandForSale(LandForSale landForSale) {
+        List<ImageLand> imageLands = imageLandRepository.findByLandForSale(landForSale);
+        imageLandRepository.deleteAll(imageLands);
     }
 }
 

@@ -44,9 +44,22 @@ public class User {
     @Column(nullable = true) // Add address field
     private Double balance;
 
+    @Column(nullable = true) // Add address field
+    private String phone;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Deposit> napTiens = new HashSet<>();
 
+
+    public User(String username, String password, String name, String address, String zoneking, String email, String phone) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.address = address;
+        this.zoneking = zoneking;
+        this.email = email;
+        this.phone = phone;
+    }
 
     public Double getBalance() {
         return balance;
