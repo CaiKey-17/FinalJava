@@ -8,6 +8,7 @@ import com.example.chuyentrang.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -77,6 +78,7 @@ public class NewsService {
         User user = userService.findById(userId);
         news.setAvailable(available);
         news.setBroker(user);
+        news.setPublishDate(LocalDateTime.now());
         News savedLand = newsRepository.save(news);
 
 
@@ -96,10 +98,16 @@ public class NewsService {
         return newsRepository.findAll();
     }
 
+    public List<News> listLandTop4() {
+        return newsRepository.findTop4News();  // Gọi phương thức từ repository để lấy 4 bản ghi
+    }
+
     public News findById(int id) {
         return newsRepository.findById(id).get();
     }
 
-
+    public News getLatestNews() {
+        return newsRepository.findLatestNews();
+    }
 
 }

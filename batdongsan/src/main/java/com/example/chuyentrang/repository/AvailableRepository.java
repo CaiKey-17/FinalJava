@@ -4,6 +4,7 @@ import com.example.chuyentrang.model.Available;
 import com.example.chuyentrang.model.Deposit;
 import com.example.chuyentrang.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,4 +20,9 @@ public interface AvailableRepository extends JpaRepository<Available, Integer> {
     Optional<Available> findByOrderIdAndBroker_Id(int orderId, Long brokerId);
 
     List<Available> findByExpirationDateBefore(LocalDateTime now);
+
+    @Query("SELECT a.packagee.name, COUNT(a.orderId) AS purchaseCount, SUM(a.total) AS totalRevenue " +
+            "FROM Available a " +
+            "GROUP BY a.packagee.name")
+    List<Object[]> getPackageStatistics();
 }

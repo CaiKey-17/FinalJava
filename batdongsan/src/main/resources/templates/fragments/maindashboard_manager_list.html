@@ -123,12 +123,12 @@
         <th>Loại Tin</th>
         <th>Pháp Lý</th>
         <th>Loại nhà</th>
-        <th>Hình Ảnh</th> <!-- Cột mới để hiển thị hình ảnh -->
+        <th>Hình Ảnh</th>
         <th>Tuỳ chọn</th>
     </tr>
     </thead>
     <tbody>
-    <!-- Lặp qua danh sách LandForSale từ model và hiển thị dữ liệu -->
+
     <tr th:each="land : ${landForSales}">
         <td th:text="${land.id}"></td>
         <td th:text="${land.name}"></td>
@@ -147,7 +147,7 @@
         <td th:text="${land.legal}"></td>
         <td th:text="${land.propertyType}"></td>
 
-        <!-- Hiển thị danh sách hình ảnh cho mỗi LandForSale -->
+
         <td>
             <ul>
                 <li th:each="image : ${land.images}">
@@ -167,7 +167,7 @@
 
 <h1>Các tin nhà đất cho thuê</h1>
 
-<!-- Tương tự đối với danh sách nhà đất cho thuê -->
+
 <table border="1" cellpadding="10">
     <thead>
     <tr>
@@ -208,14 +208,14 @@
         <td th:text="${land.legal}"></td>
         <td th:text="${land.propertyType}"></td>
 
-        <!-- Hiển thị hình ảnh cho mỗi LandForSale cho thuê -->
+
         <td>
             <ul>
 
 
 
                 <li th:each="image : ${land.images}">
-                    <!-- Hiển thị ảnh -->
+
                     <img th:src="@{${image.imageLink}}" alt="Image" width="100" height="75" />
 
 
@@ -235,7 +235,7 @@
 
 <h1>Các bài đăng tin tức</h1>
 
-<!-- Tương tự đối với danh sách nhà đất cho thuê -->
+
 <table border="1" cellpadding="10">
     <thead>
     <tr>
@@ -256,7 +256,7 @@
         <td>
             <ul>
                 <li th:each="image : ${news.images}">
-                    <!-- Hiển thị ảnh -->
+
                     <img th:src="@{${image.imageLink}}" alt="Image" width="100" height="75" />
 
 

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +37,28 @@ public class News {
     @ManyToOne
     @JoinColumn(name = "available_id")
     private Available available;
+
+    @Column(nullable = false)
+    private LocalDateTime publishDate;
+
+
+    private String formattedExpiry;
+
+    public String getFormattedExpiry() {
+        return formattedExpiry;
+    }
+
+    public void setFormattedExpiry(String formattedExpiry) {
+        this.formattedExpiry = formattedExpiry;
+    }
+
+    public LocalDateTime getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(LocalDateTime publishDate) {
+        this.publishDate = publishDate;
+    }
 
     public int getId() {
         return id;

@@ -26,7 +26,7 @@
 <body>
 <h1>Danh sách Người Dùng</h1>
 
-<!-- Bảng hiển thị danh sách người dùng -->
+
 <table border="1">
     <thead>
     <tr>
@@ -35,18 +35,18 @@
         <th>Tên</th>
         <th>Địa Chỉ</th>
         <th>Email</th>
-        <th>Số Dư</th>
+
     </tr>
     </thead>
     <tbody>
-    <!-- Duyệt qua danh sách người dùng và hiển thị từng người dùng -->
+
     <tr th:each="user : ${users}">
         <td th:text="${user.id}"></td>
         <td th:text="${user.username}"></td>
         <td th:text="${user.name}"></td>
         <td th:text="${user.address}"></td>
         <td th:text="${user.email}"></td>
-        <td th:text="${user.balance}"></td>
+
     </tr>
     </tbody>
 </table>

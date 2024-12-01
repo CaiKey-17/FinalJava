@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 
 @Controller()
 public class AdminController {
@@ -318,6 +319,22 @@ public class AdminController {
         model.addAttribute("message", "Đổi mật khẩu thành công.");
         return "redirect:/admin-change";
 
+    }
+
+    @Autowired
+    private StatisticsService statisticsService;
+
+    @GetMapping("/package-statistics")
+    public String getPackageStatistics(Model model) {
+        List<Map<String, Object>> statistics = statisticsService.getPackageStatistics();
+        model.addAttribute("statistics", statistics);
+        return "dashboard_manager_static";
+    }
+
+    @GetMapping("/package-statistics-data")
+    @ResponseBody
+    public List<Map<String, Object>> getPackageStatisticsData() {
+        return statisticsService.getPackageStatistics();
     }
 
 
