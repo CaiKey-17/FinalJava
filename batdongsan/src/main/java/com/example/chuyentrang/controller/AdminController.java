@@ -1,8 +1,8 @@
 package com.example.chuyentrang.controller;
 
-import com.example.chuyentrang.model.Available;
+import com.example.chuyentrang.model.*;
 import com.example.chuyentrang.model.Package;
-import com.example.chuyentrang.model.User;
+import com.example.chuyentrang.repository.AvailableRepository;
 import com.example.chuyentrang.repository.UserRepository;
 import com.example.chuyentrang.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -47,6 +44,20 @@ public class AdminController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private  ImageLandService imageLandService;
+
+
+    @Autowired
+    private  ImageNewsService imageNewsService;
+
+    @Autowired
+    private AvailableRepository availableRepository;
+
+    @Autowired
+    private LandForSaleService landForSaleService;
+
 
     @GetMapping("/admin")
     public String home(Model model) {
@@ -134,6 +145,64 @@ public class AdminController {
 
 
 
+    @GetMapping("/admin/delete/{id}")
+    public String deleteLand(@PathVariable int id) {
+        LandForSale land = landForSaleService.findById(id);
+        imageLandService.deleteImageLandsByLandForSale(land);
+        landForSaleService.deleteLandById(id);
+        return "redirect:/manager-list";
+    }
+
+    @GetMapping("/admin/delete/news/{id}")
+    public String deleteNews(@PathVariable int id) {
+        News land = newsService.findById(id);
+        imageNewsService.deleteImageLandsByNews(land);
+        newsService.deleteNews(id);
+        return "redirect:/manager-list";
+    }
+
+
+
+    @GetMapping("/manager-list")
+    public String manager_list(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            boolean isAdmin = authentication.getAuthorities().stream()
+                    .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+
+
+            if (isAdmin) {
+
+                Long id = userService.getId(username);
+                String name = userService.getName(username);
+                model.addAttribute("name", name);
+
+
+                List<LandForSale> landForSales = landForSaleService.listLandSold();
+                List<LandForSale> landForSales1 = landForSaleService.listLandRent();
+                List<News> news = newsService.listLand();
+
+                System.out.println(news.size());
+
+
+
+                model.addAttribute("news", news);
+
+                model.addAttribute("landForSales", landForSales);
+                model.addAttribute("landForRents", landForSales1);
+                model.addAttribute("id", id);
+                Double money = userService.getMoney(username);
+                model.addAttribute("money", money);
+
+
+                return "dashboard_manager_list";
+            }
+        }
+        return "redirect:/login";
+
+    }
     @GetMapping("/manager-history")
     public String magager_history(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

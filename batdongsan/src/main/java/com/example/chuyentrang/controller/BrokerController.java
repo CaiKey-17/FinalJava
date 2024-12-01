@@ -56,9 +56,18 @@ public class BrokerController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private  ImageLandService imageLandService;
 
 
+    @Autowired
+    private  ImageNewsService imageNewsService;
 
+    @Autowired
+    private AvailableRepository availableRepository;
+
+    @Autowired
+    private LandForSaleService landForSaleService;
 
 
 
@@ -194,8 +203,7 @@ public class BrokerController {
         return "redirect:/login";
 
     }
-    @Autowired
-    private LandForSaleService landForSaleService;
+
     @PostMapping("/post")
     public ResponseEntity<String> postLand(
             @RequestParam(value = "name") String name,
@@ -302,7 +310,52 @@ public class BrokerController {
     }
 
 
+    @PostMapping("/edit/{id}")
+    public ResponseEntity<String> updateLand(
+            @PathVariable("id") int id,
+            @RequestParam("name") String name,
+            @RequestParam("price") Double price,
+            @RequestParam("area") Double area,
+            @RequestParam("interior") String interior,
+            @RequestParam("numberOfToilets") Integer numberOfToilets,
+            @RequestParam("numberOfBedRooms") Integer numberOfBedRooms,
+            @RequestParam("description") String description,
+            @RequestParam("legal") String legal) {
 
+        try {
+            // Find the land for sale by ID
+            LandForSale landForSale = landForSaleService.findById(id);
+
+            // Update the land's details
+            landForSale.setName(name);
+            landForSale.setPrice(price);
+            landForSale.setArea(area);
+            landForSale.setInterior(interior);
+            landForSale.setNumberOfToilets(numberOfToilets);
+            landForSale.setNumberOfBedRooms(numberOfBedRooms);
+            landForSale.setDescription(description);
+            landForSale.setLegal(legal);
+
+
+
+            // Update the land in the database
+            landForSaleService.updateLandForSale(id, landForSale);
+
+            return ResponseEntity.ok("Update successful!");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
+        }
+    }
+
+
+
+
+    @GetMapping("/edit/{id}")
+    public String editLand(@PathVariable("id") int id, Model model) {
+        LandForSale landForSale = landForSaleService.findById(id);
+        model.addAttribute("landForSale", landForSale);
+        return "dashboard_cus_sua";  // Trả về trang JSP hoặc HTML để chỉnh sửa
+    }
 
 
     @GetMapping("/delete/{id}")
@@ -322,15 +375,7 @@ public class BrokerController {
     }
 
 
-    @Autowired
-    private  ImageLandService imageLandService;
 
-
-    @Autowired
-    private  ImageNewsService imageNewsService;
-
-    @Autowired
-    private AvailableRepository availableRepository;
 
 
 

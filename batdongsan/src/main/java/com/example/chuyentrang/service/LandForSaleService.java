@@ -33,6 +33,17 @@ public class LandForSaleService {
         return landForSaleRepository.findByBrokerIdAndTypeIn(userId, types);
     }
 
+
+    public List<LandForSale> listLandSold() {
+        List<String> types = Arrays.asList("Bán");
+        return landForSaleRepository.findByTypeIn( types);
+    }
+    public List<LandForSale> listLandRent() {
+        List<String> types = Arrays.asList( "Cho thuê");
+        return landForSaleRepository.findByTypeIn( types);
+    }
+
+
     public List<LandForSale> listLandByBrokerRent(Long userId) {
         List<String> types = Arrays.asList( "Cho thuê");
         return landForSaleRepository.findByBrokerIdAndTypeIn(userId, types);
@@ -55,12 +66,8 @@ public class LandForSaleService {
         l.setArea(updatedLandForSale.getArea());
         l.setName(updatedLandForSale.getName());
         l.setDescription(updatedLandForSale.getDescription());
-        l.setDistrict(updatedLandForSale.getDistrict());
-        l.setProvince(updatedLandForSale.getProvince());
         l.setInterior(updatedLandForSale.getInterior());
         l.setLegal(updatedLandForSale.getLegal());
-        l.setPropertyType(updatedLandForSale.getPropertyType());
-        l.setWard(updatedLandForSale.getWard());
         l.setPrice(updatedLandForSale.getPrice());
         l.setNumberOfBedRooms(updatedLandForSale.getNumberOfBedRooms());
         l.setNumberOfToilets(updatedLandForSale.getNumberOfToilets());

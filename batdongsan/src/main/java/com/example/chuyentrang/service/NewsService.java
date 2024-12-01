@@ -92,6 +92,10 @@ public class NewsService {
         return newsRepository.findByBrokerId(userId);
     }
 
+    public List<News> listLand() {
+        return newsRepository.findAll();
+    }
+
     public News findById(int id) {
         return newsRepository.findById(id).get();
     }
