@@ -24,11 +24,11 @@
     <tr th:each="available : ${availableList}">
         <td th:text="${available.orderId}"></td>
         <td th:text="${available.statusPayment}"></td>
-        <!-- Hiển thị purchaseDate đã được định dạng -->
+
         <td th:text="${available.formattedPurchase}"></td>
         <td th:text="${available.quantityAvailable}"></td>
         <td th:text="${available.total}"></td>
-        <!-- Hiển thị expirationDate đã được định dạng -->
+
         <td th:text="${available.formattedExpiry}"></td>
     </tr>
     </tbody>

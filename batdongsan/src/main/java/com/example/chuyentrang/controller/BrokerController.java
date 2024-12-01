@@ -323,10 +323,10 @@ public class BrokerController {
             @RequestParam("legal") String legal) {
 
         try {
-            // Find the land for sale by ID
+
             LandForSale landForSale = landForSaleService.findById(id);
 
-            // Update the land's details
+
             landForSale.setName(name);
             landForSale.setPrice(price);
             landForSale.setArea(area);
@@ -338,7 +338,7 @@ public class BrokerController {
 
 
 
-            // Update the land in the database
+
             landForSaleService.updateLandForSale(id, landForSale);
 
             return ResponseEntity.ok("Update successful!");
@@ -354,7 +354,7 @@ public class BrokerController {
     public String editLand(@PathVariable("id") int id, Model model) {
         LandForSale landForSale = landForSaleService.findById(id);
         model.addAttribute("landForSale", landForSale);
-        return "dashboard_cus_sua";  // Trả về trang JSP hoặc HTML để chỉnh sửa
+        return "dashboard_cus_sua";
     }
 
 
@@ -617,8 +617,6 @@ public class BrokerController {
 
 
 
-
-
                 model.addAttribute("name", name);
                 model.addAttribute("id", id);
                 Double money = userService.getMoney(username);
@@ -650,19 +648,19 @@ public class BrokerController {
         System.out.println(userId);
         if (user == null) {
             model.addAttribute("error", "User not found.");
-            return "dashboard_customer_change";
+            return "dashboard_cus_change";
         }
 
 
         if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
             model.addAttribute("error", "Mật khẩu hiện tại không đúng.");
-            return "dashboard_customer_change";
+            return "dashboard_cus_change";
         }
 
 
         if (!newPassword.equals(confirmPassword)) {
             model.addAttribute("error", "Mật khẩu mới không khớp.");
-            return "dashboard_customer_change";
+            return "dashboard_cus_change";
         }
 
 

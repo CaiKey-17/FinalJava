@@ -86,6 +86,20 @@
         .btn:hover {
             background-color: #ff3333;
         }
+        .quick-select-section div {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    width: 18%;
+    cursor: pointer;
+    margin: 18px;
+}
+        .bank-section img {
+    max-width: 120px;
+    cursor: pointer;
+    margin: 20px;
+}
     </style>
 </head>
 <body>
@@ -93,14 +107,14 @@
 <div class="container">
     <h1>Nạp Tiền Vào Tài Khoản</h1>
 
-    <!-- Nhập số tiền muốn nạp -->
+
     <div class="input-section">
         <label for="deposit-amount">Nhập số tiền bạn muốn nạp (đ)</label>
         <input type="number" id="deposit-amount" placeholder="Nhập số tiền nạp...">
         <small>Nhập từ 2.000.000 đ để được nhận khuyến mãi</small>
     </div>
 
-    <!-- Chọn số tiền nhanh -->
+
     <div class="quick-select-section">
         <div onclick="setAmount(500000)">500.000 đ</div>
         <div onclick="setAmount(1000000)">1.000.000 đ</div>
@@ -110,7 +124,7 @@
         <div onclick="setAmount(10000000)">10.000.000 đ</div>
     </div>
 
-    <!-- Chọn ngân hàng -->
+
     <div class="bank-section">
         <img src="https://batdongsan.com.vn/sellernet/static/media/vietcombank.09686245.jpg" alt="Vietcombank">
         <img src="https://batdongsan.com.vn/sellernet/static/media/sacombank.cb5dea80.jpg" alt="Sacombank">
@@ -119,7 +133,7 @@
         <img src="https://batdongsan.com.vn/sellernet/static/media/tpbank.1aa7da2c.jpg" alt="VietinBank">
     </div>
 
-    <!-- Footer và thông tin -->
+
     <div class="footer">
         <div class="checkbox-section">
             <input type="checkbox" id="agree">

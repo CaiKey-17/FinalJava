@@ -1,32 +1,106 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Change Password</title>
+    <title>Đổi mật khẩu</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+
+        form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        form input[type="password"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        div[th\\:if] {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            form {
+                padding: 15px;
+            }
+
+            form label {
+                font-size: 12px;
+            }
+
+            form input,
+            form button {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>Change Password</h1>
+<h1>Đổi mật khẩu</h1>
 
-<!-- Form thay đổi mật khẩu -->
 <form th:action="@{/customer-change-password}" method="post">
-    <!-- ID người dùng để xử lý thay đổi mật khẩu -->
     <input type="hidden" name="id" th:value="${id}" />
-    <!-- Nhập mật khẩu hiện tại -->
-    <label for="currentPassword">Current Password:</label>
+    <label for="currentPassword">Mật khẩu hiện tại:</label>
     <input type="password" id="currentPassword" name="currentPassword" required />
 
-    <!-- Nhập mật khẩu mới -->
-    <label for="newPassword">New Password:</label>
+    <label for="newPassword">Mật khẩu mới:</label>
     <input type="password" id="newPassword" name="newPassword" required />
 
-    <!-- Xác nhận mật khẩu mới -->
-    <label for="confirmPassword">Confirm New Password:</label>
+    <label for="confirmPassword">Xác nhận mật khẩu mới:</label>
     <input type="password" id="confirmPassword" name="confirmPassword" required />
 
-    <!-- Nút thay đổi -->
-    <button type="submit">Change Password</button>
+    <button type="submit">Thay đổi</button>
 </form>
 
-<!-- Hiển thị thông báo lỗi nếu có -->
 <div th:if="${error}" style="color: red;">
     <p th:text="${error}"></p>
 </div>
