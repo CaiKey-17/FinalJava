@@ -139,8 +139,8 @@
         <td th:text="${land.ward}"></td>
         <td th:text="${land.numberOfBedRooms}"></td>
         <td th:text="${land.interior}"></td>
-
         <td th:text="${land.numberOfToilets}"></td>
+
         <td th:utext="${land.description}"></td>
         <td th:text="${land.datePosted}"></td>
         <td th:text="${land.type}"></td>
@@ -159,7 +159,7 @@
         <td>
             <a th:href="@{/edit/{id}(id=${land.id})}">Sửa</a>
 
-            <a th:href="@{/delete/{id}(id=${land.id})}" onclick="return confirm('Bạn có chắc chắn muốn xoá?')">Xoá</a>
+            <a th:href="@{/admin/delete/{id}(id=${land.id})}" onclick="return confirm('Bạn có chắc chắn muốn xoá?')">Xoá</a>
         </td>
     </tr>
     </tbody>
@@ -179,8 +179,8 @@
         <th>Quận/Huyện</th>
         <th>Phường/Xã</th>
         <th>Số Phòng Ngủ</th>
-        <th>Nội thất</th>
         <th>Số Phòng Tắm</th>
+        <th>Nội thất</th>
         <th>Mô Tả</th>
         <th>Ngày Đăng</th>
         <th>Loại Tin</th>
@@ -201,7 +201,6 @@
         <td th:text="${land.ward}"></td>
         <td th:text="${land.numberOfBedRooms}"></td>
         <td th:text="${land.interior}"></td>
-
         <td th:text="${land.numberOfToilets}"></td>
         <td th:utext="${land.description}"></td>
         <td th:text="${land.datePosted}"></td>
@@ -226,7 +225,7 @@
 
         <td>
             <a th:href="@{/edit/{id}(id=${land.id})}">Sửa</a>
-            <a th:href="@{/delete/{id}(id=${land.id})}" onclick="return confirm('Bạn có chắc chắn muốn xoá?')">Xoá</a>
+            <a th:href="@{/admin/delete/{id}(id=${land.id})}" onclick="return confirm('Bạn có chắc chắn muốn xoá?')">Xoá</a>
         </td>
     </tr>
     </tbody>
@@ -254,9 +253,6 @@
         <td th:text="${news.title}"></td>
         <td th:text="${news.summaryOfContent}"></td>
         <td th:utext="${news.content}"></td>
-
-
-         Hiển thị hình ảnh cho mỗi LandForSale cho thuê
         <td>
             <ul>
                 <li th:each="image : ${news.images}">
@@ -270,7 +266,7 @@
         </td>
 
         <td>
-            <a th:href="@{/delete/news/{id}(id=${news.id})}" onclick="return confirm('Bạn có chắc chắn muốn xoá?')">Xoá</a>
+            <a th:href="@{/admin/delete/news/{id}(id=${news.id})}" onclick="return confirm('Bạn có chắc chắn muốn xoá?')">Xoá</a>
         </td>
     </tr>
     </tbody>
