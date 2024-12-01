@@ -17,19 +17,19 @@ import java.time.LocalDateTime;
 public class Deposit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // ID của giao dịch nạp tiền
+    private Long id;
 
     @Column(nullable = false)
-    private Double soTien; // Số tiền nạp
+    private Double soTien;
 
     @Column(nullable = false)
-    private LocalDateTime ngayNap; // Ngày nạp tiền
+    private LocalDateTime ngayNap;
 
     @Column(nullable = false)
-    private String tinhTrangThanhToan; // Tình trạng thanh toán (VD: "Đã thanh toán", "Chưa thanh toán")
+    private String tinhTrangThanhToan;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false) // Liên kết với bảng User
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     public Deposit(Double soTien, LocalDateTime ngayNap, String tinhTrangThanhToan, User user) {

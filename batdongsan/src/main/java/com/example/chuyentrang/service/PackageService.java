@@ -12,12 +12,12 @@ public class PackageService {
     @Autowired
     private PackageRepository packageRepository;
 
-    // Create
+
     public Package createPackage(Package packagee) {
         return packageRepository.save(packagee);
     }
 
-    // Read
+
     public Optional<Package> getPackageById(int id) {
         return packageRepository.findById(id);
     }
@@ -26,16 +26,16 @@ public class PackageService {
         return packageRepository.findAll();
     }
 
-    // Update
+
     public Package updatePackage(int id, Package updatedPackage) {
         return packageRepository.findById(id)
                 .map(existingPackage -> {
-                    // Update fields here
+
                     return packageRepository.save(existingPackage);
                 }).orElseThrow(() -> new RuntimeException("Package not found"));
     }
 
-    // Delete
+
     public void deletePackage(int id) {
         packageRepository.deleteById(id);
     }

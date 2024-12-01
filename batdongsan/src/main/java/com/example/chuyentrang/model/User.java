@@ -28,24 +28,40 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
 
-    @Column(nullable = true) // Add name field
+    @Column(nullable = true)
     private String name;
 
-    @Column(nullable = true) // Add address field
+    @Column(nullable = true)
     private String address;
 
 
-    @Column(nullable = true) // Add address field
+    @Column(nullable = true)
     private String zoneking;
 
-    @Column(nullable = true) // Add address field
+    @Column(nullable = true)
     private String email;
 
-    @Column(nullable = true) // Add address field
+    @Column(nullable = true)
     private Double balance;
 
-    @Column(nullable = true) // Add address field
+    @Column(nullable = true)
     private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Set<Deposit> getNapTiens() {
+        return napTiens;
+    }
+
+    public void setNapTiens(Set<Deposit> napTiens) {
+        this.napTiens = napTiens;
+    }
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Deposit> napTiens = new HashSet<>();
@@ -59,6 +75,7 @@ public class User {
         this.zoneking = zoneking;
         this.email = email;
         this.phone = phone;
+        this.balance = 0.0;
     }
 
     public Double getBalance() {

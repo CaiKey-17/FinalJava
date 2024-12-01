@@ -13,4 +13,3 @@ public class ChuyentrangApplication {
 	}
 
 }
-//https://demo.bootstrapdash.com/purple-admin-free/pages/forms/basic_elements.html

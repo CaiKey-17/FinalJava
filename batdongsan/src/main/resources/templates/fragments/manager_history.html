@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Gói Tin</title>
+
 </head>
 <body>
-<h1>Lịch sử...</h1>
+<h1>Danh Sách Gói Tin Của Người Dùng</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Hoá đơn</th>
+        <th>Tình trạng</th>
+        <th>Ngày mua</th>
+        <th>Số lượng khả dụng</th>
+        <th>Tổng tiền</th>
+        <th>Ngày hết hạn</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="available : ${availableList}">
+        <td th:text="${available.orderId}"></td>
+        <td th:text="${available.statusPayment}"></td>
+        <!-- Hiển thị purchaseDate đã được định dạng -->
+        <td th:text="${available.formattedPurchase}"></td>
+        <td th:text="${available.quantityAvailable}"></td>
+        <td th:text="${available.total}"></td>
+        <!-- Hiển thị expirationDate đã được định dạng -->
+        <td th:text="${available.formattedExpiry}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
 </body>
 </html>

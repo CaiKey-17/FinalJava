@@ -18,18 +18,7 @@ public class Available {
     private int quantityAvailable;
     private Double total;
     private LocalDateTime expirationDate;
-//
-//    @OneToMany(mappedBy = "news_id", cascade = CascadeType.ALL)
-//    private List<News> newsList;
-//
-//    @OneToMany(mappedBy = "landForSale_id", cascade = CascadeType.ALL)
-//    private List<LandForSale> landForSaleList;
-//
-//    @OneToMany(mappedBy = "project_id", cascade = CascadeType.ALL)
-//    private List<Project> projectList;
-//
-//    @OneToMany(mappedBy = "landForRent", cascade = CascadeType.ALL)
-//    private List<LandForRent> landForRentList;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

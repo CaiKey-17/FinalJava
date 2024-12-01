@@ -20,12 +20,12 @@ public class NewsService {
     private NewsRepository newsRepository;
 
 
-    // Create
+
     public News createNews(News news) {
         return newsRepository.save(news);
     }
 
-    // Read
+
     public Optional<News> getNewsById(int id) {
         return newsRepository.findById(id);
     }
@@ -34,16 +34,16 @@ public class NewsService {
         return newsRepository.findAll();
     }
 
-    // Update
+
     public News updateNews(int id, News updatedNews) {
         return newsRepository.findById(id)
                 .map(existingNews -> {
-                    // Update fields here
+
                     return newsRepository.save(existingNews);
                 }).orElseThrow(() -> new RuntimeException("News not found"));
     }
 
-    // Delete
+
     public void deleteNews(int id) {
         newsRepository.deleteById(id);
     }
@@ -60,26 +60,26 @@ public class NewsService {
 
 
     public void postedNews(News news, Long userId, int availableId, List<String> imageLinks) {
-        // Tìm Available dựa trên availableId và userId
+
         Available available = availableRepository.findByOrderIdAndBroker_Id(availableId, userId)
                 .orElseThrow(() -> new IllegalArgumentException("Available not found or does not belong to user"));
 
-        // Kiểm tra số lượng còn khả dụng
+
         if (available.getQuantityAvailable() <= 0) {
             throw new IllegalArgumentException("No available quantity left for posting.");
         }
 
-        // Trừ quantityAvailable
+
         available.setQuantityAvailable(available.getQuantityAvailable() - 1);
         availableRepository.save(available);
 
-        // Lưu LandForSale
+
         User user = userService.findById(userId);
         news.setAvailable(available);
         news.setBroker(user);
         News savedLand = newsRepository.save(news);
 
-        // Lưu danh sách ảnh
+
         if (imageLinks != null && !imageLinks.isEmpty()) {
             List<ImageNews> imageLands = imageLinks.stream()
                     .map(link -> new ImageNews(link, savedLand))

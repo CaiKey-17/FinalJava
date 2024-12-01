@@ -43,27 +43,27 @@ public class DepositService {
     }
 
     public void createDeposit(Long userId, Double amount) throws Exception {
-        // Lấy thông tin User từ database
+
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new Exception("User not found"));
 
-        // Kiểm tra số tiền nạp
+
         if (amount <= 0) {
             throw new Exception("Invalid deposit amount");
         }
 
-        // Tăng số dư của người dùng
+
         user.setBalance((user.getBalance() != null ? user.getBalance() : 0) + amount);
         userRepository.save(user);
 
-        // Tạo đối tượng Deposit
+
         Deposit deposit = new Deposit();
         deposit.setSoTien(amount);
         deposit.setNgayNap(LocalDateTime.now());
-        deposit.setTinhTrangThanhToan("Đã thanh toán"); // Giả sử đã thanh toán thành công
+        deposit.setTinhTrangThanhToan("Đã thanh toán");
         deposit.setUser(user);
 
-        // Lưu thông tin nạp tiền vào database
+
         depositRepository.save(deposit);
     }
 
