@@ -39,15 +39,19 @@ public class AvailableService {
         return availableRepository.findById(id).get();
     }
 
-    @Scheduled(cron = "0 0 0 * * *") // Lên lịch mỗi ngày vào lúc nửa đêm
+    @Scheduled(cron = "0 0 0 * * *")
     public void deleteExpiredAvailable() {
         LocalDateTime now = LocalDateTime.now();
 
-        // Lấy danh sách tất cả các bản ghi 'Available' có expirationDate nhỏ hơn ngày hiện tại
+
         List<Available> expiredAvailableList = availableRepository.findByExpirationDateBefore(now);
 
-        // Xoá các bản ghi này khỏi cơ sở dữ liệu
+
         availableRepository.deleteAll(expiredAvailableList);
         System.out.println("Đã xoá các bản ghi 'Available' hết hạn.");
+    }
+
+    public List<Available> findAllAvailable() {
+        return availableRepository.findAll();
     }
 }

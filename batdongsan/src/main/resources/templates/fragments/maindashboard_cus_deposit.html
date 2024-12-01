@@ -134,45 +134,46 @@
 
 <script>
     let depositAmount = 0;
-  let userId = document.getElementById("userId").value;
+   let userId = document.getElementById("userId").value;
 
-  // Set amount when selecting quick options
-  function setAmount(amount) {
-      depositAmount = amount;
-      // Đảm bảo chuyển số thành định dạng có dấu phân cách
-      document.getElementById("deposit-amount").value = depositAmount.toLocaleString('vi-VN');
-  }
+   // Set amount when selecting quick options
+   function setAmount(amount) {
+       depositAmount = amount;
+       // Remove thousands separator and set the value in a valid number format
+       document.getElementById("deposit-amount").value = depositAmount;
+   }
 
-  // Submit deposit form
-  function submitDeposit() {
-      // Lấy giá trị số tiền từ input, loại bỏ dấu phân cách nếu có
-      const amountString = document.getElementById("deposit-amount").value;
-      const cleanedAmount = parseInt(amountString.replace(/[^0-9]/g, ''), 10); // Xóa dấu phân cách và lấy giá trị số
+   // Submit deposit form
+   function submitDeposit() {
+       // Get the value of the deposit amount, remove any formatting (commas or dots)
+       const amountString = document.getElementById("deposit-amount").value;
+       const cleanedAmount = parseInt(amountString.replace(/[^0-9]/g, ''), 10); // Remove non-numeric characters
 
-      if (!cleanedAmount || cleanedAmount <= 0) {
-          alert("Vui lòng nhập số tiền hợp lệ.");
-          return;
-      }
+       if (!cleanedAmount || cleanedAmount <= 0) {
+           alert("Vui lòng nhập số tiền hợp lệ.");
+           return;
+       }
 
-      // Cập nhật giá trị depositAmount
-      depositAmount = cleanedAmount;
+       // Update the depositAmount
+       depositAmount = cleanedAmount;
 
-      // Make API request
-      fetch(`/customer/deposits/user/${userId}?amount=${depositAmount}`, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-      })
-      .then(response => response.text())
-      .then(data => {
-          alert(data);  // Show the response from the server (Success or error message)
-      })
-      .catch(error => {
-          console.error('Error:', error);
-          alert('Có lỗi xảy ra. Vui lòng thử lại.');
-      });
-  }
+       // Make API request
+       fetch(`/customer/deposits/user/${userId}?amount=${depositAmount}`, {
+           method: 'POST',
+           headers: {
+               'Content-Type': 'application/json',
+           },
+       })
+       .then(response => response.text())
+       .then(data => {
+           alert(data);  // Show the response from the server (Success or error message)
+       })
+       .catch(error => {
+           console.error('Error:', error);
+           alert('Có lỗi xảy ra. Vui lòng thử lại.');
+       });
+   }
+
 
 </script>
 

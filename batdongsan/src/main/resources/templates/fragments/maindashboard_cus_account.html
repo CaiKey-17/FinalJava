@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Account</title>
+</head>
+<body>
+<h1>Customer Account</h1>
+<form th:action="@{/customer-account/update}" method="post">
+    <input type="hidden" th:value="${user.id}" name="id" />
+
+    <label for="username">Tài khoản:</label>
+    <input type="text" id="username" name="username" th:value="${user.username}" readonly />
+
+    <label for="name">Tên:</label>
+    <input type="text" id="name" name="name" th:value="${user.name}" />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" th:value="${user.email}" />
+
+    <label for="phone">Số điện thoại:</label>
+    <input type="text" id="phone" name="phone" th:value="${user.phone}" />
+
+    <label for="address">Địa chỉ:</label>
+    <input type="text" id="address" name="address" th:value="${user.address}" />
+
+    <label for="zoneking">Vùng hoạt động:</label>
+    <input type="text" id="zoneking" name="zoneking" th:value="${user.zoneking}" />
+
+    <label for="balance">Số dư:</label>
+    <input type="number" id="balance" name="balance" th:value="${user.balance}" readonly />
+
+    <button type="submit">Lưu thay đổi</button>
+</form>
+</body>
+</html>

@@ -20,7 +20,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        // Lấy token từ cookie
+
         String token = null;
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
@@ -32,7 +32,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
 
-        // Nếu không có cookie, lấy token từ header
+
         if (token == null) {
             token = request.getHeader("Authorization");
             if (token != null && token.startsWith("Bearer ")) {
@@ -45,7 +45,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
 
-        filterChain.doFilter(request, response); // Tiếp tục chuỗi filter
+
+        filterChain.doFilter(request, response);
     }
 }
 

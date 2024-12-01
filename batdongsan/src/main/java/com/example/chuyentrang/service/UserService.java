@@ -20,44 +20,39 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // Phương thức đăng nhập xác thực người dùng
+
     public boolean authenticateUser(String username, String password) {
-        // Tìm người dùng trong cơ sở dữ liệu
+
         User user = userRepository.findByUsername(username);
         if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-            return true; // Xác thực thành công
+            return true;
         }
-        return false; // Tài khoản hoặc mật khẩu không đúng
+        return false;
     }
 
-    // Phương thức đăng ký người dùng
+
     public boolean registerUser(User user, String roleName) {
-        // Kiểm tra xem tên người dùng đã tồn tại chưa
+
         if (userRepository.findByUsername(user.getUsername()) != null) {
-            return false;  // Tên người dùng đã tồn tại
+            return false;
         }
 
-        // Mã hóa mật khẩu người dùng
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        // Tìm vai trò tương ứng theo roleName
-        // Giả sử bạn đã có logic để gán vai trò cho người dùng
-        // user.setRole(roleRepository.findByName(roleName));
-
-        // Lưu người dùng vào cơ sở dữ liệu
         userRepository.save(user);
         return true;
     }
 
 
     public String getUserRole(String username) {
-        // Tìm người dùng theo username
+
         User user = userRepository.findByUsername(username);
         if (user != null && !user.getRoles().isEmpty()) {
-            // Trả về vai trò đầu tiên (nếu người dùng có nhiều vai trò, cần xử lý thêm)
+
             return user.getRoles().iterator().next().getRoleName();
         }
-        return null; // Không tìm thấy vai trò
+        return null;
     }
 
 

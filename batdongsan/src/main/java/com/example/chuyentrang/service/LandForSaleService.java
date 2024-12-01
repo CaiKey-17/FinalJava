@@ -22,7 +22,7 @@ public class LandForSaleService {
     @Autowired
     private LandForSaleRepository landForSaleRepository;
 
-    // Create
+
     public LandForSale createLandForSale(LandForSale landForSale) {
         return landForSaleRepository.save(landForSale);
     }
@@ -40,7 +40,7 @@ public class LandForSaleService {
 
 
 
-    // Read
+
     public Optional<LandForSale> getLandForSaleById(int id) {
         return landForSaleRepository.findById(id);
     }
@@ -49,7 +49,7 @@ public class LandForSaleService {
         return landForSaleRepository.findAll();
     }
 
-    // Update
+
     public void updateLandForSale(int id, LandForSale updatedLandForSale) {
         LandForSale l  =landForSaleRepository.findById(id).get();
         l.setArea(updatedLandForSale.getArea());
@@ -76,7 +76,7 @@ public class LandForSaleService {
         landForSaleRepository.deleteById(id);
     }
 
-    // Delete
+
     public void deleteLandForSale(int id) {
         landForSaleRepository.deleteById(id);
     }
@@ -94,26 +94,26 @@ public class LandForSaleService {
 
 
     public void postLandForSale(LandForSale landForSale, Long userId, int availableId, List<String> imageLinks) {
-        // Tìm Available dựa trên availableId và userId
+
         Available available = availableRepository.findByOrderIdAndBroker_Id(availableId, userId)
                 .orElseThrow(() -> new IllegalArgumentException("Available not found or does not belong to user"));
 
-        // Kiểm tra số lượng còn khả dụng
+
         if (available.getQuantityAvailable() <= 0) {
             throw new IllegalArgumentException("No available quantity left for posting.");
         }
 
-        // Trừ quantityAvailable
+
         available.setQuantityAvailable(available.getQuantityAvailable() - 1);
         availableRepository.save(available);
 
-        // Lưu LandForSale
+
         User user = userService.findById(userId);
         landForSale.setAvailable(available);
         landForSale.setBroker(user);
         LandForSale savedLand = landForSaleRepository.save(landForSale);
 
-        // Lưu danh sách ảnh
+
         if (imageLinks != null && !imageLinks.isEmpty()) {
             List<ImageLand> imageLands = imageLinks.stream()
                     .map(link -> new ImageLand(link, savedLand))

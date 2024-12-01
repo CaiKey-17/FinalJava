@@ -17,12 +17,12 @@ public class ImageNewsService {
     @Autowired
     private ImageNewsRepository imageNewsRepository;
 
-    // Create
+
     public ImageNews createImageNews(ImageNews imageNews) {
         return imageNewsRepository.save(imageNews);
     }
 
-    // Read
+
     public Optional<ImageNews> getImageNewsById(int id) {
         return imageNewsRepository.findById(id);
     }
@@ -31,7 +31,7 @@ public class ImageNewsService {
         return imageNewsRepository.findAll();
     }
 
-    // Update
+
     public ImageNews updateImageNews(int id, ImageNews updatedImageNews) {
         return imageNewsRepository.findById(id)
                 .map(existingImageNews -> {
@@ -40,7 +40,7 @@ public class ImageNewsService {
                 }).orElseThrow(() -> new RuntimeException("ImageNews not found"));
     }
 
-    // Delete
+
     public void deleteImageNews(int id) {
         imageNewsRepository.deleteById(id);
     }

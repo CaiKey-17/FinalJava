@@ -33,22 +33,22 @@ public class JwtTokenUtil {
 
     private static final String SECRET_KEY = "UIY89JSPAdXTF7B8P4MQULxr28UEr4vKE7LDH5pmekBqimsQKHAt5Yf3Vo9U3BAmx9xRJ1AqiTetIjx1oUsErbbA3fGH4xTqxc4rVz7gxeR7h45Zj6mX"; // Secret key
 
-    // Tạo token
+
     public static String createToken(String username, String role) throws JOSEException {
-        // Tạo JWT claims
+
         JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
                 .subject(username)
-                .claim("role", role) // Thêm vai trò
+                .claim("role", role)
                 .issueTime(new Date())
-                .expirationTime(new Date(System.currentTimeMillis() + 2 * 60 * 1000))  // 2 phút
+                .expirationTime(new Date(System.currentTimeMillis() + 2 * 60 * 1000))
 
                 .build();
 
-        // Tạo header và signer
-        JWSHeader header = new JWSHeader(JWSAlgorithm.HS256); // Sử dụng HMAC với SHA-256
+
+        JWSHeader header = new JWSHeader(JWSAlgorithm.HS256);
         MACSigner signer = new MACSigner(SECRET_KEY.getBytes());
 
-        // Tạo JWT
+
         SignedJWT signedJWT = new SignedJWT(header, claimsSet);
         signedJWT.sign(signer);
 
@@ -60,7 +60,7 @@ public class JwtTokenUtil {
         try {
             SignedJWT signedJWT = SignedJWT.parse(token);
             JWTClaimsSet claims = signedJWT.getJWTClaimsSet();
-            return claims.getStringClaim("role");  // Lấy role từ token
+            return claims.getStringClaim("role");
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -68,13 +68,13 @@ public class JwtTokenUtil {
     }
 
 
-    // Xác minh token
+
     public static boolean verifyToken(String token) {
         try {
             SignedJWT signedJWT = SignedJWT.parse(token);
             MACVerifier verifier = new MACVerifier(SECRET_KEY.getBytes());
 
-            // Kiểm tra xem token có hợp lệ không
+
             return signedJWT.verify(verifier);
         } catch (ParseException | JOSEException e) {
             e.printStackTrace();
@@ -82,7 +82,7 @@ public class JwtTokenUtil {
         return false;
     }
 
-    // Lấy thông tin người dùng từ token
+
     public static String getUsernameFromToken(String token) {
         try {
             SignedJWT signedJWT = SignedJWT.parse(token);
