@@ -27,9 +27,13 @@ public class NewsService {
     }
 
 
-    public Optional<News> getNewsById(int id) {
-        return newsRepository.findById(id);
+
+    public News getNewsById(int id) {
+        return newsRepository.findById(id).orElse(null);
     }
+
+
+
 
     public Iterable<News> getAllNewss() {
         return newsRepository.findAll();
