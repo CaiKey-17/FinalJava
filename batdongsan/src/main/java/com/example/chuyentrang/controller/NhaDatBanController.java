@@ -14,4 +14,5 @@ public class NhaDatBanController {
     public String chitietnhadatban() {
         return "detail/detail_nha_dat_ban";
     }
+
 }

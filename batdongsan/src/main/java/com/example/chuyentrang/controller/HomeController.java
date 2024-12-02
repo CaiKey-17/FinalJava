@@ -48,6 +48,57 @@ public class HomeController {
         return "dashboardAccount";
     }
 
+    @GetMapping("/chitiet-tin-tuc/{id}")
+    public String chitiettintuc(@PathVariable("id") int id, Model model) {
+        News newsDetail = newsService.getNewsById(id); // Tìm tin tức theo ID
+        if (newsDetail == null) {
+            return "redirect:/tin-tuc"; // Quay lại danh sách tin tức nếu không tìm thấy
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+        if (newsDetail.getPublishDate() != null) {
+            String formattedDate = newsDetail.getPublishDate().format(formatter);
+            newsDetail.setFormattedExpiry(formattedDate);
+        }
+
+        List<News> news = newsService.listLand();
+
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+
+        Collections.sort(news, new Comparator<News>() {
+            @Override
+            public int compare(News n1, News n2) {
+                if (n1.getPublishDate() == null || n2.getPublishDate() == null) {
+                    return 0;
+                }
+                return n1.getPublishDate().compareTo(n2.getPublishDate());
+            }
+        });
+
+        Collections.sort(news, (n1, n2) -> {
+            if (n1.getPublishDate() == null || n2.getPublishDate() == null) {
+                return 0;
+            }
+            return n2.getPublishDate().compareTo(n1.getPublishDate());
+        });
+
+
+        for (News news1 : news) {
+            if (news1.getPublishDate() != null) {
+                String formattedPurchase = news1.getPublishDate().format(formatter1);
+                news1.setFormattedExpiry(formattedPurchase);
+            }
+        }
+
+
+        model.addAttribute("newsDetail", newsDetail); // Thêm tin tức vào model
+        model.addAttribute("news", news);
+
+        return "chitiet_tin_tuc"; // Trả về trang chi tiết tin tức
+    }
+
+
     @GetMapping("/tin-tuc")
     public String tintuc(Model model) {
 
