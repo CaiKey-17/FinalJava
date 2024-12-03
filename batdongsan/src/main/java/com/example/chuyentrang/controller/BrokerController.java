@@ -222,6 +222,8 @@ public class BrokerController {
             @RequestParam(value = "propertyType") String propertyType,
             @RequestParam(value = "userId") Long userId,
             @RequestParam(value = "availableId") Integer availableId,
+            @RequestParam(value = "latitude") Double latitude,
+            @RequestParam(value = "longitude") Double longitude,
             @RequestParam(value = "imageLinks", required = false) List<MultipartFile> imageLinks) {
 
         try {
@@ -248,6 +250,8 @@ public class BrokerController {
             landForSale.setDatePosted(datePosted);
             landForSale.setType(type);
             landForSale.setLegal(legal);
+            landForSale.setLatitude(latitude);
+            landForSale.setLongitude(longitude);
             landForSale.setPropertyType(propertyType);
 
 
