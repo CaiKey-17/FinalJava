@@ -5,7 +5,11 @@ import com.example.chuyentrang.model.User;
 import com.example.chuyentrang.repository.DepositRepository;
 import com.example.chuyentrang.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -42,6 +46,12 @@ public class DepositService {
         }
     }
 
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    private static final String DEPOSIT_SERVICE_URL = "http://localhost:8081/deposits/user/";
+
     public void createDeposit(Long userId, Double amount) throws Exception {
 
         User user = userRepository.findById(userId)
@@ -56,15 +66,28 @@ public class DepositService {
         user.setBalance((user.getBalance() != null ? user.getBalance() : 0) + amount);
         userRepository.save(user);
 
+        String url = DEPOSIT_SERVICE_URL + userId + "?amount=" + amount;
+        restTemplate.postForObject(url, null, String.class);
+//
+//        Deposit deposit = new Deposit();
+//        deposit.setSoTien(amount);
+//        deposit.setNgayNap(LocalDateTime.now());
+//        deposit.setTinhTrangThanhToan("Đã thanh toán");
+//        deposit.setUser(user);
 
-        Deposit deposit = new Deposit();
-        deposit.setSoTien(amount);
-        deposit.setNgayNap(LocalDateTime.now());
-        deposit.setTinhTrangThanhToan("Đã thanh toán");
-        deposit.setUser(user);
+
+//        depositRepository.save(deposit);
+    }
 
 
-        depositRepository.save(deposit);
+    public List<Deposit> getCustomerHistory(Long userId) {
+        String url = DEPOSIT_SERVICE_URL + userId;
+
+        ResponseEntity<List<Deposit>> response = restTemplate.exchange(
+                url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Deposit>>() {}
+        );
+
+        return response.getBody();
     }
 
 

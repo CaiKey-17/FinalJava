@@ -193,7 +193,8 @@ public class BrokerController {
                 model.addAttribute("name", name);
 
                 Long id = userService.getId(username);
-                List<Deposit> depositList = depositService.customer_history(id);
+
+                List<Deposit> depositList = depositService.getCustomerHistory(id);
                 model.addAttribute("depositList", depositList);
                 Double money = userService.getMoney(username);
                 model.addAttribute("money", money);
@@ -589,7 +590,7 @@ public class BrokerController {
                 Long id = userService.getId(username);
                 String name = userService.getName(username);
                 model.addAttribute("name", name);
-                List<Deposit> depositList = depositService.customer_history(id);
+                List<Deposit> depositList = depositService.getCustomerHistory(id);
                 model.addAttribute("depositList", depositList);
                 model.addAttribute("id", id);
                 Double money = userService.getMoney(username);
