@@ -94,13 +94,19 @@
             margin-top: 10px;
             font-weight: bold;
         }
+        .expired {
+    background-color: #ffcccc; /* Màu nền đỏ nhạt */
+    color: red; /* Chữ màu đỏ */
+}
+
     </style>
+
 </head>
 <body>
 <h1>Danh Sách Gói Tin</h1>
 
 
-<p>Tiền hiện có: <span th:text="${money}"></span></p>
+<p>Tiền hiện có: <span class="money"  th:text="${money}"></span></p>
 <div class="error-message" th:if="${error}" th:text="${error}"></div>
 
 <form action="/customer-package/purchase" method="post">
@@ -121,7 +127,7 @@
                 <input type="radio" name="selectedPackage" th:value="${package.id}" />
             </td>
             <td th:text="${package.name}"></td>
-            <td th:text="${package.price}"></td>
+            <td class="price" th:text="${package.price}"></td>
             <td th:text="${package.quantity}"></td>
             <td th:text="${package.formattedExpiry}"></td>
         </tr>
@@ -146,13 +152,13 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="available : ${availableList}">
+    <tr th:each="available : ${availableList}"  th:class="${T(java.time.LocalDateTime).parse(available.formattedExpiry, T(java.time.format.DateTimeFormatter).ofPattern('mm:HH dd-MM-yyyy')).isBefore(T(java.time.LocalDateTime).now())} ? 'expired' : ''">
         <td th:text="${available.orderId}"></td>
         <td th:text="${available.statusPayment}"></td>
 
         <td th:text="${available.formattedPurchase}"></td>
         <td th:text="${available.quantityAvailable}"></td>
-        <td th:text="${available.total}"></td>
+        <td class="total" th:text="${available.total}"></td>
 
         <td th:text="${available.formattedExpiry}"></td>
     </tr>
@@ -161,4 +167,48 @@
 
 
 </body>
+
+<script>
+    // Hàm định dạng số thành tiền Việt Nam
+    function formatCurrency(value) {
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+    }
+
+    // Áp dụng định dạng cho tất cả các cột "Giá"
+    document.querySelectorAll('.price').forEach(cell => {
+        const rawValue = parseFloat(cell.textContent); // Lấy giá trị ban đầu từ nội dung thẻ
+        if (!isNaN(rawValue)) {
+            cell.textContent = formatCurrency(rawValue); // Cập nhật lại nội dung với định dạng tiền tệ
+        }
+    });
+</script>
+<script>
+    // Hàm định dạng số thành tiền Việt Nam
+    function formatCurrency(value) {
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+    }
+
+    // Áp dụng định dạng cho tất cả các cột "Tổng tiền"
+    document.querySelectorAll('.total').forEach(cell => {
+        const rawValue = parseFloat(cell.textContent); // Lấy giá trị ban đầu từ nội dung thẻ
+        if (!isNaN(rawValue)) {
+            cell.textContent = formatCurrency(rawValue); // Cập nhật lại nội dung với định dạng tiền tệ
+        }
+    });
+</script>
+
+<script>
+    // Hàm định dạng số thành tiền Việt Nam
+    function formatCurrency(value) {
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+    }
+
+    // Áp dụng định dạng cho tất cả các cột "Tổng tiền"
+    document.querySelectorAll('.money').forEach(cell => {
+        const rawValue = parseFloat(cell.textContent); // Lấy giá trị ban đầu từ nội dung thẻ
+        if (!isNaN(rawValue)) {
+            cell.textContent = formatCurrency(rawValue); // Cập nhật lại nội dung với định dạng tiền tệ
+        }
+    });
+</script>
 </html>

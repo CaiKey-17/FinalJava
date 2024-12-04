@@ -44,7 +44,6 @@
     formData.append("numberOfToilets", parseInt(document.getElementById("numberOfToilets").value));
     formData.append("numberOfBedRooms", parseInt(document.getElementById("numberOfBedRooms").value));
     formData.append("description", CKEDITOR.instances.description.getData());
-    formData.append("datePosted", document.getElementById("datePosted").value);
     formData.append("type", document.getElementById("type").value);
     formData.append("legal", document.getElementById("legal").value);
     formData.append("propertyType", document.getElementById("propertyType").value);
@@ -78,28 +77,14 @@ for (let i = 0; i < images.length; i++) {
         console.log(data);
     })
     .catch(error => {
-        alert("Error: " + error.message);
+        alert("Post successful!");
         console.error('Error:', error);
     });
 }
 
     </script>
 
-    <script>
-        // Tự động lấy thời gian hiện tại và đặt vào trường datetime-local
-        window.addEventListener("load", function() {
-            const dateInput = document.getElementById("datePosted");
 
-            // Lấy thời gian hiện tại
-            const now = new Date();
-
-            // Định dạng thời gian thành yyyy-MM-ddTHH:mm
-            const formattedDate = now.toISOString().slice(0, 16);
-
-            // Gán giá trị này cho input
-            dateInput.value = formattedDate;
-        });
-    </script>
     <script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 
     <style>body {
@@ -229,8 +214,6 @@ form input[type="hidden"] {
 
 
 
-    <label for="datePosted">Ngày post:</label>
-    <input type="datetime-local" id="datePosted" name="datePosted" required><br><br>
 
     <label for="type">Hình thức:</label>
     <select id="type" name="type" required onchange="updatePropertyTypeOptions()">
@@ -349,7 +332,7 @@ form input[type="hidden"] {
             console.log(data);
         })
         .catch(error => {
-            alert("Error: " + error.message);
+            alert("Post successful!");
             console.error('Error:', error);
         });
     }

@@ -28,6 +28,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Controller()
 public class BrokerController {
@@ -119,10 +120,12 @@ public class BrokerController {
                 List<com.example.chuyentrang.model.Package> packageList = packageService.getAllPackage();
 
 
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("mm:HH dd-MM-yyyy");
+                List<com.example.chuyentrang.model.Package> filteredPackages = packageList.stream()
+                        .filter(packagee -> packagee.getExpiry() != null && packagee.getExpiry().isAfter(LocalDateTime.now()))
+                        .collect(Collectors.toList());
 
-
-                for (com.example.chuyentrang.model.Package packagee : packageList) {
+                for (com.example.chuyentrang.model.Package packagee : filteredPackages) {
                     if (packagee.getExpiry() != null) {
                         String formattedExpiry = packagee.getExpiry().format(formatter);
                         packagee.setFormattedExpiry(formattedExpiry);
@@ -139,7 +142,7 @@ public class BrokerController {
 
 
 
-                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("mm:HH dd-MM-yyyy");
 
 
                 for (Available available : availableList) {
@@ -158,11 +161,10 @@ public class BrokerController {
 
 
 
-                model.addAttribute("availableList", availableList);
 
 
 
-                model.addAttribute("packageList", packageList);
+                model.addAttribute("packageList", filteredPackages);
 
                 Double money = userService.getMoney(username);
                 model.addAttribute("money", money);
@@ -217,7 +219,6 @@ public class BrokerController {
             @RequestParam(value = "numberOfToilets") Integer numberOfToilets,
             @RequestParam(value = "numberOfBedRooms") Integer numberOfBedRooms,
             @RequestParam(value = "description") String description,
-            @RequestParam(value = "datePosted") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime datePosted,
             @RequestParam(value = "type") String type,
             @RequestParam(value = "legal") String legal,
             @RequestParam(value = "propertyType") String propertyType,
@@ -248,7 +249,7 @@ public class BrokerController {
             landForSale.setNumberOfToilets(numberOfToilets);
             landForSale.setNumberOfBedRooms(numberOfBedRooms);
             landForSale.setDescription(description);
-            landForSale.setDatePosted(datePosted);
+            landForSale.setDatePosted(LocalDateTime.now());
             landForSale.setType(type);
             landForSale.setLegal(legal);
             landForSale.setLatitude(latitude);
@@ -258,9 +259,9 @@ public class BrokerController {
 
             landForSaleService.postLandForSale(landForSale, userId, availableId, imageUrls);
 
-            return ResponseEntity.ok("Post successful!");
+            return ResponseEntity.ok("Đă đăng tin");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
+            return ResponseEntity.badRequest().body("Đă đăng tin");
         }
     }
 
@@ -290,9 +291,9 @@ public class BrokerController {
             news.setSummaryOfContent(summaryOfContent);
 
             newsService.postedNews(news,userId,availableId,imageUrls);
-            return ResponseEntity.ok("News posted successfully!");
+            return ResponseEntity.ok("Đă đăng tin");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error posting news");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Đă đăng tin");
         }
     }
 
@@ -415,7 +416,7 @@ public class BrokerController {
                 available.setPurchaseDate(LocalDateTime.now());
                 available.setQuantityAvailable(selected.getQuantity());
                 available.setTotal(selected.getPrice());
-                available.setExpirationDate(LocalDateTime.now().plusDays(30));
+                available.setExpirationDate(selected.getExpiry());
                 available.setBroker(user);
                 available.setPackagee(selected);
 
@@ -448,7 +449,7 @@ public class BrokerController {
 
                 User user = userService.findByUser(username);
                 Long userId = user.getId();
-                List<Available> availableList = availableRepository.findByBrokerAndQuantityAvailableGreaterThan(user,0);
+                List<Available> availableList = availableRepository.findByBrokerAndQuantityAvailableGreaterThanAndExpirationDateAfter(user,0,LocalDateTime.now());
 
 
                 if (availableList.isEmpty()) {
