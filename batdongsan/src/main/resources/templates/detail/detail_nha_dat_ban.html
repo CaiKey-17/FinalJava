@@ -167,9 +167,9 @@
 <div th:insert="fragments/footer :: footer"></div>
 
 <div class="modal fade" id="dialogPopup" role="dialog">
-    <div class="nomodal"></div>
-    <div class="modal-dialog">
-        <div class="modal-content ">
+    <div class="nomodal"> </div>
+    <div class="modal-dialog" >
+        <div class="modal-content " th:text="${landForSale.broker.name}">
         </div>
     </div>
 </div>
