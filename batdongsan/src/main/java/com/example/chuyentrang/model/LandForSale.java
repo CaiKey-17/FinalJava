@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,8 +41,6 @@ public class LandForSale {
 
     @OneToMany(mappedBy = "landForSale", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ImageLand> images = new ArrayList<>();
-
-
 
 
     @ManyToOne
@@ -209,4 +208,32 @@ public class LandForSale {
 //        imageLands.remove(imageLand);
 //        imageLand.setLandForSale(null);
 //    }
+
+    public String formatToReadableUnit(int number) {
+        if (number >= 1000000000) {
+            return (number / 1000000000) + " tỷ";
+        } else if (number >= 1000000) {
+            return (number / 1000000) + " triệu";
+        } else if (number >= 1000) {
+            return (number / 1000) + " ngàn";
+        } else {
+            return number + " đồng";
+        }
+    }
+
+    public String getRelativeTime(LocalDateTime datePosted) {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        long daysBetween = ChronoUnit.DAYS.between(datePosted.toLocalDate(), currentDateTime.toLocalDate());
+
+        if (daysBetween == 0) {
+            return "Đăng hôm nay";
+        } else if (daysBetween == 1) {
+            return "Đăng hôm qua";
+        } else if (daysBetween < 30) {
+            return "Đăng " + daysBetween + " ngày trước";
+        } else {
+            return "Đăng vào " + datePosted.toLocalDate().toString(); // Hiển thị ngày đăng theo định dạng yyyy-MM-dd
+        }
+    }
+
 }

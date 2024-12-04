@@ -189,8 +189,8 @@
     </script>
     <div th:insert="fragments/footer :: footer"></div>
 
-    <div class="modal fade" id="dialogPopup" role="dialog">
-        <div class="nomodal"></div>
+    <div class="modal fade" id="dialogPopup" role="dialog" th:each="land : ${landForSales}">
+        <div class="nomodal" th:src="${land.images[0].imageLink[0]}"></div>
         <div class="modal-dialog" style="top: 531px; left: 789.5px;">
             <div class="modal-content ">
             </div>
@@ -240,7 +240,6 @@
          remove-searching-histories-url="/Product/ProductSearch/RemoveSearchingHistory">
     </div>
     <div id="ContentCardTest"></div>
-
 
     <noscript>
         <a href="https://www.livechatinc.com/chat-with/12942498/" rel="nofollow">Chat with us</a>, powered by

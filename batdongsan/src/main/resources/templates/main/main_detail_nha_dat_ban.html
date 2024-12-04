@@ -10,91 +10,22 @@
         <div class="re__main-content">
 
 
-            <div class="re__pr-container  cplus-4940_report-button pr-details pr-container vip-diamond" prid="41405246" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/10/26/20241026214459-0f58_wm.jpg">
+            <div class="re__pr-container  cplus-4940_report-button pr-details pr-container vip-diamond" prid="41405246" prav="">
 
                 <div class="re__pr-media-slide js__pr-media-slide" tabindex="0">
                     <div class="re__media-preview js__media-preview  swiper-container">
                         <ul class="swiper-wrapper">
-                            <li class="swiper-slide js__media-item-container" data-filter="image" data-index="1">
+                            <li th:each="image, stat : ${landForSale.images}" class="swiper-slide js__media-item-container" data-filter="image" th:data-index="${stat.index + 1}">
                                 <div class="re__overlay js__overlay">
-                                    <img src="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214459-0f58_wm.jpg"
-                                         alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 0"
-                                         title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 0"
+                                    <img th:src="@{${image.imageLink}}"
+                                         th:alt="${image.landForSale.name}"
+                                         th:title="${image.landForSale.name}"
                                          class="pr-img" />
                                 </div>
-                                <div class="re__pr-image-cover js__pr-image-cover" title="" style="background-image: url('https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214459-0f58_wm.jpg')"></div>
-                            </li>
-                            <li class="swiper-slide js__media-item-container" data-filter="image" data-index="2">
-                                <div class="re__overlay js__overlay">
-                                    <img data-src="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214459-54fd_wm.jpg"
-                                         alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 1"
-                                         title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 1"
-                                         class="pr-img lazyload" />
+                                <div class="re__pr-image-cover js__pr-image-cover"
+                                     th:style="'background-image: url(' + @{${image.imageLink}} + ')'"
+                                     title="">
                                 </div>
-                                <div class="re__pr-image-cover js__pr-image-cover lazyload"  title="" data-bg="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214459-54fd_wm.jpg"></div>
-                            </li>
-                            <li class="swiper-slide js__media-item-container" data-filter="image" data-index="3">
-                                <div class="re__overlay js__overlay">
-                                    <img data-src="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214514-f852_wm.jpg"
-                                         alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 2"
-                                         title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 2"
-                                         class="pr-img lazyload" />
-                                </div>
-                                <div class="re__pr-image-cover js__pr-image-cover lazyload"  title="" data-bg="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214514-f852_wm.jpg"></div>
-                            </li>
-                            <li class="swiper-slide js__media-item-container" data-filter="image" data-index="4">
-                                <div class="re__overlay js__overlay">
-                                    <img data-src="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214515-3e25_wm.jpg"
-                                         alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 3"
-                                         title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 3"
-                                         class="pr-img lazyload" />
-                                </div>
-                                <div class="re__pr-image-cover js__pr-image-cover lazyload"  title="" data-bg="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214515-3e25_wm.jpg"></div>
-                            </li>
-                            <li class="swiper-slide js__media-item-container" data-filter="image" data-index="5">
-                                <div class="re__overlay js__overlay">
-                                    <img data-src="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214515-13d1_wm.jpg"
-                                         alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 4"
-                                         title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 4"
-                                         class="pr-img lazyload" />
-                                </div>
-                                <div class="re__pr-image-cover js__pr-image-cover lazyload"  title="" data-bg="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214515-13d1_wm.jpg"></div>
-                            </li>
-                            <li class="swiper-slide js__media-item-container" data-filter="image" data-index="6">
-                                <div class="re__overlay js__overlay">
-                                    <img data-src="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214515-ddd3_wm.jpg"
-                                         alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 5"
-                                         title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 5"
-                                         class="pr-img lazyload" />
-                                </div>
-                                <div class="re__pr-image-cover js__pr-image-cover lazyload"  title="" data-bg="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214515-ddd3_wm.jpg"></div>
-                            </li>
-                            <li class="swiper-slide js__media-item-container" data-filter="image" data-index="7">
-                                <div class="re__overlay js__overlay">
-                                    <img data-src="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214532-b2fc_wm.jpg"
-                                         alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 6"
-                                         title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 6"
-                                         class="pr-img lazyload" />
-                                </div>
-                                <div class="re__pr-image-cover js__pr-image-cover lazyload"  title="" data-bg="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214532-b2fc_wm.jpg"></div>
-                            </li>
-                            <li class="swiper-slide js__media-item-container" data-filter="image" data-index="8">
-                                <div class="re__overlay js__overlay">
-                                    <img data-src="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214533-65b6_wm.jpg"
-                                         alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 7"
-                                         title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 7"
-                                         class="pr-img lazyload" />
-                                </div>
-                                <div class="re__pr-image-cover js__pr-image-cover lazyload"  title="" data-bg="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214533-65b6_wm.jpg"></div>
-                            </li>
-                            <li class="swiper-slide js__media-item-container" data-filter="image" data-index="9">
-                                <div class="re__overlay js__overlay">
-                                    <img data-src="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214536-7972_wm.jpg"
-                                         alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 8"
-                                         title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15% - &#x1EA2;nh 8"
-                                         class="pr-img lazyload" />
-                                </div>
-                                <div class="re__pr-image-cover js__pr-image-cover lazyload"  title="" data-bg="https://file4.batdongsan.com.vn/resize/1275x717/2024/10/26/20241026214536-7972_wm.jpg"></div>
                             </li>
                         </ul>
                         <!-- Add Pagination -->
@@ -103,74 +34,45 @@
                         <div action="go-right"><a class="re__btn re__btn-se-border--sm re__btn-icon--sm"><i class="re__icon-chevron-right"></i></a></div>
                         <div action="go-left"><a class="re__btn re__btn-se-border--sm re__btn-icon--sm"><i class="re__icon-chevron-left"></i></a></div>
                     </div>
-                    <div class="re__media-thumbs js__media-thumbs ">
+                    <div class="re__media-thumbs js__media-thumbs">
                         <div class="js__slick-thumb">
-                            <div class="re__media-thumb-item js__media-thumbs-item" data-filter="image">
-                                <img data-src="https://file4.batdongsan.com.vn/resize/200x200/2024/10/26/20241026214459-0f58_wm.jpg"
-                                     alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     class="lazyload" />
-                            </div>
-                            <div class="re__media-thumb-item js__media-thumbs-item" data-filter="image">
-                                <img data-src="https://file4.batdongsan.com.vn/resize/200x200/2024/10/26/20241026214459-54fd_wm.jpg"
-                                     alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     class="lazyload" />
-                            </div>
-                            <div class="re__media-thumb-item js__media-thumbs-item" data-filter="image">
-                                <img data-src="https://file4.batdongsan.com.vn/resize/200x200/2024/10/26/20241026214514-f852_wm.jpg"
-                                     alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     class="lazyload" />
-                            </div>
-                            <div class="re__media-thumb-item js__media-thumbs-item" data-filter="image">
-                                <img data-src="https://file4.batdongsan.com.vn/resize/200x200/2024/10/26/20241026214515-3e25_wm.jpg"
-                                     alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     class="lazyload" />
-                            </div>
-                            <div class="re__media-thumb-item js__media-thumbs-item" data-filter="image">
-                                <img data-src="https://file4.batdongsan.com.vn/resize/200x200/2024/10/26/20241026214515-13d1_wm.jpg"
-                                     alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     class="lazyload" />
-                            </div>
-                            <div class="re__media-thumb-item js__media-thumbs-item" data-filter="image">
-                                <img data-src="https://file4.batdongsan.com.vn/resize/200x200/2024/10/26/20241026214515-ddd3_wm.jpg"
-                                     alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     class="lazyload" />
-                            </div>
-                            <div class="re__media-thumb-item js__media-thumbs-item" data-filter="image">
-                                <img data-src="https://file4.batdongsan.com.vn/resize/200x200/2024/10/26/20241026214532-b2fc_wm.jpg"
-                                     alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     class="lazyload" />
-                            </div>
-                            <div class="re__media-thumb-item js__media-thumbs-item" data-filter="image">
-                                <img data-src="https://file4.batdongsan.com.vn/resize/200x200/2024/10/26/20241026214533-65b6_wm.jpg"
-                                     alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     class="lazyload" />
-                            </div>
-                            <div class="re__media-thumb-item js__media-thumbs-item" data-filter="image">
-                                <img data-src="https://file4.batdongsan.com.vn/resize/200x200/2024/10/26/20241026214536-7972_wm.jpg"
-                                     alt="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
-                                     title="C&#x103;n h&#x1ED9; Conic Boulevard - Thanh to&#xE1;n 450tr nh&#x1EAD;n nh&#xE0;, bank mi&#x1EC5;n l&#xE3;i 18 th&#xE1;ng, t&#x1EB7;ng ph&#xED; QL, CK t&#x1EDB;i 15%"
+                            <div class="re__media-thumb-item js__media-thumbs-item" data-filter="image"
+                                 th:each="image : ${landForSale.images}">
+                                <img th:data-src="@{${image.imageLink}}"
+                                     th:alt="${image.landForSale.name}"
+                                     th:title="${image.landForSale.name}"
                                      class="lazyload" />
                             </div>
                         </div>
                     </div>
+
                 </div>
-                <script type="text/javascript" src="https://staticfile.batdongsan.com.vn/js/Product/Binnova/Details/filestatic.ver2.msvbds.FrontEnd.Product.Details.MediaSlide.Psi.min.js" async="" data-cfasync="false"></script>
 
                 <div class="re__breadcrumb js__breadcrumb js__ob-breadcrumb">
-                    <a class="re__link-se" href="/ban-can-ho-chung-cu" level="1" title="Bán căn hộ chung cư tại Việt Nam">Bán</a><span>/</span><a class="re__link-se" href="/ban-can-ho-chung-cu-tp-hcm" level="2" title="Bán căn hộ chung cư tại Hồ Chí Minh">Hồ Chí Minh</a><span>/</span><a class="re__link-se" href="/ban-can-ho-chung-cu-binh-chanh" level="3" title="Bán căn hộ chung cư tại Huyện Bình Chánh">Bình Chánh</a><span>/</span><a class="re__link-se" href="/ban-can-ho-chung-cu-conic-boulevard" level="4" title="Bán căn hộ chung cư tại Conic Boulevard">Căn hộ chung cư tại Conic Boulevard</a>
+                    <a class="re__link-se" th:href="@{/nha-dat-ban}" level="1" title="Nhà đất bán tại Việt Nam">Nhà đất bán</a>
+                    <span>/</span>
+
+                    <a class="re__link-se"
+                       th:href="@{/nha-dat-ban}"
+                       level="2"
+                       title="Nhà đất bán tại ${landForSale.province}"
+                       th:text="${landForSale.province}">Hồ Chí Minh</a>
+                    <span>/</span>
+
+                    <a class="re__link-se"
+                       th:href="@{/chi-tiet-nha-dat-ban/{id}(id=${landForSale.id})}"
+                       level="3"
+                       title="Nhà đất bán tại ${landForSale.district}"
+                       th:text="${landForSale.district}">Bình Chánh</a>
+                    <span>/</span>
+
+                    <a class="re__link-se"
+                       th:href="@{/chi-tiet-nha-dat-ban/{id}(id=${landForSale.id})}"
+                       level="4"
+                       title="Nhà đất bán tại ${landForSale.name}"
+                       th:text="${landForSale.name}">Căn hộ chung cư tại Conic Boulevard</a>
                 </div>
 
-                <script type="application/ld+json">
-                    {"@context":"https://schema.org/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Trang chủ","item":"https://batdongsan.com.vn"},{"@type":"ListItem","position":2,"name":"Bán","item":"https://batdongsan.com.vn/ban-can-ho-chung-cu"},{"@type":"ListItem","position":3,"name":"Hồ Chí Minh","item":"https://batdongsan.com.vn/ban-can-ho-chung-cu-tp-hcm"},{"@type":"ListItem","position":4,"name":"Bình Chánh","item":"https://batdongsan.com.vn/ban-can-ho-chung-cu-binh-chanh"},{"@type":"ListItem","position":5,"name":"Căn hộ chung cư tại Conic Boulevard","item":"https://batdongsan.com.vn/ban-can-ho-chung-cu-conic-boulevard"}]}
-                </script>
 
                 <script type="text/javascript">
                     (function callFunction(){
@@ -185,23 +87,26 @@
 
 
                 <div class="re__pr-info pr-info js__product-detail-web" id="product-detail-web" uid="150212" prid="41405246">
-                    <h1 class="re__pr-title pr-title js__pr-title">Căn hộ Conic Boulevard - Thanh toán 450tr nhận nhà, bank miễn lãi 18 tháng, tặng phí QL, CK tới 15%</h1>
-                    <span class="re__pr-short-description js__pr-address">Dự án Conic Boulevard, Đường Huỳnh Bá Chánh, Xã Tân Kiên, Bình Chánh, Hồ Chí Minh</span>
+                    <h1 class="re__pr-title pr-title js__pr-title" th:text="${landForSale.name}">Căn hộ Conic Boulevard - Thanh toán 450tr nhận nhà, bank miễn lãi 18 tháng, tặng phí QL, CK tới 15%</h1>
+                    <span class="re__pr-short-description js__pr-address" th:text="'Nhà đất ' + ${landForSale.ward} + ', ' + ${landForSale.district} + ', ' + ${landForSale.province}">
+                        Dự án Conic Boulevard, Đường Huỳnh Bá Chánh, Xã Tân Kiên, Bình Chánh, Hồ Chí Minh
+                    </span>
 
 
                     <div class="re__pr-short-info  js__pr-short-info">
                         <div class="re__pr-short-info-item js__pr-short-info-item">
                             <span class="title">Mức giá</span>
-                            <span class="value">37 tri&#x1EC7;u/m&#xB2;</span>
-                            <span class="ext">~3,11 t&#x1EF7;</span>
+                            <span class="value" th:text="${landForSale.formatToReadableUnit(landForSale.price)}"></span>
+                        <span class="ext" th:text="${'~' + #numbers.formatDecimal(T(java.lang.Math).round(landForSale.price / landForSale.area / 1000000 * 100.0) / 100.0, 0, 2) + ' triệu/m²'}">~3,11 t&#x1EF7;</span>
+
                         </div>
                         <div class="re__pr-short-info-item js__pr-short-info-item">
                             <span class="title">Diện tích</span>
-                            <span class="value">84 m&#xB2;</span>
+                            <span class="value" th:text="${landForSale.area + ' m²'}"></span>
                         </div>
                         <div class="re__pr-short-info-item js__pr-short-info-item">
                             <span class="title">Phòng ngủ</span>
-                            <span class="value">2 PN</span>
+                            <span class="value" th:text="${landForSale.numberOfBedRooms + ' PN'}">2 PN</span>
                         </div>
                         <div class="js__ob-report">
                             <div class="js__marking-product__KYC re__btn re__btn-se-ghost--md re__btn-icon--md re__pr-short-info-action re__marking-product"
@@ -256,8 +161,7 @@
                         <span class="re__section-title">Thông tin mô tả</span>
                         <div class="re__section-body re__detail-content js__section-body js__pr-description js__tracking"
                              trackingid="lead-phone-ldp"
-                             trackinglabel="loc=Sale-Listing Details-body,prid=41405246">
-                            Thanh toán 450tr nhận ngay căn hộ Conic Boulevard, vị trí đắc địa ngay nút giao đại lộ Võ Văn Kiệt Ql1.<br/><br/>Tọa lạc trong khu dân cư Huỳnh Bá Chánh, quy hoạch đồng bộ bài bản.<br/>- Hệ thống đường giao thông đồng bộ kết nối QL1, Đại Lộ Võ Văn Kiệt, đường kênh Tham Lương Bến Cát, Kinh Dương Vương, Nguyễn Văn Linh, cao tốc TP. HCM Cần Thơ.<br/><br/>- Quy mô: 5.3 ha gồm 2 block, tổng 976 căn hộ chung cư & shophouse.<br/>- Pháp lý hoàn chỉnh, căn hộ đã hoàn thiện 95%, quí II/2025 bàn giao.<br/><br/>- Diện tích rộng thoáng, nâng chuẩn không gian sống:<br/>+ 2PN 2WC: Có Diện tích từ 84 - 85m².<br/>+ 3PN 2WC: Có Diện tích 114m².<br/><br/>Tiện ích nội khu diện tích lớn không tưởng: 17,000 m phục vụ công trình công cộng, khu vui chơi giải trí, khu thể thao ngoài trời:<br/>+ Vườn cảnh quan 4 mùa;<br/>+ Khu vui chơi trẻ em, sân cát trẻ em;<br/>+ Khu vực gym;<br/>+ Công viên nội khu; đài phun nước;<br/>+ Sân bóng đá, bóng rổ, cầu lông, pickelball;<br/>+ Đài ngắm cảnh, Sky Garden, Club House.<br/><br/>- An ninh 3 lớp hiện đại, quần lễ tân từng sảnh, camera an ninh toàn khu, thẻ từ thang máy đến từng tầng.<br/>- Tiện ích ngoại khu: 5 15 phút, cư dân có thể tiếp cận hàng loạt tiện ích cần thiết như chợ Bình Chánh, chợ Bình Điền, bến xe Miền Tây, trường THCS & THPT, trung tâm hành chính Bình Chánh, bệnh viện y Phạm Ngọc Thạch 2, bệnh viện Nhi Đồng 2, bệnh viện Bình Chánh, TTTM Aeon Mall Bình Tân, siêu thị Go An Lạc,<br/><br/>Chính sách ưu đãi lần đầu có:<br/>+ Chỉ cần thanh toán 15%, ngân hàng cho vay phần còn lại, ân hạn gốc 60 tháng, hỗ trợ lãi suất 18 tháng.<br/>+ Chiết khấu lên đến 14% dành riêng cho khách hàng thanh toán nhanh.<br/>+ Chiết khấu 1% cho khách có hộ khẩu Bình Chánh & các tỉnh ĐBSCL.<br/>+ Chiết Khấu mua sỹ lên đến 3%.<br/>+ Tặng ngay gói nội thất cao cấp; tặng 2 năm phí quản lý.<br/>-----------------------------<br/>Hỗ trợ xe oto đưa đón xem nhà 24/7: <span class="hidden-mobile hidden-phone m-cover btn-phone-desc--lazy-loading js__btn-tracking" raw="18acc32c2e2af160fe572208147b1c91"  data-kyc-name="Nguyễn Thiên" data-kyc-avatar="" kyc-tracking-id="lead-phone-ldp" tracking-label="loc=Sale-Listing Details-body,prid=41405246">0937 605 ***</span>Mr Thiên).
+                             trackinglabel="loc=Sale-Listing Details-body,prid=41405246" th:utext="${landForSale.description}">
                         </div>
                     </div>
                     <div class="re__section re__pr-specs re__pr-specs-v1 js__section js__li-specs">
@@ -267,32 +171,32 @@
                                 <div class="re__pr-specs-content-item">
                                     <span class="re__pr-specs-content-item-icon"><i class="re__icon-size"></i></span>
                                     <span class="re__pr-specs-content-item-title">Diện tích</span>
-                                    <span class="re__pr-specs-content-item-value">84 m&#xB2;</span>
+                                    <span class="re__pr-specs-content-item-value" th:text="${landForSale.area + ' m²'}"></span>
                                 </div>
                                 <div class="re__pr-specs-content-item">
                                     <span class="re__pr-specs-content-item-icon"><i class="re__icon-money"></i></span>
                                     <span class="re__pr-specs-content-item-title">Mức giá</span>
-                                    <span class="re__pr-specs-content-item-value">37 tri&#x1EC7;u/m&#xB2;</span>
+                                    <span class="re__pr-specs-content-item-value" th:text="${landForSale.formatToReadableUnit(landForSale.price)}">37 tri&#x1EC7;u/m&#xB2;</span>
                                 </div>
                                 <div class="re__pr-specs-content-item">
                                     <span class="re__pr-specs-content-item-icon"><i class="re__icon-bedroom"></i></span>
                                     <span class="re__pr-specs-content-item-title">Số phòng ngủ</span>
-                                    <span class="re__pr-specs-content-item-value">2 phòng</span>
+                                    <span class="re__pr-specs-content-item-value" th:text="${landForSale.numberOfBedRooms + ' phòng'}">2 phòng</span>
                                 </div>
                                 <div class="re__pr-specs-content-item">
                                     <span class="re__pr-specs-content-item-icon"><i class="re__icon-bath"></i></span>
                                     <span class="re__pr-specs-content-item-title">Số toilet</span>
-                                    <span class="re__pr-specs-content-item-value">2 phòng</span>
+                                    <span class="re__pr-specs-content-item-value" th:text="${landForSale.numberOfToilets + ' phòng'}">2 phòng</span>
                                 </div>
                                 <div class="re__pr-specs-content-item">
                                     <span class="re__pr-specs-content-item-icon"><i class="re__icon-document"></i></span>
                                     <span class="re__pr-specs-content-item-title">Pháp lý</span>
-                                    <span class="re__pr-specs-content-item-value">Hợp đồng mua bán</span>
+                                    <span class="re__pr-specs-content-item-value" th:text="${landForSale.legal}">Hợp đồng mua bán</span>
                                 </div>
                                 <div class="re__pr-specs-content-item">
                                     <span class="re__pr-specs-content-item-icon"><i class="re__icon-interior"></i></span>
                                     <span class="re__pr-specs-content-item-title">Nội thất</span>
-                                    <span class="re__pr-specs-content-item-value">C&#x1A1; b&#x1EA3;n</span>
+                                    <span class="re__pr-specs-content-item-value" th:text="${landForSale.interior}">C&#x1A1; b&#x1EA3;n</span>
                                 </div>
                             </div>
                         </div>
@@ -862,16 +766,18 @@
                             <img class="re__contact-avatar js__agent-contact-avatar" src="https://file4.batdongsan.com.vn/resize/200x200/2024/03/28/20240328180803-6735.jpg" data-bds-tooltip-width="360" data-bds-tooltip-position="bottom" data-bds-tooltip="" data-bds-custom-css-class="pro-agent-ldp-tooltip" data-bds-tooltip-icon-show="false">
                         </div>
                     </a>
-                    <div class="re__contact-name js_contact-name" title="Nguy&#x1EC5;n Thi&#xEA;n">
+                    <div class="re__contact-name js_contact-name" th:title="${landForSale.broker.name}">
                         <a class="js__agent-contact-name" tracking-id="navigate-agent-profile"
                            tracking-label="source=name"
-                           href="https://guru.batdongsan.com.vn/pa/41f9103d9e7c082d" data-bds-tooltip-width="360" data-bds-tooltip-position="bottom" data-bds-tooltip="" data-bds-custom-css-class="pro-agent-ldp-tooltip" data-bds-tooltip-icon-show="false">
-                            Nguy&#x1EC5;n Thi&#xEA;n
+                           href="https://guru.batdongsan.com.vn/pa/41f9103d9e7c082d" data-bds-tooltip-width="360" data-bds-tooltip-position="bottom"
+                           data-bds-tooltip="" data-bds-custom-css-class="pro-agent-ldp-tooltip" data-bds-tooltip-icon-show="false"
+                           th:text="${landForSale.broker.name}">
                         </a>
                     </div>
+
                     <div class="re__contact-link">
-                        <a tracking-id="navigate-agent-profile" tracking-label="" class="re__link-se" href="https://guru.batdongsan.com.vn/pa/41f9103d9e7c082d">
-                            Xem thêm 31 tin khác
+                        <a tracking-id="navigate-agent-profile" tracking-label="" class="re__link-se" href="https://guru.batdongsan.com.vn/pa/41f9103d9e7c082d" >
+                            Xem thêm tin khác
                         </a>
                     </div>
                 </div>
@@ -879,8 +785,8 @@
                     <div class="re__btn re__btn-cyan-solid--md phone btn-phone--lazy-loading js__phone phoneEvent js__phone-event"
                          kyc-tracking-id="lead-phone-ldp"
                          tracking-label="loc=Sale-Listing Details-main-button,prid=41405246"
-                         raw="18acc32c2e2af160fe572208147b1c91" data-kyc-name="Nguyễn Thiên" data-kyc-avatar="">
-                <span>
+                         raw="18acc32c2e2af160fe572208147b1c91" th:data-kyc-name="${landForSale.broker.name}" data-kyc-avatar="">
+                <span th:text="${#strings.substring(landForSale.broker.phone, 0, landForSale.broker.phone.length() - 3) + '*** ' + 'Hiện số'}">
                     0937 605 *** · Hiện số
                 </span>
                     </div>
