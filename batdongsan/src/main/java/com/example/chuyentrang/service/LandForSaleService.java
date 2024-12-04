@@ -5,6 +5,9 @@ import com.example.chuyentrang.repository.AvailableRepository;
 import com.example.chuyentrang.repository.ImageLandRepository;
 import com.example.chuyentrang.repository.LandForSaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -38,6 +41,33 @@ public class LandForSaleService {
         List<String> types = Arrays.asList("Bán");
         return landForSaleRepository.findByTypeIn( types);
     }
+
+    public Page<LandForSale> listLandSold(int page) {
+        List<String> types = Arrays.asList("Bán");
+        Pageable pageable = PageRequest.of(page - 1, 5);
+        return landForSaleRepository.findByTypeIn(types, pageable);
+    }
+
+
+    public Page<LandForSale> listLandSoldProvince(int page, String province) {
+        List<String> types = Arrays.asList("Bán");
+        Pageable pageable = PageRequest.of(page - 1, 5);
+        return landForSaleRepository.findByTypeInAndProvince(types, province, pageable);
+    }
+
+
+    public Page<LandForSale> listLandSold(int page, String propertyTypesAsString, int minPrice, int maxPrice, int minArea, int maxArea, int numberOfBedRooms) {
+        List<String> propertyTypes = (propertyTypesAsString != null && !propertyTypesAsString.isEmpty())
+                ? Arrays.asList(propertyTypesAsString.split(","))
+                : null;
+
+        Pageable pageable = PageRequest.of(page - 1, 5);
+
+        return landForSaleRepository.findByPropertyTypesAndPriceAndTypesAndAreaAndNumberOfBedRooms(
+                propertyTypes, minPrice, maxPrice, Arrays.asList("Bán"), minArea, maxArea, numberOfBedRooms, pageable);
+    }
+
+
     public List<LandForSale> listLandRent() {
         List<String> types = Arrays.asList( "Cho thuê");
         return landForSaleRepository.findByTypeIn( types);
@@ -48,9 +78,6 @@ public class LandForSaleService {
         List<String> types = Arrays.asList( "Cho thuê");
         return landForSaleRepository.findByBrokerIdAndTypeIn(userId, types);
     }
-
-
-
 
     public Optional<LandForSale> getLandForSaleById(int id) {
         return landForSaleRepository.findById(id);
