@@ -5,21 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lịch Sử Giao Dịch Nạp Tiền</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            width: calc(100% - 10px);
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
         th, td {
-            padding: 10px;
+            padding: 10px 15px;
             text-align: left;
-            border: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
         }
+
         th {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+
+        tr:hover {
+            background-color: #e9f5ff;
         }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .expired {
+    background-color: #ffcccc; /* Màu nền đỏ nhạt */
+    color: red; /* Chữ màu đỏ */
+}
+
     </style>
 </head>
 <body>
@@ -39,11 +118,45 @@
 
     <tr th:each="deposit : ${depositList}">
         <td th:text="${deposit.id}"></td>
-        <td th:text="${deposit.soTien}"></td>
-        <td th:text="${deposit.ngayNap}"></td>
+        <td class="deposit-amount" th:text="${deposit.soTien}"></td>
+        <td class="deposit-date" th:text="${deposit.ngayNap}"></td>
         <td th:text="${deposit.tinhTrangThanhToan}"></td>
     </tr>
     </tbody>
 </table>
+
+<script>
+    // Hàm định dạng số thành tiền Việt Nam
+    function formatCurrency(value) {
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+    }
+
+    // Hàm chuyển đổi định dạng ngày tháng
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = ('0' + date.getDate()).slice(-2); // Thêm số 0 cho ngày nhỏ hơn 10
+        const month = ('0' + (date.getMonth() + 1)).slice(-2); // Thêm số 0 cho tháng nhỏ hơn 10
+        const year = date.getFullYear();
+        const hours = ('0' + date.getHours()).slice(-2); // Thêm số 0 cho giờ nhỏ hơn 10
+        const minutes = ('0' + date.getMinutes()).slice(-2); // Thêm số 0 cho phút nhỏ hơn 10
+
+        return `${hours}:${minutes} ${day}-${month}-${year}`;
+    }
+
+    // Áp dụng định dạng cho các cột "Số Tiền" và "Ngày Nạp"
+    document.querySelectorAll('.deposit-amount').forEach(cell => {
+        const rawValue = parseFloat(cell.textContent); // Lấy giá trị ban đầu từ nội dung thẻ
+        if (!isNaN(rawValue)) {
+            cell.textContent = formatCurrency(rawValue); // Cập nhật lại nội dung với định dạng tiền tệ
+        }
+    });
+
+    document.querySelectorAll('.deposit-date').forEach(cell => {
+        const dateValue = cell.textContent; // Lấy giá trị ngày ban đầu
+        if (dateValue) {
+            cell.textContent = formatDate(dateValue); // Cập nhật lại nội dung với định dạng ngày
+        }
+    });
+</script>
 </body>
 </html>

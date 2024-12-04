@@ -94,6 +94,11 @@
             max-width: 800px;
             margin: auto;
         }
+        .expired {
+    background-color: #ffcccc; /* Màu nền đỏ nhạt */
+    color: red; /* Chữ màu đỏ */
+}
+
     </style>
 
 </head>
@@ -135,10 +140,11 @@
     </thead>
     <tbody>
 
-    <tr th:each="package : ${packageList}">
+    <tr th:each="package : ${packageList}"
+        th:class="${T(java.time.LocalDateTime).parse(package.formattedExpiry, T(java.time.format.DateTimeFormatter).ofPattern('mm:HH dd-MM-yyyy')).isBefore(T(java.time.LocalDateTime).now())} ? 'expired' : ''">
         <td th:text="${package.id}"></td>
         <td th:text="${package.name}"></td>
-        <td th:text="${package.price}"></td>
+        <td class="money" th:text="${package.price}"></td>
         <td th:text="${package.quantity}"></td>
         <td th:text="${package.formattedExpiry}"></td>
 
@@ -173,6 +179,19 @@
         .catch(error => console.error('Error:', error));
     }
 </script>
+<script>
+    // Hàm định dạng số thành tiền Việt Nam
+    function formatCurrency(value) {
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+    }
 
+    // Áp dụng định dạng cho tất cả các cột "Tổng tiền"
+    document.querySelectorAll('.money').forEach(cell => {
+        const rawValue = parseFloat(cell.textContent); // Lấy giá trị ban đầu từ nội dung thẻ
+        if (!isNaN(rawValue)) {
+            cell.textContent = formatCurrency(rawValue); // Cập nhật lại nội dung với định dạng tiền tệ
+        }
+    });
+</script>
 </body>
 </html>

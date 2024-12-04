@@ -1,4 +1,4 @@
-<div class="re__main" itemprop="about">
+<div class="re__main" itemprop="about" xmlns:th="http://www.w3.org/1999/xhtml">
 
 
 
@@ -310,7 +310,8 @@
                         <div class="re__section-body re__detail-content js__section-body js__pr-description js__tracking"
                              trackingid="lead-phone-ldp"
                              trackinglabel="loc=Rent-Listing Details-body,prid=40192216">
-                            Chuyên cho thuê các căn hộ ở Vinhomes Ba Son nội thất cơ bản và full nội thất, các căn hộ thiết kế sang trọng, hiện đại. Giỏ hàng giá tốt và đa dạng không đâu có do chính chủ kí gửi với mức giá tốt nhất, hỗ trợ sau mùa dịch!<br/>Liên hệ ngay <span class="hidden-mobile hidden-phone m-cover btn-phone-desc--lazy-loading js__btn-tracking" raw="b429d568496aa9d516a4c1793363adf7"  data-kyc-name="Lâm Hải" data-kyc-avatar="" kyc-tracking-id="lead-phone-ldp" tracking-label="loc=Rent-Listing Details-body,prid=40192216">0906 515 ***</span> Lâm Hải (zalo, viber) để được tư vấn thêm!<br/><br/>Cam kết luôn luôn có mức giá tốt nhất thị trường cho thuê căn hộ:<br/>* 1 phòng ngủ: Từ 14 đến 20 triệu/tháng. DT 50 - 58m.<br/>* 2 phòng ngủ: Từ 18 đến 26 triệu/tháng. DT 68 - 90m. (Có thỏa thuận).<br/>* 3 phòng ngủ: Từ 28 đến 38 triệu/tháng. DT 99 - 122m.<br/>* 4 phòng ngủ: Từ 40 triệu/tháng. DT 150 - 160m.<br/>* Penthouse giá từ 80 triệu/tháng.<br/><br/>Bạn nên chọn chúng tôi vì:<br/>- Đã có hơn 5 năm trong ngành bất động sản.<br/>- Với hơn + 2000 căn hộ cao cấp.<br/>- Trung thực, dễ dàng với chức năng xem nhà 360 độ.<br/>- Hỗ trợ thương lượng với chủ nhà cho khách thuê.<br/>- Thực hiện các thủ tục liên quan đến pháp lý và hợp đồng.<br/><br/>Vinhomes Golden River có gì?<br/>Căn hộ Vinhomes Golden River được xây dựng trên khu đất Ba Son ven sông Sài Gòn, ngay trung tâm Quận 1.<br/>Cùng với Tân Cảng, khu Ba Son là một phần thuộc trung tâm mới được quy hoạch tại thành phố Hồ Chí Minh. Khu vực này đã sớm trở thành nơi tọa lạc của những tòa nhà văn phòng chọc trời, trung tâm thương mại và những con đường dạo bộ ven sông tuyệt đẹp.<br/><br/>Vị trí địa lý, giao thông đi lại đến Vinhomes Golden River.<br/>- Gần các điểm tham quan nổi tiếng như Thảo Cầm Viên, khu du lịch Văn Thánh, sân golf Him Lam, Dinh Độc Lập.<br/>- Tuyến Metro số 1 Bến Thành - Suối Tiên chạy qua ngang giúp cư dân dễ dàng di chuyển sang các quận lân cận thông qua nhà ga Ba Son nằm ngay bên dưới quảng trường.<br/><br/>Các loại căn hộ nào?<br/>- Tòa nhà khu dân cư - dịch vụ - thương mại Vinhomes Golden River.<br/>- Khu căn hộ nổi bật với các shophouse, khu nhà hàng sang trọng, siêu thị, hồ bơi, trường cấp 3, sân chơi trẻ em, siêu thị mini, nhà trẻ, phòng gym, thư viện, các căn hộ điển hình 1 phòng ngủ, 2 phòng ngủ, 3 phòng ngủ, căn hộ thông tầng, căn hộ kết hợp và các căn hộ áp mái.<br/>Các tiện ích đi kèm.<br/>- Nội thất: Đầy đủ tiện nghi với sofa, bàn ăn, giường, bàn, tivi.<br/>- Máy lạnh, tủ lạnh, máy nước nóng, máy giặt.<br/>- Truyền hình cáp, wifi, điện thoại.<br/>- Ban công.<br/>- Bồn tắm.<br/>- Gần trường học, bệnh viện, trung tâm mua sắm.<br/>- Cửa hàng tiện lợi (24/24).<br/>- An ninh 24/7.<br/>Vinhomes Golden River còn tạo ra một điều kiện sống tuyệt vời với nhiều tiện ích và phong cách sống sôi động.<br/><br/>Liên hệ ngay Lâm Hải. <span class="hidden-mobile hidden-phone m-cover btn-phone-desc--lazy-loading js__btn-tracking" raw="b429d568496aa9d516a4c1793363adf7"  data-kyc-name="Lâm Hải" data-kyc-avatar="" kyc-tracking-id="lead-phone-ldp" tracking-label="loc=Rent-Listing Details-body,prid=40192216">0906 515 ***</span> (zalo, viber) để được tư vấn thêm!
+                            <td th:utext="${description}"></td>
+
                         </div>
                     </div>
                     <div class="re__section re__pr-specs re__pr-specs-v1 js__section js__li-specs">
@@ -710,10 +711,43 @@
                     <div class="re__section re__pr-map js__section js__li-other">
                         <span class="re__section-title">Xem trên bản đồ</span>
                         <div class="re__section-body js__section-body">
-                            <iframe class="lazyload" data-src="https://www.google.com/maps/embed/v1/place?q=10.784106254577637,106.70365142822266&amp;key=AIzaSyAMd45cCGHSmsM2a5APxYRdOwV8kX-4m40" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            <div id="map" style="height: 300px; width: 100%;"></div>
                             <div class="map-overlay"></div>
                         </div>
                     </div>
+                    <input type="hidden" id="latitude" th:value="${latitude}" />
+                    <input type="hidden" id="longitude" th:value="${longitude}" />
+
+
+                    <script async
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCs4bZo6dgcEICIpKb7uQhjd-jdzJTZQFg&callback=initMap">
+                    </script>
+                    <script>
+                        function initMap() {
+                            // Lấy giá trị latitude và longitude từ các input ẩn
+                            var latitude = document.getElementById("latitude").value;
+                            var longitude = document.getElementById("longitude").value;
+
+                            // Kiểm tra xem giá trị có hợp lệ không
+                            if (latitude && longitude) {
+                                var location = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
+
+                                // Khởi tạo bản đồ
+                                var map = new google.maps.Map(document.getElementById("map"), {
+                                    zoom: 14,
+                                    center: location,
+                                });
+
+                                // Thêm marker vào bản đồ
+                                var marker = new google.maps.Marker({
+                                    position: location,
+                                    map: map,
+                                });
+                            } else {
+                                console.error("Latitude or Longitude is missing.");
+                            }
+                        }
+                    </script>
 
                     <div class="re__section re__contact-box-tablet js__section js__contact-box-tablet">
                         <span class="re__section-title">Thông tin người đăng</span>
@@ -969,73 +1003,7 @@
 
 
 
-            <script type="text/javascript">
-                (function callJQuery() {
-                    if (window.FrontEnd && window.FrontEnd.Product &&
-                        window.FrontEnd.Product.Details && window.FrontEnd.Product.Details.SimilarListing) {
-                        new FrontEnd.Product.Details.SimilarListing({
-                            containerSelector: '.js__similar-listing',
-                            containerListingSelector: '.js__similar-listing-recommendations',
-                            getListingRecommendationUrl: '/Product/ProductDetail/GetListingRecommendation',
-                            getListingRecommendationParams: {
-                                count: 20,
-                                productId: 40192216,
-                                price: 18000000,
-                                pricePerM2: 204545.45454545456,
-                                categoryId: 326,
-                                cityCode: 'SG',
-                                districtId: 53,
-                                streetId: 428,
-                                wardId: 8633,
-                                projectId: 2393,
-                                productType: 49,
-                                area: 88,
-                                wardId: 8633,
-                                districtId: 53,
-                                cityCode: 'SG',
-                                latitude: 10.784106254577637,
-                                longitude: 106.70365142822266
-                            }
-                        });
-                    }
-                    else {
-                        setTimeout(callJQuery, 100);
-                    }
-                })();
 
-                (function callJQuery2() {
-                    if (window.FrontEnd && window.FrontEnd.Product &&
-                        window.FrontEnd.Product.Details && window.FrontEnd.Product.Details.SimilarListingLazy) {
-                        new FrontEnd.Product.Details.SimilarListingLazy({
-                            containerSelector: '.js__similar-listing',
-                            containerListingSelector: '.js__similar-listing-recommendations',
-                            getListingRecommendationUrl: '/Product/ProductDetail/GetListingRecommendation',
-                            getListingRecommendationParams: {
-                                count: 20,
-                                productId: 40192216,
-                                price: 18000000,
-                                pricePerM2: 204545.45454545456,
-                                categoryId: 326,
-                                cityCode: 'SG',
-                                districtId: 53,
-                                streetId: 428,
-                                wardId: 8633,
-                                projectId: 2393,
-                                productType: 49,
-                                area: 88,
-                                wardId: 8633,
-                                districtId: 53,
-                                cityCode: 'SG',
-                                latitude: 10.784106254577637,
-                                longitude: 106.70365142822266
-                            }
-                        });
-                    }
-                    else {
-                        setTimeout(callJQuery2, 100);
-                    }
-                })();
-            </script>
             <div class="re__divide-8"></div>
 
             <div class="re__section re__pr-more-listing re__history-listing lazyload js__section js__history-listing" data-script="https://staticfile.batdongsan.com.vn/js/Product/Binnova/Details/filestatic.ver3eb9ae29.msvbds.FrontEnd.Product.Details.ListingHistory.Lazy.min.js">
@@ -1100,61 +1068,7 @@
 
             <script type="text/javascript" src="https://staticfile.batdongsan.com.vn/js/Product/Binnova/Details/filestatic.ver3eb9ae29.msvbds.FrontEnd.Product.Details.ListingHistory.min.js"></script>
 
-            <script type="text/javascript">
-                (function initListingHistory() {
-                    if (window.FrontEnd &&
-                        window.FrontEnd.Product &&
-                        window.FrontEnd.Product.Details &&
-                        window.FrontEnd.Product.Details.ListingHistory) {
-                        new FrontEnd.Product.Details.ListingHistory({ productId: 40192216 });
-                    } else {
-                        setTimeout(function () { initListingHistory() }, 200);
-                    }
-                })();
-
-                (function initListingHistoryLazy() {
-                    if (window.FrontEnd &&
-                        window.FrontEnd.Product &&
-                        window.FrontEnd.Product.Details &&
-                        window.FrontEnd.Product.Details.ListingHistoryLazy) {
-                        new FrontEnd.Product.Details.ListingHistoryLazy({
-                            product: {
-                                productId: 40192216
-                            },
-                            getListingHistory: '/Product/ProductDetail/GetListingHistory',
-                            listingLimit: 20,
-                            displayedItemCount: 12,
-                            asyncTime: 24,
-                            errorImageSrc: 'https://staticfile.batdongsan.com.vn/images/Product/error-image/card-compact-error-image.png',
-                            trackingIdForLink: 'recent-view-listing-ldp',
-                            trackingIdForMarkingBtn: 'save-listing',
-                            loc: 'Rent-Listing Details',
-                            getListingRecommendationUrl: '/Product/ProductDetail/GetListingRecommendation',
-                            getListingRecommendationParams: {
-                                count: 20,
-                                productId: 40192216,
-                                price: 18000000,
-                                pricePerM2: 204545.45454545456,
-                                categoryId: 326,
-                                cityCode: 'SG',
-                                districtId: 53,
-                                streetId: 428,
-                                wardId: 8633,
-                                projectId: 2393,
-                                productType: 49,
-                                area: 88,
-                                wardId: 8633,
-                                districtId: 53,
-                                cityCode: 'SG',
-                                latitude: 10.784106254577637,
-                                longitude: 106.70365142822266
-                            }
-                        });
-                    } else {
-                        setTimeout(function () { initListingHistoryLazy() }, 200);
-                    }
-                })();
-            </script>        <script type="application/ld+json">
+                 <script type="application/ld+json">
             {"@context":"https://schema.org/","@type":"RealEstateListing","@name":"Chuyên cho thuê căn hộ 1,2,3,4PN Vinhomes Golden River, giá tốt nhất. Lh 0906 515 *** Lâm Hải","@datePublished":"2024-10-30T13:33:28.4430000+07:00","@dateModified":"2024-11-03T15:33:02.2730000+07:00"}
         </script>
 
@@ -1828,18 +1742,7 @@
     <script src="https://staticfile.batdongsan.com.vn/js/Common/Services/filestatic.ver3eb9ae29.msvbds.FrontEnd.UserListingViewedService.min.js" defer></script>
     <script src="https://staticfile.batdongsan.com.vn/js/Product/filestatic.ver3eb9ae29.msvbds.FrontEnd.Product.UserListingViewed.min.js" defer></script>
 
-    <script type="text/javascript">
-        (function callJQuery() {
-            if (window.FrontEnd && window.FrontEnd.Product && window.FrontEnd.Product.UserListingViewed) {
-                var productViewed = new FrontEnd.Product.UserListingViewed({
-                    productId: 40192216,
-                    productIds: []
-                });
-            } else {
-                setTimeout(callJQuery, 100);
-            }
-        })();
-    </script>
+
 
 
 </div>

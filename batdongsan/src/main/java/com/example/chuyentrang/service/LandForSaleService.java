@@ -37,6 +37,9 @@ public class LandForSaleService {
     }
 
 
+
+
+
     public List<LandForSale> listLandSold() {
         List<String> types = Arrays.asList("Bán");
         return landForSaleRepository.findByTypeIn( types);
@@ -79,9 +82,11 @@ public class LandForSaleService {
         return landForSaleRepository.findByBrokerIdAndTypeIn(userId, types);
     }
 
-    public Optional<LandForSale> getLandForSaleById(int id) {
-        return landForSaleRepository.findById(id);
-    }
+
+
+    public LandForSale getLandForSaleById(int id) {
+        return landForSaleRepository.findById(id).orElse(null);  // Trả về null nếu không tìm thấy
+
 
     public Iterable<LandForSale> getAllLandForSales() {
         return landForSaleRepository.findAll();

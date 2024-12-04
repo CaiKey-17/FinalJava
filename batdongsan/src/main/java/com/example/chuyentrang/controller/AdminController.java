@@ -123,8 +123,8 @@ public class AdminController {
                 model.addAttribute("name", name);
                 List<com.example.chuyentrang.model.Package> packageList = packageService.getAllPackage();
 
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("mm:HH dd-MM-yyyy");
 
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 
                 for (Package packagee : packageList) {

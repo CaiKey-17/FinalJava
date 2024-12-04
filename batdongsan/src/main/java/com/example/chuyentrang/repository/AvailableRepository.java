@@ -25,4 +25,8 @@ public interface AvailableRepository extends JpaRepository<Available, Integer> {
             "FROM Available a " +
             "GROUP BY a.packagee.name")
     List<Object[]> getPackageStatistics();
+
+    List<Available> findByBrokerAndQuantityAvailableGreaterThanAndExpirationDateAfter(User broker, int quantity, LocalDateTime expirationDate);
+
+
 }

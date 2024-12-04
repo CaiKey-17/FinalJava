@@ -16,6 +16,7 @@ public class News {
     private int id;
     private String title;
     private String summaryOfContent;
+    @Column(length = 1000000)
     private String content;
 
     @OneToMany(mappedBy = "news", cascade = CascadeType.ALL, orphanRemoval = true)

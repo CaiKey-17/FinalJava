@@ -24,12 +24,41 @@ public class LandForSale {
     private String interior;
     private int numberOfToilets;
     private int numberOfBedRooms;
+
+    @Column(length = 100000)
     private String description;
     private LocalDateTime datePosted;
     private String type;
     private String propertyType;
 
     private String legal;
+
+    private Double latitude;
+    private Double longitude;
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public List<ImageLand> getImages() {
+        return images;
+    }
+
+    public void setImages(List<ImageLand> images) {
+        this.images = images;
+    }
 
     public String getPropertyType() {
         return propertyType;
@@ -41,6 +70,7 @@ public class LandForSale {
 
     @OneToMany(mappedBy = "landForSale", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ImageLand> images = new ArrayList<>();
+
 
 
     @ManyToOne
