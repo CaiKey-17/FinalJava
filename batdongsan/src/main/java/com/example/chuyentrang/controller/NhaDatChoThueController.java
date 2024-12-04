@@ -25,18 +25,18 @@ public class NhaDatChoThueController {
         return "nha_dat_cho_thue";
     }
 
-    @GetMapping("/chi-tiet-nha-dat-cho-thue")
-    public String detailnhadatchothue(Model model) {
-        LandForSale  landForSales = landForSaleService.getLandForSaleById(31);
-        System.out.println(landForSales.toString());
-        Double latitude  = landForSales.getLatitude();
-        Double longitude  = landForSales.getLongitude();
-
-
-
-        model.addAttribute("latitude", latitude);
-        model.addAttribute("longitude", longitude);
-        model.addAttribute("description", landForSales.getDescription());
-        return "detail/detail_nha_dat_cho_thue";
-    }
+//    @GetMapping("/chi-tiet-nha-dat-cho-thue")
+//    public String detailnhadatchothue(Model model) {
+//        LandForSale  landForSales = landForSaleService.getLandForSaleById(31);
+//        System.out.println(landForSales.toString());
+//        Double latitude  = landForSales.getLatitude();
+//        Double longitude  = landForSales.getLongitude();
+//
+//
+//
+//        model.addAttribute("latitude", latitude);
+//        model.addAttribute("longitude", longitude);
+//        model.addAttribute("description", landForSales.getDescription());
+//        return "detail/detail_nha_dat_cho_thue";
+//    }
 }

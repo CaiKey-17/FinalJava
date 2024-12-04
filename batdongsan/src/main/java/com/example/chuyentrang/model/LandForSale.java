@@ -239,7 +239,7 @@ public class LandForSale {
 //        imageLand.setLandForSale(null);
 //    }
 
-    public String formatToReadableUnit(int number) {
+    public String formatToReadableUnit(double number) {
         if (number >= 1000000000) {
             return (number / 1000000000) + " tỷ";
         } else if (number >= 1000000) {

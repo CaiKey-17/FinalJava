@@ -1,4 +1,4 @@
-<div class="re__main" itemprop="about">
+<div class="re__main" itemprop="about" xmlns:th="http://www.w3.org/1999/xhtml">
 
 
 
@@ -97,7 +97,7 @@
                         <div class="re__pr-short-info-item js__pr-short-info-item">
                             <span class="title">Mức giá</span>
                             <span class="value" th:text="${landForSale.formatToReadableUnit(landForSale.price)}"></span>
-                        <span class="ext" th:text="${'~' + #numbers.formatDecimal(T(java.lang.Math).round(landForSale.price / landForSale.area / 1000000 * 100.0) / 100.0, 0, 2) + ' triệu/m²'}">~3,11 t&#x1EF7;</span>
+                            <span class="ext" th:text="${'~' + #numbers.formatDecimal(T(java.lang.Math).round(landForSale.price / landForSale.area / 1000000 * 100.0) / 100.0, 0, 2) + ' triệu/m²'}">~3,11 t&#x1EF7;</span>
 
                         </div>
                         <div class="re__pr-short-info-item js__pr-short-info-item">
@@ -269,10 +269,44 @@
                     <div class="re__section re__pr-map js__section js__li-other">
                         <span class="re__section-title">Xem trên bản đồ</span>
                         <div class="re__section-body js__section-body">
-                            <iframe class="lazyload" data-src="https://www.google.com/maps/embed/v1/place?q=10.7065229415894,106.59969329834&amp;key=AIzaSyAMd45cCGHSmsM2a5APxYRdOwV8kX-4m40" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            <div id="map" style="height: 300px; width: 100%;"></div>
                             <div class="map-overlay"></div>
                         </div>
                     </div>
+                    <input type="hidden" id="latitude" th:value="${landForSale.latitude}"/>
+                    <input type="hidden" id="longitude" th:value="${landForSale.longitude}" />
+
+
+                    <script async
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCs4bZo6dgcEICIpKb7uQhjd-jdzJTZQFg&callback=initMap">
+                    </script>
+                    <script>
+                        function initMap() {
+                            // Lấy giá trị latitude và longitude từ các input ẩn
+                            var latitude = document.getElementById("latitude").value;
+                            var longitude = document.getElementById("longitude").value;
+
+                            // Kiểm tra xem giá trị có hợp lệ không
+                            if (latitude && longitude) {
+                                var location = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
+
+                                // Khởi tạo bản đồ
+                                var map = new google.maps.Map(document.getElementById("map"), {
+                                    zoom: 14,
+                                    center: location,
+                                });
+
+                                // Thêm marker vào bản đồ
+                                var marker = new google.maps.Marker({
+                                    position: location,
+                                    map: map,
+                                });
+                            } else {
+                                console.error("Latitude or Longitude is missing.");
+                            }
+                        }
+                    </script>
+
 
                     <div class="re__section re__contact-box-tablet js__section js__contact-box-tablet">
                         <span class="re__section-title">Thông tin người đăng</span>
@@ -522,73 +556,6 @@
 
 
 
-            <script type="text/javascript">
-                (function callJQuery() {
-                    if (window.FrontEnd && window.FrontEnd.Product &&
-                        window.FrontEnd.Product.Details && window.FrontEnd.Product.Details.SimilarListing) {
-                        new FrontEnd.Product.Details.SimilarListing({
-                            containerSelector: '.js__similar-listing',
-                            containerListingSelector: '.js__similar-listing-recommendations',
-                            getListingRecommendationUrl: '/Product/ProductDetail/GetListingRecommendation',
-                            getListingRecommendationParams: {
-                                count: 20,
-                                productId: 41405246,
-                                price: 3108000000,
-                                pricePerM2: 37000000,
-                                categoryId: 324,
-                                cityCode: 'SG',
-                                districtId: 72,
-                                streetId: 1894,
-                                wardId: 11859,
-                                projectId: 5880,
-                                productType: 38,
-                                area: 84,
-                                wardId: 11859,
-                                districtId: 72,
-                                cityCode: 'SG',
-                                latitude: 10.7065229415894,
-                                longitude: 106.59969329834
-                            }
-                        });
-                    }
-                    else {
-                        setTimeout(callJQuery, 100);
-                    }
-                })();
-
-                (function callJQuery2() {
-                    if (window.FrontEnd && window.FrontEnd.Product &&
-                        window.FrontEnd.Product.Details && window.FrontEnd.Product.Details.SimilarListingLazy) {
-                        new FrontEnd.Product.Details.SimilarListingLazy({
-                            containerSelector: '.js__similar-listing',
-                            containerListingSelector: '.js__similar-listing-recommendations',
-                            getListingRecommendationUrl: '/Product/ProductDetail/GetListingRecommendation',
-                            getListingRecommendationParams: {
-                                count: 20,
-                                productId: 41405246,
-                                price: 3108000000,
-                                pricePerM2: 37000000,
-                                categoryId: 324,
-                                cityCode: 'SG',
-                                districtId: 72,
-                                streetId: 1894,
-                                wardId: 11859,
-                                projectId: 5880,
-                                productType: 38,
-                                area: 84,
-                                wardId: 11859,
-                                districtId: 72,
-                                cityCode: 'SG',
-                                latitude: 10.7065229415894,
-                                longitude: 106.59969329834
-                            }
-                        });
-                    }
-                    else {
-                        setTimeout(callJQuery2, 100);
-                    }
-                })();
-            </script>
             <div class="re__divide-8"></div>
 
             <div class="re__section re__pr-more-listing re__history-listing lazyload js__section js__history-listing" data-script="https://staticfile.batdongsan.com.vn/js/Product/Binnova/Details/filestatic.ver3eb9ae29.msvbds.FrontEnd.Product.Details.ListingHistory.Lazy.min.js">
@@ -653,7 +620,7 @@
 
             <script type="text/javascript" src="https://staticfile.batdongsan.com.vn/js/Product/Binnova/Details/filestatic.ver3eb9ae29.msvbds.FrontEnd.Product.Details.ListingHistory.min.js"></script>
 
-               <script type="application/ld+json">
+                 <script type="application/ld+json">
             {"@context":"https://schema.org/","@type":"RealEstateListing","@name":"Căn hộ Conic Boulevard - Thanh toán 450tr nhận nhà, bank miễn lãi 18 tháng, tặng phí QL, CK tới 15%","@datePublished":"2024-11-02T12:54:40.0000000+07:00","@dateModified":"2024-11-03T18:50:20.7330000+07:00"}
         </script>
 
@@ -716,11 +683,11 @@
                             <span>Chat qua Zalo</span>
                         </div>
                     </a>
-<!--                    <a kyc-tracking-id="send-email-ldp"-->
-<!--                       id="email" data-kyc-name="Nguyễn Thiên" data-kyc-avatar=""-->
-<!--&lt;!&ndash;                                           data-href="mailto:dinhthien.diaoc@gmail.com?subject=Kha&#x301;ch ha&#x300;ng Batdongsan.com quan t&#xE2;m t&#x1A1;&#x301;i tin &#x111;&#x103;ng&amp;body=T&#xF4;i co&#x301; quan t&#xE2;m t&#x1A1;&#x301;i tin &#x111;&#x103;ng na&#x300;y https://batdongsan.com.vn/ban-can-ho-chung-cu-duong-huynh-ba-chanh-xa-tan-kien-prj-conic-boulevard/-thanh-toan-450tr-nhan-nha-bank-mien-lai-18-thang-tang-phi-ql-ck-toi-15-pr41405246"&ndash;&gt;-->
-<!--                    &lt;!&ndash;                       data-email="dinhthien.diaoc@gmail.com" data-kyc-name="Nguyễn Thiên" data-kyc-avatar=""&ndash;&gt;-->
-<!--                    class="email-copy re__btn re__btn-se-border&#45;&#45;md js__kyc-send-mail-button-in-ldp">Gửi email</a>-->
+                    <!--                    <a kyc-tracking-id="send-email-ldp"-->
+                    <!--                       id="email" data-kyc-name="Nguyễn Thiên" data-kyc-avatar=""-->
+                    <!--&lt;!&ndash;                                           data-href="mailto:dinhthien.diaoc@gmail.com?subject=Kha&#x301;ch ha&#x300;ng Batdongsan.com quan t&#xE2;m t&#x1A1;&#x301;i tin &#x111;&#x103;ng&amp;body=T&#xF4;i co&#x301; quan t&#xE2;m t&#x1A1;&#x301;i tin &#x111;&#x103;ng na&#x300;y https://batdongsan.com.vn/ban-can-ho-chung-cu-duong-huynh-ba-chanh-xa-tan-kien-prj-conic-boulevard/-thanh-toan-450tr-nhan-nha-bank-mien-lai-18-thang-tang-phi-ql-ck-toi-15-pr41405246"&ndash;&gt;-->
+                    <!--                    &lt;!&ndash;                       data-email="dinhthien.diaoc@gmail.com" data-kyc-name="Nguyễn Thiên" data-kyc-avatar=""&ndash;&gt;-->
+                    <!--                    class="email-copy re__btn re__btn-se-border&#45;&#45;md js__kyc-send-mail-button-in-ldp">Gửi email</a>-->
                     <a class="re__btn re__btn-se-border--md js__btnSendContact js__btn-send-contact-from-contact-box"
                        tracking-id="request-call-back-ldp"
                        tracking-label="loc=Sale-Listing Details,prid=41405246"
