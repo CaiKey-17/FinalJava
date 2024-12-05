@@ -1,4 +1,4 @@
-<div class="re__main" itemprop="about" xmlns:th="http://www.w3.org/1999/xhtml">
+<div class="re__main" itemprop="about">
 
 
 
@@ -212,7 +212,7 @@
                                 <div class="re__section-title">Thông tin dự án</div>
                                 <a target="_blank" href="https://batdongsan.com.vn/nha-dat-ban-conic-boulevard" class="re__link-pr"
                                    tracking-id="ldp-navigate-project-info-card-to-srp" tracking-label="project-detail">
-                                    <span>Xem 60 tin đăng bán</span><i class="re__icon-chevron-right--sm"></i>
+                                    <span>Xem tin đăng bán</span><i class="re__icon-chevron-right--sm"></i>
                                 </a>
                             </div>
 
@@ -224,7 +224,7 @@
                                 </div>
                                 <div class="re__section-content">
                                     <div class="re__row-item">
-                                        <div class="re__project-title">Conic Boulevard</div>
+                                        <div class="re__project-title" th:text="${landForSale.name}">Conic Boulevard</div>
                                     </div>
                                     <div class="re__row-item re__content-tool">
                 <span class="re__prj-card-config-value" aria-label="Trạng thái: &#x110;ang m&#x1EDF; b&#xE1;n" data-microtip-size="auto"  data-microtip-position="bottom" role="tooltip">
@@ -269,44 +269,10 @@
                     <div class="re__section re__pr-map js__section js__li-other">
                         <span class="re__section-title">Xem trên bản đồ</span>
                         <div class="re__section-body js__section-body">
-                            <div id="map" style="height: 300px; width: 100%;"></div>
+                            <iframe class="lazyload" data-src="https://www.google.com/maps/embed/v1/place?q=10.7065229415894,106.59969329834&amp;key=AIzaSyAMd45cCGHSmsM2a5APxYRdOwV8kX-4m40" frameborder="0" style="border:0" allowfullscreen></iframe>
                             <div class="map-overlay"></div>
                         </div>
                     </div>
-                    <input type="hidden" id="latitude" th:value="${landForSale.latitude}"/>
-                    <input type="hidden" id="longitude" th:value="${landForSale.longitude}" />
-
-
-                    <script async
-                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCs4bZo6dgcEICIpKb7uQhjd-jdzJTZQFg&callback=initMap">
-                    </script>
-                    <script>
-                        function initMap() {
-                            // Lấy giá trị latitude và longitude từ các input ẩn
-                            var latitude = document.getElementById("latitude").value;
-                            var longitude = document.getElementById("longitude").value;
-
-                            // Kiểm tra xem giá trị có hợp lệ không
-                            if (latitude && longitude) {
-                                var location = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
-
-                                // Khởi tạo bản đồ
-                                var map = new google.maps.Map(document.getElementById("map"), {
-                                    zoom: 14,
-                                    center: location,
-                                });
-
-                                // Thêm marker vào bản đồ
-                                var marker = new google.maps.Marker({
-                                    position: location,
-                                    map: map,
-                                });
-                            } else {
-                                console.error("Latitude or Longitude is missing.");
-                            }
-                        }
-                    </script>
-
 
                     <div class="re__section re__contact-box-tablet js__section js__contact-box-tablet">
                         <span class="re__section-title">Thông tin người đăng</span>
@@ -317,7 +283,7 @@
                                 </div>
                             </div>
                             <div class="pro-agent-info-item">
-                    <span class="re__contact-name js_contact-name" title="Nguy&#x1EC5;n Thi&#xEA;n">
+                    <span class="re__contact-name js_contact-name" title="Nguy&#x1EC5;n Thi&#xEA;n" th:text="${landForSale.broker.name}">
                         Nguy&#x1EC5;n Thi&#xEA;n
                     </span>
                                 <div class="re__ldp-pro-agent-info-tablet js__ldp-pro-agent-info-tablet"></div>
@@ -365,11 +331,9 @@
 
 
                     <div class="re__pr-short-info re__pr-config js__pr-config">
-                        <div class="re__pr-short-info-item js__pr-config-item"><span class="title">Ngày đăng</span><span class="value">02/11/2024</span></div>
-                        <div class="re__pr-short-info-item js__pr-config-item"><span class="title">Ngày hết hạn</span><span class="value">17/11/2024</span></div>
-                        <div class="re__pr-short-info-item js__pr-config-item"><span class="title">Loại tin</span><span class="value">Tin VIP Kim C&#x1B0;&#x1A1;ng</span></div>
-                        <div class="re__pr-short-info-item js__pr-config-item"><span class="title">Mã tin</span><span class="value">41405246</span></div>
-                    </div>
+                        <div class="re__pr-short-info-item js__pr-config-item"><span class="title">Ngày đăng</span><span class="value" th:text="${#temporals.format(landForSale.available.purchaseDate, 'dd/MM/yyyy')}">02/11/2024</span></div>
+                        <div class="re__pr-short-info-item js__pr-config-item"><span class="title">Ngày hết hạn</span><span class="value" th:text="${#temporals.format(landForSale.available.expirationDate, 'dd/MM/yyyy')}">17/11/2024</span></div>
+                        </div>
 
 
                 </div>
@@ -490,141 +454,263 @@
                 </div></div>
 
             <div class="re__divide-8"></div>
-            <div class="re__section re__pr-more-listing re__similar-listing js__section js__similar-listing lazyload" data-script="https://staticfile.batdongsan.com.vn/js/Product/Binnova/Details/filestatic.ver3eb9ae29.msvbds.FrontEnd.Product.Details.SimilarListing.Lazy.min.js">
+            <div class="re__section re__pr-more-listing re__similar-listing js__section js__similar-listing lazyloaded">
     <span tracking-id="same-area-title-ldp" class="re__section-title">
         Bất động sản dành cho bạn
-        <a class="re__btn re__btn-se-border--sm re__btn-icon--sm js__go-right">
+        <a class="re__btn re__btn-se-border--sm re__btn-icon--sm js__go-right" tabindex="0" role="button"
+           aria-label="Next slide" aria-disabled="false">
             <i class="re__icon-chevron-right--sm"></i>
         </a>
-        <a class="re__btn re__btn-se-border--sm re__btn-icon--sm js__go-left">
+        <a class="re__btn re__btn-se-border--sm re__btn-icon--sm js__go-left swiper-button-disabled" tabindex="0"
+           role="button" aria-label="Previous slide" aria-disabled="true">
             <i class="re__icon-chevron-left--sm"></i>
         </a>
     </span>
                 <div class="re__section-body js__section-body">
-                    <div class="swiper-container re__swiper-container">
-                        <div class="swiper-wrapper js__similar-listing-recommendations">
+                    <div class="swiper-container re__swiper-container swiper-container-initialized swiper-container-horizontal">
+                        <div class="swiper-wrapper js__similar-listing-recommendations"
+                             style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                            <div th:each="list : ${landForSalesList}" class="swiper-slide swiper-slide-visible swiper-slide-active slide-nha-dat-cho-thue"
+                                 style="display: inline-block; width: unset">
 
-                            <div class="re__card re__card-compact card-compact-skeleton">
-                                <div class="re__card-image"></div>
-                                <div class="re__card-info">
-                                    <div class="re__card-info-content">
-                                        <div class="re__card-title"></div>
-                                        <div class="re__card-config"></div>
-                                        <div class="re__card-location"></div>
-                                        <div class="re__card-contact"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="re__card re__card-compact card-compact-skeleton">
-                                <div class="re__card-image"></div>
-                                <div class="re__card-info">
-                                    <div class="re__card-info-content">
-                                        <div class="re__card-title"></div>
-                                        <div class="re__card-config"></div>
-                                        <div class="re__card-location"></div>
-                                        <div class="re__card-contact"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="re__card re__card-compact card-compact-skeleton">
-                                <div class="re__card-image"></div>
-                                <div class="re__card-info">
-                                    <div class="re__card-info-content">
-                                        <div class="re__card-title"></div>
-                                        <div class="re__card-config"></div>
-                                        <div class="re__card-location"></div>
-                                        <div class="re__card-contact"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="re__card re__card-compact card-compact-skeleton">
-                                <div class="re__card-image"></div>
-                                <div class="re__card-info">
-                                    <div class="re__card-info-content">
-                                        <div class="re__card-title"></div>
-                                        <div class="re__card-config"></div>
-                                        <div class="re__card-location"></div>
-                                        <div class="re__card-contact"></div>
-                                    </div>
+                                <div class="js__card js__card-compact-web
+     pr-container re__card-compact re__vip-normal"
+                                     prav="https://file4.batdongsan.com.vn/crop/200x140/2024/11/28/20241128110047-78bf_wm.jpg"
+                                     uid="3313468" prid="41659225" vtp="vip-normal" clo="ldre">
+                                    <a class="js__product-link-for-product-id" data-product-id="41659225"
+                                       th:href="@{'/chi-tiet-nha-dat-ban/' + ${list.id}}"
+                                       th:title="${list.name}"
+                                       tracking-id="same-area-listing-ldp" tracking-label="prid=41659225,src=bds">
+                                        <div class="re__card-image
+            ">
+                                            <img alt="Ảnh đại diện" class="pr-img ls-is-cached lazyloaded"
+                                                 abc="3.20241128110047-78bf_wm.jpg"
+                                                 th:data-src="${list.images[0].imageLink}"
+                                                 th:src="${list.images[0].imageLink}">
+                                            <div class="re__card-image-feature">
+                                                <i class="re__icon-image"></i>
+                                                <span th:text="${list.images.size()}">6</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="re__card-info">
+                                            <div class="re__card-info-content">
+                                                <div class="re__card-title">
+                                                    <h3 class="js__card-title" th:text="${list.name}">
+                                                        <span class="re__card-image-verified "></span>
+
+                                                    </h3>
+                                                </div>
+                                                <div class="re__card-config">
+                                                    <span class="re__card-config-price" th:text="${list.formatToReadableUnit(list.price)}">1,8 tỷ</span>
+                                                    <span class="re__card-config-area"><span
+                                                            class="re__card-config-dot"  th:text="${list.area + ' m²'}">·</span>75 m²</span>
+                                                    <div class="re__clear"></div>
+                                                </div>
+                                                <div class="re__card-location">
+                                                    <i class="re__icon-location--sm"></i>
+                                                    <span  th:text="${list.district} + ', ' + ${list.province}">Quốc Oai, Hà Nội</span>
+                                                </div>
+                                                <div class="re__clearfix"></div>
+                                                <div class="re__card-contact">
+                                                    <div class="re__card-published-info">
+                                <span class="re__card-published-info-published-at" th:aria-label="${#temporals.format(list.available.purchaseDate, 'dd/MM/yyyy')}"
+                                      data-microtip-position="right" role="tooltip" th:text="${list.getRelativeTime(list.datePosted)}">
+            Đăng hôm nay
+        </span>
+
+                                                    </div>
+                                                    <div class="re__card-contact-button">
+                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm"
+                                  data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;41659225&quot;,&quot;productId&quot;:41659225,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/11/28/20241128110047-78bf_wm.jpg&quot;,&quot;title&quot;:&quot;Bán lô đất 75m2 Phú Mãn Luxury - cách QL21A 1km, DHQG &amp; CNC Hòa Lạc 5km - tài chính dưới 2 tỷ&quot;,&quot;url&quot;:&quot;/ban-dat-duong-phu-man-1-xa-phu-man/ban-lo-75m2-luxury-cach-ql21a-1km-dhqg-cnc-hoa-lac-5km-tai-chinh-duoi-2-ty-pr41659225&quot;}"
+                                  aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip"
+                                  kyc-tracking-id="save-listing"
+                                  tracking-label="loc=Sale-Listing Details,src=bds,status=save" title=""
+                                  data-change-marking="1">
+                                <i class="re__icon-heart--sm"></i>
+                                <i class="re__icon-heart-pressed--sm"></i>
+                            </span>
+                                                    </div>
+                                                    <div class="re__clear-both"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="re__clearfix"></div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="re__card-gradient-right re__hide-item re__card-gradient-right-pixiu js__card-gradient-right"></div>
+                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                    <div class="re__card-gradient-right re__hide-item re__card-gradient-right-pixiu js__card-gradient-right"
+                         style="display: block;"></div>
                 </div>
             </div>
 
 
 
+            <script type="text/javascript">
+                (function callJQuery() {
+                    if (window.FrontEnd && window.FrontEnd.Product &&
+                        window.FrontEnd.Product.Details && window.FrontEnd.Product.Details.SimilarListing) {
+                        new FrontEnd.Product.Details.SimilarListing({
+                            containerSelector: '.js__similar-listing',
+                            containerListingSelector: '.js__similar-listing-recommendations',
+                            getListingRecommendationUrl: '/Product/ProductDetail/GetListingRecommendation',
+                            getListingRecommendationParams: {
+                                count: 20,
+                                productId: 41405246,
+                                price: 3108000000,
+                                pricePerM2: 37000000,
+                                categoryId: 324,
+                                cityCode: 'SG',
+                                districtId: 72,
+                                streetId: 1894,
+                                wardId: 11859,
+                                projectId: 5880,
+                                productType: 38,
+                                area: 84,
+                                wardId: 11859,
+                                districtId: 72,
+                                cityCode: 'SG',
+                                latitude: 10.7065229415894,
+                                longitude: 106.59969329834
+                            }
+                        });
+                    }
+                    else {
+                        setTimeout(callJQuery, 100);
+                    }
+                })();
+
+                (function callJQuery2() {
+                    if (window.FrontEnd && window.FrontEnd.Product &&
+                        window.FrontEnd.Product.Details && window.FrontEnd.Product.Details.SimilarListingLazy) {
+                        new FrontEnd.Product.Details.SimilarListingLazy({
+                            containerSelector: '.js__similar-listing',
+                            containerListingSelector: '.js__similar-listing-recommendations',
+                            getListingRecommendationUrl: '/Product/ProductDetail/GetListingRecommendation',
+                            getListingRecommendationParams: {
+                                count: 20,
+                                productId: 41405246,
+                                price: 3108000000,
+                                pricePerM2: 37000000,
+                                categoryId: 324,
+                                cityCode: 'SG',
+                                districtId: 72,
+                                streetId: 1894,
+                                wardId: 11859,
+                                projectId: 5880,
+                                productType: 38,
+                                area: 84,
+                                wardId: 11859,
+                                districtId: 72,
+                                cityCode: 'SG',
+                                latitude: 10.7065229415894,
+                                longitude: 106.59969329834
+                            }
+                        });
+                    }
+                    else {
+                        setTimeout(callJQuery2, 100);
+                    }
+                })();
+            </script>
             <div class="re__divide-8"></div>
 
-            <div class="re__section re__pr-more-listing re__history-listing lazyload js__section js__history-listing" data-script="https://staticfile.batdongsan.com.vn/js/Product/Binnova/Details/filestatic.ver3eb9ae29.msvbds.FrontEnd.Product.Details.ListingHistory.Lazy.min.js">
-    <span tracking-id="recent-viewed-listing-title-ldp" class="re__section-title">
-        Tin đăng đã xem
-        <a action="go-right" class="re__btn re__btn-se-border--sm re__btn-icon--sm"><i class="re__icon-chevron-right--sm"></i></a>
-        <a action="go-left" class="re__btn re__btn-se-border--sm re__btn-icon--sm"><i class="re__icon-chevron-left--sm"></i></a>
-    </span>
-                <div class="re__section-body js__section-body">
-                    <div class="swiper-container re__swiper-container">
-                        <div listing-history class="swiper-wrapper">
-
-                            <div class="re__card re__card-compact card-compact-skeleton">
-                                <div class="re__card-image"></div>
-                                <div class="re__card-info">
-                                    <div class="re__card-info-content">
-                                        <div class="re__card-title"></div>
-                                        <div class="re__card-config"></div>
-                                        <div class="re__card-location"></div>
-                                        <div class="re__card-contact"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="re__card re__card-compact card-compact-skeleton">
-                                <div class="re__card-image"></div>
-                                <div class="re__card-info">
-                                    <div class="re__card-info-content">
-                                        <div class="re__card-title"></div>
-                                        <div class="re__card-config"></div>
-                                        <div class="re__card-location"></div>
-                                        <div class="re__card-contact"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="re__card re__card-compact card-compact-skeleton">
-                                <div class="re__card-image"></div>
-                                <div class="re__card-info">
-                                    <div class="re__card-info-content">
-                                        <div class="re__card-title"></div>
-                                        <div class="re__card-config"></div>
-                                        <div class="re__card-location"></div>
-                                        <div class="re__card-contact"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="re__card re__card-compact card-compact-skeleton">
-                                <div class="re__card-image"></div>
-                                <div class="re__card-info">
-                                    <div class="re__card-info-content">
-                                        <div class="re__card-title"></div>
-                                        <div class="re__card-config"></div>
-                                        <div class="re__card-location"></div>
-                                        <div class="re__card-contact"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="re__card-gradient-right re__hide-item re__card-gradient-right-pixiu js__card-gradient-right"></div>
-                </div>
-            </div>
 
             <script type="text/javascript" src="https://staticfile.batdongsan.com.vn/js/Product/Binnova/Details/filestatic.ver3eb9ae29.msvbds.FrontEnd.Product.Details.ListingHistory.min.js"></script>
 
-                 <script type="application/ld+json">
+            <script type="text/javascript">
+                (function initListingHistory() {
+                    if (window.FrontEnd &&
+                        window.FrontEnd.Product &&
+                        window.FrontEnd.Product.Details &&
+                        window.FrontEnd.Product.Details.ListingHistory) {
+                        new FrontEnd.Product.Details.ListingHistory({ productId: 41405246 });
+                    } else {
+                        setTimeout(function () { initListingHistory() }, 200);
+                    }
+                })();
+
+                (function initListingHistoryLazy() {
+                    if (window.FrontEnd &&
+                        window.FrontEnd.Product &&
+                        window.FrontEnd.Product.Details &&
+                        window.FrontEnd.Product.Details.ListingHistoryLazy) {
+                        new FrontEnd.Product.Details.ListingHistoryLazy({
+                            product: {
+                                productId: 41405246
+                            },
+                            getListingHistory: '/Product/ProductDetail/GetListingHistory',
+                            listingLimit: 20,
+                            displayedItemCount: 12,
+                            asyncTime: 24,
+                            errorImageSrc: 'https://staticfile.batdongsan.com.vn/images/Product/error-image/card-compact-error-image.png',
+                            trackingIdForLink: 'recent-view-listing-ldp',
+                            trackingIdForMarkingBtn: 'save-listing',
+                            loc: 'Sale-Listing Details',
+                            getListingRecommendationUrl: '/Product/ProductDetail/GetListingRecommendation',
+                            getListingRecommendationParams: {
+                                count: 20,
+                                productId: 41405246,
+                                price: 3108000000,
+                                pricePerM2: 37000000,
+                                categoryId: 324,
+                                cityCode: 'SG',
+                                districtId: 72,
+                                streetId: 1894,
+                                wardId: 11859,
+                                projectId: 5880,
+                                productType: 38,
+                                area: 84,
+                                wardId: 11859,
+                                districtId: 72,
+                                cityCode: 'SG',
+                                latitude: 10.7065229415894,
+                                longitude: 106.59969329834
+                            }
+                        });
+                    } else {
+                        setTimeout(function () { initListingHistoryLazy() }, 200);
+                    }
+                })();
+            </script>        <script type="application/ld+json">
             {"@context":"https://schema.org/","@type":"RealEstateListing","@name":"Căn hộ Conic Boulevard - Thanh toán 450tr nhận nhà, bank miễn lãi 18 tháng, tặng phí QL, CK tới 15%","@datePublished":"2024-11-02T12:54:40.0000000+07:00","@dateModified":"2024-11-03T18:50:20.7330000+07:00"}
         </script>
 
+            <script type="text/javascript">
+                (function initMediaSlide() {
+                    if (window.FrontEnd && window.FrontEnd.Product && window.FrontEnd.Product.Details && window.FrontEnd.Product.Details.MediaSlide) {
+                        new FrontEnd.Product.Details.MediaSlide({})
+                    }
+                    else {
+                        setTimeout(initMediaSlide, 100);
+                    }
+                })();
+                (function initProductDetails() {
+                    localStorage.setItem('AdbutlerConfig', JSON.stringify({
+                        MID: parseInt("183272"),
+                        API: "https://promote.batdongsan.com.vn/"
+                    }));
+                    if (window.FrontEnd && window.FrontEnd.Product && window.FrontEnd.Product.Details && window.FrontEnd.Product.Details.Details && window.FrontEnd.BadReportProductsServices) {
 
+                        window.FrontEnd_Product_Details_DetailsBinnova = new FrontEnd.Product.Details.Details({
+                            urlSubmitFeedback: '/Product/ProductDetail/SendFeedback',
+                            productId: 41405246,
+                            adbutlerConfig: {
+                                MID: parseInt("183272"),
+                                zoneId: parseInt("542226")
+                            },
+                            adbutlerAPI: "https://promote.batdongsan.com.vn/",
+                        });
+
+                        (new window.FrontEnd.BadReportProductsServices()).BadReportDetailsProduct();
+                    }
+                    else {
+                        setTimeout(initProductDetails, 100);
+                    }
+                })();
+            </script>
 
             <div class="re__divide"></div>
             <div class="re__divide-8"></div>
@@ -981,15 +1067,15 @@
             <div class="re__pr-scrollbar js__pr-scrollbar">
                 <div class="re__pr-scrollbar-container re__pr-core-info re__clearfix js__pr-scrollbar-container">
                     <div class="re__pr-s-info js__pr-s-info">
-                        <span class="re__pr-s-info-item">37 tri&#x1EC7;u/m&#xB2;</span>
-                        <span class="re__pr-s-info-item">84 m&#xB2;</span>
-                        <span class="re__pr-s-info-item">2 PN</span>
-                        <span class="re__pr-s-info-address js__pr-address">Dự án Conic Boulevard, Đường Huỳnh Bá Chánh, Xã Tân Kiên, Bình Chánh, Hồ Chí Minh</span>
+                        <span class="re__pr-s-info-item" th:text="${landForSale.formatToReadableUnit(landForSale.price)}">37 tri&#x1EC7;u/m&#xB2;</span>
+                        <span class="re__pr-s-info-item" th:text="${landForSale.area + ' m²'}">84 m&#xB2;</span>
+                        <span class="re__pr-s-info-item" th:text="${landForSale.numberOfBedRooms + ' PN'}">2 PN</span>
+                        <span class="re__pr-s-info-address js__pr-address" th:text="'Nhà đất ' + ${landForSale.ward} + ', ' + ${landForSale.district} + ', ' + ${landForSale.province}">Dự án Conic Boulevard, Đường Huỳnh Bá Chánh, Xã Tân Kiên, Bình Chánh, Hồ Chí Minh</span>
                     </div>
 
                     <div class="re__pr-s-contact js__pr-s-contact">
                         <img class="re__contact-avatar" src="https://file4.batdongsan.com.vn/resize/200x200/2024/03/28/20240328180803-6735.jpg">
-                        <div class="re__contact-name js_contact-name" title="Nguy&#x1EC5;n Thi&#xEA;n">
+                        <div class="re__contact-name js_contact-name" title="Nguy&#x1EC5;n Thi&#xEA;n" th:text="${landForSale.broker.name}">
                             Thi&#xEA;n
                         </div>
                         <div class="re__zalo-fix">
@@ -1006,7 +1092,7 @@
                         </div>
                         <div class="re__btn re__btn-cyan-solid--md phone phoneEvent btn-phone--lazy-loading js__phone-event" raw="18acc32c2e2af160fe572208147b1c91"
                              kyc-tracking-id="lead-phone-ldp"
-                             tracking-label="loc=Sale-Listing Details-main-button,prid=41405246" data-kyc-name="Nguyễn Thiên" data-kyc-avatar="">
+                             tracking-label="loc=Sale-Listing Details-main-button,prid=41405246" th:data-kyc-name="${landForSale.broker.name}" data-kyc-avatar="" th:text="${#strings.substring(landForSale.broker.phone, 0, landForSale.broker.phone.length() - 3) + '*** ' + 'Hiện số'}">
                             0937 605 *** · Hiện số
                         </div>
                     </div>

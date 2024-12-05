@@ -56,22 +56,51 @@ public class LandForSaleService {
     }
 
 
-    public Page<LandForSale> listLandSold(int page, String propertyTypesAsString, int minPrice, int maxPrice, int minArea, int maxArea, int numberOfBedRooms) {
+    public Page<LandForSale> listLandSold(int page, String propertyTypesAsString, int minPrice, int maxPrice,
+                                          int minArea, int maxArea, int numberOfBedRooms, String province, String district) {
         List<String> propertyTypes = (propertyTypesAsString != null && !propertyTypesAsString.isEmpty())
                 ? Arrays.asList(propertyTypesAsString.split(","))
                 : null;
 
         Pageable pageable = PageRequest.of(page - 1, 5);
 
-        return landForSaleRepository.findByPropertyTypesAndPriceAndTypesAndAreaAndNumberOfBedRooms(
-                propertyTypes, minPrice, maxPrice, Arrays.asList("Bán"), minArea, maxArea, numberOfBedRooms, pageable);
+        return landForSaleRepository.findByPropertyTypesAndPriceAndTypesAndAreaAndNumberOfBedRoomsAndLocation(
+                propertyTypes, minPrice, maxPrice, Arrays.asList("Bán"), minArea, maxArea, numberOfBedRooms, province, district, pageable);
     }
+
+    public List<LandForSale> getLandForSaleByProvinceSold(String province) {
+        return landForSaleRepository.findByProvinceLike(province, Arrays.asList("Bán"));
+    }
+
+    public List<LandForSale> getLandForSaleByProvinceRent(String province) {
+        return landForSaleRepository.findByProvinceLike(province, Arrays.asList("Cho thuê"));
+    }
+
 
 
     public List<LandForSale> listLandRent() {
         List<String> types = Arrays.asList( "Cho thuê");
         return landForSaleRepository.findByTypeIn( types);
     }
+
+    public Page<LandForSale> listLandRent(int page) {
+        List<String> types = Arrays.asList("Cho thuê");
+        Pageable pageable = PageRequest.of(page - 1, 5);
+        return landForSaleRepository.findByTypeIn(types, pageable);
+    }
+
+    public Page<LandForSale> listLandRent(int page, String propertyTypesAsString, int minPrice, int maxPrice,
+                                          int minArea, int maxArea, int numberOfBedRooms, String province, String district) {
+        List<String> propertyTypes = (propertyTypesAsString != null && !propertyTypesAsString.isEmpty())
+                ? Arrays.asList(propertyTypesAsString.split(","))
+                : null;
+
+        Pageable pageable = PageRequest.of(page - 1, 5);
+
+        return landForSaleRepository.findByPropertyTypesAndPriceAndTypesAndAreaAndNumberOfBedRoomsAndLocation(
+                propertyTypes, minPrice, maxPrice, Arrays.asList("Cho thuê"), minArea, maxArea, numberOfBedRooms, province, district, pageable);
+    }
+
 
 
     public List<LandForSale> listLandByBrokerRent(Long userId) {
