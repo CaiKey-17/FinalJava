@@ -6,27 +6,13 @@
 
                 <div style="display: none" data-locations-services-params="{&quot;getCitiesUrl&quot;:&quot;/Product/ProductSearch/GetCities&quot;,&quot;getDistrictsUrl&quot;:&quot;/Product/ProductSearch/GetDistricts&quot;,&quot;getStreetsByDistrictIdsUrl&quot;:&quot;/Product/ProductSearch/GetStreetsByDistrictIds&quot;,&quot;getWardsByDistrictIdsUrl&quot;:&quot;/Product/ProductSearch/GetWardsByDistrictIds&quot;,&quot;getProjectsByDistrictIdsUrl&quot;:&quot;/Product/ProductSearch/GetProjectsByDistrictIds&quot;}">
                 </div>
-                <form action="/microservice-architecture-router/Product/ProductSearch/Search" method="post" id="boxSearchForm" class="re__home-search-box js__home-search-box re__search-has-location-input fix" data-home-search="true" isnewsearch="true" novalidate="novalidate">
+                <form action="/nha-dat-ban" method="post" id="boxSearchForm" class="re__home-search-box js__home-search-box re__search-has-location-input fix" data-home-search="true" isnewsearch="true" novalidate="novalidate">
                     <div class="re__search-box-container">
                         <ul class="re__search-box-tabs re__tab-box-ghost-group re__product-type-tab js__product-type">
                             <li class="re__tab-box-ghost--sm js__tab re__actived" data-type="38">Nhà đất bán</li>
                             <li class="re__tab-box-ghost--sm js__tab" data-type="49">Nhà đất cho thuê</li>
-                            <li class="re__tab-box-ghost--sm js__tab" data-type="351">Dự án</li>
                         </ul>
-                        <div class="re__switch-search-version-box">
-                                <span class="switch-search-version-text">
-                                    Dùng phiên bản Tìm kiếm mới
-                                </span>
-                            <span class="switch-search-version-text-small-screen">
-                                    Tìm kiếm mới
-                                </span>
-                            <a href="https://batdongsan.com.vn/ABHandler/SwitchOldVersion" target="_self" tracking-id="switch-search-version" tracking-label="to-version=old">
-                                <i class="re__icon-switch-on--lg js__switch-search-version">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                </i>
-                            </a>
-                        </div>
+
                         <input data-val="true" data-val-required="The ProductType field is required." id="ProductType" name="ProductType" type="hidden" value="38">
                         <div class="re__search-box-content js__search-box-content">
                             <div class="re__input-group--sm re__search-box-row js__search-row-location">
@@ -42,7 +28,7 @@
                                                 <i class="re__icon-chevron-down--sm"></i>
                                                 <span class="re__postfix-div"></span>
                                             </div>
-                                            <input id="CityCode" name="CityCode" type="hidden" value="CM">
+                                            <input id="CityCode" name="CityCode" type="hidden" >
                                         </div>
                                         <i class="re__icon-search re__location-icon-search"></i>
                                         <div class="js__location-select re__location-select re__location-input" data-microtip-position="bottom" role="tooltip">
@@ -50,7 +36,7 @@
                                             </ul>
                                             <input id="LocationSearch" class="location-search__field valid ui-autocomplete-input" type="search" tabindex="0" autocomplete="off" placeholder="Nhập tối đa 5 địa điểm, dự án. Ví dụ: Quận Hoàn Kiếm, Quận Đống Đa">
                                         </div>
-                                        <button type="submit" class="re__btn re__btn-pr-solid--sm re__btn-icon-left--sm re__btn-search" id="btnSearch">
+                                        <button type="button" class="re__btn re__btn-pr-solid--sm re__btn-icon-left--sm re__btn-search" id="btnSearch">
                                             <span>Tìm kiếm</span>
                                         </button>
                                     </div>
@@ -105,37 +91,37 @@
                                             <div class="re__city-search-select-list-wrapper">
                                                 <span class="re__menu-title">Tất cả tỉnh thành</span>
                                                 <ul class="re__city-search-select-list ">
-                                                    <li class="js__option re__option" value="AG" tracking-id="select-search-location" tracking-label="loc=Home">
+                                                    <li class="js__option re__option" value="An Giang" tracking-id="select-search-location" tracking-label="loc=Home">
                                                             <span>
                                                                 An Giang
                                                             </span>
                                                     </li>
-                                                    <li class="js__option re__option" value="VT" tracking-id="select-search-location" tracking-label="loc=Home">
+                                                    <li class="js__option re__option" value="Vũng Tàu" tracking-id="select-search-location" tracking-label="loc=Home">
                                                             <span>
                                                                 Bà Rịa Vũng Tàu
                                                             </span>
                                                     </li>
-                                                    <li class="js__option re__option" value="BG" tracking-id="select-search-location" tracking-label="loc=Home">
+                                                    <li class="js__option re__option" value="Bắc Giang" tracking-id="select-search-location" tracking-label="loc=Home">
                                                             <span>
                                                                 Bắc Giang
                                                             </span>
                                                     </li>
-                                                    <li class="js__option re__option" value="BK" tracking-id="select-search-location" tracking-label="loc=Home">
+                                                    <li class="js__option re__option" value="Bắc Kạn" tracking-id="select-search-location" tracking-label="loc=Home">
                                                             <span>
                                                                 Bắc Kạn
                                                             </span>
                                                     </li>
-                                                    <li class="js__option re__option" value="BL" tracking-id="select-search-location" tracking-label="loc=Home">
+                                                    <li class="js__option re__option" value="Bạc Liêu" tracking-id="select-search-location" tracking-label="loc=Home">
                                                             <span>
                                                                 Bạc Liêu
                                                             </span>
                                                     </li>
-                                                    <li class="js__option re__option" value="BN" tracking-id="select-search-location" tracking-label="loc=Home">
+                                                    <li class="js__option re__option" value="Bắc Ninh" tracking-id="select-search-location" tracking-label="loc=Home">
                                                             <span>
                                                                 Bắc Ninh
                                                             </span>
                                                     </li>
-                                                    <li class="js__option re__option" value="BTR" tracking-id="select-search-location" tracking-label="loc=Home">
+                                                    <li class="js__option re__option" value="Bến Tre" tracking-id="select-search-location" tracking-label="loc=Home">
                                                             <span>
                                                                 Bến Tre
                                                             </span>
@@ -160,7 +146,7 @@
                                                                 Bình Thuận
                                                             </span>
                                                     </li>
-                                                    <li class="js__option re__option selected-item" value="CM" tracking-id="select-search-location" tracking-label="loc=Home">
+                                                    <li class="js__option re__option " value="Cà Mau" tracking-id="select-search-location" tracking-label="loc=Home">
                                                             <span>
                                                                 Cà Mau
                                                             </span>
@@ -440,92 +426,49 @@
 
 
                                         <span class="select-text select-custom js__listing-search-select-button js__listing-search-select-tooltip" tracking-id="search-open-filter" tracking-label="filterType=Cate,loc=Home">
-                                            <span class="select-text-content js__listing-search-select-button-current-text">Loại
-                                                nhà đất</span>
+                                            <span class="select-text-content js__listing-search-select-button-current-text loaiNhaDatText">Loại nhà đất</span>
                                         </span>
-
-
-
 
 
                                     <input id="CategoryIdsAsString" name="CategoryIdsAsString" type="hidden" value="">
                                     <div class="re__listing-search-select-dropdown-position">
-                                        <div class="re__listing-search-select-dropdown re__multiple js__listing-search-select-select-dropdown">
+                                        <div class="re__listing-search-select-dropdown re__multiple js__listing-search-select-select-dropdown re__listing-search-select-dropdown-category">
                                             <div class="re__listing-search-select-header">
-                                                    <span class="re__listing-search-select-header-title js__listing-search-select-header-title">Loại
-                                                        nhà đất</span>
+                                                    <span class="re__listing-search-select-header-title js__listing-search-select-header-title searchLoai">Loại nhà đất</span>
                                                 <a class="re__listing-search-select-button-close js__listing-search-select-button-close">
                                                     <i class="re__icon-close-no-circle"></i>
                                                 </a>
                                             </div>
                                             <ul class="re__listing-search-select-list">
-                                                <li class="js__option re__option">
-                                                        <span>
-                                                            <i class="re__icon-all--sm"></i>
-                                                            Tất cả nhà đất
-                                                        </span>
+                                                <li class="js__option re__option" value="Chung cư">
+        <span>
+                <i class="re__icon-apartment--sm"></i>
+            Chung cư
+        </span>
                                                 </li>
-                                                <li class="js__option re__option" value="324">
-                                                        <span>
-                                                            <i class="re__icon-apartment--sm"></i>
-                                                            Căn hộ chung cư
-                                                        </span>
-                                                    <ul>
-                                                        <li class="js__option re__option" value="650"><span>Chung cư
-                                                                    mini, căn hộ dịch vụ<span class="new-label"></span></span></li>
-                                                    </ul>
+                                                <li class="js__option re__option" value="Căn hộ">
+        <span>
+                <i class="re__icon-private-house--sm"></i>
+            Căn hộ
+        </span>
                                                 </li>
-                                                <li class="js__option re__option" value="362">
-                                                        <span>
-                                                            <i class="re__icon-villa--sm"></i>
-                                                            Các loại nhà bán
-                                                        </span>
-                                                    <ul>
-                                                        <li class="js__option re__option" value="41"><span>Nhà
-                                                                    riêng</span></li>
-                                                        <li class="js__option re__option" value="325"><span>Nhà biệt
-                                                                    thự, liền kề</span></li>
-                                                        <li class="js__option re__option" value="163"><span>Nhà mặt
-                                                                    phố</span></li>
-                                                        <li class="js__option re__option" value="575">
-                                                            <span>Shophouse, nhà phố thương mại</span>
-                                                        </li>
-                                                    </ul>
+                                                <li class="js__option re__option" value="Biệt thự">
+        <span>
+                <i class="re__icon-complex--sm"></i>
+            Biệt thự
+        </span>
                                                 </li>
-                                                <li class="js__option re__option" value="361">
-                                                        <span>
-                                                            <i class="re__icon-land--sm"></i>
-                                                            Các loại đất bán
-                                                        </span>
-                                                    <ul>
-                                                        <li class="js__option re__option" value="40"><span>Đất nền
-                                                                    dự án</span></li>
-                                                        <li class="js__option re__option" value="283"><span>Bán
-                                                                    đất</span></li>
-                                                    </ul>
+                                                <li class="js__option re__option" value="Nhà mặt phố">
+        <span>
+                <i class="re__icon-street-house--sm"></i>
+            Nhà mặt phố
+        </span>
                                                 </li>
-                                                <li class="js__option re__option" value="44">
-                                                        <span>
-                                                            <i class="re__icon-farm--sm"></i>
-                                                            Trang trại, khu nghỉ dưỡng
-                                                        </span>
-                                                    <ul>
-                                                        <li class="js__option re__option" value="562">
-                                                            <span>Condotel</span>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="js__option re__option" value="45">
-                                                        <span>
-                                                            <i class="re__icon-stock--sm"></i>
-                                                            Kho, nhà xưởng
-                                                        </span>
-                                                </li>
-                                                <li class="js__option re__option" value="48">
-                                                        <span>
-                                                            <i class="re__icon-other--sm"></i>
-                                                            Bất động sản khác
-                                                        </span>
+                                                <li class="js__option re__option" value="Nhà riêng">
+        <span>
+                <i class="re__icon-dorm--sm"></i>
+            Nhà riêng
+        </span>
                                                 </li>
 
                                             </ul>
@@ -534,230 +477,74 @@
                                                 <a class="re__btn re__btn-se-ghost--sm  js__listing-search-select-reset-button">
                                                     <span>Đặt lại</span>
                                                 </a>
-                                                <a class="re__btn re__btn-pr-solid--sm js__listing-search-select-apply-button" tracking-id="search-apply-filter" tracking-label="filterType=Cate,searchType=single">
-                                                    <span>Áp dụng</span>
-                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="hidden js__sell-category-select-list">
-                                    <li class="js__option re__option">
-                                            <span>
-                                                <i class="re__icon-all--sm"></i>
-                                                Tất cả nhà đất
-                                            </span>
+
+                                    <li class="js__option re__option" value="Chung cư">
+        <span>
+                <i class="re__icon-apartment--sm"></i>
+            Chung cư
+        </span>
                                     </li>
-                                    <li class="js__option re__option" value="324">
-                                            <span>
-                                                <i class="re__icon-apartment--sm"></i>
-                                                Căn hộ chung cư
-                                            </span>
-                                        <ul>
-                                            <li class="js__option re__option" value="650"><span>Chung cư mini, căn
-                                                        hộ dịch vụ<span class="new-label"></span></span></li>
-                                        </ul>
+                                    <li class="js__option re__option" value="Căn hộ">
+        <span>
+                <i class="re__icon-private-house--sm"></i>
+            Căn hộ
+        </span>
                                     </li>
-                                    <li class="js__option re__option" value="362">
-                                            <span>
-                                                <i class="re__icon-villa--sm"></i>
-                                                Các loại nhà bán
-                                            </span>
-                                        <ul>
-                                            <li class="js__option re__option" value="41"><span>Nhà riêng</span></li>
-                                            <li class="js__option re__option" value="325"><span>Nhà biệt thự, liền
-                                                        kề</span></li>
-                                            <li class="js__option re__option" value="163"><span>Nhà mặt phố</span>
-                                            </li>
-                                            <li class="js__option re__option" value="575"><span>Shophouse, nhà phố
-                                                        thương mại</span></li>
-                                        </ul>
+                                    <li class="js__option re__option" value="Biệt thự">
+        <span>
+                <i class="re__icon-complex--sm"></i>
+            Biệt thự
+        </span>
                                     </li>
-                                    <li class="js__option re__option" value="361">
-                                            <span>
-                                                <i class="re__icon-land--sm"></i>
-                                                Các loại đất bán
-                                            </span>
-                                        <ul>
-                                            <li class="js__option re__option" value="40"><span>Đất nền dự án</span>
-                                            </li>
-                                            <li class="js__option re__option" value="283"><span>Bán đất</span></li>
-                                        </ul>
+                                    <li class="js__option re__option" value="Nhà mặt phố">
+        <span>
+                <i class="re__icon-street-house--sm"></i>
+            Nhà mặt phố
+        </span>
                                     </li>
-                                    <li class="js__option re__option" value="44">
-                                            <span>
-                                                <i class="re__icon-farm--sm"></i>
-                                                Trang trại, khu nghỉ dưỡng
-                                            </span>
-                                        <ul>
-                                            <li class="js__option re__option" value="562"><span>Condotel</span></li>
-                                        </ul>
-                                    </li>
-                                    <li class="js__option re__option" value="45">
-                                            <span>
-                                                <i class="re__icon-stock--sm"></i>
-                                                Kho, nhà xưởng
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="48">
-                                            <span>
-                                                <i class="re__icon-other--sm"></i>
-                                                Bất động sản khác
-                                            </span>
+                                    <li class="js__option re__option" value="Nhà riêng">
+        <span>
+                <i class="re__icon-dorm--sm"></i>
+            Nhà riêng
+        </span>
                                     </li>
 
                                 </div>
                                 <div class="hidden js__rent-category-select-list">
-                                    <li class="js__option re__option">
-                                            <span>
-                                                <i class="re__icon-all--sm"></i>
-                                                Tất cả nhà đất
-                                            </span>
+                                    <li class="js__option re__option" value="Chung cư">
+        <span>
+                <i class="re__icon-apartment--sm"></i>
+            Chung cư
+        </span>
                                     </li>
-                                    <li class="js__option re__option" value="326">
-                                            <span>
-                                                <i class="re__icon-apartment--sm"></i>
-                                                Căn hộ chung cư
-                                            </span>
-                                        <ul>
-                                            <li class="js__option re__option" value="651"><span>Chung cư mini, căn
-                                                        hộ dịch vụ<span class="new-label"></span></span></li>
-                                        </ul>
+                                    <li class="js__option re__option" value="Căn hộ">
+        <span>
+                <i class="re__icon-private-house--sm"></i>
+            Căn hộ
+        </span>
                                     </li>
-                                    <li class="js__option re__option" value="52">
-                                            <span>
-                                                <i class="re__icon-private-house--sm"></i>
-                                                Nhà riêng
-                                            </span>
+                                    <li class="js__option re__option" value="Biệt thự">
+        <span>
+                <i class="re__icon-complex--sm"></i>
+            Biệt thự
+        </span>
                                     </li>
-                                    <li class="js__option re__option" value="577">
-                                            <span>
-                                                <i class="re__icon-complex--sm"></i>
-                                                Nhà biệt thự, liền kề
-                                            </span>
+                                    <li class="js__option re__option" value="Nhà mặt phố">
+        <span>
+                <i class="re__icon-street-house--sm"></i>
+            Nhà mặt phố
+        </span>
                                     </li>
-                                    <li class="js__option re__option" value="51">
-                                            <span>
-                                                <i class="re__icon-street-house--sm"></i>
-                                                Nhà mặt phố
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="57">
-                                            <span>
-                                                <i class="re__icon-dorm--sm"></i>
-                                                Nhà trọ, phòng trọ
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="576">
-                                            <span>
-                                                <i class="re__icon-shophouse--sm"></i>
-                                                Shophouse, nhà phố thương mại
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="50">
-                                            <span>
-                                                <i class="re__icon-office--sm"></i>
-                                                Văn phòng
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="55">
-                                            <span>
-                                                <i class="re__icon-kiot--sm"></i>
-                                                Cửa hàng, ki ốt
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="53">
-                                            <span>
-                                                <i class="re__icon-stock--sm"></i>
-                                                Kho, nhà xưởng, đất
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="59">
-                                            <span>
-                                                <i class="re__icon-other--sm"></i>
-                                                Bất động sản khác
-                                            </span>
-                                    </li>
-
-                                </div>
-                                <div class="hidden js__project-category-select-list">
-                                    <li class="js__option re__option">
-                                            <span>
-                                                <i class="re__icon-building--sm"></i>
-                                                Tất cả loại hình
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="155">
-                                            <span>
-                                                <i class="re__icon-apartment--sm"></i>
-                                                Căn hộ chung cư
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="156">
-                                            <span>
-                                                <i class="re__icon-office--sm"></i>
-                                                Cao ốc văn phòng
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="157">
-                                            <span>
-                                                <i class="re__icon-mall--sm"></i>
-                                                Trung tâm thương mại
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="150">
-                                            <span>
-                                                <i class="re__icon-urban-area--sm"></i>
-                                                Khu đô thị mới
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="160">
-                                            <span>
-                                                <i class="re__icon-complex--sm"></i>
-                                                Khu phức hợp
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="148">
-                                            <span>
-                                                <i class="re__icon-private-house--sm"></i>
-                                                Nhà ở xã hội
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="158">
-                                            <span>
-                                                <i class="re__icon-farm--sm"></i>
-                                                Khu nghỉ dưỡng, Sinh thái
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="159">
-                                            <span>
-                                                <i class="re__icon-industrial-park--sm"></i>
-                                                Khu công nghiệp
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="421">
-                                            <span>
-                                                <i class="re__icon-all--sm"></i>
-                                                Biệt thự liền kề
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="600">
-                                            <span>
-                                                <i class="re__icon-shophouse--sm"></i>
-                                                Shophouse
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="601">
-                                            <span>
-                                                <i class="re__icon-street-house--sm"></i>
-                                                Nhà mặt phố
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="161">
-                                            <span>
-                                                <i class="re__icon-other--sm"></i>
-                                                Dự án khác
-                                            </span>
+                                    <li class="js__option re__option" value="Nhà riêng">
+        <span>
+                <i class="re__icon-dorm--sm"></i>
+            Nhà riêng
+        </span>
                                     </li>
 
                                 </div>
@@ -772,8 +559,7 @@
 
 
                                         <span class="select-text select-custom js__listing-search-select-button js__listing-search-select-tooltip" tracking-id="search-open-filter" tracking-label="filterType=Price,loc=Home">
-                                            <span class="select-text-content js__listing-search-select-button-current-text">Mức
-                                                giá</span>
+                                            <span class="select-text-content js__listing-search-select-button-current-text PriceText">Mức giá</span>
                                         </span>
 
 
@@ -782,107 +568,62 @@
 
                                     <input id="PriceAsString" name="PriceAsString" type="hidden" value="">
                                     <div class="re__listing-search-select-dropdown-position">
-                                        <div class="re__listing-search-select-dropdown
+                                        <div class="re__listing-search-select-dropdown re__listing-search-select-dropdown-price
 
 
                  js__listing-search-select-select-dropdown">
                                             <div class="re__listing-search-select-header">
-                                                    <span class="re__listing-search-select-header-title js__listing-search-select-header-title">Mức
-                                                        giá</span>
+                                                    <span class="re__listing-search-select-header-title js__listing-search-select-header-title">Mức giá</span>
                                                 <a class="re__listing-search-select-button-close js__listing-search-select-button-close">
                                                     <i class="re__icon-close-no-circle"></i>
                                                 </a>
                                             </div>
-                                            <div class="re__listing-search-select-slider js__listing-search-select-slider" data-min="0" data-max="60000" data-step="100" data-unit="1">
-                                                <div class="filter-search--custom-slider--label">
-                                                    <label class="filter-search--label-from js__slider-min-label">Giá
-                                                        thấp nhất</label>
-                                                    <label class="filter-search--label-to js__slider-max-label">Giá
-                                                        cao nhất</label>
-                                                </div>
-                                                <input class="re__slider-input js__min-value" autocomplete="off" placeholder="Từ" min="0" max="999999" type="number">
-                                                <span class="re__slider-icon re__icon-arrow-right--sm"></span>
-                                                <input class="re__slider-input js__max-value" autocomplete="off" placeholder="Đến" min="0" max="999999" type="number">
-                                                <div style="clear: left"></div>
-                                                <div class="re__slider-bar js__slider-bar ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                    <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>
-                                                    <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div></div>
-                                            </div>
                                             <ul class="re__listing-search-select-list">
-                                                <li class="js__option re__option re__actived">
-                                                        <span>
-                                                            Tất cả mức giá
-                                                        </span>
-                                                </li>
+
                                                 <li class="js__option re__option" value="1">
-                                                        <span>
-                                                            Dưới 500 triệu
-                                                        </span>
+        <span>
+            Dưới 100 triệu
+        </span>
                                                 </li>
                                                 <li class="js__option re__option" value="2">
-                                                        <span>
-                                                            500 - 800 triệu
-                                                        </span>
+        <span>
+            100 - 200 triệu
+        </span>
                                                 </li>
                                                 <li class="js__option re__option" value="3">
-                                                        <span>
-                                                            800 triệu - 1 tỷ
-                                                        </span>
+        <span>
+            200 - 300 triệu
+        </span>
                                                 </li>
                                                 <li class="js__option re__option" value="4">
-                                                        <span>
-                                                            1 - 2 tỷ
-                                                        </span>
+        <span>
+            300 - 500 triệu
+        </span>
                                                 </li>
                                                 <li class="js__option re__option" value="5">
-                                                        <span>
-                                                            2 - 3 tỷ
-                                                        </span>
+        <span>
+            500 - 800 triệu
+        </span>
                                                 </li>
                                                 <li class="js__option re__option" value="6">
-                                                        <span>
-                                                            3 - 5 tỷ
-                                                        </span>
+        <span>
+            800 - 1 tỷ
+        </span>
                                                 </li>
                                                 <li class="js__option re__option" value="7">
-                                                        <span>
-                                                            5 - 7 tỷ
-                                                        </span>
+        <span>
+            1 - 2 tỷ
+        </span>
                                                 </li>
                                                 <li class="js__option re__option" value="8">
-                                                        <span>
-                                                            7 - 10 tỷ
-                                                        </span>
-                                                </li>
-                                                <li class="js__option re__option" value="9">
-                                                        <span>
-                                                            10 - 20 tỷ
-                                                        </span>
-                                                </li>
-                                                <li class="js__option re__option" value="10">
-                                                        <span>
-                                                            20 - 30 tỷ
-                                                        </span>
-                                                </li>
-                                                <li class="js__option re__option" value="11">
-                                                        <span>
-                                                            30 - 40 tỷ
-                                                        </span>
-                                                </li>
-                                                <li class="js__option re__option" value="12">
-                                                        <span>
-                                                            40 - 60 tỷ
-                                                        </span>
-                                                </li>
-                                                <li class="js__option re__option" value="13">
-                                                        <span>
-                                                            Trên 60 tỷ
-                                                        </span>
+        <span>
+            Trên 2 tỷ
+        </span>
                                                 </li>
                                                 <li class="js__option re__option" value="0">
-                                                        <span>
-                                                            Thỏa thuận
-                                                        </span>
+        <span>
+            Thỏa thuận
+        </span>
                                                 </li>
 
                                             </ul>
@@ -891,186 +632,103 @@
                                                 <a class="re__btn re__btn-se-ghost--sm  js__listing-search-select-reset-button">
                                                     <span>Đặt lại</span>
                                                 </a>
-                                                <a class="re__btn re__btn-pr-solid--sm js__listing-search-select-apply-button" tracking-id="search-apply-filter" tracking-label="filterType=Price,searchType=single">
-                                                    <span>Áp dụng</span>
-                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="hidden js__sell-price-select-list">
-                                    <li class="js__option re__option">
-                                            <span>
-                                                Tất cả mức giá
-                                            </span>
-                                    </li>
                                     <li class="js__option re__option" value="1">
-                                            <span>
-                                                Dưới 500 triệu
-                                            </span>
+        <span>
+            Dưới 100 triệu
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="2">
-                                            <span>
-                                                500 - 800 triệu
-                                            </span>
+        <span>
+            100 - 200 triệu
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="3">
-                                            <span>
-                                                800 triệu - 1 tỷ
-                                            </span>
+        <span>
+            200 - 300 triệu
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="4">
-                                            <span>
-                                                1 - 2 tỷ
-                                            </span>
+        <span>
+            300 - 500 triệu
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="5">
-                                            <span>
-                                                2 - 3 tỷ
-                                            </span>
+        <span>
+            500 - 800 triệu
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="6">
-                                            <span>
-                                                3 - 5 tỷ
-                                            </span>
+        <span>
+            800 - 1 tỷ
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="7">
-                                            <span>
-                                                5 - 7 tỷ
-                                            </span>
+        <span>
+            1 - 2 tỷ
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="8">
-                                            <span>
-                                                7 - 10 tỷ
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="9">
-                                            <span>
-                                                10 - 20 tỷ
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="10">
-                                            <span>
-                                                20 - 30 tỷ
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="11">
-                                            <span>
-                                                30 - 40 tỷ
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="12">
-                                            <span>
-                                                40 - 60 tỷ
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="13">
-                                            <span>
-                                                Trên 60 tỷ
-                                            </span>
+        <span>
+            Trên 2 tỷ
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="0">
-                                            <span>
-                                                Thỏa thuận
-                                            </span>
+        <span>
+            Thỏa thuận
+        </span>
                                     </li>
-
                                 </div>
                                 <div class="hidden js__rent-price-select-list">
-                                    <li class="js__option re__option">
-                                            <span>
-                                                Tất cả mức giá
-                                            </span>
-                                    </li>
                                     <li class="js__option re__option" value="1">
-                                            <span>
-                                                Dưới 1 triệu
-                                            </span>
+        <span>
+            Dưới 100 triệu
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="2">
-                                            <span>
-                                                1 - 3 triệu
-                                            </span>
+        <span>
+            100 - 200 triệu
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="3">
-                                            <span>
-                                                3 - 5 triệu
-                                            </span>
+        <span>
+            200 - 300 triệu
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="4">
-                                            <span>
-                                                5 - 10 triệu
-                                            </span>
+        <span>
+            300 - 500 triệu
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="5">
-                                            <span>
-                                                10 - 40 triệu
-                                            </span>
+        <span>
+            500 - 800 triệu
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="6">
-                                            <span>
-                                                40 - 70 triệu
-                                            </span>
+        <span>
+            800 - 1 tỷ
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="7">
-                                            <span>
-                                                70 - 100 triệu
-                                            </span>
+        <span>
+            1 - 2 tỷ
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="8">
-                                            <span>
-                                                Trên 100 triệu
-                                            </span>
+        <span>
+            Trên 2 tỷ
+        </span>
                                     </li>
                                     <li class="js__option re__option" value="0">
-                                            <span>
-                                                Thỏa thuận
-                                            </span>
+        <span>
+            Thỏa thuận
+        </span>
                                     </li>
-
-                                </div>
-                                <div class="hidden js__project-price-select-list">
-                                    <li class="js__option re__option">
-                                            <span>
-                                                Tất cả mức giá
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="1">
-                                            <span>
-                                                Dưới 5 triệu/m²
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="2">
-                                            <span>
-                                                5 - 10 triệu/m²
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="3">
-                                            <span>
-                                                10 - 20 triệu/m²
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="4">
-                                            <span>
-                                                20 - 35 triệu/m²
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="5">
-                                            <span>
-                                                35 - 50 triệu/m²
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="6">
-                                            <span>
-                                                50 - 80 triệu/m²
-                                            </span>
-                                    </li>
-                                    <li class="js__option re__option" value="7">
-                                            <span>
-                                                Trên 80 triệu/m²
-                                            </span>
-                                    </li>
-
                                 </div>
 
                                 <div class="
@@ -1083,17 +741,14 @@
 
 
                                         <span class="select-text select-custom js__listing-search-select-button js__listing-search-select-tooltip" tracking-id="search-open-filter" tracking-label="filterType=Area,loc=Home">
-                                            <span class="select-text-content js__listing-search-select-button-current-text">Diện
-                                                tích</span>
+                                            <span class="select-text-content js__listing-search-select-button-current-text AreaText">Diện tích</span>
                                         </span>
-
-
 
 
 
                                     <input id="AreaAsString" name="AreaAsString" type="hidden" value="">
                                     <div class="re__listing-search-select-dropdown-position">
-                                        <div class="re__listing-search-select-dropdown
+                                        <div class="re__listing-search-select-dropdown re__listing-search-select-dropdown-area
 
 
                  js__listing-search-select-select-dropdown">
@@ -1104,27 +759,8 @@
                                                     <i class="re__icon-close-no-circle"></i>
                                                 </a>
                                             </div>
-                                            <div class="re__listing-search-select-slider js__listing-search-select-slider" data-min="0" data-max="500" data-step="5" data-unit="2">
-                                                <div class="filter-search--custom-slider--label">
-                                                    <label class="filter-search--label-from js__slider-min-label">Diện
-                                                        tích nhỏ nhất</label>
-                                                    <label class="filter-search--label-to js__slider-max-label">Diện
-                                                        tích lớn nhất</label>
-                                                </div>
-                                                <input class="re__slider-input js__min-value" autocomplete="off" placeholder="Từ" min="0" max="999999" type="number">
-                                                <span class="re__slider-icon re__icon-arrow-right--sm"></span>
-                                                <input class="re__slider-input js__max-value" autocomplete="off" placeholder="Đến" min="0" max="999999" type="number">
-                                                <div style="clear: left"></div>
-                                                <div class="re__slider-bar js__slider-bar ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                    <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>
-                                                    <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div></div>
-                                            </div>
+
                                             <ul class="re__listing-search-select-list">
-                                                <li class="js__option re__option re__actived">
-                                                        <span>
-                                                            Tất cả diện tích
-                                                        </span>
-                                                </li>
                                                 <li class="js__option re__option" value="1">
                                                         <span>
                                                             Dưới 30 m²
@@ -1182,9 +818,7 @@
                                                 <a class="re__btn re__btn-se-ghost--sm  js__listing-search-select-reset-button">
                                                     <span>Đặt lại</span>
                                                 </a>
-                                                <a class="re__btn re__btn-pr-solid--sm js__listing-search-select-apply-button" tracking-id="search-apply-filter" tracking-label="filterType=Area,searchType=single">
-                                                    <span>Áp dụng</span>
-                                                </a>
+
                                             </div>
                                         </div>
                                     </div>
@@ -1320,13 +954,10 @@
                 <div class="re__home__hot-news__article-container">
 
 
-                    <div id="hometabs" class="re__article-tabs lazyloaded" data-func="initHotNewsGroup();" data-script="https://staticfile.batdongsan.com.vn/js/binnova/filestatic.ver69fcc55f.msvbds.FrontEnd.Home.HotNewsGroupBinnova.min.js">
+                    <div id="hometabs" class="re__article-tabs lazyloaded" data-func="initHotNewsGroup();" data-script="">
                         <div class="re__tab-under-line-group">
                             <h2 data-tab="hometab1" class="re__tab-under-line--lg re__actived js__tab-item">Tin nổi
                                 bật</h2>
-                            <h2 data-tab="hometab2" class="re__tab-under-line--lg js__tab-item">Tin tức</h2>
-                            <h2 data-tab="hometab3" class="re__tab-under-line--lg js__tab-item">BĐS TPHCM</h2>
-                            <h2 data-tab="hometab4" class="re__tab-under-line--lg js__tab-item">BĐS Hà Nội</h2>
                         </div>
                         <div class="re__article-tabs-border"></div>
                         <div class="clear"></div>
@@ -1506,838 +1137,43 @@
 
                     <div class="home-product product-4-you">
                         <div class="js__interested-product re__interested-product-cards">
-                            <div class="re__product-item re__interested-product-card js__product-item">
 
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-silver" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/09/29/20240929201124-3943_wm.jpg" uid="2471054" prid="41055158" vtp="vip-silver" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="41055158" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-phan-lo-ngay-dai-hoc-ngoai-hai-thoang-ngo-kinh-doanh-o-to-sat-pho-pr41055158" title="Bán nhà phân lô Chùa Láng, ngay đại học Ngoại Thương, hai thoáng, ngõ kinh doanh, ô tô, sát phố" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=1,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="pr-img ls-is-cached lazyloaded" abc="3.20240929201124-3943_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/09/29/20240929201124-3943_wm.jpg" src="https://file4.batdongsan.com.vn/crop/393x222/2024/09/29/20240929201124-3943_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>7</span>
-                                            </div>
-                                            <div class="card-label-img label--v2"></div>
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Bán nhà phân lô Chùa Láng, ngay đại học Ngoại Thương, hai
-                                                        thoáng, ngõ kinh doanh, ô tô, sát phố
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">11,5 tỷ</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>50 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="17/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm qua
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;41055158&quot;,&quot;productId&quot;:41055158,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/09/29/20240929201124-3943_wm.jpg&quot;,&quot;title&quot;:&quot;Bán nhà phân lô Chùa Láng, ngay đại học Ngoại Thương, hai thoáng, ngõ kinh doanh, ô tô, sát phố&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-phan-lo-ngay-dai-hoc-ngoai-hai-thoang-ngo-kinh-doanh-o-to-sat-pho-pr41055158&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-silver" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/10/03/20241003112930-4526_wm.jpg" uid="2471054" prid="41093518" vtp="vip-silver" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="41093518" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/can-ban-gan-truong-dai-hoc-ngoai-ngoai-giao-dep-dan-xay-con-rat-moi-pr41093518" title="Cần bán nhà Chùa Láng gần trường đại học Ngoại Thương, Ngoại Giao, nhà đẹp dân xây còn rất mới" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=2,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="pr-img ls-is-cached lazyloaded" abc="3.20241003112930-4526_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/03/20241003112930-4526_wm.jpg" src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/03/20241003112930-4526_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>6</span>
-                                            </div>
-                                            <div class="card-label-img label--v2"></div>
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Cần bán nhà Chùa Láng gần trường đại học Ngoại Thương, Ngoại
-                                                        Giao, nhà đẹp dân xây còn rất mới
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">11,5 tỷ</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>55 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="17/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm qua
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;41093518&quot;,&quot;productId&quot;:41093518,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/10/03/20241003112930-4526_wm.jpg&quot;,&quot;title&quot;:&quot;Cần bán nhà Chùa Láng gần trường đại học Ngoại Thương, Ngoại Giao, nhà đẹp dân xây còn rất mới&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/can-ban-gan-truong-dai-hoc-ngoai-ngoai-giao-dep-dan-xay-con-rat-moi-pr41093518&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-normal" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/10/18/20241018141319-3ea7_wm.jpg" uid="56190" prid="41251113" vtp="vip-normal" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="41251113" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-nh-phan-lo-55-m2-x-4-tang-mt-4m-gia-17-5-ty-pr41251113" title="Bán nhanh nhà phân lô Chùa Láng, 55 m2 x 4 tầng mt 4m giá 17.5 tỷ" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=3,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="pr-img lazyloaded" abc="3.20241018141319-3ea7_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/18/20241018141319-3ea7_wm.jpg" src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/18/20241018141319-3ea7_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>3</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Bán nhanh nhà phân lô Chùa Láng, 55 m2 x 4 tầng mt 4m giá
-                                                        17.5 tỷ
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">17,5 triệu</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>55 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="18/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm nay
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;41251113&quot;,&quot;productId&quot;:41251113,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/10/18/20241018141319-3ea7_wm.jpg&quot;,&quot;title&quot;:&quot;Bán nhanh nhà phân lô Chùa Láng, 55 m2 x 4 tầng mt 4m giá 17.5 tỷ&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-nh-phan-lo-55-m2-x-4-tang-mt-4m-gia-17-5-ty-pr41251113&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-normal" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/10/07/20241007232933-56dd_wm.jpg" uid="2902696" prid="41138684" vtp="vip-normal" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="41138684" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/vip-ngo-thong-rong-kinh-doanh-o-to-do-10m-moi-dep-full-noi-that-o-ngay-51m-4t-pr41138684" title="Vip Chùa Láng, ngõ thông rộng, kinh doanh, ô tô đỗ 10m, mới đẹp, full nội thất, ở ngay, 51m2*4T" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=4,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="pr-img lazyloaded" abc="3.20241007232933-56dd_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/07/20241007232933-56dd_wm.jpg" src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/07/20241007232933-56dd_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>5</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Vip Chùa Láng, ngõ thông rộng, kinh doanh, ô tô đỗ 10m, mới
-                                                        đẹp, full nội thất, ở ngay, 51m2*4T
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">11,6 tỷ</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>51 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="18/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm nay
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;41138684&quot;,&quot;productId&quot;:41138684,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/10/07/20241007232933-56dd_wm.jpg&quot;,&quot;title&quot;:&quot;Vip Chùa Láng, ngõ thông rộng, kinh doanh, ô tô đỗ 10m, mới đẹp, full nội thất, ở ngay, 51m2*4T&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/vip-ngo-thong-rong-kinh-doanh-o-to-do-10m-moi-dep-full-noi-that-o-ngay-51m-4t-pr41138684&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-normal" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/10/16/20241016103800-92a7_wm.jpg" uid="2874417" prid="41227071" vtp="vip-normal" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="41227071" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-mat-ngo-oto-do-cua-kinh-doanh-tot-55m-7tang-nhinh-19ty-pr41227071" title="Bán nhà riêng mặt ngõ Chùa Láng ôtô đỗ cửa, kinh doanh tốt 55m2*7tầng*nhỉnh 19tỷ" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=5,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="pr-img ls-is-cached lazyloaded" abc="3.20241016103800-92a7_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/16/20241016103800-92a7_wm.jpg" src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/16/20241016103800-92a7_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>5</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Bán nhà riêng mặt ngõ Chùa Láng ôtô đỗ cửa, kinh doanh tốt
-                                                        55m2*7tầng*nhỉnh 19tỷ
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">Giá thỏa thuận</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>55 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="18/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm nay
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;41227071&quot;,&quot;productId&quot;:41227071,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/10/16/20241016103800-92a7_wm.jpg&quot;,&quot;title&quot;:&quot;Bán nhà riêng mặt ngõ Chùa Láng ôtô đỗ cửa, kinh doanh tốt 55m2*7tầng*nhỉnh 19tỷ&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-mat-ngo-oto-do-cua-kinh-doanh-tot-55m-7tang-nhinh-19ty-pr41227071&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-normal" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/06/17/20240617085804-e0b5_wm.jpg" uid="2654243" prid="40140413" vtp="vip-normal" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="40140413" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/cuc-hiem-that-100-ban-ngo-vao-oto-s-122m2-5-tang-mt-7-5m-gia-37-5-ty-pr40140413" title="Cực hiếm (thật 100%) - Bán nhà phố Chùa Láng, ngõ vào oto - S =122m2. 5 tầng. MT 7.5m. Giá 37.5 tỷ" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=6,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="pr-img ls-is-cached lazyloaded" abc="3.20240617085804-e0b5_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/06/17/20240617085804-e0b5_wm.jpg" src="https://file4.batdongsan.com.vn/crop/393x222/2024/06/17/20240617085804-e0b5_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>10</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Cực hiếm (thật 100%) - Bán nhà phố Chùa Láng, ngõ vào oto -
-                                                        S =122m2. 5 tầng. MT 7.5m. Giá 37.5 tỷ
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">37,5 tỷ</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>122 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="18/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm nay
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;40140413&quot;,&quot;productId&quot;:40140413,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/06/17/20240617085804-e0b5_wm.jpg&quot;,&quot;title&quot;:&quot;Cực hiếm (thật 100%) - Bán nhà phố Chùa Láng, ngõ vào oto - S =122m2. 5 tầng. MT 7.5m. Giá 37.5 tỷ&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/cuc-hiem-that-100-ban-ngo-vao-oto-s-122m2-5-tang-mt-7-5m-gia-37-5-ty-pr40140413&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-normal" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/06/06/20240606011047-4c50_wm.jpg" uid="2115656" prid="40043751" vtp="vip-normal" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="40043751" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/sang-dep-vip-hiem-bac-t-dong-da-ban-phan-lo-2-o-to-tranh-52m2-13-2-ty-pr40043751" title="Sang, đẹp, vip, hiếm bậc nhất Đống Đa - bán nhà Chùa Láng phân lô 2 ô tô tránh 52m2 - 13.2 tỷ" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=7,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="pr-img ls-is-cached lazyloaded" abc="3.20240606011047-4c50_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/06/06/20240606011047-4c50_wm.jpg" src="https://file4.batdongsan.com.vn/crop/393x222/2024/06/06/20240606011047-4c50_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>9</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Sang, đẹp, vip, hiếm bậc nhất Đống Đa - bán nhà Chùa Láng
-                                                        phân lô 2 ô tô tránh 52m2 - 13.2 tỷ
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">13,2 tỷ</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>52 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="18/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm nay
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;40043751&quot;,&quot;productId&quot;:40043751,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/06/06/20240606011047-4c50_wm.jpg&quot;,&quot;title&quot;:&quot;Sang, đẹp, vip, hiếm bậc nhất Đống Đa - bán nhà Chùa Láng phân lô 2 ô tô tránh 52m2 - 13.2 tỷ&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/sang-dep-vip-hiem-bac-t-dong-da-ban-phan-lo-2-o-to-tranh-52m2-13-2-ty-pr40043751&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-normal" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/10/12/20241012100051-31a6_wm.jpg" uid="2912679" prid="41187907" vtp="vip-normal" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="41187907" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-lo-goc-2-thoang-o-to-truoc-dt-50m2-x-5-tang-mt-5-5m-gia-10-7-ty-pr41187907" title="Bán nhà riêng Chùa Láng, lô góc 2 thoáng DT 50m2 x 5 tầng MT 5.5m. Gía 10.7 tỷ. LH 0968 963 ***" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=8,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="pr-img ls-is-cached lazyloaded" abc="3.20241012100051-31a6_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/12/20241012100051-31a6_wm.jpg" src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/12/20241012100051-31a6_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>3</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Bán nhà riêng Chùa Láng, lô góc 2 thoáng DT 50m2 x 5 tầng MT
-                                                        5.5m. Gía 10.7 tỷ. LH <span class="hidden-mobile m-on-title" raw="0a2cb2d6d415815b3b1c8e419e933e11">0968 963
-                                                                ***</span>
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">10,7 tỷ</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>50 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="18/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm nay
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;41187907&quot;,&quot;productId&quot;:41187907,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/10/12/20241012100051-31a6_wm.jpg&quot;,&quot;title&quot;:&quot;Bán nhà riêng Chùa Láng, lô góc 2 thoáng DT 50m2 x 5 tầng MT 5.5m. Gía 10.7 tỷ. LH 0968.963.803&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-lo-goc-2-thoang-o-to-truoc-dt-50m2-x-5-tang-mt-5-5m-gia-10-7-ty-pr41187907&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-normal" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/10/11/20241011101136-212c_wm.jpg" uid="3528806" prid="41176586" vtp="vip-normal" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="41176586" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/dinh-cua-hiem-dong-da-dien-tich-36m2-6-tang-mat-tien-6-5m-11-9-ty-pr41176586" title="Đỉnh của hiếm Chùa Láng, Đống Đa diện tích 83m2 6 tầng Mặt tiền 6.5m, 11tỷ" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=9,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="lazyload pr-img" abc="3.20241011101136-212c_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/11/20241011101136-212c_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>5</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Đỉnh của hiếm Chùa Láng, Đống Đa diện tích 83m2 6 tầng Mặt
-                                                        tiền 6.5m, 11tỷ
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">11 tỷ</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>83 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="18/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm nay
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;41176586&quot;,&quot;productId&quot;:41176586,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/10/11/20241011101136-212c_wm.jpg&quot;,&quot;title&quot;:&quot;Đỉnh của hiếm Chùa Láng, Đống Đa diện tích 83m2 6 tầng Mặt tiền 6.5m, 11tỷ&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/dinh-cua-hiem-dong-da-dien-tich-36m2-6-tang-mat-tien-6-5m-11-9-ty-pr41176586&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-normal" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/07/25/20240725065415-bc6c_wm.jpg" uid="1651140" prid="40491320" vtp="vip-normal" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="40491320" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-gan-mat-ngo-thong-kinh-doanh-o-to-ly-thuyet-5-ngu-o-luon-cuc-dep-pr40491320" title="Bán nhà Chùa Láng - gần mặt ngõ thông kinh doanh - ô tô lý thuyết - nhà 5 ngủ ở luôn - nhà cực đẹp" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=10,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="lazyload pr-img" abc="3.20240725065415-bc6c_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/07/25/20240725065415-bc6c_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>7</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Bán nhà Chùa Láng - gần mặt ngõ thông kinh doanh - ô tô lý
-                                                        thuyết - nhà 5 ngủ ở luôn - nhà cực đẹp
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">Giá thỏa thuận</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>46 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="18/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm nay
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;40491320&quot;,&quot;productId&quot;:40491320,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/07/25/20240725065415-bc6c_wm.jpg&quot;,&quot;title&quot;:&quot;Bán nhà Chùa Láng - gần mặt ngõ thông kinh doanh - ô tô lý thuyết - nhà 5 ngủ ở luôn - nhà cực đẹp&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-gan-mat-ngo-thong-kinh-doanh-o-to-ly-thuyet-5-ngu-o-luon-cuc-dep-pr40491320&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-normal" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/10/01/20241001152201-e70c_wm.jpg" uid="1838406" prid="41073507" vtp="vip-normal" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="41073507" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/-48-m-5t-mt4m-gia-10-9ty-ngo-rong-gan-cach-o-to-vai-buoc-chan-tien-ich-tran-ngap-pr41073507" title="Chùa Láng 48 m2 5T MT 4m giá 10,9 tỷ, ngõ rộng gần phố, cách ô tô vài bước chân, tiện ích tràn ngập" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=11,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="lazyload pr-img" abc="3.20241001152201-e70c_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/01/20241001152201-e70c_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>6</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Chùa Láng 48 m2 5T MT 4m giá 10,9 tỷ, ngõ rộng gần phố, cách
-                                                        ô tô vài bước chân, tiện ích tràn ngập
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">10,9 tỷ</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>48 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="18/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm nay
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;41073507&quot;,&quot;productId&quot;:41073507,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/10/01/20241001152201-e70c_wm.jpg&quot;,&quot;title&quot;:&quot;Chùa Láng 48 m2 5T MT 4m giá 10,9 tỷ, ngõ rộng gần phố, cách ô tô vài bước chân, tiện ích tràn ngập&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/-48-m-5t-mt4m-gia-10-9ty-ngo-rong-gan-cach-o-to-vai-buoc-chan-tien-ich-tran-ngap-pr41073507&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-normal" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/10/13/20241013204726-15a7_wm.jpg" uid="1059284" prid="41199298" vtp="vip-normal" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="41199298" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-gap-mat-ngo-oto-lo-goc-gan-kinh-doanh-tot-dong-da-dt-39m2x6t-mt-rong-pr41199298" title="Bán gấp nhà mặt ngõ oto, lô góc, gần phố, kinh doanh tốt. Chùa Láng, Đống Đa. DT 39m2x6T, MT rộng" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=12,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="lazyload pr-img" abc="3.20241013204726-15a7_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/13/20241013204726-15a7_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>5</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Bán gấp nhà mặt ngõ oto, lô góc, gần phố, kinh doanh tốt.
-                                                        Chùa Láng, Đống Đa. DT 39m2x6T, MT rộng
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">11,9 tỷ</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>39 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="17/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm qua
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;41199298&quot;,&quot;productId&quot;:41199298,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/10/13/20241013204726-15a7_wm.jpg&quot;,&quot;title&quot;:&quot;Bán gấp nhà mặt ngõ oto, lô góc, gần phố, kinh doanh tốt. Chùa Láng, Đống Đa. DT 39m2x6T, MT rộng&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-gap-mat-ngo-oto-lo-goc-gan-kinh-doanh-tot-dong-da-dt-39m2x6t-mt-rong-pr41199298&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-normal" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/10/17/20241017193741-afa4_wm.jpg" uid="2912679" prid="41244235" vtp="vip-normal" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="41244235" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-lo-goc-truoc-thoang-sang-dt-50m2-x-5-tang-mt-5-5m-gia-10-7-ty-pr41244235" title="Bán nhà Lô góc Chùa Láng trước nhà thoáng sáng DT 50m2 x 5 tầng MT 5.5m. Gía 10.7 tỷ. 0968 963 ***" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=13,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="lazyload pr-img" abc="3.20241017193741-afa4_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/17/20241017193741-afa4_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>6</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Bán nhà Lô góc Chùa Láng trước nhà thoáng sáng DT 50m2 x 5
-                                                        tầng MT 5.5m. Gía 10.7 tỷ. <span class="hidden-mobile m-on-title" raw="0a2cb2d6d415815b3b1c8e419e933e11">0968 963
-                                                                ***</span>
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">10,7 tỷ</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>50 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="17/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm qua
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;41244235&quot;,&quot;productId&quot;:41244235,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/10/17/20241017193741-afa4_wm.jpg&quot;,&quot;title&quot;:&quot;Bán nhà Lô góc Chùa Láng trước nhà thoáng sáng DT 50m2 x 5 tầng MT 5.5m. Gía 10.7 tỷ. 0968.963.803&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/ban-lo-goc-truoc-thoang-sang-dt-50m2-x-5-tang-mt-5-5m-gia-10-7-ty-pr41244235&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-normal" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/08/28/20240828163755-1153_wm.jpg" uid="2688816" prid="40791352" vtp="vip-normal" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="40791352" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/-dep-canh-hv-ngoai-giao-lo-goc-42m-x-6-tang-kinh-doanh-13t-250-ban-gap-pr40791352" title="Lô góc Chùa Láng, cạnh HV Ngoại Giao: 40m2 x 6 tầng, mặt 6m, kinh doanh đa dạng, hiếm" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=14,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="lazyload pr-img" abc="3.20240828163755-1153_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/08/28/20240828163755-1153_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>3</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Lô góc Chùa Láng, cạnh HV Ngoại Giao: 40m2 x 6 tầng, mặt 6m,
-                                                        kinh doanh đa dạng, hiếm
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">11,9 tỷ</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>40 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="17/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm qua
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;40791352&quot;,&quot;productId&quot;:40791352,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/08/28/20240828163755-1153_wm.jpg&quot;,&quot;title&quot;:&quot;Lô góc Chùa Láng, cạnh HV Ngoại Giao: 40m2 x 6 tầng, mặt 6m, kinh doanh đa dạng, hiếm&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/-dep-canh-hv-ngoai-giao-lo-goc-42m-x-6-tang-kinh-doanh-13t-250-ban-gap-pr40791352&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
-
-                                <div class="js__card js__card-compact-web
-     pr-container re__card-compact re__vip-normal" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/08/10/20240810061447-5135_wm.jpg" uid="2688816" prid="40630709" vtp="vip-normal" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="40630709" href="/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/lo-goc-7-tang-thang-may-gan-hoc-vien-ngoai-giao-kd-da-dang-hiem-pr40630709" title="Lô góc 7 tầng thang máy Chùa Láng, gần học viện Ngoại Giao, ô tô, KD đa dạng. Hiếm" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=15,intentType=Bottom">
-                                        <div class="re__card-image
-            ">
-                                            <img alt="Ảnh đại diện" class="lazyload pr-img" abc="3.20240810061447-5135_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/08/10/20240810061447-5135_wm.jpg">
-                                            <div class="re__card-image-feature">
-                                                <i class="re__icon-image"></i>
-                                                <span>4</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="re__card-info">
-                                            <div class="re__card-info-content">
-                                                <div class="re__card-title">
-                                                    <h3 class="js__card-title">
-                                                        Lô góc 7 tầng thang máy Chùa Láng, gần học viện Ngoại Giao,
-                                                        ô tô, KD đa dạng. Hiếm
-                                                    </h3>
-                                                </div>
-                                                <div class="re__card-config">
-                                                    <span class="re__card-config-price">16,9 tỷ</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>50 m²</span>
-                                                    <div class="re__clear"></div>
-                                                </div>
-                                                <div class="re__card-location">
-                                                    <i class="re__icon-location--sm"></i>
-                                                    <span>Đống Đa, Hà Nội</span>
-                                                </div>
-                                                <div class="re__clearfix"></div>
-                                                <div class="re__card-contact">
-                                                    <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="17/10/2024" data-microtip-position="right" role="tooltip">
-                                                                Đăng hôm qua
-                                                            </span>
-
-                                                    </div>
-                                                    <div class="re__card-contact-button">
-                                                            <span class="js__marking-product__KYC re__btn re__btn-se-border--sm re__btn-icon--sm" data-marked-product-info-as-json="{&quot;documentId&quot;:&quot;40630709&quot;,&quot;productId&quot;:40630709,&quot;avatarinfowap&quot;:&quot;https://file4.batdongsan.com.vn/crop/200x140/2024/08/10/20240810061447-5135_wm.jpg&quot;,&quot;title&quot;:&quot;Lô góc 7 tầng thang máy Chùa Láng, gần học viện Ngoại Giao, ô tô, KD đa dạng. Hiếm&quot;,&quot;url&quot;:&quot;/ban-nha-rieng-pho-chua-lang-phuong-lang-thuong/lo-goc-7-tang-thang-may-gan-hoc-vien-ngoai-giao-kd-da-dang-hiem-pr40630709&quot;}" aria-label="Bấm để lưu tin" data-microtip-position="bottom" role="tooltip" kyc-tracking-id="save-listing" tracking-label="loc=Other-Home,status=save" title="" data-change-marking="1">
-                                                                <i class="re__icon-heart--sm"></i>
-                                                                <i class="re__icon-heart-pressed--sm"></i>
-                                                            </span>
-                                                    </div>
-                                                    <div class="re__clear-both"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="re__clearfix"></div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="re__product-item re__interested-product-card js__product-item">
+                            <div th:each="list : ${landForSaleList.size() > 5 ? landForSaleList.subList(0, 5) : landForSaleList}" class="re__product-item re__interested-product-card js__product-item">
 
                                 <div class="js__card js__card-compact-web
      pr-container re__card-compact re__vip-diamond" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/10/18/20241018152906-7d2e_wm.jpg" uid="2270804" prid="41252402" vtp="vip-diamond" clo="hpre">
-                                    <a class="js__product-link-for-product-id" data-product-id="41252402" href="/ban-nha-rieng-xa-long-trach/chu-ngop-ban-gap-1-tret-1-lau-cach-cau-tram-1-5km-gia-tl-1-ty-330-trieu-gia-100-pr41252402" title="CHỦ NGỢP BÁN GẤP NHÀ 1 TRỆT 1 LẦU, CÁCH CẦU TRÀM 1,5KM. GIÁ TL 1 TỶ 330 TRIỆU ( GIÁ 100% )" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=16,intentType=Bottom">
+                                    <a class="js__product-link-for-product-id" data-product-id="41252402" th:href="@{'/chi-tiet-nha-dat-ban/' + ${list.id}}" th:title="${list.name}" tracking-id="navigate-ldp-from-home" tracking-label="loc=Other-Home,ipos=16,intentType=Bottom">
                                         <div class="re__card-image
             ">
-                                            <img alt="Ảnh đại diện" class="lazyload pr-img" abc="3.20241018152906-7d2e_wm.jpg" data-src="https://file4.batdongsan.com.vn/crop/393x222/2024/10/18/20241018152906-7d2e_wm.jpg">
+                                            <img alt="Ảnh đại diện" class="lazyload pr-img" abc="3.20241018152906-7d2e_wm.jpg" th:data-src="${list.images[0].imageLink}">
                                             <div class="re__card-image-feature">
                                                 <i class="re__icon-image"></i>
-                                                <span>6</span>
+                                                <span th:text="${list.images.size()}">6</span>
                                             </div>
                                             <div class="card-label-img label--v2"></div>
                                         </div>
                                         <div class="re__card-info">
                                             <div class="re__card-info-content">
-                                                <div class="re__card-title">
+                                                <div class="re__card-title" th:text="${list.name}">
                                                     <h3 class="js__card-title">
                                                         CHỦ NGỢP BÁN GẤP NHÀ 1 TRỆT 1 LẦU, CÁCH CẦU TRÀM 1,5KM. GIÁ
                                                         TL 1 TỶ 330 TRIỆU ( GIÁ 100% )
                                                     </h3>
                                                 </div>
                                                 <div class="re__card-config">
-                                                    <span class="re__card-config-price">1,33 tỷ</span>
-                                                    <span class="re__card-config-area"><span class="re__card-config-dot">·</span>61 m²</span>
+                                                    <span class="re__card-config-price" th:text="${list.formatToReadableUnit(list.price)}">1,33 tỷ</span>
+                                                    <span class="re__card-config-area"><span class="re__card-config-dot" th:text="${list.area + ' m²'}">·</span>61 m²</span>
                                                     <div class="re__clear"></div>
                                                 </div>
                                                 <div class="re__card-location">
                                                     <i class="re__icon-location--sm"></i>
-                                                    <span>Cần Đước, Long An</span>
+                                                    <span th:text="${list.district} + ', ' + ${list.province}">Cần Đước, Long An</span>
                                                 </div>
                                                 <div class="re__clearfix"></div>
                                                 <div class="re__card-contact">
                                                     <div class="re__card-published-info">
-                                                            <span class="re__card-published-info-published-at" aria-label="18/10/2024" data-microtip-position="right" role="tooltip">
+                                                            <span class="re__card-published-info-published-at" th:aria-label="${#temporals.format(list.available.purchaseDate, 'dd/MM/yyyy')}" data-microtip-position="right" role="tooltip"
+                                                                  th:text="${list.getRelativeTime(list.datePosted)}">
                                                                 Đăng hôm nay
                                                             </span>
 
@@ -2360,10 +1196,8 @@
                         <div class="clear"></div>
                         <div id="ucHomeProductInterest_pnlViewMore">
                             <div class="re__product-view-more">
-                                <a href="javascript:void(0)" id="prd-viewmore" class="re__btn re__btn-icon-right--md re__btn-se-border--md js__kyc-product-extend">
-                                    <span>Mở rộng</span><i class="re__icon-chevron-down--sm"></i>
-                                </a>
-                                <a href="/ban-nha-rieng-xa-long-trach" id="prd-viewless" class="re__btn re__btn-se-border--md display-none js__kyc-product-view-more">
+
+                                <a href="/nha-dat-ban" id="prd-viewless" class="re__btn re__btn-icon-right--md re__btn-se-border--md js__kyc-product-extend">
                                     Xem tiếp
                                 </a>
                             </div>
@@ -2402,8 +1236,8 @@
             <div class="re__content-container">
 
 
-                <h2 class="re__content-container-label">Bất động sản theo địa điểm</h2>
-                <div class="re__home__place-container lazyload" data-func="new window.FrontEnd.Home.ProductCountBinnova({});" data-script="https://staticfile.batdongsan.com.vn/js/binnova/filestatic.ver69fcc55f.msvbds.FrontEnd.Home.ProductCountBinnova.min.js">
+                <h2 class="re__content-container-label re__content-container-label-title">Bất động sản theo địa điểm</h2>
+                <div class="re__home__place-container lazyload" data-func="new window.FrontEnd.Home.ProductCountBinnova({});" data-script="">
 
                     <div class="re__place-big re__place-item">
                         <div class="re__place-img place-img">
@@ -2411,14 +1245,16 @@
                             <img class="lazyload" data-src="https://file4.batdongsan.com.vn/images/newhome/cities1/HCM-web-2.jpg">
                             <img class="lazyload" data-src="https://file4.batdongsan.com.vn/images/newhome/cities1/HCM-web-3.jpg">
                         </div>
+
+
                         <h3>
-                            <a class="re__place-info buy-info" href="/nha-dat-ban-tp-hcm" title="Bán nhà TPHCM">
+                            <a class="re__place-info buy-info re__place-info-sold " href="/nha-dat-ban?province=Hồ%20Chí%20Minh&page=1" title="Bán nhà TPHCM">
                                 <span class="place-name">TP. Hồ Chí Minh</span><br>
-                                <span class="place-number">70.011 tin đăng</span>
+                                <span class="place-number" th:text="${HCM.size()}">70.011 tin đăng</span>
                             </a>
-                            <a class="re__place-info rent-info" href="/nha-dat-cho-thue-tp-hcm" title="Thuê nhà TPHCM">
+                            <a class="re__place-info rent-info re__place-info-rent" href="/nha-dat-cho-thue?province=Hồ%20Chí%20Minh&page=1" title="Thuê nhà TPHCM">
                                 <span class="place-name">TP. Hồ Chí Minh</span><br>
-                                <span class="place-number">29.968 tin đăng</span>
+                                <span class="place-number" th:text="${HCM1.size()}">29.968 tin đăng</span>
                             </a>
                         </h3>
                     </div>
@@ -2431,13 +1267,13 @@
                                 <img class="lazyload" data-src="https://file4.batdongsan.com.vn/images/newhome/cities1/HN-web-3.jpg">
                             </div>
                             <h3>
-                                <a class="re__place-info buy-info" href="/nha-dat-ban-ha-noi" title="Bán nhà Hà Nội">
-                                    <span class="place-name">Hà Nội</span><br>
-                                    <span class="place-number">66.608 tin đăng</span>
+                                <a class="re__place-info buy-info re__place-info-sold" href="/nha-dat-ban?province=Hà%20Nội&page=1" title="Bán nhà Hà Nội">
+                                    <span class="place-name" >Hà Nội</span><br>
+                                    <span class="place-number" th:text="${HN.size()}">66.608 tin đăng</span>
                                 </a>
-                                <a class="re__place-info rent-info" href="/nha-dat-cho-thue-ha-noi" title="Thuê nhà Hà Nội">
+                                <a class="re__place-info rent-info re__place-info-rent" href="/nha-dat-cho-thue?province=Hà%20Nội&page=1" title="Thuê nhà Hà Nội">
                                     <span class="place-name">Hà Nội</span><br>
-                                    <span class="place-number">13.706 tin đăng</span>
+                                    <span class="place-number" th:text="${HN1.size()}">13.706 tin đăng</span>
                                 </a>
                             </h3>
                         </div>
@@ -2448,13 +1284,13 @@
                                 <img class="lazyload" data-src="https://file4.batdongsan.com.vn/images/newhome/cities1/DDN-web-3.jpg">
                             </div>
                             <h3>
-                                <a class="re__place-info buy-info" href="/nha-dat-ban-da-nang" title="Bán nhà Đà Nẵng">
+                                <a class="re__place-info buy-info re__place-info-sold" href="/nha-dat-ban?province=Đà%20Nẵng&page=1" title="Bán nhà Đà Nẵng">
                                     <span class="place-name">Đà Nẵng</span><br>
-                                    <span class="place-number">8.812 tin đăng</span>
+                                    <span class="place-number" th:text="${DN.size()}">8.812 tin đăng</span>
                                 </a>
-                                <a class="re__place-info rent-info" href="/nha-dat-cho-thue-da-nang" title="Thuê nhà Đà Nẵng">
+                                <a class="re__place-info rent-info re__place-info-rent" href="/nha-dat-cho-thue?province=Đà%20Nẵng&page=1" title="Thuê nhà Đà Nẵng">
                                     <span class="place-name">Đà Nẵng</span><br>
-                                    <span class="place-number">714 tin đăng</span>
+                                    <span class="place-number" th:text="${DN1.size()}">714 tin đăng</span>
                                 </a>
                             </h3>
                         </div>
@@ -2464,13 +1300,13 @@
                                 <img class="lazyload" data-src="https://file4.batdongsan.com.vn/images/newhome/cities1/BD-web-2.jpg">
                             </div>
                             <h3>
-                                <a class="re__place-info buy-info" href="/nha-dat-ban-binh-duong" title="Bán nhà Bình Dương">
+                                <a class="re__place-info buy-info re__place-info-sold" href="/nha-dat-ban?province=Bình%20Dương&page=1" title="Bán nhà Bình Dương">
                                     <span class="place-name">Bình Dương</span><br>
-                                    <span class="place-number">7.758 tin đăng</span>
+                                    <span class="place-number" th:text="${BD.size()}">7.758 tin đăng</span>
                                 </a>
-                                <a class="re__place-info rent-info" href="/nha-dat-cho-thue-binh-duong" title="Thuê nhà Bình Dương">
+                                <a class="re__place-info rent-info re__place-info-rent" href="/nha-dat-cho-thue?province=Bình%20Dương&page=1" title="Thuê nhà Bình Dương">
                                     <span class="place-name">Bình Dương</span><br>
-                                    <span class="place-number">1.452 tin đăng</span>
+                                    <span class="place-number" th:text="${BD1.size()}">1.452 tin đăng</span>
                                 </a>
                             </h3>
                         </div>
@@ -2481,13 +1317,13 @@
                                 <img class="lazyload" data-src="https://file4.batdongsan.com.vn/images/newhome/cities1/DNA-web-3.jpg">
                             </div>
                             <h3>
-                                <a class="re__place-info buy-info" href="/nha-dat-ban-dong-nai" title="Bán nhà Đồng Nai">
+                                <a class="re__place-info buy-info re__place-info-sold" href="/nha-dat-ban?province=Đồng%20Nai&page=1" title="Bán nhà Đồng Nai">
                                     <span class="place-name">Đồng Nai</span><br>
-                                    <span class="place-number">3.925 tin đăng</span>
+                                    <span class="place-number" th:text="${DongNai.size()}">3.925 tin đăng</span>
                                 </a>
-                                <a class="re__place-info rent-info" href="/nha-dat-cho-thue-dong-nai" title="Thuê nhà Đồng Nai">
+                                <a class="re__place-info rent-info re__place-info-rent" href="/nha-dat-cho-thue?province=Đồng%20Nai&page=1" title="Thuê nhà Đồng Nai">
                                     <span class="place-name">Đồng Nai</span><br>
-                                    <span class="place-number">432 tin đăng</span>
+                                    <span class="place-number" th:text="${DongNai1.size()}">432 tin đăng</span>
                                 </a>
                             </h3>
                         </div>
@@ -2500,8 +1336,6 @@
                         display: none;
                     }
                 </style>
-
-
 
 
 
@@ -2606,10 +1440,308 @@
 
     </div>
 
-
-
-
-
-
-
 </div>
+
+<script>
+    let productTypeValue = "38";
+    let cityCode = "";
+    let locationSearchValue = "";
+
+    let checkSold = true;
+
+    let selectedCategoryValue = "";
+    let selectedPriceValue = "";
+    let selectedAreaValue = "";
+
+    const priceMapping = {
+        "1": "Dưới 100 triệu",
+        "2": "100 - 200 triệu",
+        "3": "200 - 300 triệu",
+        "4": "300 - 500 triệu",
+        "5": "500 - 800 triệu",
+        "6": "800 - 1 tỷ",
+        "7": "1 - 2 tỷ",
+        "8": "Trên 2 tỷ",
+        "0": "Thỏa thuận"
+    };
+
+    const areaMapping = {
+        "1": "Dưới 30 m²",
+        "2": "30 - 50 m²",
+        "3": "50 - 80 m²",
+        "4": "80 - 100 m²",
+        "5": "100 - 150 m²",
+        "6": "150 - 200 m²",
+        "7": "200 - 250 m²",
+        "8": "250 - 300 m²",
+        "9": "300 - 500 m²",
+        "10": "Trên 500 m²"
+    };
+
+    function logProductTypeChange() {
+        productTypeValue = $("#ProductType").val();
+        cityCode = $("#CityCode").val();
+        console.log("Giá trị của ProductType đã thay đổi: " + productTypeValue);
+        console.log("Giá trị của CityCode đã thay đổi: " + cityCode);
+
+        const buyLinks = document.querySelectorAll(".re__place-info.buy-info");
+        const rentLinks = document.querySelectorAll(".re__place-info.rent-info");
+        const titleElement = document.querySelector(".re__content-container-label-title");
+
+        console.log("buyLinks: ", buyLinks);
+        console.log("rentLinks: ", rentLinks);
+
+        if (buyLinks.length > 0 && rentLinks.length > 0) {
+            if (parseInt(productTypeValue) === 38) {
+                titleElement.textContent = "Bất động sản theo địa điểm";
+                console.log("productTypeValue === 38, thay đổi class cho tất cả các link...");
+
+                buyLinks.forEach((buyLink) => {
+                    console.log("Trước khi thay đổi buyLink classList: ", buyLink.classList);
+                    buyLink.classList.remove("rent-info", "re__place-info-sold");
+                    buyLink.classList.add("buy-info", "re__place-info-sold");
+                    console.log("Sau khi thay đổi buyLink classList: ", buyLink.classList);
+                });
+
+                rentLinks.forEach((rentLink) => {
+                    console.log("Trước khi thay đổi rentLink classList: ", rentLink.classList);
+                    rentLink.classList.remove("buy-info", "re__place-info-rent");
+                    rentLink.classList.add("rent-info", "re__place-info-rent");
+                    console.log("Sau khi thay đổi rentLink classList: ", rentLink.classList);
+                });
+            } else {
+                titleElement.textContent = "Cho thuê theo địa điểm";
+
+                buyLinks.forEach((buyLink) => {
+                    console.log("Trước khi thay đổi buyLink classList: ", buyLink.classList);
+                    buyLink.classList.remove("buy-info", "re__place-info-sold");
+                    buyLink.classList.add("rent-info", "re__place-info-sold");
+                    console.log("Sau khi thay đổi buyLink classList: ", buyLink.classList);
+                });
+
+                rentLinks.forEach((rentLink) => {
+                    console.log("Trước khi thay đổi rentLink classList: ", rentLink.classList);
+                    rentLink.classList.remove("rent-info", "re__place-info-rent");
+                    rentLink.classList.add("buy-info", "re__place-info-rent");
+                    console.log("Sau khi thay đổi rentLink classList: ", rentLink.classList);
+                });
+            }
+        }
+
+        const categoryHeaderText = document.querySelector(".loaiNhaDatText");
+        const priceHeaderText = document.querySelector(".PriceText");
+        const areaHeaderText = document.querySelector(".AreaText");
+        const categoryHiddenInput = document.getElementById("CategoryIdsAsString");
+        const priceHiddenInput = document.getElementById("PriceAsString");
+        const areaHiddenInput = document.getElementById("AreaAsString");
+        const locationSearchInput = document.getElementById("LocationSearch");
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlCategory = urlParams.get('CategoryIdsAsString');
+        const urlPrice = urlParams.get('PriceAsString');
+        const urlArea = urlParams.get('AreaAsString');
+
+        if (urlCategory) {
+            selectedCategoryValue = urlCategory;
+            categoryHeaderText.textContent = decodeURIComponent(urlCategory);
+            document.querySelectorAll(".re__listing-search-select-dropdown-category .js__option ").forEach(option => {
+                if (option.getAttribute("value") === urlCategory) {
+                    option.classList.add("selected");
+                }
+            });
+        }
+
+        if (urlPrice) {
+            selectedPriceValue = urlPrice;
+            priceHeaderText.textContent = priceMapping[urlPrice] || "Mức giá";
+            document.querySelectorAll(".re__listing-search-select-dropdown-price .js__option").forEach(option => {
+                if (option.getAttribute("value") === urlPrice) {
+                    option.classList.add("selected");
+                }
+            });
+        }
+
+        if (urlArea) {
+            selectedAreaValue = urlArea;
+            areaHeaderText.textContent = areaMapping[urlArea] || "Diện tích";
+            document.querySelectorAll(".re__listing-search-select-dropdown-area .js__option").forEach(option => {
+                if (option.getAttribute("value") === urlArea) {
+                    option.classList.add("selected");
+                }
+            });
+        }
+
+        document.querySelectorAll(".re__listing-search-select-dropdown-category .js__option").forEach(option => {
+            option.addEventListener("click", function () {
+                document.querySelectorAll(".re__listing-search-select-dropdown-category .js__option").forEach(opt => opt.classList.remove("selected"));
+                option.classList.add("selected");
+                selectedCategoryValue = option.getAttribute("value") || "";
+                console.log("Đã chọn Loại nhà đất:", selectedCategoryValue);
+
+                categoryHeaderText.textContent = option.textContent.trim();
+                categoryHiddenInput.value = selectedCategoryValue;
+            });
+        });
+
+        document.querySelectorAll(".re__listing-search-select-dropdown-price .js__option").forEach(option => {
+            option.addEventListener("click", function () {
+                document.querySelectorAll(".re__listing-search-select-dropdown-price .js__option").forEach(opt => opt.classList.remove("selected"));
+                option.classList.add("selected");
+                selectedPriceValue = option.getAttribute("value") || "";
+                console.log("Đã chọn Mức giá:", selectedPriceValue);
+
+                priceHeaderText.textContent = option.textContent.trim();
+                priceHiddenInput.value = selectedCategoryValue;
+
+            });
+        });
+
+        document.querySelectorAll(".re__listing-search-select-dropdown-area .js__option").forEach(option => {
+            option.addEventListener("click", function () {
+                document.querySelectorAll(".re__listing-search-select-dropdown-area .js__option").forEach(opt => opt.classList.remove("selected"));
+                option.classList.add("selected");
+                selectedAreaValue = option.getAttribute("value") || "";
+                console.log("Đã chọn Diện tích:", selectedAreaValue);
+
+                areaHeaderText.textContent = option.textContent.trim();
+                areaHiddenInput.value = selectedAreaValue;
+
+            });
+        });
+
+        locationSearchInput.addEventListener("input", function () {
+            locationSearchValue = locationSearchInput.value;
+        });
+    }
+
+
+
+    const categoryHeaderText = document.querySelector(".loaiNhaDatText");
+    const priceHeaderText = document.querySelector(".PriceText");
+    const areaHeaderText = document.querySelector(".AreaText");
+    const categoryHiddenInput = document.getElementById("CategoryIdsAsString");
+    const priceHiddenInput = document.getElementById("PriceAsString");
+    const areaHiddenInput = document.getElementById("AreaAsString");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlCategory = urlParams.get('CategoryIdsAsString');
+    const urlPrice = urlParams.get('PriceAsString');
+    const urlArea = urlParams.get('AreaAsString');
+
+    if (urlCategory) {
+        selectedCategoryValue = urlCategory;
+        categoryHeaderText.textContent = decodeURIComponent(urlCategory);
+        document.querySelectorAll(".re__listing-search-select-dropdown-category .js__option ").forEach(option => {
+            if (option.getAttribute("value") === urlCategory) {
+                option.classList.add("selected");
+            }
+        });
+    }
+
+    if (urlPrice) {
+        selectedPriceValue = urlPrice;
+        priceHeaderText.textContent = priceMapping[urlPrice] || "Mức giá";
+        document.querySelectorAll(".re__listing-search-select-dropdown-price .js__option").forEach(option => {
+            if (option.getAttribute("value") === urlPrice) {
+                option.classList.add("selected");
+            }
+        });
+    }
+
+    if (urlArea) {
+        selectedAreaValue = urlArea;
+        areaHeaderText.textContent = areaMapping[urlArea] || "Diện tích";
+        document.querySelectorAll(".re__listing-search-select-dropdown-area .js__option").forEach(option => {
+            if (option.getAttribute("value") === urlArea) {
+                option.classList.add("selected");
+            }
+        });
+    }
+
+    document.querySelectorAll(".re__listing-search-select-dropdown-category .js__option").forEach(option => {
+        option.addEventListener("click", function () {
+            document.querySelectorAll(".re__listing-search-select-dropdown-category .js__option").forEach(opt => opt.classList.remove("selected"));
+            option.classList.add("selected");
+            selectedCategoryValue = option.getAttribute("value") || "";
+            console.log("Đã chọn Loại nhà đất:", selectedCategoryValue);
+
+            categoryHeaderText.textContent = option.textContent.trim();
+            categoryHiddenInput.value = selectedCategoryValue;
+        });
+    });
+
+    document.querySelectorAll(".re__listing-search-select-dropdown-price .js__option").forEach(option => {
+        option.addEventListener("click", function () {
+            document.querySelectorAll(".re__listing-search-select-dropdown-price .js__option").forEach(opt => opt.classList.remove("selected"));
+            option.classList.add("selected");
+            selectedPriceValue = option.getAttribute("value") || "";
+            console.log("Đã chọn Mức giá:", selectedPriceValue);
+
+            priceHeaderText.textContent = option.textContent.trim();
+            priceHiddenInput.value = selectedCategoryValue;
+
+        });
+    });
+
+    document.querySelectorAll(".re__listing-search-select-dropdown-area .js__option").forEach(option => {
+        option.addEventListener("click", function () {
+            document.querySelectorAll(".re__listing-search-select-dropdown-area .js__option").forEach(opt => opt.classList.remove("selected"));
+            option.classList.add("selected");
+            selectedAreaValue = option.getAttribute("value") || "";
+            console.log("Đã chọn Diện tích:", selectedAreaValue);
+
+            areaHeaderText.textContent = option.textContent.trim();
+            areaHiddenInput.value = selectedAreaValue;
+
+        });
+    });
+
+    const targetNode = document.getElementById("ProductType");
+    const city = document.getElementById("CityCode");
+
+    const config = { attributes: true, attributeFilter: ['value'] };
+
+    const observer = new MutationObserver(() => {
+        logProductTypeChange();
+    });
+
+    observer.observe(targetNode, config);
+    observer.observe(city, config);
+
+    document.getElementById('btnSearch').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        let ischeck = (productTypeValue !== "49");
+
+        const form = document.getElementById('boxSearchForm');
+
+        let actionUrl = ischeck ? "/nha-dat-ban?page=1" : "/nha-dat-cho-thue?page=1";
+
+        if (selectedCategoryValue) {
+            actionUrl += `&CategoryIdsAsString=${encodeURIComponent(selectedCategoryValue)}`;
+        }
+
+        if (selectedPriceValue) {
+            actionUrl += `&PriceAsString=${encodeURIComponent(selectedPriceValue)}`;
+        }
+
+        if (selectedAreaValue) {
+            actionUrl += `&AreaAsString=${encodeURIComponent(selectedAreaValue)}`;
+        }
+
+        if (cityCode) {
+            actionUrl += `&province=${encodeURIComponent(cityCode)}`;
+        }
+
+        if (locationSearchValue) {
+            actionUrl += `&district=${encodeURIComponent(locationSearchValue)}`;
+        }
+
+        form.action = actionUrl;
+
+        form.submit();
+    });
+
+
+
+</script>

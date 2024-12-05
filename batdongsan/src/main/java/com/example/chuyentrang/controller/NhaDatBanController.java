@@ -25,6 +25,8 @@ public class NhaDatBanController {
             @RequestParam(value = "PriceAsString", required = false) String priceAsString,
             @RequestParam(value = "AreaAsString", required = false) String areaAsString,
             @RequestParam(value = "RoomNumersAsString", required = false) String roomNumersAsString,
+            @RequestParam(value = "province", required = false) String province,
+            @RequestParam(value = "district", required = false) String district,
             Model model) {
 
         System.out.println("Page: " + page);
@@ -146,10 +148,11 @@ public class NhaDatBanController {
         }
 
         Page<LandForSale> landForSalesPage;
-        if (categoryIdsAsString.isEmpty() && priceAsString == null) {
+        if (categoryIdsAsString.isEmpty() && priceAsString == null && areaAsString == null && roomNumersAsString == null && province == null && district == null) {
             landForSalesPage = landForSaleService.listLandSold(page);
         } else {
-            landForSalesPage = landForSaleService.listLandSold(page, categoryIdsAsString, minPrice, maxPrice, minArea, maxArea, numberRoom);
+            System.out.println(province);
+            landForSalesPage = landForSaleService.listLandSold(page, categoryIdsAsString, minPrice, maxPrice, minArea, maxArea, numberRoom, province, district);
         }
 
         System.out.println("Danh sách LandForSales:");
@@ -168,6 +171,9 @@ public class NhaDatBanController {
         model.addAttribute("priceAsString", priceAsString);
         model.addAttribute("areaAsString", areaAsString);
         model.addAttribute("roomNumersAsString", roomNumersAsString);
+        model.addAttribute("province", province);
+        model.addAttribute("district", district);
+
 
         return "nha_dat_ban";
     }
@@ -175,6 +181,9 @@ public class NhaDatBanController {
     @GetMapping("/chi-tiet-nha-dat-ban/{id}")
     public String chitietnhadatban(@PathVariable("id") int id, Model model) {
         LandForSale landForSale = landForSaleService.findById(id);
+        List<LandForSale> landForSaleList = landForSaleService.listLandSold();
+
+        model.addAttribute("landForSalesList", landForSaleList);
 
         if (landForSale == null) {
             return "redirect:/error";

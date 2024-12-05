@@ -38,8 +38,39 @@ public class HomeController {
     @Autowired
     private NewsService newsService;
 
+    @Autowired
+    private LandForSaleService landForSaleService;
+
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+
+        List<LandForSale> landForSaleList = landForSaleService.listLandSold();
+
+        List<LandForSale> HCM = landForSaleService.getLandForSaleByProvinceSold("Hồ Chí Minh");
+        List<LandForSale> HN = landForSaleService.getLandForSaleByProvinceSold("Hà Nội");
+        List<LandForSale> BD = landForSaleService.getLandForSaleByProvinceSold("Bình Dương");
+        List<LandForSale> DN = landForSaleService.getLandForSaleByProvinceSold("Đà Nắng");
+        List<LandForSale> DongNai = landForSaleService.getLandForSaleByProvinceSold("Đồng Nai");
+
+        List<LandForSale> HCM1 = landForSaleService.getLandForSaleByProvinceRent("Hồ Chí Minh");
+        List<LandForSale> HN1 = landForSaleService.getLandForSaleByProvinceRent("Hà Nội");
+        List<LandForSale> BD1 = landForSaleService.getLandForSaleByProvinceRent("Bình Dương");
+        List<LandForSale> DN1 = landForSaleService.getLandForSaleByProvinceRent("Đà Nắng");
+        List<LandForSale> DongNai1 = landForSaleService.getLandForSaleByProvinceRent("Đồng Nai");
+
+        model.addAttribute("landForSaleList", landForSaleList);
+
+        model.addAttribute("HCM", HCM);
+        model.addAttribute("HN", HN);
+        model.addAttribute("BD", BD);
+        model.addAttribute("DN", DN);
+        model.addAttribute("DongNai", DongNai);
+
+        model.addAttribute("HCM1", HCM1);
+        model.addAttribute("HN1", HN1);
+        model.addAttribute("BD1", BD1);
+        model.addAttribute("DN1", DN1);
+        model.addAttribute("DongNai1", DongNai1);
         return "home";
     }
 

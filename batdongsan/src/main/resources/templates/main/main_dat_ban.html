@@ -21,7 +21,7 @@
                         <div class="re__city-code-select js__listing-search-select-container js__city-code-select" data-multiple="false" data-default-value="Trên toàn quốc" data-type="" tracking-id="open-search-location" tracking-label="loc=Rent-SRP">
                             <div tabindex="0" class="re__listing-search-select-button js__listing-search-select-button js__listing-search-select-tooltip re__has-value" aria-label="Hồ Chí Minh">
                                 <i class="js__selected-icon re__icon-search re__city-icon-search"></i>
-                                <div class="re__listing-search-select-button-current-text custom-value js__listing-search-select-button-current-text hasvalue">Tr&#xEA;n to&#xE0;n qu&#x1ED1;c</div>
+                                <div class="re__listing-search-select-button-current-text custom-value js__listing-search-select-button-current-text hasvalue searchText">Trên toàn quốc</div>
                                 <i class="re__icon-chevron-down--sm"></i>
                                 <span class="re__postfix-div"></span>
                             </div>
@@ -1045,7 +1045,7 @@
             <div class="re__pagination-group">
                 <!-- Previous Page -->
                 <a th:if="${currentPage > 1}"
-                   th:href="@{/nha-dat-ban(CategoryIdsAsString=${categoryIdsAsString}, PriceAsString=${priceAsString}, AreaAsString=${areaAsString}, RoomNumersAsString=${roomNumersAsString}, page=${currentPage - 1})}"
+                   th:href="@{/nha-dat-ban(CategoryIdsAsString=${categoryIdsAsString}, PriceAsString=${priceAsString}, AreaAsString=${areaAsString}, RoomNumersAsString=${roomNumersAsString}, province=${province}, district=${district}, page=${currentPage - 1})}"
                    class="re__pagination-icon">
                     <i class="re__icon-chevron-left--sm"></i>
                 </a>
@@ -1053,14 +1053,14 @@
                 <!-- Page Numbers -->
                 <a th:each="page : ${#numbers.sequence(1, totalPages)}"
                    th:classappend="${page == currentPage} ? ' re__actived' : ''"
-                   th:href="@{/nha-dat-ban(CategoryIdsAsString=${categoryIdsAsString}, PriceAsString=${priceAsString}, AreaAsString=${areaAsString}, RoomNumersAsString=${roomNumersAsString}, page=${page})}"
+                   th:href="@{/nha-dat-ban(CategoryIdsAsString=${categoryIdsAsString}, PriceAsString=${priceAsString}, AreaAsString=${areaAsString}, RoomNumersAsString=${roomNumersAsString}, province=${province}, district=${district}, page=${page})}"
                    class="re__pagination-number">
                     <span th:text="${page}"></span>
                 </a>
 
                 <!-- Next Page -->
                 <a th:if="${currentPage < totalPages}"
-                   th:href="@{/nha-dat-ban(CategoryIdsAsString=${categoryIdsAsString}, PriceAsString=${priceAsString}, AreaAsString=${areaAsString}, RoomNumersAsString=${roomNumersAsString}, page=${currentPage + 1})}"
+                   th:href="@{/nha-dat-ban(CategoryIdsAsString=${categoryIdsAsString}, PriceAsString=${priceAsString}, AreaAsString=${areaAsString}, RoomNumersAsString=${roomNumersAsString}, province=${province}, district=${district}, page=${currentPage + 1})}"
                    class="re__pagination-icon">
                     <i class="re__icon-chevron-right--sm"></i>
                 </a>
@@ -1348,117 +1348,64 @@
 
 
 
-            <div class="re__sidebar-box re__product-count-box lazyloaded" data-script="https://staticfile.batdongsan.com.vn/js/Product/Binnova/filestatic.ver3eb9ae29.msvbds.FrontEnd.Product.BoxProductCountList.min.js" data-func="new FrontEnd.Product.BoxProductCountList({});">
+            <div class="re__sidebar-box re__product-count-box lazyloaded" data-func="new FrontEnd.Product.BoxProductCountList({});">
                 <h2 class="re__sidebar-box-title">Bán căn hộ chung cư</h2>
                 <div class="re__sidebar-box-content">
-                    <h3 class="re__sidebar-box-item ">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-ha-noi" title="Bán căn hộ chung cư tại Hà Nội">
-                            Hà Nội <span>(16.307)</span>
+                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Hà Nội" value="Hà Nội">
+                            Hà Nội
                         </a>
                     </h3>
-                    <h3 class="re__sidebar-box-item ">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-tp-hcm" title="Bán căn hộ chung cư tại Hồ Chí Minh">
+                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Hồ Chí Minh" value="Hồ Chí Minh">
                             Hồ Chí Minh <span>(14.045)</span>
                         </a>
                     </h3>
-                    <h3 class="re__sidebar-box-item ">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-binh-duong" title="Bán căn hộ chung cư tại Bình Dương">
+                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Bình Dương" value="Bình Dương">
                             Bình Dương <span>(2.384)</span>
                         </a>
                     </h3>
-                    <h3 class="re__sidebar-box-item ">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-da-nang" title="Bán căn hộ chung cư tại Đà Nẵng">
+                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Đà Nẵng" value="Đà Nẵng">
                             Đà Nẵng <span>(1.605)</span>
                         </a>
                     </h3>
-                    <h3 class="re__sidebar-box-item ">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-hung-yen" title="Bán căn hộ chung cư tại Hưng Yên">
+                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Hưng Yên" value="Hưng Yên">
                             Hưng Yên <span>(809)</span>
                         </a>
                     </h3>
-                    <h3 class="re__sidebar-box-item ">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-khanh-hoa" title="Bán căn hộ chung cư tại Khánh Hòa">
+                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Khánh Hòa" value="Khánh Hòa">
                             Khánh Hòa <span>(581)</span>
                         </a>
                     </h3>
-                    <h3 class="re__sidebar-box-item ">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-hai-phong" title="Bán căn hộ chung cư tại Hải Phòng">
+                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Hải Phòng" value="Hải Phòng">
                             Hải Phòng <span>(374)</span>
                         </a>
                     </h3>
-                    <h3 class="re__sidebar-box-item ">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-ba-ria-vung-tau" title="Bán căn hộ chung cư tại Bà Rịa Vũng Tàu">
+                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Bà Rịa Vũng Tàu" value="Vũng Tàu">
                             Bà Rịa Vũng Tàu <span>(371)</span>
                         </a>
                     </h3>
-                    <h3 class="re__sidebar-box-item ">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-quang-ninh" title="Bán căn hộ chung cư tại Quảng Ninh">
+                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Quảng Ninh" value="Quảng Ninh">
                             Quảng Ninh <span>(332)</span>
                         </a>
                     </h3>
-                    <h3 class="re__sidebar-box-item ">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-thanh-hoa" title="Bán căn hộ chung cư tại Thanh Hóa">
+                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Thanh Hóa" value="Thanh Hóa">
                             Thanh Hóa <span>(183)</span>
                         </a>
                     </h3>
-                    <h3 class="re__sidebar-box-item re__hide-item">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-thai-nguyen" title="Bán căn hộ chung cư tại Thái Nguyên">
+                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Thái Nguyên" value="Thái Nguyên">
                             Thái Nguyên <span>(182)</span>
                         </a>
                     </h3>
-                    <h3 class="re__sidebar-box-item re__hide-item">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-ha-nam" title="Bán căn hộ chung cư tại Hà Nam">
-                            Hà Nam <span>(154)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__hide-item">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-bac-ninh" title="Bán căn hộ chung cư tại Bắc Ninh">
-                            Bắc Ninh <span>(138)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__hide-item">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-bac-giang" title="Bán căn hộ chung cư tại Bắc Giang">
-                            Bắc Giang <span>(118)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__hide-item">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-long-an" title="Bán căn hộ chung cư tại Long An">
-                            Long An <span>(94)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__hide-item">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-binh-dinh" title="Bán căn hộ chung cư tại Bình Định">
-                            Bình Định <span>(90)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__hide-item">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-can-tho" title="Bán căn hộ chung cư tại Cần Thơ">
-                            Cần Thơ <span>(82)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__hide-item">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-dong-nai" title="Bán căn hộ chung cư tại Đồng Nai">
-                            Đồng Nai <span>(80)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__hide-item">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-quang-binh" title="Bán căn hộ chung cư tại Quảng Bình">
-                            Quảng Bình <span>(58)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__hide-item">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/ban-can-ho-chung-cu-phu-tho" title="Bán căn hộ chung cư tại Phú Thọ">
-                            Phú Thọ <span>(52)</span>
-                        </a>
-                    </h3>
-                    <div class="re__link-more-suggestion-box ">
-                        <a href="javascript:void(0)" rel="nofollow" class="re__link-pr re__view-more">
-                            <span>Xem thêm</span><i class="re__icon-chevron-down--sm"></i>
-                        </a>
-                        <a href="javascript:void(0)" rel="nofollow" class="re__link-pr re__view-less re__hide-item" style="margin-top:12px">
-                            <span>Thu gọn</span><i class="re__icon-chevron-up--sm"></i>
-                        </a>
-                    </div>
                 </div>
 
             </div>
@@ -1509,6 +1456,9 @@
             const roomHeaderText = document.querySelector(".searchRoom");
             const roomHiddenInput = document.getElementById("RoomNumersAsString");
 
+            let selectedProvinceValue = "";
+            const provinceHeaderText = document.querySelector(".searchText");
+
             const priceMapping = {
                 "1": "Dưới 100 triệu",
                 "2": "100 - 200 triệu",
@@ -1547,6 +1497,8 @@
             const urlPrice = urlParams.get('PriceAsString');
             const urlArea = urlParams.get('AreaAsString');
             const urlRoom = urlParams.get('RoomNumersAsString');
+            const urlProvince = urlParams.get('province');
+            const urlDistrict = urlParams.get('district');
 
             if (urlCategory) {
                 selectedCategoryValue = urlCategory;
@@ -1573,6 +1525,22 @@
                 areaHeaderText.textContent = areaMapping[urlArea] || "Diện tích";
                 document.querySelectorAll(".re__listing-search-select-dropdown-area .js__option").forEach(option => {
                     if (option.getAttribute("value") === urlArea) {
+                        option.classList.add("selected");
+                    }
+                });
+            }
+
+            if (urlProvince || urlDistrict) {
+                selectedProvinceValue = urlProvince;
+
+                if (urlDistrict) {
+                    provinceHeaderText.textContent = decodeURIComponent(urlDistrict) + " - " + decodeURIComponent(urlProvince);
+                } else {
+                    provinceHeaderText.textContent = decodeURIComponent(urlProvince);
+                }
+
+                document.querySelectorAll(".re__sidebar-box-item-tinh a ").forEach(option => {
+                    if (option.getAttribute("value") === urlProvince) {
                         option.classList.add("selected");
                     }
                 });
@@ -1713,22 +1681,22 @@
                 });
             });
 
-            document.querySelectorAll(".re__sidebar-box-item-room a").forEach(link => {
+            document.querySelectorAll(".re__sidebar-box-item-tinh a").forEach(link => {
                 link.addEventListener("click", function (event) {
                     console.log(event.target);
-                    selectedRoomValue = event.target.getAttribute("value") || event.target.textContent;
-                    console.log("Selected Room Value:", selectedRoomValue);
+                    selectedProvinceValue = event.target.getAttribute("value") || event.target.textContent;
+                    console.log("Selected Room Value:", selectedProvinceValue);
 
-                    roomHeaderText.textContent = selectedRoomValue;
+                    provinceHeaderText.textContent = selectedProvinceValue;
 
-                    document.querySelectorAll(".re__sidebar-box-item-room a").forEach(room => {
-                        room.classList.remove("selected");
-                        if (room.getAttribute("value") === selectedRoomValue) {
-                            room.classList.add("selected");
+                    document.querySelectorAll(".re__sidebar-box-item-tinh a").forEach(tinh => {
+                        tinh.classList.remove("selected");
+                        if (tinh.getAttribute("value") === selectedProvinceValue) {
+                            tinh.classList.add("selected");
                         }
                     });
 
-                    window.location.href = `/nha-dat-ban?CategoryIdsAsString=${encodeURIComponent(selectedCategoryValue)}&PriceAsString=${encodeURIComponent(selectedPriceValue)}&AreaAsString=${encodeURIComponent(selectedAreaValue)}&RoomNumersAsString=${encodeURIComponent(selectedRoomValue)}&page=1`;
+                    window.location.href = `/nha-dat-ban?CategoryIdsAsString=${encodeURIComponent(selectedCategoryValue)}&PriceAsString=${encodeURIComponent(selectedPriceValue)}&AreaAsString=${encodeURIComponent(selectedAreaValue)}&RoomNumersAsString=${encodeURIComponent(selectedRoomValue)}&province=${encodeURIComponent(selectedProvinceValue)}&page=1`;
                 });
             });
 
