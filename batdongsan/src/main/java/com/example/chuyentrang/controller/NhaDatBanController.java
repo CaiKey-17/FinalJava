@@ -1,7 +1,9 @@
 package com.example.chuyentrang.controller;
 
 import com.example.chuyentrang.model.LandForSale;
+import com.example.chuyentrang.model.User;
 import com.example.chuyentrang.service.LandForSaleService;
+import com.example.chuyentrang.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,10 @@ import java.util.List;
 public class NhaDatBanController {
     @Autowired
     private LandForSaleService landForSaleService;
+    @Autowired
+    private UserService userService;
+
+
 
     @RequestMapping("/nha-dat-ban")
     public String nhadatban(
@@ -175,6 +181,31 @@ public class NhaDatBanController {
         model.addAttribute("district", district);
 
 
+        List<LandForSale> HCM = landForSaleService.getLandForSaleByProvinceSold("Hồ Chí Minh");
+        List<LandForSale> HN = landForSaleService.getLandForSaleByProvinceSold("Hà Nội");
+        List<LandForSale> BD = landForSaleService.getLandForSaleByProvinceSold("Bình Dương");
+        List<LandForSale> DN = landForSaleService.getLandForSaleByProvinceSold("Đà Nắng");
+        List<LandForSale> DongNai = landForSaleService.getLandForSaleByProvinceSold("Đồng Nai");
+
+        List<LandForSale> HCM1 = landForSaleService.getLandForSaleByProvinceRent("Hồ Chí Minh");
+        List<LandForSale> HN1 = landForSaleService.getLandForSaleByProvinceRent("Hà Nội");
+        List<LandForSale> BD1 = landForSaleService.getLandForSaleByProvinceRent("Bình Dương");
+        List<LandForSale> DN1 = landForSaleService.getLandForSaleByProvinceRent("Đà Nắng");
+        List<LandForSale> DongNai1 = landForSaleService.getLandForSaleByProvinceRent("Đồng Nai");
+
+
+        model.addAttribute("HCM", HCM);
+        model.addAttribute("HN", HN);
+        model.addAttribute("BD", BD);
+        model.addAttribute("DN", DN);
+        model.addAttribute("DongNai", DongNai);
+
+        model.addAttribute("HCM1", HCM1);
+        model.addAttribute("HN1", HN1);
+        model.addAttribute("BD1", BD1);
+        model.addAttribute("DN1", DN1);
+        model.addAttribute("DongNai1", DongNai1);
+
         return "nha_dat_ban";
     }
 
@@ -189,6 +220,11 @@ public class NhaDatBanController {
             return "redirect:/error";
         }
 
+        List<User> users = userService.getCustomers();
+        for(User u : users){
+            System.out.println(u.toString());
+        }
+        model.addAttribute("users", users);
         model.addAttribute("landForSale", landForSale);
 
         return "detail/detail_nha_dat_ban";

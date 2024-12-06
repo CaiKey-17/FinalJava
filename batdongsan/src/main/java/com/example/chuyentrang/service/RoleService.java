@@ -14,7 +14,9 @@ public class RoleService {
         Role role = new Role(roleName);
         return roleRepository.save(role);
     }
-
+    public RoleService(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
+    }
     public Role findByName(String roleName) {
         return roleRepository.findByRoleName(roleName);
     }

@@ -78,6 +78,10 @@ public class User {
         this.balance = 0.0;
     }
 
+    public User(String username) {
+        this.username = username;
+    }
+
     public Double getBalance() {
         return balance;
     }

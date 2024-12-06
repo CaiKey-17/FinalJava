@@ -41,6 +41,20 @@ public class HomeController {
     @Autowired
     private LandForSaleService landForSaleService;
 
+    @Autowired
+    private UserService userService;
+
+
+
+    @Autowired
+    private DepositService depositService;
+
+    @Autowired
+    private RoleService roleService;
+
+    @Autowired
+    private EmailService emailService;
+
     @GetMapping("/")
     public String home(Model model) {
 
@@ -71,6 +85,27 @@ public class HomeController {
         model.addAttribute("BD1", BD1);
         model.addAttribute("DN1", DN1);
         model.addAttribute("DongNai1", DongNai1);
+        List<News> news2 = newsService.listLandTop4();
+
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+
+
+        News latestNews = newsService.getLatestNews();
+
+
+        if (latestNews != null && latestNews.getPublishDate() != null) {
+            String formattedDate = latestNews.getPublishDate().format(formatter2);
+            latestNews.setFormattedExpiry(formattedDate); // Giả sử bạn có phương thức setFormattedExpiry
+        }
+
+        model.addAttribute("latestNews", latestNews);
+
+
+
+        model.addAttribute("top4", news2);
+
+
         return "home";
     }
 
@@ -132,7 +167,30 @@ public class HomeController {
 
     @GetMapping("/tin-tuc")
     public String tintuc(Model model) {
+        List<LandForSale> HCM = landForSaleService.getLandForSaleByProvinceSold("Hồ Chí Minh");
+        List<LandForSale> HN = landForSaleService.getLandForSaleByProvinceSold("Hà Nội");
+        List<LandForSale> BD = landForSaleService.getLandForSaleByProvinceSold("Bình Dương");
+        List<LandForSale> DN = landForSaleService.getLandForSaleByProvinceSold("Đà Nắng");
+        List<LandForSale> DongNai = landForSaleService.getLandForSaleByProvinceSold("Đồng Nai");
 
+        List<LandForSale> HCM1 = landForSaleService.getLandForSaleByProvinceRent("Hồ Chí Minh");
+        List<LandForSale> HN1 = landForSaleService.getLandForSaleByProvinceRent("Hà Nội");
+        List<LandForSale> BD1 = landForSaleService.getLandForSaleByProvinceRent("Bình Dương");
+        List<LandForSale> DN1 = landForSaleService.getLandForSaleByProvinceRent("Đà Nắng");
+        List<LandForSale> DongNai1 = landForSaleService.getLandForSaleByProvinceRent("Đồng Nai");
+
+
+        model.addAttribute("HCM", HCM);
+        model.addAttribute("HN", HN);
+        model.addAttribute("BD", BD);
+        model.addAttribute("DN", DN);
+        model.addAttribute("DongNai", DongNai);
+
+        model.addAttribute("HCM1", HCM1);
+        model.addAttribute("HN1", HN1);
+        model.addAttribute("BD1", BD1);
+        model.addAttribute("DN1", DN1);
+        model.addAttribute("DongNai1", DongNai1);
 
         List<News> news = newsService.listLand();
         List<News> news2 = newsService.listLandTop4();
@@ -192,8 +250,7 @@ public class HomeController {
     public String forgot() {
         return "forgot";
     }
-    @Autowired
-    private EmailService emailService;
+
 
     @PostMapping("/forgot")
     public String sendResetLink(@RequestBody Map<String, String> requestData, HttpServletResponse response) {
@@ -218,14 +275,7 @@ public class HomeController {
     }
 
 
-    @Autowired
-    private UserService userService;
 
-    @Autowired
-    private DepositService depositService;
-
-    @Autowired
-    private RoleService roleService;
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
