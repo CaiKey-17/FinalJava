@@ -14,7 +14,7 @@
                     <div class="re__media-preview js__media-preview  swiper-container">
                         <ul class="swiper-wrapper">
                             <li th:each="image, stat : ${landForSale.images}"
-                                class="swiper-slide js__media-item-container" data-filter="image"
+                                class="swiper-slide" data-filter="image"
                                 th:data-index="${stat.index + 1}">
                                 <div class="re__overlay js__overlay">
                                     <img th:src="@{${image.imageLink}}"
@@ -666,7 +666,7 @@
                     <div class="re__pr-short-info re__pr-config js__pr-config">
                         <div class="re__pr-short-info-item js__pr-config-item"><span class="title">Ngày đăng</span><span
                                 class="value"
-                                th:text="${#temporals.format(landForSale.available.purchaseDate, 'dd/MM/yyyy')}">30/10/2024</span>
+                                th:text="${#temporals.format(landForSale.datePosted, 'dd/MM/yyyy')}">30/10/2024</span>
                         </div>
                         <div class="re__pr-short-info-item js__pr-config-item"><span
                                 class="title">Ngày hết hạn</span><span class="value"

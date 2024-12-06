@@ -38,9 +38,9 @@
                         <div action="go-left"><a class="re__btn re__btn-se-border--sm re__btn-icon--sm"><i
                                 class="re__icon-chevron-left"></i></a></div>
                     </div>
-                    <div class="re__media-thumbs js__media-thumbs">
+                    <div class="re__media-thumbs">
                         <div class="js__slick-thumb">
-                            <div class="re__media-thumb-item js__media-thumbs-item" data-filter="image"
+                            <div class="re__media-thumb-item" data-filter="image"
                                  th:each="image : ${landForSale.images}">
                                 <img th:data-src="@{${image.imageLink}}"
                                      th:alt="${image.landForSale.name}"
@@ -316,7 +316,7 @@
                     <div class="re__pr-short-info re__pr-config js__pr-config">
                         <div class="re__pr-short-info-item js__pr-config-item"><span class="title">Ngày đăng</span><span
                                 class="value"
-                                th:text="${#temporals.format(landForSale.available.purchaseDate, 'dd/MM/yyyy')}">02/11/2024</span>
+                                th:text="${#temporals.format(landForSale.datePosted, 'dd/MM/yyyy')}">02/11/2024</span>
                         </div>
                         <div class="re__pr-short-info-item js__pr-config-item"><span
                                 class="title">Ngày hết hạn</span><span class="value"
