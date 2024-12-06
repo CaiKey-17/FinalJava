@@ -41,6 +41,20 @@ public class HomeController {
     @Autowired
     private LandForSaleService landForSaleService;
 
+    @Autowired
+    private UserService userService;
+
+
+
+    @Autowired
+    private DepositService depositService;
+
+    @Autowired
+    private RoleService roleService;
+
+    @Autowired
+    private EmailService emailService;
+
     @GetMapping("/")
     public String home(Model model) {
 
@@ -236,8 +250,7 @@ public class HomeController {
     public String forgot() {
         return "forgot";
     }
-    @Autowired
-    private EmailService emailService;
+
 
     @PostMapping("/forgot")
     public String sendResetLink(@RequestBody Map<String, String> requestData, HttpServletResponse response) {
@@ -262,14 +275,7 @@ public class HomeController {
     }
 
 
-    @Autowired
-    private UserService userService;
 
-    @Autowired
-    private DepositService depositService;
-
-    @Autowired
-    private RoleService roleService;
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {

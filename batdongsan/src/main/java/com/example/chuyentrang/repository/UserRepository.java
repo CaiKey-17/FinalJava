@@ -17,6 +17,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "WHERE r.role_name = 'ROLE_CUSTOMER'",
             nativeQuery = true)
     List<User> findCustomers();
+
+
 }
 
 

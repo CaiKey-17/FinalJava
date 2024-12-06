@@ -29,7 +29,13 @@ public class UserService {
         }
         return false;
     }
+
     public UserService() {
+    }
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public boolean registerUser(User user, String roleName) {
