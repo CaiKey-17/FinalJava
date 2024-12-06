@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -44,7 +45,7 @@ public class LandForSaleService {
 
     public Page<LandForSale> listLandSold(int page) {
         List<String> types = Arrays.asList("Bán");
-        Pageable pageable = PageRequest.of(page - 1, 5);
+        Pageable pageable = PageRequest.of(page - 1, 5, Sort.by(Sort.Order.desc("datePosted")));
         return landForSaleRepository.findByTypeIn(types, pageable);
     }
 
@@ -85,9 +86,13 @@ public class LandForSaleService {
 
     public Page<LandForSale> listLandRent(int page) {
         List<String> types = Arrays.asList("Cho thuê");
-        Pageable pageable = PageRequest.of(page - 1, 5);
+        Pageable pageable = PageRequest.of(page - 1, 5, Sort.by(Sort.Order.desc("datePosted")));
+
         return landForSaleRepository.findByTypeIn(types, pageable);
     }
+
+
+
 
     public Page<LandForSale> listLandRent(int page, String propertyTypesAsString, int minPrice, int maxPrice,
                                           int minArea, int maxArea, int numberOfBedRooms, String province, String district) {

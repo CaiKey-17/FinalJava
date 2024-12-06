@@ -686,7 +686,7 @@
 
 
         <div class="re__breadcrumb js__breadcrumb js__ob-breadcrumb">
-            <a class="re__link-se" href="/ban-can-ho-chung-cu" level="1" title="Bán căn hộ chung cư tại Việt Nam">Bán</a><span>/</span><a class="re__link-se" href="/ban-can-ho-chung-cu" level="2" title="Bán căn hộ chung cư tại Việt Nam">Căn hộ chung cư trên toàn quốc</a>
+            <a class="re__link-se" href="/nha-dat-cho-thue" level="1" title="Bán căn hộ chung cư tại Việt Nam">Cho thuê</a><span></span><a class="re__link-se" href="/nha-dat-cho-thue" level="2" title="Bán căn hộ chung cư tại Việt Nam"></a>
         </div>
 
         <script type="application/ld+json">
@@ -708,7 +708,7 @@
 
 
 
-        <h1 class="re__srp-title js__srp-title">Mua bán căn hộ chung cư  trên toàn quốc</h1>
+        <h1 class="re__srp-title js__srp-title">Cho thuê trên toàn quốc</h1>
 
         <span class="re__srp-total-count js__srp-total-result">Hiện có <span id="count-number" th:text="${totalItems}">38.517</span> bất động sản.</span>
 
@@ -1229,59 +1229,33 @@
             <div class="re__sidebar-box re__product-count-box lazyloaded" data-func="new FrontEnd.Product.BoxProductCountList({});">
                 <h2 class="re__sidebar-box-title">Bán căn hộ chung cư</h2>
                 <div class="re__sidebar-box-content">
+
+
+
                     <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Hà Nội" value="Hà Nội">
-                            Hà Nội
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/nha-dat-ban?province=Hà%20Nội&page=1"  title="Bán căn hộ chung cư tại Hà Nội" value="Hà Nội">
+                            Hà Nội <span th:text="${'('+HN.size()+')'}"></span>
                         </a>
                     </h3>
                     <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Hồ Chí Minh" value="Hồ Chí Minh">
-                            Hồ Chí Minh <span>(14.045)</span>
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/nha-dat-ban?province=Hồ%20Chí%20Minh&page=1" title="Bán căn hộ chung cư tại Hồ Chí Minh" value="Hồ Chí Minh">
+                            Hồ Chí Minh <span th:text="${'('+HCM.size()+')'}"></span>
+                        </a>
+                    </h3>
+
+
+
+
+
+
+                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/nha-dat-ban?province=Bình%20Dương&page=1" title="Bán căn hộ chung cư tại Bình Dương" value="Bình Dương">
+                            Bình Dương <span th:text="${'('+BD.size()+')'}"></span>
                         </a>
                     </h3>
                     <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Bình Dương" value="Bình Dương">
-                            Bình Dương <span>(2.384)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
-                            <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Đà Nẵng" value="Đà Nẵng">
-                            Đà Nẵng <span>(1.605)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Hưng Yên" value="Hưng Yên">
-                            Hưng Yên <span>(809)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Khánh Hòa" value="Khánh Hòa">
-                            Khánh Hòa <span>(581)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Hải Phòng" value="Hải Phòng">
-                            Hải Phòng <span>(374)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Bà Rịa Vũng Tàu" value="Vũng Tàu">
-                            Bà Rịa Vũng Tàu <span>(371)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Quảng Ninh" value="Quảng Ninh">
-                            Quảng Ninh <span>(332)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Thanh Hóa" value="Thanh Hóa">
-                            Thanh Hóa <span>(183)</span>
-                        </a>
-                    </h3>
-                    <h3 class="re__sidebar-box-item re__sidebar-box-item-tinh">
-                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="javascript:void(0);" title="Bán căn hộ chung cư tại Thái Nguyên" value="Thái Nguyên">
-                            Thái Nguyên <span>(182)</span>
+                        <a tracking-id="srp-suggestion-link" tracking-label="loc=SRP For Sale;type=related" class="re__link-se" href="/nha-dat-cho-thue?province=Đà%20Nẵng&page=1"  title="Bán căn hộ chung cư tại Đà Nẵng" value="Đà Nẵng">
+                            Đà Nẵng <span th:text="${'('+DN.size()+')'}"></span>
                         </a>
                     </h3>
                 </div>

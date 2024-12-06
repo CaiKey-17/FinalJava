@@ -29,7 +29,8 @@ public class UserService {
         }
         return false;
     }
-
+    public UserService() {
+    }
 
     public boolean registerUser(User user, String roleName) {
 

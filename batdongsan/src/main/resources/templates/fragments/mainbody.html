@@ -1,4 +1,4 @@
-<div class="re__main" itemprop="about">
+<div class="re__main" itemprop="about" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="re__home new-home-2020">
         <div class="re__content-block re__home__head-block">
             <div class="re__home-search-box">
@@ -1026,61 +1026,23 @@
                                 </div>
                                 <div id="hottab-5" class="re__article-info-item hidden" style="display: block;">
                                     <h3>
-                                        <a title="Xu Hướng Đầu Tư Bất Động Sản Phổ Yên: Nhà Phố Lên Ngôi" href="/tin-tuc/xu-huong-dau-tu-bat-dong-san-pho-yen-nha-pho-len-ngoi-819377">
-                                            <img class=" lazyloaded" error-image-class="error-photo" data-src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2024/10/Anh-1-2-scaled.jpg" src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2024/10/Anh-1-2-scaled.jpg">
-                                            <span class="re__link-se article-title">Xu Hướng Đầu Tư Bất Động Sản Phổ
-                                                    Yên: Nhà Phố Lên Ngôi</span>
+                                        <a title="Xu Hướng Đầu Tư Bất Động Sản Phổ Yên: Nhà Phố Lên Ngôi" th:href="@{/chitiet-tin-tuc/{id}(id=${latestNews.id})}">
+                                            <img class=" lazyloaded" error-image-class="error-photo" th:src="@{${latestNews.images[0]?.imageLink}}">
+                                            <span class="re__link-se article-title" th:text="${latestNews.title}"></span>
                                         </a>
                                     </h3>
-                                    <span class="article-time"><i class="re__icon-clock--sm"></i> <span>1 ngày
-                                                trước</span></span>
                                 </div>
                             </div>
                             <div class="re__article-list-container js__article-list-container">
                                 <ul>
-                                    <li class="">
+                                    <li class="" th:each="news : ${top4}">
                                         <h3>
-                                            <a title="Nữ Tiếp Viên Hàng Không Một Mình “Bắc Tiến”, Chuyển Hướng Sang Môi Giới Bất Động Sản" data-index="#hottab-0" href="/wiki/nu-tiep-vien-hang-khong-mot-minh-bac-tien-chuyen-huong-sang-moi-gioi-bat-dong-san-819424" class="re__article-list-item">
-                                                Nữ Tiếp Viên Hàng Không Một Mình “Bắc Tiến”, Chuyển Hướng Sang Môi
-                                                Giới Bất Động Sản
+                                            <a title="Nữ Tiếp Viên Hàng Không Một Mình “Bắc Tiến”, Chuyển Hướng Sang Môi Giới Bất Động Sản" data-index="#hottab-0" th:href="@{/chitiet-tin-tuc/{id}(id=${news.id})}" th:text="${news.title}" class="re__article-list-item">
+
                                             </a>
                                         </h3>
                                     </li>
-                                    <li class="">
-                                        <h3>
-                                            <a title="Kịch Bản Nào Cho Thị Trường Bất Động Sản Việt Nam Trong Quý 4/2024?" data-index="#hottab-1" href="/phan-tich-danh-gia/kich-ban-nao-cho-thi-truong-bat-dong-san-viet-nam-trong-quy-4-2024-cd-hn-819167" class="re__article-list-item">
-                                                Kịch Bản Nào Cho Thị Trường Bất Động Sản Việt Nam Trong Quý 4/2024?
-                                            </a>
-                                        </h3>
-                                    </li>
-                                    <li class="">
-                                        <h3>
-                                            <a title="Bất Động Sản Đông Anh (Hà Nội) Tiếp Tục Nổi Sóng Mới" data-index="#hottab-2" href="/tin-tuc/bat-dong-san-dong-anh-tiep-tuc-noi-song-moi-cd-hn-818914" class="re__article-list-item">
-                                                Bất Động Sản Đông Anh (Hà Nội) Tiếp Tục Nổi Sóng Mới
-                                            </a>
-                                        </h3>
-                                    </li>
-                                    <li class="">
-                                        <h3>
-                                            <a title="Trọn Bộ Lãi Suất Vay Mua Nhà Mới Nhất Tháng 10/2024" data-index="#hottab-3" href="/tin-tuc/lai-suat-vay-mua-nha-ngan-hang-nao-thap-nhat-103041" class="re__article-list-item">
-                                                Trọn Bộ Lãi Suất Vay Mua Nhà Mới Nhất Tháng 10/2024
-                                            </a>
-                                        </h3>
-                                    </li>
-                                    <li class="">
-                                        <h3>
-                                            <a title="Giá Nhà Liền Thổ Giảm Mạnh, Chung Cư Liên Tục Tăng" data-index="#hottab-4" href="/tin-tuc/gia-nha-lien-tho-giam-manh-chung-cu-lien-tuc-tang-cd-hcm-789890" class="re__article-list-item">
-                                                Giá Nhà Liền Thổ Giảm Mạnh, Chung Cư Liên Tục Tăng
-                                            </a>
-                                        </h3>
-                                    </li>
-                                    <li class="active">
-                                        <h3>
-                                            <a title="Xu Hướng Đầu Tư Bất Động Sản Phổ Yên: Nhà Phố Lên Ngôi" data-index="#hottab-5" href="/tin-tuc/xu-huong-dau-tu-bat-dong-san-pho-yen-nha-pho-len-ngoi-819377" class="re__article-list-item">
-                                                Xu Hướng Đầu Tư Bất Động Sản Phổ Yên: Nhà Phố Lên Ngôi
-                                            </a>
-                                        </h3>
-                                    </li>
+
                                 </ul>
                             </div>
                             <div class="clear"></div>
@@ -1148,7 +1110,7 @@
                                             <img alt="Ảnh đại diện" class="lazyload pr-img" abc="3.20241018152906-7d2e_wm.jpg" th:data-src="${list.images[0].imageLink}">
                                             <div class="re__card-image-feature">
                                                 <i class="re__icon-image"></i>
-                                                <span th:text="${list.images.size()}">6</span>
+                                                <span th:text="${list.images.size()}"></span>
                                             </div>
                                             <div class="card-label-img label--v2"></div>
                                         </div>
@@ -1352,76 +1314,15 @@
                     </div>
                     <div class="swiper-container">
                         <ul class="re__article-list-container swiper-wrapper">
-                            <li uid="816093" class="re__article-list-item swiper-slide">
+                            <li uid="816093" class="re__article-list-item swiper-slide" th:each="news,iterStat : ${top4}">
                                 <div class="vip-news-img">
-                                    <a href="/wiki/ban-do-hue-816093" title="Bản Đồ Huế Cập Nhật Mới Nhất">
-                                        <img class="lazyload" data-src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2024/10/ban-do-hanh-chinh-thanh-pho-hue-1.jpg" alt="Bản Đồ Huế Cập Nhật Mới Nhất">
+                                    <a th:href="@{/chitiet-tin-tuc/{id}(id=${news.id})}">
+                                        <img class="lazyload" th:src="@{${news.images[0]?.imageLink}}">
                                     </a>
                                 </div>
                                 <h3 class="vip-news-link">
-                                    <span class="index">01</span>
-                                    <a class="re__link-se article-title" href="/wiki/ban-do-hue-816093" title="Bản Đồ Huế Cập Nhật Mới Nhất">Bản Đồ Huế Cập Nhật Mới Nhất</a>
-                                </h3>
-                            </li>
-                            <li uid="818025" class="re__article-list-item swiper-slide">
-                                <div class="vip-news-img">
-                                    <a href="/wiki/cach-biet-minh-menh-gi-818025" title="Cách Biết Mình Mệnh Gì Và Những Ứng Dụng Trong Phong Thủy Nhà Ở">
-                                        <img class="lazyload" data-src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2024/10/1-cach-tinh-cung-menh-ngu-hanh-chinh-xac-nhat.jpg" alt="Cách Biết Mình Mệnh Gì Và Những Ứng Dụng Trong Phong Thủy Nhà Ở">
-                                    </a>
-                                </div>
-                                <h3 class="vip-news-link">
-                                    <span class="index">02</span>
-                                    <a class="re__link-se article-title" href="/wiki/cach-biet-minh-menh-gi-818025" title="Cách Biết Mình Mệnh Gì Và Những Ứng Dụng Trong Phong Thủy Nhà Ở">Cách
-                                        Biết Mình Mệnh Gì Và Những Ứng Dụng Trong Phong Thủy Nhà Ở</a>
-                                </h3>
-                            </li>
-                            <li uid="818945" class="re__article-list-item swiper-slide">
-                                <div class="vip-news-img">
-                                    <a href="/wiki/lam-sao-de-biet-minh-menh-gi-818945" title="Làm Sao Để Biết Mình Mệnh Gì? Bảng Tra Cứu Mệnh Chính Xác Nhất">
-                                        <img class="lazyload" data-src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2024/10/menh-ngu-hanh.jpg" alt="Làm Sao Để Biết Mình Mệnh Gì? Bảng Tra Cứu Mệnh Chính Xác Nhất">
-                                    </a>
-                                </div>
-                                <h3 class="vip-news-link">
-                                    <span class="index">03</span>
-                                    <a class="re__link-se article-title" href="/wiki/lam-sao-de-biet-minh-menh-gi-818945" title="Làm Sao Để Biết Mình Mệnh Gì? Bảng Tra Cứu Mệnh Chính Xác Nhất">Làm
-                                        Sao Để Biết Mình Mệnh Gì? Bảng Tra Cứu Mệnh Chính Xác Nhất</a>
-                                </h3>
-                            </li>
-                            <li uid="789980" class="re__article-list-item swiper-slide">
-                                <div class="vip-news-img">
-                                    <a href="/wiki/quy-nhon-thuoc-tinh-nao-789980" title="Quy Nhơn Thuộc Tỉnh Nào? Cập Nhật Giá Thuê, Mua Nhà Mới Nhất">
-                                        <img class="lazyload" data-src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/12/quy-nhon-thuoc-tinh-nao-1.jpg" alt="Quy Nhơn Thuộc Tỉnh Nào? Cập Nhật Giá Thuê, Mua Nhà Mới Nhất">
-                                    </a>
-                                </div>
-                                <h3 class="vip-news-link">
-                                    <span class="index">04</span>
-                                    <a class="re__link-se article-title" href="/wiki/quy-nhon-thuoc-tinh-nao-789980" title="Quy Nhơn Thuộc Tỉnh Nào? Cập Nhật Giá Thuê, Mua Nhà Mới Nhất">Quy
-                                        Nhơn Thuộc Tỉnh Nào? Cập Nhật Giá Thuê, Mua Nhà Mới Nhất</a>
-                                </h3>
-                            </li>
-                            <li uid="790097" class="re__article-list-item swiper-slide">
-                                <div class="vip-news-img">
-                                    <a href="/wiki/tuoi-1985-lam-nha-nam-nao-tot-790097" title="Tuổi 1985 Làm Nhà Năm 2024 Tốt Không? Một Số Lưu Ý Phong Thủy Nhà Ở Tuổi Ất Sửu">
-                                        <img class="lazyload" data-src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/12/sinh-nam-1985-nam-2024-co-lam-nha-duoc-khong-04.jpg" alt="Tuổi 1985 Làm Nhà Năm 2024 Tốt Không? Một Số Lưu Ý Phong Thủy Nhà Ở Tuổi Ất Sửu">
-                                    </a>
-                                </div>
-                                <h3 class="vip-news-link">
-                                    <span class="index">05</span>
-                                    <a class="re__link-se article-title" href="/wiki/tuoi-1985-lam-nha-nam-nao-tot-790097" title="Tuổi 1985 Làm Nhà Năm 2024 Tốt Không? Một Số Lưu Ý Phong Thủy Nhà Ở Tuổi Ất Sửu">Tuổi
-                                        1985 Làm Nhà Năm 2024 Tốt Không? Một Số Lưu Ý Phong Thủy Nhà Ở Tuổi Ất
-                                        Sửu</a>
-                                </h3>
-                            </li>
-                            <li uid="789907" class="re__article-list-item swiper-slide">
-                                <div class="vip-news-img">
-                                    <a href="/wiki/quan-4-gan-quan-nao-cd-hcm-789907" title="Quận 4 Gần Quận Nào? Đặc Điểm Hạ Tầng, Tiện Ích Quận 4 Ngày Nay">
-                                        <img class="lazyload" data-src="https://img.iproperty.com.my/angel/610x342-crop/wp-content/uploads/sites/7/2023/12/quan-4-gan-quan-nao-1.ava_.jpg" alt="Quận 4 Gần Quận Nào? Đặc Điểm Hạ Tầng, Tiện Ích Quận 4 Ngày Nay">
-                                    </a>
-                                </div>
-                                <h3 class="vip-news-link">
-                                    <span class="index">06</span>
-                                    <a class="re__link-se article-title" href="/wiki/quan-4-gan-quan-nao-cd-hcm-789907" title="Quận 4 Gần Quận Nào? Đặc Điểm Hạ Tầng, Tiện Ích Quận 4 Ngày Nay">Quận
-                                        4 Gần Quận Nào? Đặc Điểm Hạ Tầng, Tiện Ích Quận 4 Ngày Nay</a>
+                                    <span class="index" th:text="${iterStat.index + 1}"></span>
+                                    <a class="re__link-se article-title" th:href="@{/chitiet-tin-tuc/{id}(id=${news.id})}" th:text="${news.title}"></a>
                                 </h3>
                             </li>
                         </ul>
