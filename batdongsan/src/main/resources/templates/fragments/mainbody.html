@@ -686,42 +686,42 @@
                                 <div class="hidden js__rent-price-select-list">
                                     <li class="js__option re__option" value="1">
         <span>
-            Dưới 100 triệu
+            Dưới 1 triệu
         </span>
                                     </li>
                                     <li class="js__option re__option" value="2">
         <span>
-            100 - 200 triệu
+            1 - 3 triệu
         </span>
                                     </li>
                                     <li class="js__option re__option" value="3">
         <span>
-            200 - 300 triệu
+            3 - 5 triệu
         </span>
                                     </li>
                                     <li class="js__option re__option" value="4">
         <span>
-            300 - 500 triệu
+            5 - 10 triệu
         </span>
                                     </li>
                                     <li class="js__option re__option" value="5">
         <span>
-            500 - 800 triệu
+            10 - 40 triệu
         </span>
                                     </li>
                                     <li class="js__option re__option" value="6">
         <span>
-            800 - 1 tỷ
+            40 - 70 triệu
         </span>
                                     </li>
                                     <li class="js__option re__option" value="7">
         <span>
-            1 - 2 tỷ
+            70 - 100 triệu
         </span>
                                     </li>
                                     <li class="js__option re__option" value="8">
         <span>
-            Trên 2 tỷ
+            Trên 100 triệu
         </span>
                                     </li>
                                     <li class="js__option re__option" value="0">
@@ -1027,7 +1027,7 @@
                                 <div id="hottab-5" class="re__article-info-item hidden" style="display: block;">
                                     <h3>
                                         <a title="Xu Hướng Đầu Tư Bất Động Sản Phổ Yên: Nhà Phố Lên Ngôi" th:href="@{/chitiet-tin-tuc/{id}(id=${latestNews.id})}">
-                                            <img class=" lazyloaded" error-image-class="error-photo" th:src="@{${latestNews.images[0]?.imageLink}}">
+                                            <img class=" lazyloaded" error-image-class="error-photo" th:src="@{${latestNews.images[0].imageLink}}">
                                             <span class="re__link-se article-title" th:text="${latestNews.title}"></span>
                                         </a>
                                     </h3>
@@ -1100,7 +1100,7 @@
                     <div class="home-product product-4-you">
                         <div class="js__interested-product re__interested-product-cards">
 
-                            <div th:each="list : ${landForSaleList.size() > 5 ? landForSaleList.subList(0, 5) : landForSaleList}" class="re__product-item re__interested-product-card js__product-item">
+                            <div th:each="list : ${landForSaleList.size() > 12 ? landForSaleList.subList(0, 12) : landForSaleList}" class="re__product-item re__interested-product-card js__product-item">
 
                                 <div class="js__card js__card-compact-web
      pr-container re__card-compact re__vip-diamond" prav="https://file4.batdongsan.com.vn/crop/200x140/2024/10/18/20241018152906-7d2e_wm.jpg" uid="2270804" prid="41252402" vtp="vip-diamond" clo="hpre">
@@ -1317,7 +1317,7 @@
                             <li uid="816093" class="re__article-list-item swiper-slide" th:each="news,iterStat : ${top4}">
                                 <div class="vip-news-img">
                                     <a th:href="@{/chitiet-tin-tuc/{id}(id=${news.id})}">
-                                        <img class="lazyload" th:src="@{${news.images[0]?.imageLink}}">
+                                        <img class="lazyload" th:src="@{${news.images[0].imageLink}}">
                                     </a>
                                 </div>
                                 <h3 class="vip-news-link">

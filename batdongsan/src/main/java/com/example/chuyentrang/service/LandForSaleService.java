@@ -50,13 +50,6 @@ public class LandForSaleService {
     }
 
 
-    public Page<LandForSale> listLandSoldProvince(int page, String province) {
-        List<String> types = Arrays.asList("Bán");
-        Pageable pageable = PageRequest.of(page - 1, 5);
-        return landForSaleRepository.findByTypeInAndProvince(types, province, pageable);
-    }
-
-
     public Page<LandForSale> listLandSold(int page, String propertyTypesAsString, int minPrice, int maxPrice,
                                           int minArea, int maxArea, int numberOfBedRooms, String province, String district) {
         List<String> propertyTypes = (propertyTypesAsString != null && !propertyTypesAsString.isEmpty())

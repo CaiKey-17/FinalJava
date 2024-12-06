@@ -35,6 +35,18 @@ public class NhaDatBanController {
             @RequestParam(value = "district", required = false) String district,
             Model model) {
 
+        if (categoryIdsAsString != null && categoryIdsAsString.contains(",")) {
+            categoryIdsAsString = categoryIdsAsString.split(",")[0];
+        }
+
+        if (priceAsString != null && priceAsString.contains(",")) {
+            priceAsString = priceAsString.split(",")[0];
+        }
+
+        if (areaAsString != null && areaAsString.contains(",")) {
+            areaAsString = areaAsString.split(",")[0];
+        }
+
         System.out.println("Page: " + page);
         System.out.println("CategoryIdsAsString: " + categoryIdsAsString);
         System.out.println("PriceAsString: " + priceAsString);
