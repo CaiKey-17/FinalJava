@@ -8,6 +8,9 @@
 
 # Các Bước Chạy Ứng Dụng Trên Máy Tính Cá Nhân
 
+### Video demo
+https://drive.google.com/file/d/1XTDOhY65xi23ocVSmUqd5zbuMFaOQhbN/view
+
 ### Yêu cầu
 - Java JDK: Phiên bản 17 trở lên.
 - Maven: Để xây dựng và quản lý dependencies.
