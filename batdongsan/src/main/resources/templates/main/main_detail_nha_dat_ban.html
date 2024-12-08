@@ -510,9 +510,10 @@
                                                 <div class="re__card-config">
                                                     <span class="re__card-config-price"
                                                           th:text="${list.formatToReadableUnit(list.price)}">1,8 tỷ</span>
-                                                    <span class="re__card-config-area"><span
-                                                            class="re__card-config-dot"
-                                                            th:text="${list.area + ' m²'}">·</span>75 m²</span>
+                                                    <span class="re__card-config-area">
+                                                        <span class="re__card-config-dot">.</span>
+                                                        <span class="re__card-config-price" th:text="${list.area + ' m²'}"></span>
+                                                    </span>
                                                     <div class="re__clear"></div>
                                                 </div>
                                                 <div class="re__card-location">

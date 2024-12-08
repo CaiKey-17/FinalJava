@@ -38,7 +38,7 @@ public class User {
     @Column(nullable = true)
     private String zoneking;
 
-    @Column(nullable = true)
+    @Column(unique = true, nullable = true)
     private String email;
 
     @Column(nullable = true)

@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -50,7 +51,7 @@ public class LandForSaleService {
     }
 
 
-    public Page<LandForSale> listLandSold(int page, String propertyTypesAsString, int minPrice, int maxPrice,
+    public Page<LandForSale> listLandSold(int page, String propertyTypesAsString, BigInteger minPrice, BigInteger maxPrice,
                                           int minArea, int maxArea, int numberOfBedRooms, String province, String district) {
         List<String> propertyTypes = (propertyTypesAsString != null && !propertyTypesAsString.isEmpty())
                 ? Arrays.asList(propertyTypesAsString.split(","))
@@ -87,7 +88,7 @@ public class LandForSaleService {
 
 
 
-    public Page<LandForSale> listLandRent(int page, String propertyTypesAsString, int minPrice, int maxPrice,
+    public Page<LandForSale> listLandRent(int page, String propertyTypesAsString, BigInteger minPrice, BigInteger maxPrice,
                                           int minArea, int maxArea, int numberOfBedRooms, String province, String district) {
         List<String> propertyTypes = (propertyTypesAsString != null && !propertyTypesAsString.isEmpty())
                 ? Arrays.asList(propertyTypesAsString.split(","))
