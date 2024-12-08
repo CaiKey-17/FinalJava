@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Controller()
@@ -53,8 +54,10 @@ public class NhaDatBanController {
         System.out.println("AreaAsString: " + areaAsString);
         System.out.println("RoomNumersAsString: " + roomNumersAsString);
 
-        int minPrice = 0, minArea = 0;
-        int maxPrice = Integer.MAX_VALUE, maxArea = Integer.MAX_VALUE;
+        BigInteger minPrice = BigInteger.ZERO;
+        int minArea = 0;
+        BigInteger maxPrice = BigInteger.ZERO;
+        int maxArea = Integer.MAX_VALUE;
 
         if (categoryIdsAsString == null) {
             categoryIdsAsString = "";
@@ -123,44 +126,44 @@ public class NhaDatBanController {
         if (priceAsString != null) {
             switch (priceAsString) {
                 case "1":
-                    minPrice = 0;
-                    maxPrice = 100000000;
+                    minPrice = BigInteger.ZERO;
+                    maxPrice = new BigInteger("100000000");
                     break;
                 case "2":
-                    minPrice = 100000000;
-                    maxPrice = 200000000;
+                    minPrice = new BigInteger("100000000");
+                    maxPrice = new BigInteger("200000000");
                     break;
                 case "3":
-                    minPrice = 200000000;
-                    maxPrice = 300000000;
+                    minPrice = new BigInteger("200000000");
+                    maxPrice = new BigInteger("300000000");
                     break;
                 case "4":
-                    minPrice = 300000000;
-                    maxPrice = 500000000;
+                    minPrice = new BigInteger("300000000");
+                    maxPrice = new BigInteger("500000000");
                     break;
                 case "5":
-                    minPrice = 500000000;
-                    maxPrice = 800000000;
+                    minPrice = new BigInteger("500000000");
+                    maxPrice = new BigInteger("800000000");
                     break;
                 case "6":
-                    minPrice = 800000000;
-                    maxPrice = 1000000000;
+                    minPrice = new BigInteger("800000000");
+                    maxPrice = new BigInteger("1000000000");
                     break;
                 case "7":
-                    minPrice = 1000000000;
-                    maxPrice = 2000000000;
+                    minPrice = new BigInteger("1000000000");
+                    maxPrice = new BigInteger("2000000000");
                     break;
                 case "8":
-                    minPrice = 2000000000;
-                    maxPrice = Integer.MAX_VALUE;
+                    minPrice = new BigInteger("2000000000");
+                    maxPrice = new BigInteger("1000000000000000000"); // Số rất lớn
                     break;
                 case "0":
-                    minPrice = 0;
-                    maxPrice = 0;
+                    minPrice = BigInteger.ZERO;
+                    maxPrice = BigInteger.ZERO;
                     break;
                 default:
-                    minPrice = 0;
-                    maxPrice = Integer.MAX_VALUE;
+                    minPrice = BigInteger.ZERO;
+                    maxPrice = BigInteger.valueOf(Long.MAX_VALUE).multiply(BigInteger.TEN); // Số cực lớn
                     break;
             }
         }

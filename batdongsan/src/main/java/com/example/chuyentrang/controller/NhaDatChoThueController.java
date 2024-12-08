@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigInteger;
 import java.util.List;
 
 
@@ -53,8 +54,10 @@ public class NhaDatChoThueController {
         System.out.println("AreaAsString: " + areaAsString);
         System.out.println("RoomNumersAsString: " + roomNumersAsString);
 
-        int minPrice = 0, minArea = 0;
-        int maxPrice = Integer.MAX_VALUE, maxArea = Integer.MAX_VALUE;
+        BigInteger minPrice = BigInteger.ZERO;
+        int minArea = 0;
+        BigInteger maxPrice = BigInteger.ZERO;
+        int maxArea = Integer.MAX_VALUE;
 
         if (categoryIdsAsString == null) {
             categoryIdsAsString = "";
@@ -123,44 +126,44 @@ public class NhaDatChoThueController {
         if (priceAsString != null) {
             switch (priceAsString) {
                 case "1":
-                    minPrice = 0;
-                    maxPrice = 1000000;
+                    minPrice = BigInteger.ZERO;
+                    maxPrice = new BigInteger("1000000");
                     break;
                 case "2":
-                    minPrice = 1000000;
-                    maxPrice = 3000000;
+                    minPrice = new BigInteger("1000000");
+                    maxPrice = new BigInteger("3000000");
                     break;
                 case "3":
-                    minPrice = 3000000;
-                    maxPrice = 5000000;
+                    minPrice = new BigInteger("3000000");
+                    maxPrice = new BigInteger("5000000");
                     break;
                 case "4":
-                    minPrice = 5000000;
-                    maxPrice = 10000000;
+                    minPrice = new BigInteger("5000000");
+                    maxPrice = new BigInteger("10000000");
                     break;
                 case "5":
-                    minPrice = 10000000;
-                    maxPrice = 40000000;
+                    minPrice = new BigInteger("10000000");
+                    maxPrice = new BigInteger("40000000");
                     break;
                 case "6":
-                    minPrice = 40000000;
-                    maxPrice = 70000000;
+                    minPrice = new BigInteger("40000000");
+                    maxPrice = new BigInteger("70000000");
                     break;
                 case "7":
-                    minPrice = 70000000;
-                    maxPrice = 100000000;
+                    minPrice = new BigInteger("70000000");
+                    maxPrice = new BigInteger("100000000");
                     break;
                 case "8":
-                    minPrice = 100000000;
-                    maxPrice = Integer.MAX_VALUE;
+                    minPrice = new BigInteger("100000000");
+                    maxPrice = new BigInteger("2147483647"); // Integer.MAX_VALUE equivalent
                     break;
                 case "0":
-                    minPrice = 0;
-                    maxPrice = 0;
+                    minPrice = BigInteger.ZERO;
+                    maxPrice = BigInteger.ZERO;
                     break;
                 default:
-                    minPrice = 0;
-                    maxPrice = Integer.MAX_VALUE;
+                    minPrice = BigInteger.ZERO;
+                    maxPrice = new BigInteger("2147483647"); // Integer.MAX_VALUE equivalent
                     break;
             }
         }

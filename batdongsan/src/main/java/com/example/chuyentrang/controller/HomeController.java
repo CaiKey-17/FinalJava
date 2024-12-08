@@ -253,18 +253,19 @@ public class HomeController {
 
 
     @PostMapping("/forgot")
-    public String sendResetLink(@RequestBody Map<String, String> requestData, HttpServletResponse response) {
+    public ResponseEntity<String> sendResetLink(@RequestBody Map<String, String> requestData, HttpServletResponse response) {
         String email = requestData.get("email");
 
         if (userService.isEmailRegistered(email)) {
             String newPass = "111";
             userService.updatePassword(email, newPass);
             emailService.sendPasswordResetEmail(email, newPass);
-            return "Mã khôi phục đã được gửi vào email của bạn!";
+            return ResponseEntity.ok("Khôi phục thành công");
         } else {
-            return "Email này chưa được đăng ký!";
+            return ResponseEntity.badRequest().body("Thất bại");
         }
     }
+
 
 
 

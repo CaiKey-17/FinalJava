@@ -10,6 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public interface LandForSaleRepository extends JpaRepository<LandForSale, Integer> {
@@ -34,8 +35,8 @@ public interface LandForSaleRepository extends JpaRepository<LandForSale, Intege
             "AND (COALESCE(:district, '') = '' OR LOWER(l.district) LIKE LOWER(CONCAT('%', :district, '%')))")
     Page<LandForSale> findByPropertyTypesAndPriceAndTypesAndAreaAndNumberOfBedRoomsAndLocation(
             List<String> propertyTypes,
-            int minPrice,
-            int maxPrice,
+            BigInteger minPrice,
+            BigInteger maxPrice,
             List<String> landTypes,
             int minArea,
             int maxArea,
