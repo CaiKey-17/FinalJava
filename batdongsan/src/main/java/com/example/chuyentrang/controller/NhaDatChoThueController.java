@@ -56,7 +56,7 @@ public class NhaDatChoThueController {
 
         BigInteger minPrice = BigInteger.ZERO;
         int minArea = 0;
-        BigInteger maxPrice = BigInteger.ZERO;
+        BigInteger maxPrice = BigInteger.valueOf(Long.MAX_VALUE).multiply(BigInteger.TEN);
         int maxArea = Integer.MAX_VALUE;
 
         if (categoryIdsAsString == null) {
